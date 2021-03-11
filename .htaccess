@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^/?$ index.php
+RewriteRule ^home?$ index.php
+RewriteRule ^User/Main?$ User/Main.php
+RewriteRule ^User/Register/register?$ User/Register/register.php
