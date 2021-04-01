@@ -59,7 +59,7 @@ body {
 }
 
 a:hover {
-    color: red;
+    color: blue;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
@@ -69,6 +69,10 @@ a:hover {
 
 .form {
     padding: 30px 40px;
+}
+
+div .card-header {
+    background-color: #EBECEC;
 }
 
 .container2 {

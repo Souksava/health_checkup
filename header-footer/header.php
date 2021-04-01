@@ -77,7 +77,7 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview">
+                    <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
@@ -101,7 +101,7 @@
                                 </a>
                             </li>
                         </ul>
-                    <li class="nav-item">
+                    <li class="nav-item"> -->
                     <li class="nav-item has-treeview">
                         <a href="<?php echo $links ?>Register/register" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
@@ -128,7 +128,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
+                    <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
@@ -136,7 +136,7 @@
                                 <i class="fas"></i>
                             </p>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
