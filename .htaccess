@@ -4,3 +4,6 @@ RewriteRule ^/?$ index.php
 RewriteRule ^home?$ index.php
 RewriteRule ^User/Main?$ User/Main.php
 RewriteRule ^User/Register/register?$ User/Register/register.php
+RewriteRule ^User/Register/Company?$ User/Register/Company.php
+RewriteRule ^User/Register/Package?$ User/Register/Package.php
+RewriteRule ^User/Register/Employee?$ User/Register/Employee.php

@@ -102,11 +102,39 @@
                             </li>
                         </ul>
                     <li class="nav-item"> -->
+             
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Register/Company" class="nav-link">
+                            <i class="nav-icon fas fa-building"></i>
+                            <p>
+                                ຂໍ້ມູນບໍລີສັດ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Register/Package" class="nav-link">
+                            <i class="nav-icon fas fa-boxes"></i>
+                            <p>
+                                ຂໍ້ມູນແຟັກແກັດ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Register/Employee" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                            ຂໍ້ມູນພະນັກງານ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item has-treeview">
                         <a href="<?php echo $links ?>Register/register" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                ລົງທະບຽນ
+                                ການລົງທະບຽນ
                                 <i class="fas"></i>
                             </p>
                         </a>
@@ -115,7 +143,32 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-check"></i>
                             <p>
-                                ກວດສຸຂະພາບ
+                            ພິມໃບຢັ້ງຢືນສຸຂະພາບ
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Register/languageLAO" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ພາສາລາວ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Register/languageLAO" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ພາສາອັງກິດ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-check"></i>
+                            <p>
+                                ພີມປື້ມຕິດຕາມສຸຂະພາບ
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -123,51 +176,39 @@
                             <li class="nav-item">
                                 <a href="Make/accept.php" class="nav-link">
                                     <i class="far fa fa-check nav-icon"></i>
-                                    <p>ກວດ Biochemistry</p>
+                                    <p>ໜ້າປົກ</p>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <!-- <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                ຊ່ຳລະເງິນ
-                                <i class="fas"></i>
-                            </p>
-                        </a>
-                    </li> -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                ສ້າງລາຍງານ
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="Report/report_employee.php" class="nav-link">
-                                    <i class="far fas fa-book nav-icon"></i>
-                                    <p>ພິມໃບຢັ້ງຢືນສຸຂະພາບ-ລາວ</p>
+                                <a href="Make/accept.php" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ໜ້າ1-ສະຫຼຸບ</p>
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="Report/report_customer.php" class="nav-link">
-                                    <i class="far fas fa-book nav-icon"></i>
-                                    <p>ພິມໃບຢັ້ງຢືນສຸຂະພາບ-ອັງກິດ</p>
+                                <a href="Make/accept.php" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ໜ້າ2-11</p>
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
+                            <!-- <li class="nav-item">
+                                <a href="Make/accept.php" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ໜ້າ3-10</p>
+                                </a>
+                            </li>
                             <li class="nav-item">
-                                <a href="Report/report_product.php" class="nav-link">
-                                    <i class="far fas fa-book nav-icon"></i>
-                                    <p>ພິມປຶ້ມຕິດຕາມສຸຂະພາບ</p>
+                                <a href="Make/accept.php" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ໜ້າ4-9</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="Make/accept.php" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ໜ້າ5-8</p>
+                                </a>
+                            </li> -->
                         </ul>
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">

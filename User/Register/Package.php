@@ -1,5 +1,5 @@
 <?php
-  $title = "ການລົງທະບຽນ";
+  $title = "ຂໍ້ມູນແຟັກແກັດ";
   $path = "../../";
   $links = "../";
   $session_path = "../../";
@@ -10,7 +10,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ແກ້ໄຂຂໍ້ມູນບໍລິສັດ</h5>
+                <h5 class="modal-title" id="exampleModalLabel">ແກ້ໄຂຂໍ້ມູນແຟັກແກັດ</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -106,13 +106,13 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-12 col-sm-6 modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
                 <button type="submit" name="Com_Update" id="Com_Update" class="btn btn-outline-primary" onclick="">
                     ນຳເຂົ້າຂໍ້ມູນ
                     <span class="" id="load_save"></span>
                 </button>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>
@@ -140,61 +140,60 @@
     </div>
 </div>
 
-<div class="col-xs-12 col-sm-8 input-group mb-3">
-  <input type="text" aria-label="First name" class="form-control" placeholder="ບໍລີສັດ">
-  <input type="text" aria-label="Last name" class="form-control" placeholder="ລະຫັດພະນັກງານ,ຊື່,ນາມສະກຸນ,ລຳດັບ,ອາຍຸ">
+<div class="col-xs-12 col-sm-7 input-group mb-3">
+  <input type="text" aria-label="First name" class="form-control" placeholder="ID">
+  <!-- <input type="text" aria-label="Last name" class="form-control" placeholder="Description"> -->
   <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalUpdateEmp"
                 type="button" id="button-addon2">
                 <i class="fas fa-search"></i>
             </button>
+            <!-- <button class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalUpdateEmp"
+                type="button" id="button-addon2">
+                
+            </button> -->
+            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalUpdateEmp"
+                type="button" id="button-addon2">
+                ນຳເຂົ້າຂໍ້ມູນ
+            </button>
 </div>
-    <!-- <input type="text" class="form-control" style="width: 480px;" placeholder="ຄົ້ນຫາ"><br> -->
-    <div class="table-responsive">
-        <table class="table-bordered" style="width: 1600px;text-align: center;">
-            <tr style="font-size: 18px;">
-                <th>ເຄື່ອງມື</th>
-                <th>NO</th>
-                <th>Barcode</th>
-                <th>ລະຫັດພະນັກງານ</th>
-                <th>ຊື່</th>
-                <th>ນາມສະກຸນ</th>
-                <th>ລຳດັບ</th>
-                <th>ອາຍຸ</th>
+        <!-- <input type="text" class="form-control" style="width: 480px;" placeholder="ຄົ້ນຫາ"><br> -->
+        <div class=" col-xs-12 col-sm-7  table-responsive">
+            <table class="table-bordered" style="width: 1000px;text-align: center;">
+                <tr style="font-size: 18px;">
+                    <th>ເຄື່ອງມື</th>
+                    <th>ID</th>
+                    <th>Description</th>
 
-
-            </tr>
-            <tr>
-                <td>
-                    <a href="#" data-toggle="modal" data-target="#exampleModalAddcompany"
-                        class="fas fa-plus-circle toolcolor btnAddPackage"></a>&nbsp; &nbsp;
-                    <a href="#" data-toggle="modal" data-target="#exampleModalUpdatecompany"
-                        class="fa fa-pen toolcolor btnUpdateCompany"></a>&nbsp; &nbsp;
-                    <a href="#" data-toggle="modal" data-target="#exampleModalDelcompany"
-                        class="fa fa-trash toolcolor btnDelete_com"></a>
-                </td>
-                <td>001</td>
-                <td>130032101487</td>
-                <td>VT3753</td>
-                <td>ທ່ານ ກະຊວງ ຈັນສະໝອນ</td>
-                <td>ສາຍໃຈ</td>
-                <td>1</td>
-                <td>26</td>
-
-            </tr>
-        </table>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target="#exampleModalAddcompany"
+                            class="fas fa-plus-circle toolcolor btnAddPackage"></a>&nbsp; &nbsp;
+                        <a href="#" data-toggle="modal" data-target="#exampleModalUpdatecompany"
+                            class="fa fa-pen toolcolor btnUpdateCompany"></a>&nbsp; &nbsp;
+                        <a href="#" data-toggle="modal" data-target="#exampleModalDelcompany"
+                            class="fa fa-trash toolcolor btnDelete_com"></a>
+                    </td>
+                    <td>001</td>
+                    <td>Biochemistry</td>
+                </tr>
+            </table>
+        </div>
+        <!-- <div align="right" style="color: red;   padding-right: 700px;">
+                    <h3>Total: 1ລາຍການ</h3>
+                </div> -->
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">ກັບຄືນ</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">ໜ້າຖັດໄປ</a></li>
+        </ul>
     </div>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">ກັບຄືນ</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">ໜ້າຖັດໄປ</a></li>
-    </ul>
-    </div>
-    </div>
-    </div>
-    <?php
+</div>
+</div>
+</div>
+<?php
     include ("../../header-footer/footer.php");
 ?>
