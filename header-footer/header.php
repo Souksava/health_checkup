@@ -16,6 +16,8 @@
     <!-- <link rel="stylesheet"
         href="<?php echo $path ?>plugins/tcususdominus-bootstrap-4/css/tcususdominus-bootstrap-4.min.css"> -->
     <!-- iCheck -->
+    <link rel="stylesheet" href="<?php echo $path ?>dist/css/alt/pageload.css">
+
     <link rel="stylesheet" href="<?php echo $path ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="<?php echo $path ?>plugins/jqvmap/jqvmap.min.css">
@@ -35,9 +37,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="<?php echo $path ?>dist/js/sweetalert.min.js"></script>
 </head>
-
 <body class="hold-transition sidebar-mini layout-fixed">
-
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+    </div>      
+<?php
+     include (''.$path.'oop/obj.php');
+?>
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light font14">
             <ul class="navbar-nav">
@@ -75,36 +81,9 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                    <!-- <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                ປັບປຸງຂໍ້ມູນຫຼັກ
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="Management/employee.php" class="nav-link">
-                                    <i class="far fa fa-user nav-icon"></i>
-                                    <p>ປັບປຸງຂໍ້ມູນຜູ້ເຂົ້າກວດ</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="Management/employee.php" class="nav-link">
-                                    <i class="far fa fa-user nav-icon"></i>
-                                    <p>ປັບປຸງຂໍ້ມູນລາຍການກວດ</p>
-                                </a>
-                            </li>
-                        </ul>
-                    <li class="nav-item"> -->
              
                     <li class="nav-item has-treeview">
-                        <a href="<?php echo $links ?>Register/Company" class="nav-link">
+                        <a href="<?php echo $links ?>Company/Company" class="nav-link">
                             <i class="nav-icon fas fa-building"></i>
                             <p>
                                 ຂໍ້ມູນບໍລີສັດ
@@ -113,8 +92,8 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?php echo $links ?>Register/Package" class="nav-link">
-                            <i class="nav-icon fas fa-boxes"></i>
+                        <a href="<?php echo $links ?>Package/Package" class="nav-link">
+                            <i class="nav-icon fas fa-stethoscope"></i>
                             <p>
                                 ຂໍ້ມູນແຟັກແກັດ
                                 <i class="fas"></i>
@@ -122,8 +101,8 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?php echo $links ?>Register/Employee" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="<?php echo $links ?>Employee/Employee" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i><i class="fad fa-user-hard-hat"></i>
                             <p>
                             ຂໍ້ມູນພະນັກງານ
                                 <i class="fas"></i>
@@ -132,7 +111,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="<?php echo $links ?>Register/register" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                            <i class="nav-icon fas fa-registered"></i>
                             <p>
                                 ການລົງທະບຽນ
                                 <i class="fas"></i>
@@ -141,7 +120,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user-check"></i>
+                            <i class="nav-icon fas fa-certificate"></i>
                             <p>
                             ພິມໃບຢັ້ງຢືນສຸຂະພາບ
                                 <i class="fas fa-angle-left right"></i>
@@ -166,7 +145,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user-check"></i>
+                            <i class="nav-icon fas fa-book"></i>
                             <p>
                                 ພີມປື້ມຕິດຕາມສຸຂະພາບ
                                 <i class="fas fa-angle-left right"></i>

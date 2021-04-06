@@ -6,7 +6,6 @@
     <strong>Copyright &copy; 2020 </strong>
     All rights reserved.
 </footer>
-
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -14,24 +13,6 @@
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script type="text/javascript">
-
-  function loadDocalert2() {
-            setInterval(function(){
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("alert_user").innerHTML = this.responseText;
-                    }
-                };
-                xhttp.open("GET", "<?php echo $path ?>header-footer/alert_user.php", true);
-                xhttp.send();
-            },1000);
-        }
-        loadDocalert2(); 
-
-       
-</script>
 <!-- jQuery -->
 <script src="<?php echo $path ?>plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -43,6 +24,8 @@ $.widget.bridge('uibutton', $.ui.button)
 <!-- Bootstrap 4 -->
 <script src="<?php echo $path ?>dist/js/loading.js"></script>
 <script src="<?php echo $path ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="<?php echo $path ?>plugins/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script src="<?php echo $path ?>plugins/bootstrap/js/modernizr-2.6.2.min.js"></script> -->
 <!-- ChartJS -->
 <script src="<?php echo $path ?>plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -64,72 +47,60 @@ $.widget.bridge('uibutton', $.ui.button)
 <!-- AdminLTE App -->
 <script src="<?php echo $path ?>dist/js/adminlte.js"></script>
 <script src="<?php echo $path ?>dist/js/style.js"></script>
+<script src="<?php echo $path ?>dist/js/pageload.js"></script>
 <script src="<?php echo $path ?>dist/js/jquery.highlight.js"></script>
-<!-- <script src="<?php echo $path ?>dist/js/modal.js" type="text/javascript"></script> -->
 
 
 <script>
-    function load_datalist() {
-            setInterval(function(){
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("result_list").innerHTML = this.responseText;
-                    }
-                };
-                xhttp.open("GET", "<?php echo $path ?>header-footer/fetch_list_manager.php", true);
-                xhttp.send();
-            },1000);
-        }
-        load_datalist(); 
+
    
 </script>
 
 <script>
-$(window).load(function() {
-    // Update Modal
-    // delete import
+// $(window).load(function() {
+//     // Update Modal
+//     // delete import
 
-    $('.btnDelete_import').on('click', function() {
-        $('#exampleModalDelete').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#id').val(data[0]);
-    });
-    // delete form
-    $('.btnDelete_form').on('click', function() {
-        $('#exampleModalDelete').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#id').val(data[0]);
-    });
-    // delete accept
-    $('.btnDelete_accept').on('click', function() {
-        $('#exampleModalDelete').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#id').val(data[0]);
-    });
-    // delete distribute
-    $('.btnDelete_dist').on('click', function() {
-        $('#exampleModalDelete').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#id').val(data[0]);
-    });
-});
+//     $('.btnDelete_import').on('click', function() {
+//         $('#exampleModalDelete').modal('show');
+//         $tr = $(this).closest('tr');
+//         var data = $tr.children("td").map(function() {
+//             return $(this).text();
+//         }).get();
+//         console.log(data);
+//         $('#id').val(data[0]);
+//     });
+//     // delete form
+//     $('.btnDelete_form').on('click', function() {
+//         $('#exampleModalDelete').modal('show');
+//         $tr = $(this).closest('tr');
+//         var data = $tr.children("td").map(function() {
+//             return $(this).text();
+//         }).get();
+//         console.log(data);
+//         $('#id').val(data[0]);
+//     });
+//     // delete accept
+//     $('.btnDelete_accept').on('click', function() {
+//         $('#exampleModalDelete').modal('show');
+//         $tr = $(this).closest('tr');
+//         var data = $tr.children("td").map(function() {
+//             return $(this).text();
+//         }).get();
+//         console.log(data);
+//         $('#id').val(data[0]);
+//     });
+//     // delete distribute
+//     $('.btnDelete_dist').on('click', function() {
+//         $('#exampleModalDelete').modal('show');
+//         $tr = $(this).closest('tr');
+//         var data = $tr.children("td").map(function() {
+//             return $(this).text();
+//         }).get();
+//         console.log(data);
+//         $('#id').val(data[0]);
+//     });
+// });
 
 </script>
 <script>

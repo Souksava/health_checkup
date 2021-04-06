@@ -4,6 +4,8 @@ RewriteRule ^/?$ index.php
 RewriteRule ^home?$ index.php
 RewriteRule ^User/Main?$ User/Main.php
 RewriteRule ^User/Register/register?$ User/Register/register.php
-RewriteRule ^User/Register/Company?$ User/Register/Company.php
-RewriteRule ^User/Register/Package?$ User/Register/Package.php
-RewriteRule ^User/Register/Employee?$ User/Register/Employee.php
+RewriteRule ^User/Company/Company?$ User/Company/Company.php
+RewriteRule ^User/Package/Package?$ User/Package/Package.php
+RewriteRule ^User/Employee/Employee?$ User/Employee/Employee.php
+RewriteRule ^User/Employee/exportemployee?$ User/Employee/export_excel.php
+RewriteRule ^User/Register/printbarcode?$ User/Register/barcode_print.php
