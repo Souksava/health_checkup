@@ -7,5 +7,7 @@ RewriteRule ^User/Register/register?$ User/Register/register.php
 RewriteRule ^User/Company/Company?$ User/Company/Company.php
 RewriteRule ^User/Package/Package?$ User/Package/Package.php
 RewriteRule ^User/Employee/Employee?$ User/Employee/Employee.php
+RewriteRule ^User/Employee/Barcodes?$ User/Employee/barcode.php
 RewriteRule ^User/Employee/exportemployee?$ User/Employee/export_excel.php
 RewriteRule ^User/Register/printbarcode?$ User/Register/barcode_print.php
+RewriteRule ^User/Register/barcode?$ User/Register/barcode.php

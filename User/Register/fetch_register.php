@@ -197,7 +197,7 @@ $('.double_barcode').on('dblclick', function() {
         console.log(data);
         $('#print_barcode2').val(data[0]);
         $('#barcode_id2').val(data[3]);
-        document.getElementById("formBarcode").action = "barcode.php";
+        document.getElementById("formBarcode").action = "barcode";
         document.getElementById("formBarcode").submit();
 });
 

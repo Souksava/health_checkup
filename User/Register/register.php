@@ -121,7 +121,7 @@
             <div class="input-group mb-3">
                 <select name="register_company" id="register_company" class="form-control">
                     <option value="">ເລືອກບໍລິສັດ</option>
-                    <option value="Lao Telecom">Lao Telecom</option>
+                    <option value="ລາວໂທລະຄົມ">ລາວໂທລະຄົມ</option>
                 </select>
                 <input type="text" class="form-control"  name="register_search" id="register_search" placeholder="ລະຫັດ ພ/ງ, ຊື່, ອາຍຸ, ບໍລິສັດ"
                     aria-label="Recipient's username" aria-describedby="button-addon2">

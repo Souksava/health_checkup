@@ -36,7 +36,21 @@ class obj{
             echo"</script>";
         }
     }  
-    public static function import_emp($file_path){
+    public static function update_employee($barcode,$emp_id,$emp_name,$surname,$dob,$age,$gender,$company,$branch,$department,$tel,$family_stt,$nation,$ethnnic,$religion,$job,$house_no,$village,$district,$province,$emp_name_en,$surname_en,$village_en,$district_en,$province_en){//Insert Employee                                 
+        global $conn;
+        $result = mysqli_query($conn,"call update_employee('$barcode','$emp_id','$emp_name','$surname','$dob','$age','$gender','$company','$branch','$department','$tel','$family_stt','$nation','$ethnnic','$religion','$job','$house_no','$village','$district','$province','$emp_name_en','$surname_en','$village_en','$district_en','$province_en');");
+        if(!$result){ //ກວດສອບການບັນທຶກຂໍ້ມູນຖ້າເກີດຂໍ້ຜິດພາດໃຫ້ມາເຮັດວຽກຢູ່ນີ້
+            echo"<script>";
+            echo"window.location.href='Employee?update=fail';";
+            echo"</script>";
+        }
+        else{//ກວດສອບການບັນທຶກຂໍ້ມູນຖ້າບໍ່ມີຂໍ້ຜິດພາດໃຫ້ມາເຮັດວຽກຢູ່ນີ້
+            echo"<script>";
+            echo"window.location.href='Employee?update2=success';";
+            echo"</script>";
+        }
+    }  
+    public static function import_emp($file_path,$com_id){
         global $conn;
         global $Date_barcode;
         global $border;
@@ -53,7 +67,7 @@ class obj{
                     $dob = \PHPExcel_Style_NumberFormat::toFormattedString(mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue()),'YYYY-MM-DD');
                     $age = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
                     $gender = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
-                    $company = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    // $company = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
                     $branch = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
                     $department = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
                     $tel = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
@@ -79,7 +93,7 @@ class obj{
                     }
                     mysqli_free_result($get_barcode);  
                     mysqli_next_result($conn);
-                    $result = mysqli_query($conn,"call insert_employee('$barcode','$emp_id','$emp_name','$surname','$dob','$age','$gender','$company','$branch','$department','$tel','$family_stt','$nation','$ethnic','$religion','$job','$house_no','$village','$district','$province')");
+                    $result = mysqli_query($conn,"call insert_employee('$barcode','$emp_id','$emp_name','$surname','$dob','$age','$gender','$com_id','$branch','$department','$tel','$family_stt','$nation','$ethnic','$religion','$job','$house_no','$village','$district','$province')");
                     $generatorJPG = new Picqer\Barcode\BarcodeGeneratorJPG();
                     file_put_contents('barcode/'.$barcode.'.jpg', $generatorJPG->getBarcode(''.$barcode.'', $generatorJPG::TYPE_CODE_128,$border,$height));
             }
@@ -351,6 +365,68 @@ class obj{
         mysqli_next_result($conn);
 
     }
+    public static function new_register($reg_id,$queue,$barcode,$pack_id,$packmore){
+        global $conn;
+        global $Year;
+        global $Date;
+        global $Time;
+        $ch = 0;
+        $ch2 = 0;
+        $check_barcode = mysqli_query($conn,"select * from register where barcode='$barcode' and year='$Year';");
+        if(mysqli_num_rows($check_barcode) > 0){
+            echo"<script>";
+            echo"window.location.href='Employee?barcode=registed';";
+            echo"</script>";
+        }
+        else{
+            $register = mysqli_query($conn,"call insert_register('$reg_id','$barcode','$Time','$queue','$Year','$Date')");
+            if(!$register){
+                echo"<script>";
+                echo"window.location.href='Employee?regis=fail';";
+                echo"</script>";
+            }
+            else{
+                foreach($pack_id as $pack_ids){
+                    $registerdetail = mysqli_query($conn,"call insert_registerdetail('$reg_id','$pack_ids');");
+                    // mysqli_free_result($registerdetail);  
+                    // mysqli_next_result($conn);
+                    if(!$registerdetail){
+                        echo"<script>";
+                        echo"window.location.href='Employee?sticker=fail&&package=$pack_ids';";
+                        echo"</script>";
+                        break;
+                        $ch = 1;
+                    }
+                }
+                if($ch == 0){
+                    if(empty($packmore)){
+                        echo"<script>";
+                        echo"window.location.href='Barcodes?register=$reg_id&&barcode=$barcode';";
+                        echo"</script>";
+                    }
+                    else{
+                        foreach($packmore as $packmores){
+                            $registerdetail2 = mysqli_query($conn,"call insert_registerdetail('$reg_id','$packmores');");
+                            // mysqli_free_result($registerdetail);  
+                            // mysqli_next_result($conn);
+                            if(!$registerdetail2){
+                                echo"<script>";
+                                echo"window.location.href='Employee?sticker2=fail&&morepackage=$packmores';";
+                                echo"</script>";
+                                $ch2 = 1;
+                                break;
+                            }
+                        }
+                        if($ch2 == 0){
+                            echo"<script>";
+                            echo"window.location.href='Barcodes?register=$reg_id&&barcode=$barcode';";
+                            echo"</script>";
+                        }
+                    }
+                }
+            }
+        }
+    }
     public static function register($reg_id,$queue,$barcode){
         global $conn;
         global $Year;
@@ -359,7 +435,7 @@ class obj{
         $check_barcode = mysqli_query($conn,"select * from register where barcode='$barcode' and year='$Year';");
         if(mysqli_num_rows($check_barcode) > 0){
             echo"<script>";
-            echo"window.location.href='register?barcode=registed';";
+            echo"window.location.href='Employee?barcode=registed';";
             echo"</script>";
         }
         else{
@@ -478,6 +554,129 @@ class obj{
             echo"window.location.href='register?updatepackage2=success';";
             echo"</script>";
         }
+        
+    }
+    public static function insert_company($company,$company_en){
+        global $conn;
+        $check = mysqli_query($conn,"select * from company where company='$company'");
+        if(mysqli_num_rows($check) > 0){
+            echo"<script>";
+            echo"window.location.href='Company?company=same;'";
+            echo"</script>";
+        }
+        else{
+            $result = mysqli_query($conn,"call insert_company('$company','$company_en');"); 
+            if(!$result){
+                echo"<script>";
+                echo"window.location.href='Company?save=fail;'";
+                echo"</script>";
+            }
+            else{
+                echo"<script>";
+                echo"window.location.href='Company?save2=success;'";
+                echo"</script>";
+            }
+        }
+    }
+    public static function update_company($com_id,$company,$company_en){
+        global $conn;
+        $result = mysqli_query($conn,"call update_company('$com_id','$company','$company_en');"); 
+        if(!$result){
+            echo"<script>";
+            echo"window.location.href='Company?update=fail;'";
+            echo"</script>";
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Company?update2=success;'";
+            echo"</script>";
+        }
+    }
+    public static function delete_company($com_id){
+        global $conn;
+        $check = mysqli_query($conn,"select * from employee where com_id='$com_id'");
+        $check_package = mysqli_query($conn,"select * from company_package where com_id='$com_id'");
+        if(mysqli_num_rows($check) > 0){
+            echo"<script>";
+            echo"window.location.href='Company?company=employee;'";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_package) > 0){
+            echo"<script>";
+            echo"window.location.href='Company?companypackage=has;'";
+            echo"</script>";
+        }
+        else{ 
+            $result = mysqli_query($conn,"call delete_company('$com_id');"); 
+            if(!$result){
+                echo"<script>";
+                echo"window.location.href='Company?del=fail;'";
+                echo"</script>";
+            }
+            else{
+                echo"<script>";
+                echo"window.location.href='Company?del2=success;'";
+                echo"</script>";
+            }           
+        }
+    }
+    public static function select_company_limit($search,$page){
+        global $conn;
+        global $result_company_limit;
+        $result_company_limit = mysqli_query($conn,"call select_company_limit('$search','$page')");
+    }
+    public static function select_company($search){
+        global $conn;
+        global $result_company;
+        $result_company = mysqli_query($conn,"call select_company('$search')");
+    }
+    public static function select_company_list_package($com_id){
+        global $conn;
+        global $list_addpackage;
+        $list_addpackage = mysqli_query($conn,"call list_addpackage('$com_id')");
+    }
+    public static function select_company_package($com_id){
+        global $conn;
+        global $company_package;
+        $company_package = mysqli_query($conn,"call company_package('$com_id')");
+    }
+    public static function clear_company_package($com_id){
+        global $conn;
+        global $clear_company_package;
+        $clear_company_package = mysqli_query($conn,"call clear_company_package('$com_id')");
+        if(!$clear_company_package){
+            echo"<script>";
+            echo"window.location.href='Company?clear=fail;'";
+            echo"</script>";
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Company?clear2=success;'";
+            echo"</script>";
+        }
+    }
+    public static function add_company_package($company_id_add,$pack_id){
+        global $conn;
+        global $insert_package_register;
+        foreach($pack_id as $pack_ids){
+            $insert_package_register = mysqli_query($conn,"INSERT INTO company_package(com_id,pack_id) VALUES('$company_id_add','$pack_ids');");
+            if(!$insert_package_register){
+                echo"<script>";
+                echo"window.location.href='Company?addpackage=fail&&pack_id=$pack_ids';";
+                echo"</script>";
+            }
+        }
+        if($insert_package_register){
+            echo"<script>";
+            echo"window.location.href='Company?addpackage2=success';";
+            echo"</script>";
+        }
+        
+    }
+    public static function dropdown_company(){
+        global $conn;
+        global $result_dropdown;
+        $result_dropdown = mysqli_query($conn,"call dropdown_company();");
         
     }
 }
