@@ -400,6 +400,7 @@ class obj{
                 }
                 if($ch == 0){
                     if(empty($packmore)){
+                        $insert_status = mysqli_query($conn,"insert into checkup_status(barcode,year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt) values('$barcode','$Year','0','0','0','0','0','0','0','0','0','0','0','0','0','0')");
                         echo"<script>";
                         echo"window.location.href='Barcodes?register=$reg_id&&barcode=$barcode';";
                         echo"</script>";
@@ -418,6 +419,7 @@ class obj{
                             }
                         }
                         if($ch2 == 0){
+                            $insert_status = mysqli_query($conn,"insert into checkup_status(barcode,year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt) values('$barcode','$Year','0','0','0','0','0','0','0','0','0','0','0','0','0','0')");
                             echo"<script>";
                             echo"window.location.href='Barcodes?register=$reg_id&&barcode=$barcode';";
                             echo"</script>";
@@ -677,6 +679,18 @@ class obj{
         global $conn;
         global $result_dropdown;
         $result_dropdown = mysqli_query($conn,"call dropdown_company();");
+        
+    }
+    public static function select_checkup_status_limit($company,$year,$page){
+        global $conn;
+        global $result_checkup_status_limit;
+        $result_checkup_status_limit = mysqli_query($conn,"call select_checkup_status_limit('$company','$year','$page');");
+        
+    }
+    public static function select_checkup_status($company,$year){
+        global $conn;
+        global $result_checkup_status;
+        $result_checkup_status = mysqli_query($conn,"call select_checkup_status('$company','$year');");
         
     }
 }

@@ -24,6 +24,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo $path ?>dist/css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo $path ?>dist/css/alt/style.css">
+    <link rel="stylesheet" href="<?php echo $path ?>dist/css/alt/datepicker.css">
 
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?php echo $path ?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -114,6 +115,136 @@
                             <i class="nav-icon fas fa-registered"></i>
                             <p>
                                 ການລົງທະບຽນ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-md"></i>
+                            <p>
+                            ກວດສຸຂະພາບ
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Checkup/Physical" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດຮ່າງກາຍທົ່ວໄປ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Cbc" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດເລືອດລວມ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Biochemistry" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດສານຊີວະເຄມີໃນເລືອດ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Urine" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດປັດສະວະ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Methamphetamine" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດສານເສບຕິດ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Thryroid" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດຕ໋ອມຄໍ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Stool" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດອາຈົມ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Heavy" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດທາດໂລຫະໜັກ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Tumor" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດຕ໋ອມມະເຮັງ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Vision" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດສະມັດຕະພາບການເບິ່ງເຫັນ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Audio" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດສະໄດ້ຍິນ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Spiro" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດສະມັດຕະພາບປອດ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/x-ray" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດສ່ອງໄຟຟ້າຜົ້ງເອິກ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="<?php echo $links ?>Checkup/Immunity" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດພູມຄຸ້ມກັນວິທະຍາ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Status/status" class="nav-link">
+                            <i class="nav-icon fas fa-check-square"></i>
+                            <p>
+                                ສະຖານະກວດສຸຂະພາບ
                                 <i class="fas"></i>
                             </p>
                         </a>
