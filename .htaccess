@@ -26,4 +26,4 @@ RewriteRule ^User/Checkup/Vision?$ User/Checkup/oc_vision.php
 RewriteRule ^User/Checkup/Audio?$ User/Checkup/audio.php
 RewriteRule ^User/Checkup/Spiro?$ User/Checkup/spiro.php
 RewriteRule ^User/Checkup/x-ray?$ User/Checkup/x_ray.php
-RewriteRule ^User/Checkup/Immunity?$ User/Checkup/exr.php
+RewriteRule ^User/Checkup/Immunity?$ User/Checkup/cxr.php

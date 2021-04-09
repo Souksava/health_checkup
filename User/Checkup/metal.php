@@ -88,7 +88,7 @@
 </form>
 <div class="row">
     <div class="table-responsive">
-        <table class="table-bordered" style="width: 8000px;text-align: center;">
+        <table class="table-bordered" style="width: 6000px;text-align: center;">
             <tr style="font-size: 18px;">
                 <th style="width: 87px;">ເຄື່ອງມື</th>
                 <th style="width: 50px;">N0.</th>

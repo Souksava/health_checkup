@@ -1,6 +1,6 @@
 <!-- x-ray -->
 <?php
-  $title = "ຂໍ້ມູນກວດຮ່າງກາຍທົ່ວໄປ";
+  $title = "ກວດສ່ອງໄຟຟ້າຜົ້ງເອິກ X-Ray";
   $path = "../../";
   $links = "../";
   $session_path = "../../";
@@ -88,18 +88,18 @@
 </form>
 <div class="row">
     <div class="table-responsive">
-        <table class="table-bordered" style="width: 8000px;text-align: center;">
+        <table class="table-bordered" style="width: 1500px;text-align: center;">
             <tr style="font-size: 18px;">
                 <th style="width: 87px;">ເຄື່ອງມື</th>
-                <th style="width: 50px;">N0.</th>
-                <th style="width: 50px;">Barcode</th>
-                <th style="width: 50px;">ຊື່</th>
-                <th style="width: 50px;">ນາມສະກຸນ</th>
-                <th style="width: 50px;">ບໍລິສັດ</th>
-                <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-                <th style="width: 87px;">X-Ray</th>
-                <th style="width: 50px;">Conclusion</th>
-                <th style="width: 87px;">Remark</th>
+                <th style="width: 80px;">N0.</th>
+                <th style="width: 100px;">Barcode</th>
+                <th style="width: 200px;">ຊື່</th>
+                <th style="width: 150px;">ນາມສະກຸນ</th>
+                <th style="width: 150px;">ບໍລິສັດ</th>
+                <th style="width: 100px;">ປີເຂົ້າກວດ</th>
+                <th style="width: 250px;">X-Ray</th>
+                <th style="width: 250px;">Conclusion</th>
+                <th style="width: 200px;">Remark</th>
             </tr>
             <tr>
                 <td></td>
