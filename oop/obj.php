@@ -705,6 +705,7 @@ class obj{
         $result_physical_limit = mysqli_query($conn,"call select_pe_limit('$company','$name','$year','$page');");
         
     }
+
     public static function select_immunity($company,$name,$year){
         global $conn;
         global $result_immunity;
@@ -755,6 +756,103 @@ class obj{
         global $result_oc_vision_limit;
         $result_oc_vision_limit = mysqli_query($conn,"call select_oc_vision_limit('$company','$name','$year','$page');");
     }
+    public static function select_cbc($company,$name,$year){
+        global $conn;
+        global $result_cbc;
+        $result_cbc = mysqli_query($conn,"call select_cbc('$company','$name','$year');");
+    }
+    public static function select_cbcl_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_cbc_limit;
+        $result_cbc_limit = mysqli_query($conn,"call select_cbc_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_biochemistry($company,$name,$year){
+        global $conn;
+        global $result_biochemistry;
+        $result_biochemistry = mysqli_query($conn,"call select_biochemistry('$company','$name','$year');");
+        
+    }
+    public static function select_biochemistry_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_biochemistry_limit;
+        $result_biochemistry_limit = mysqli_query($conn,"call select_biochemistry_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_urine($company,$name,$year){
+        global $conn;
+        global $result_urine;
+        $result_urine = mysqli_query($conn,"call select_urine('$company','$name','$year');");
+        
+    }
+    public static function select_urine_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_urine_limit;
+        $result_urine_limit = mysqli_query($conn,"call select_urine_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_metham($company,$name,$year){
+        global $conn;
+        global $result_metham;
+        $result_metham = mysqli_query($conn,"call select_metham('$company','$name','$year');");
+        
+    }
+    public static function select_metham_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_metham_limit;
+        $result_metham_limit = mysqli_query($conn,"call select_metham_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_thryroid($company,$name,$year){
+        global $conn;
+        global $result_thry;
+        $result_thry = mysqli_query($conn,"call select_thryroid('$company','$name','$year');");
+        
+    }
+    public static function select_thryroid_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_thry_limit;
+        $result_thry_limit = mysqli_query($conn,"call select_thryroid_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_se($company,$name,$year){
+        global $conn;
+        global $result_se;
+        $result_se = mysqli_query($conn,"call select_se('$company','$name','$year');");
+        
+    }
+    public static function select_se_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_se_limit;
+        $result_se_limit = mysqli_query($conn,"call select_se_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_heavy_metal($company,$name,$year){
+        global $conn;
+        global $result_heavy_metal;
+        $result_heavy_metal = mysqli_query($conn,"call select_heavy_metal('$company','$name','$year');");
+        
+    }
+    public static function select_heavy_metal_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_heavy_metal_limit;
+        $result_heavy_metal_limit = mysqli_query($conn,"call select_heavy_metal_limit('$company','$name','$year','$page');");
+        
+    }
+    public static function select_tumor_marker($company,$name,$year){
+        global $conn;
+        global $result_tumor_marker;
+        $result_tumor_marker = mysqli_query($conn,"call select_tumor_marker('$company','$name','$year');");
+        
+    }
+    public static function select_tumor_marker_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_tumor_marker_limit;
+        $result_tumor_marker_limit = mysqli_query($conn,"call select_tumor_marker_limit('$company','$name','$year','$page');");
+        
+
+    }
 }
 $obj = new obj();
 ?>
+			
