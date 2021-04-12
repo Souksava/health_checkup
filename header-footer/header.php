@@ -211,7 +211,7 @@
                             <li class="nav-item">
                             <a href="<?php echo $links ?>Checkup/Audio" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
-                                    <p>ກວດສະໄດ້ຍິນ</p>
+                                    <p>ກວດສະມັດຕະພາບການໄດ້ຍິນ</p>
                                 </a>
                             </li>
                         </ul>
