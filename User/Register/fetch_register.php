@@ -1,5 +1,6 @@
 <?php
   $path="../../";
+  $rank=0;
   include (''.$path.'oop/obj.php');
   $output = '';
   if(isset($_POST['page'])){
@@ -9,6 +10,7 @@
         }
         else{
            $page = ($page*50)-50;
+           $rank = (($page*50)-50) / 50 + 1;
         }
   }
   else{
@@ -55,7 +57,7 @@ if(mysqli_num_rows($result_register_limit) > 0)
  $no_ = 0;
  while($row = mysqli_fetch_array($result_register_limit))
  {
-$no_ += 1;
+$no_ =  $rank;
   $output .= '
     <tr>
         <td style="display: none;">'.$row["reg_id"].'</td>

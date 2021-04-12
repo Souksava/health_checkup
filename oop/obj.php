@@ -693,6 +693,18 @@ class obj{
         $result_checkup_status = mysqli_query($conn,"call select_checkup_status('$company','$year');");
         
     }
+    public static function select_physical($company,$name,$year){
+        global $conn;
+        global $result_physical;
+        $result_physical = mysqli_query($conn,"call select_pe('$company','$name','$year');");
+        
+    }
+    public static function select_physical_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_physical_limit;
+        $result_physical_limit = mysqli_query($conn,"call select_pe_limit('$company','$name','$year','$page');");
+        
+    }
 }
 $obj = new obj();
 ?>
