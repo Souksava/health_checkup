@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2021 at 11:26 AM
+-- Generation Time: Apr 12, 2021 at 06:33 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -96,6 +96,17 @@ BEGIN
 SELECT max(reg_id) as reg_id from register; 
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_biochemistry` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `fbss` VARCHAR(50), IN `chos` VARCHAR(50), IN `hdls` VARCHAR(50), IN `ldls` VARCHAR(50), IN `trigs` VARCHAR(50), IN `uas` VARCHAR(50), IN `buns` VARCHAR(50), IN `creates` VARCHAR(50), IN `sgots` VARCHAR(50), IN `sgpts` VARCHAR(50), IN `alks` VARCHAR(50), IN `ggts` VARCHAR(50), IN `conclusions` VARCHAR(50), IN `remarks` VARCHAR(50))  NO SQL
+BEGIN
+INSERT INTO biochemistry(barcode,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark,year) VALUES(barcodes,fbss,chos,hdls,ldls,trigs,uas,buns,creates,sgots,sgpts,alks,ggts,conclusions,remarks,years);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_cbc` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hbs` VARCHAR(50), IN `hcts` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `nes` VARCHAR(50), IN `lyms` VARCHAR(50), IN `monocytes` VARCHAR(50), IN `eos` VARCHAR(50), IN `basos` VARCHAR(50), IN `plateletss` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `mvcs` VARCHAR(50), IN `mchs` VARCHAR(50), IN `mchcs` VARCHAR(50), IN `red_bloods` VARCHAR(50), IN `conclusions` VARCHAR(50), IN `remarks` VARCHAR(50))  NO SQL
+BEGIN
+INSERT INTO cbc(barcode,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,rbc,mvc,mch,mchc,red_blood,conclusion,remark,year) 
+VALUES(barcodes,hbs,hcts,wbcs,nes,lyms,monocytes,eos,basos,plateletss,rbcs,mvcs,mchs,mchcs,red_bloods,conclusions,remarks,years);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_company` (IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100))  NO SQL
 BEGIN
 INSERT INTO company(company,company_en) VALUES(companys,company_ens);
@@ -110,6 +121,13 @@ BEGIN
 INSERT INTO package VALUES(pack_id,pack_name);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_pe` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hpis` VARCHAR(50), IN `pmhis` VARCHAR(50), IN `personals` VARCHAR(50), IN `familys` VARCHAR(50), IN `asis` VARCHAR(50), IN `heights` VARCHAR(50), IN `weights` VARCHAR(50), IN `bmis` VARCHAR(50), IN `bps` VARCHAR(50), IN `abos` VARCHAR(50), IN `eyes` VARCHAR(50), IN `teeths` VARCHAR(50), IN `earss` VARCHAR(50), IN `lymphs` VARCHAR(50), IN `thyroids` VARCHAR(50), IN `extremitiess` VARCHAR(50), IN `hears` VARCHAR(50), IN `lungs` VARCHAR(50), IN `alss` VARCHAR(50), IN `others` VARCHAR(50), IN `check_others` VARCHAR(50), IN `conclusions` VARCHAR(50), IN `remarks` VARCHAR(50))  NO SQL
+BEGIN
+INSERT INTO pe(barcode,year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,abo,eye,teeth,ears,lymph,
+thyroid,extremities,hear,lung,als,other,check_other,conclusion,remark) VALUES(barcodes,years,hpis,pmhis,personals,familys,asis,heights,weights,bmis,bps,abos,eyes,
+teeths,earss,lymphs,thyroids,extremitiess,hears,lungs,alss,others,check_others,conclusions,remarks);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_register` (IN `reg_ids` INT(11), IN `barcodes` VARCHAR(30), IN `times` VARCHAR(50), IN `queues` INT(5), IN `years` INT(4), IN `dates` VARCHAR(50))  NO SQL
 BEGIN
 INSERT INTO register(reg_id,barcode,time,queue,year,date) values(reg_ids,barcodes,times,queues,years,dates);
@@ -118,6 +136,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_registerdetail` (IN `reg_ids` INT(11), IN `pack_ids` VARCHAR(20))  NO SQL
 BEGIN
 INSERT INTO registerdetail(reg_id,pack_id) VALUES(reg_ids,pack_ids);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_urine` (IN `barcodes` VARCHAR(100), IN `years` VARCHAR(10), IN `colors` VARCHAR(50), IN `appearances` VARCHAR(50), IN `phs` VARCHAR(50), IN `specificss` VARCHAR(50), IN `proteins` VARCHAR(50), IN `sugars` VARCHAR(50), IN `ketones` VARCHAR(50), IN `bloods` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `epits` VARCHAR(50), IN `conclusions` VARCHAR(50), IN `remarks` VARCHAR(50))  NO SQL
+BEGIN
+INSERT INTO urinalvsis(barcode,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,year) VALUES(barcodes,colors,appearances,phs,specificss,proteins,sugars,ketones,bloods,wbcs,rbcs,epits,conclusions,remarks,years);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `list_addpackage` (IN `com_ids` VARCHAR(11))  NO SQL
@@ -138,6 +161,30 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `register_print` (IN `reg_ids` VARCHAR(11))  NO SQL
 BEGIN
 select r.reg_id,r.barcode,emp_name,surname,queue,company,date,pack_id from register r left join employee e on r.barcode=e.barcode left join registerdetail d on r.reg_id=d.reg_id LEFT JOIN company c on e.com_id=c.com_id where r.reg_id=reg_ids;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
+rbc,mvc,mch,mchc,red_blood,conclusion,remark FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
+rbc,mvc,mch,mchc,red_blood,conclusion,remark FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_checkup_status` (IN `companys` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
@@ -180,6 +227,18 @@ BEGIN
 select * from package where pack_id like s or pack_name like s ORDER BY pack_id asc LIMIT page,15;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,
+abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,check_other,conclusion,remark FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,
+abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,check_other,conclusion,remark FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
 BEGIN
 select reg_id,r.barcode,emp_id,emp_name,surname,queue,age,company,year,date,time from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id where c.company like companys and (emp_id like name or emp_name like name or surname LIKE name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC;
@@ -193,6 +252,18 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register_limit` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50), IN `page` INT(5))  NO SQL
 BEGIN
 select reg_id,r.barcode,emp_id,emp_name,surname,queue,age,c.company,year,date,time from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id where c.company like companys and (emp_id like name or emp_name like name or surname like name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC LIMIT page,50;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
+FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
+FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `test_` ()  NO SQL
@@ -262,22 +333,29 @@ CREATE TABLE `audiogram` (
 CREATE TABLE `biochemistry` (
   `bio_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `fbs` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `cho` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `hdl-c` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ldl-c` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `trig` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ua` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `bun` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `creatinine` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `sgot` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `sgpt` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `alk` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ggt` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `conclusion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `remark` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL
+  `fbs` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cho` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hdl` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ldl` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `trig` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ua` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bun` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `creatinine` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sgot` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sgpt` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alk` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ggt` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `biochemistry`
+--
+
+INSERT INTO `biochemistry` (`bio_id`, `barcode`, `fbs`, `cho`, `hdl`, `ldl`, `trig`, `ua`, `bun`, `creatinine`, `sgot`, `sgpt`, `alk`, `ggt`, `conclusion`, `remark`, `year`) VALUES
+(1, '108042101293', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 2021);
 
 -- --------------------------------------------------------
 
@@ -288,24 +366,32 @@ CREATE TABLE `biochemistry` (
 CREATE TABLE `cbc` (
   `cbc_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `hb` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `hct` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `wbc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ne` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `lym` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `monocyte` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `eo` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `baso` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `platelets` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `rbc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `mvc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `mch` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `mchc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `red_blood` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `conclusion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `remark` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL
+  `hb` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hct` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `wbc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ne` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lym` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `monocyte` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `eo` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `baso` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `platelets` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rbc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mvc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mch` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mchc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `red_blood` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `cbc`
+--
+
+INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocyte`, `eo`, `baso`, `platelets`, `rbc`, `mvc`, `mch`, `mchc`, `red_blood`, `conclusion`, `remark`, `year`) VALUES
+(1, '108042101293', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 0000),
+(2, '108042101293', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', '', '', '', '', '', '', 2021);
 
 -- --------------------------------------------------------
 
@@ -3087,31 +3173,38 @@ INSERT INTO `package` (`pack_id`, `pack_name`) VALUES
 CREATE TABLE `pe` (
   `pe_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL,
-  `hpi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `pmhi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `personal` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `family` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `asi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `height` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `weight` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `bmi` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `bp` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `abo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `eye` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `teeth` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ears` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `lymph` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `thyroid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `extremities` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `hear` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `lung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `als` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `other` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `check_other` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `conclusion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `remark` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `year` year(4) DEFAULT NULL,
+  `hpi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pmhi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `personal` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `family` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `asi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `height` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `weight` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bmi` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bp` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `abo` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `eye` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `teeth` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ears` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lymph` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `thyroid` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `extremities` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hear` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lung` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `als` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `other` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `check_other` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `pe`
+--
+
+INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `hear`, `lung`, `als`, `other`, `check_other`, `conclusion`, `remark`) VALUES
+(2, '108042101075', 2021, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -3253,21 +3346,28 @@ CREATE TABLE `tumor_marker` (
 CREATE TABLE `urinalvsis` (
   `urin_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `color` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `appearance` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ph` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `specific` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `protein` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `sugar` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ketone` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `blood` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `wbc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `rbc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `epit` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `conclusion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `remark` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL
+  `color` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `appearance` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ph` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `specifics` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `protein` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sugar` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ketone` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blood` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `wbc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rbc` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `epit` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `urinalvsis`
+--
+
+INSERT INTO `urinalvsis` (`urin_id`, `barcode`, `color`, `appearance`, `ph`, `specifics`, `protein`, `sugar`, `ketone`, `blood`, `wbc`, `rbc`, `epit`, `conclusion`, `remark`, `year`) VALUES
+(1, '108042101293', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 2021);
 
 -- --------------------------------------------------------
 
@@ -3449,13 +3549,13 @@ ALTER TABLE `audiogram`
 -- AUTO_INCREMENT for table `biochemistry`
 --
 ALTER TABLE `biochemistry`
-  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cbc`
 --
 ALTER TABLE `cbc`
-  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `checkup_status`
@@ -3503,7 +3603,7 @@ ALTER TABLE `oc_vision`
 -- AUTO_INCREMENT for table `pe`
 --
 ALTER TABLE `pe`
-  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `registerdetail`
@@ -3539,7 +3639,7 @@ ALTER TABLE `tumor_marker`
 -- AUTO_INCREMENT for table `urinalvsis`
 --
 ALTER TABLE `urinalvsis`
-  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `x_ray`
