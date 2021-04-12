@@ -705,6 +705,56 @@ class obj{
         $result_physical_limit = mysqli_query($conn,"call select_pe_limit('$company','$name','$year','$page');");
         
     }
+    public static function select_immunity($company,$name,$year){
+        global $conn;
+        global $result_immunity;
+        $result_immunity = mysqli_query($conn,"call select_immunity('$company','$name','$year');");
+    }
+    public static function select_immunity_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_immunity_limit;
+        $result_immunity_limit = mysqli_query($conn,"call select_immunity_limit('$company','$name','$year','$page');");
+    }
+    public static function select_x_ray($company,$name,$year){
+        global $conn;
+        global $result_x_ray;
+        $result_x_ray = mysqli_query($conn,"call select_x_ray('$company','$name','$year');");
+    }
+    public static function select_x_ray_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_x_ray_limit;
+        $result_x_ray_limit = mysqli_query($conn,"call select_x_ray_limit('$company','$name','$year','$page');");
+    }
+    public static function select_spiro($company,$name,$year){
+        global $conn;
+        global $result_spiro;
+        $result_spiro = mysqli_query($conn,"call select_spiro('$company','$name','$year');");
+    }
+    public static function select_spiro_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_spiro_limit;
+        $result_spiro_limit = mysqli_query($conn,"call select_spiro_limit('$company','$name','$year','$page');");
+    }
+    public static function select_audio($company,$name,$year){
+        global $conn;
+        global $result_audio;
+        $result_audio = mysqli_query($conn,"call select_audio('$company','$name','$year');");
+    }
+    public static function select_audio_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_audio_limit;
+        $result_audio_limit = mysqli_query($conn,"call select_audio_limit('$company','$name','$year','$page');");
+    }
+    public static function select_oc_vision($company,$name,$year){
+        global $conn;
+        global $result_oc_vision;
+        $result_oc_vision = mysqli_query($conn,"call select_oc_vision('$company','$name','$year');");
+    }
+    public static function select_oc_vision_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_oc_vision_limit;
+        $result_oc_vision_limit = mysqli_query($conn,"call select_oc_vision_limit('$company','$name','$year','$page');");
+    }
 }
 $obj = new obj();
 ?>
