@@ -88,48 +88,6 @@
         </div>
     </div>
 </form>
-    <!-- <div class="table-responsive">
-        <table class="table-bordered" style="width: 4000px;text-align: center;">
-            <tr style="font-size: 18px;">
-                <th style="width: 87px;">ເຄື່ອງມື</th>
-                <th style="width: 50px;">N0.</th>
-                <th style="width: 50px;">Barcode</th>
-                <th style="width: 50px;">ຊື່</th>
-                <th style="width: 50px;">ນາມສະກຸນ</th>
-                <th style="width: 50px;">ບໍລິສັດ</th>
-                <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-                <th style="width: 87px;">Color</th>
-                <th style="width: 50px;">Appearance</th>
-                <th style="width: 87px;">pH</th>
-                <th style="width: 50px;">Specific Gravity</th>
-                <th style="width: 87px;">Protein</th>
-                <th style="width: 50px;">Sugar</th>
-                <th style="width: 87px;">Ketone</th>
-                <th style="width: 50px;">Blood</th>
-                <th style="width: 87px;">WBC/Hpf</th>
-                <th style="width: 50px;">RBC/Hpf</th>
-                <th style="width: 87px;">Epithelium/Hpf</th>
-                <th style="width: 50px;">Conclusion</th>
-                <th style="width: 87px;">Remark</th>
-            </tr>
-            <tr>
-              
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </div>
-</div> -->
 <div id="result" class="result">
     <?php
        include ($path."header-footer/loading.php");
@@ -180,7 +138,7 @@ $(document).ready(function() {
             load_data('%%', search, datepicker, page);
         }
     });
-    $('.datepicker').keyup(function() {
+    $('#datepicker').keyup(function() {
         var page = "0";
         var datepicker = $(this).val();
         var search_company = $('#search_company').val();
@@ -191,7 +149,7 @@ $(document).ready(function() {
             load_data(search_company, search, "%%", page);
         }
     });
-    $('.datepicker').change(function() {
+    $('#datepicker').change(function() {
         var page = "0";
         var datepicker = $(this).val();
         var search_company = $('#search_company').val();

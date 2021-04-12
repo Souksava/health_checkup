@@ -150,7 +150,7 @@ $(document).ready(function() {
             load_data('%%', search, datepicker, page);
         }
     });
-    $('.datepicker').keyup(function() {
+    $('#datepicker').keyup(function() {
         var page = "0";
         var datepicker = $(this).val();
         var search_company = $('#search_company').val();
@@ -161,7 +161,7 @@ $(document).ready(function() {
             load_data(search_company, search, "%%", page);
         }
     });
-    $('.datepicker').change(function() {
+    $('#datepicker').change(function() {
         var page = "0";
         var datepicker = $(this).val();
         var search_company = $('#search_company').val();
