@@ -66,7 +66,7 @@
                         mysqli_next_result($conn);
                     ?>
                 </select>
-                <input type="text" name="search" id="search" class="form-control datepicker" maxlength="4"
+                <input type="text" name="search" id="search" class="form-control datepicker" 
                     placeholder="ບຣາໂຄດ, ລະຫັດພະນັກງານ, ຊື່​, ນາມສະກຸນ" aria-describedby="button-addon2">
                 <input type="text" name="datepicker" id="datepicker" class="form-control datepicker" maxlength="4"
                     placeholder="ປີ 20xx" aria-describedby="button-addon2">
@@ -132,7 +132,7 @@ $(document).ready(function() {
     $('#search_company').click(function() {
         var page = "0";
         var search_company = $(this).val();
-        var datepicker = $('.datepicker').val();
+        var datepicker = $('#datepicker').val();
         var search = $('#search').val();
         if (search_company != '') {
             load_data(search_company, search, datepicker, page);
@@ -166,7 +166,7 @@ $(document).ready(function() {
         var page = "0";
         var search = $(this).val();
         var search_company = $('#search_company').val();
-        var datepicker = $('.datepicker').val();
+        var datepicker = $('#datepicker').val();
         if (search != '') {
             load_data(search_company, search, datepicker, page);
         } else {

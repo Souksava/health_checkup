@@ -66,6 +66,8 @@
                         mysqli_next_result($conn);
                     ?>
                 </select>
+                <input type="text" name="search" id="search" class="form-control datepicker" 
+                    placeholder="ບຣາໂຄດ, ລະຫັດພະນັກງານ, ຊື່​, ນາມສະກຸນ" aria-describedby="button-addon2">
                 <input type="text" name="year" id="datepicker" class="form-control datepicker" maxlength="4"
                     placeholder="ປີ 20xx" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">
@@ -86,8 +88,7 @@
         </div>
     </div>
 </form>
-<div class="row">
-    <div class="table-responsive">
+    <!-- <div class="table-responsive">
         <table class="table-bordered" style="width: 6000px;text-align: center;">
             <tr style="font-size: 18px;">
                 <th style="width: 87px;">ເຄື່ອງມື</th>
@@ -115,13 +116,7 @@
                 <th style="width: 50px;">Remark</th>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+               
                 <td></td>
                 <td></td>
                 <td></td>
@@ -139,11 +134,10 @@
                 <td></td>
             </tr>
         </table>
-    </div>
-</div>
-<!-- <div id="result_data_status" class="result_data_status"> -->
+    </div> -->
+<div id="result" class="result">
 <?php
-      //  include ($path."header-footer/loading.php");
+       include ($path."header-footer/loading.php");
     ?>
 </div>
 <?php
@@ -159,5 +153,70 @@ $("#datepicker2").datepicker({
     format: "yyyy",
     viewMode: "years",
     minViewMode: "years"
+});
+</script>
+<script>
+$(document).ready(function() {
+    load_data("%%", "%%", "%%", "0");
+
+    function load_data(query, querys, year, page) {
+        $.ajax({
+            url: "fetch_cbc.php",
+            method: "POST",
+            data: {
+                query: query,
+                querys: querys,
+                year: year,
+                page: page
+            },
+            success: function(data) {
+                $("#result").html(data);
+            }
+        });
+    }
+    $('#search_company').click(function() {
+        var page = "0";
+        var search_company = $(this).val();
+        var datepicker = $('#datepicker').val();
+        var search = $('#search').val();
+        if (search_company != '') {
+            load_data(search_company, search, datepicker, page);
+        } else {
+            load_data('%%', search, datepicker, page);
+        }
+    });
+    $('.datepicker').keyup(function() {
+        var page = "0";
+        var datepicker = $(this).val();
+        var search_company = $('#search_company').val();
+        var search = $('#search').val();
+        if (datepicker != '') {
+            load_data(search_company, search, datepicker, page);
+        } else {
+            load_data(search_company, search, "%%", page);
+        }
+    });
+    $('.datepicker').change(function() {
+        var page = "0";
+        var datepicker = $(this).val();
+        var search_company = $('#search_company').val();
+        var search = $('#search').val();
+        if (datepicker != '') {
+            load_data(search_company, search, datepicker, page);
+        } else {
+            load_data(search_company, search, "%%", page);
+        }
+    });
+    $('#search').keyup(function() {
+        var page = "0";
+        var search = $(this).val();
+        var search_company = $('#search_company').val();
+        var datepicker = $('#datepicker').val();
+        if (search != '') {
+            load_data(search_company, search, datepicker, page);
+        } else {
+            load_data(search_company, "%%", datepicker, page);
+        }
+    });
 });
 </script>

@@ -1,6 +1,6 @@
 <?php
   $path="../../";
-  $rank=0;
+  $rank = 0;
   include (''.$path.'oop/obj.php');
   $output = '';
   if(isset($_POST['page'])){
@@ -54,10 +54,10 @@ if(mysqli_num_rows($result_register_limit) > 0)
         <th style="width: 100px;">ເວລາ</th>
     </tr>
  ';
- $no_ = 0;
+ $no_ = $rank;
  while($row = mysqli_fetch_array($result_register_limit))
  {
-$no_ =  $rank;
+$no_ += 1;
   $output .= '
     <tr>
         <td style="display: none;">'.$row["reg_id"].'</td>
