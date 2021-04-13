@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2021 at 11:10 AM
+-- Generation Time: Apr 13, 2021 at 05:32 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -241,25 +241,25 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
 p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
 p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,cbc_id,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
 rbc,mvc,mch,mchc,red_blood,conclusion,remark FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,cbc_id,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
 rbc,mvc,mch,mchc,red_blood,conclusion,remark FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
@@ -319,13 +319,13 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,methamphetamine,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark
 FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,methamphetamine,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark
 FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
@@ -355,13 +355,13 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,
 abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,check_other,conclusion,remark FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,
 abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,check_other,conclusion,remark FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
@@ -382,37 +382,37 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_se` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark
  FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_se_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark
  FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_spiro` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predicts,fevi_means,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predict,fvc_predicts,fevi_means,
 fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_spiro_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predicts,fevi_means,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predict,fvc_predicts,fevi_means,
 fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_thryroid` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,free_t4,tsh,t3,t4,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark
 FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_thryroid_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,free_t4,tsh,t3,t4,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark
 FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
@@ -430,13 +430,13 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
 FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
 FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
@@ -617,7 +617,64 @@ CREATE TABLE `checkup_status` (
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`) VALUES
 (5, '108042101293', 2021, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (6, '108042101228', 2020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, '108042102507', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(7, '108042102507', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, '108042100428', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, '108042100460', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(10, '108042102441', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, '112042102528', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(12, '108042101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, '108042102280', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(14, '108042100888', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(15, '108042102252', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(16, '108042102386', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(17, '108042101487', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(18, '108042100161', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(19, '108042102181', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(20, '108042101182', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(21, '108042102503', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(22, '112042102527', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(23, '108042102522', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(24, '108042102277', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(25, '108042100843', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(26, '108042102105', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, '108042102326', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(28, '108042102454', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, '108042101434', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(30, '108042102064', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(31, '108042101515', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(32, '108042101276', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, '108042101516', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, '108042101260', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(35, '108042101098', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(36, '108042101095', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(37, '108042101288', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(38, '108042102508', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(39, '108042101404', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(40, '108042100547', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(41, '108042100948', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(42, '108042100190', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(43, '108042102382', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(44, '108042100577', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(45, '108042100992', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(46, '108042101272', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(47, '108042101036', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(48, '108042101045', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(49, '108042102322', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(50, '108042102167', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(51, '108042100935', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(52, '108042102385', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(53, '108042101158', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(54, '108042101336', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(55, '108042102341', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(56, '108042101472', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(57, '108042100801', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(58, '108042100585', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(59, '108042101431', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(60, '108042102248', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(61, '108042101368', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(62, '108042101876', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(63, '108042101827', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(64, '108042100799', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -660,7 +717,13 @@ INSERT INTO `company_package` (`id`, `com_id`, `pack_id`) VALUES
 (69, 12, 'CBC'),
 (70, 12, 'ຕາອາຊີບ'),
 (71, 10, 'AUDIO'),
-(72, 10, 'PE');
+(72, 10, 'PE'),
+(73, 12, 'ສາຍຕາ'),
+(74, 10, 'ສາຍຕາ'),
+(75, 12, 'test3'),
+(76, 12, 'CLOT'),
+(77, 12, 'EKG'),
+(78, 12, 'NAFA');
 
 -- --------------------------------------------------------
 
@@ -1162,7 +1225,7 @@ INSERT INTO `employee` (`barcode`, `emp_id`, `emp_name`, `surname`, `dob`, `age`
 ('108042100458', 'LP2243', 'ທ່ານນາງ ພູສາວອນ ພົມສະຫັວນ', '', '1983-03-10', '', 'ຍິງ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2055392515', 'ຮ້າງ', '', '', '', '', '', 'ບ້ານຂາມຢ່ອງ', 'ນະຄອນຫຼວງພະບາງ', 'ຫຼວງພະບາງ', NULL, NULL, NULL, NULL, NULL),
 ('108042100459', 'LP1924', 'ທ່ານນາງ ດາລາວັນ ພອນສະຫັວນ', '', '1981-02-04', '', 'ຍິງ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2058357337', 'ແຕ່ງງານ', '', '', '', '', '', 'ບ້ານສາຍລົມ', 'ນະຄອນຫຼວງພະບາງ', 'ຫຼວງພະບາງ', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `employee` (`barcode`, `emp_id`, `emp_name`, `surname`, `dob`, `age`, `gender`, `com_id`, `branch`, `department`, `tel`, `family_stt`, `nation`, `ethnic`, `religion`, `job`, `house_no`, `village`, `district`, `province`, `emp_name_en`, `surname_en`, `village_en`, `district_en`, `province_en`) VALUES
-('108042100460', 'LP2596', 'ທ່ານ ກອງມີ ສົມພົນວິລະວົງ', '', '1984-11-14', '3', 'ຊາຍ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2055206848', 'ແຕ່ງງານ', '', '', '', '', '', 'ສັງຄະໂລກ', 'ນະຄອນຫຼວງພະບາງ', 'ຫຼວງພະບາງ', NULL, NULL, NULL, NULL, NULL),
+('108042100460', 'LP2596', 'ທ່ານ ກອງມີ ສົມພົນວິລະວົງ', '', '1984-11-14', '3', 'ຊາຍ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2055206848', 'ແຕ່ງງານ', '', '', '', '', '', 'ສັງຄະໂລກ', 'ນະຄອນຫຼວງພະບາງ', 'ຫຼວງພະບາງ', '', '', '', '', ''),
 ('108042100461', 'LP3731', 'ທ່ານ ສົມນຶກ ດີທະວົງ', '', '1975-07-10', '', 'ຊາຍ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2054861222', 'ແຕ່ງງານ', '', '', '', '', '', 'ຊຽງແມນ', 'ຈອມເພັດ', 'ຫຼວງພະບາງ', NULL, NULL, NULL, NULL, NULL),
 ('108042100462', 'LP3788', 'ທ່ານ ວິໄລເພັດ ສູນດາຮັກ', '', '1992-06-10', '', 'ຊາຍ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2058177000', 'ແຕ່ງງານ', '', '', '', '', '', 'ເມືອງງາ', 'ນະຄອນຫຼວງພະບາງ', 'ຫຼວງພະບາງ', NULL, NULL, NULL, NULL, NULL),
 ('108042100463', 'LP3575', 'ທ່ານ ທອງຈັນ ມານີວັນ', '', '1981-11-03', '', 'ຊາຍ', 10, '', 'ລລທ ສາຂາ ຫຼວງພະບາງ', '2055126555', 'ແຕ່ງງານ', '', '', '', '', '', 'ຊຽງແກ້ວ', 'ນະຄອນຫຼວງພະບາງ', 'ຫຼວງພະບາງ', NULL, NULL, NULL, NULL, NULL),
@@ -3237,7 +3300,9 @@ INSERT INTO `employee` (`barcode`, `emp_id`, `emp_name`, `surname`, `dob`, `age`
 ('108042102523', 'VT4309', 'ທ່ານນາງ ລາລີ ວົງປັນຍາ', '', '1995-10-13', '', 'ຍິງ', 10, '', 'ກວດກາພາຍໃນ', '2054772222', 'ແຕ່ງງານ', '', '', '', '', '', 'ຫ້ວຍຫົງ', 'ຈັນທະບູລີ', 'ນະຄອນຫຼວງວຽງຈັນ', NULL, NULL, NULL, NULL, NULL),
 ('108042102524', 'VT4315', 'ທ່ານ ຈັນທະໜອມ ເຊັງວົງ', '', '1988-03-14', '', 'ຊາຍ', 10, '', 'ກວດກາພາຍໃນ', '2055008929', 'ແຕ່ງງານ', '', '', '', '', '', 'ສາລາຄຳເໜືອ', 'ຫາດຊາຍຟອງ', 'ນະຄອນຫຼວງວຽງຈັນ', NULL, NULL, NULL, NULL, NULL),
 ('108042102525', 'VT4495', 'ທ່ານນາງ ກູດແກ້ວ ແກ້ວບົວສາ', '', '1995-07-24', '', 'ຍິງ', 10, '', 'ກວດກາພາຍໃນ', '2059932611', 'ໂສດ', '', '', '', '', '', 'ໂນນແສງຈັນ', 'ໄຊທານີ', 'ນະຄອນຫຼວງວຽງຈັນ', NULL, NULL, NULL, NULL, NULL),
-('108042102526', '01', 'ສຸກສະຫວັດ', 'ພົງພະໂຍສິດ', '2021-04-02', '3', 'ຊາຍ', 12, 'ສາຂາ', 'ພະແນກ', 'ເບີໂທລະສັບ', 'ໂສດ', 'ລາວ', 'ລາວລຸ່ມ', 'ພຸດ', 'ໄອທີ', '001', 'ສີໄຄ', 'ສີໂຄດ', 'ນະຄອນຫຼວງ', NULL, NULL, NULL, NULL, NULL);
+('108042102526', '01', 'ສຸກສະຫວັດ', 'ພົງພະໂຍສິດ', '2021-04-02', '3', 'ຊາຍ', 12, 'ສາຂາ', 'ພະແນກ', 'ເບີໂທລະສັບ', 'ໂສດ', 'ລາວ', 'ລາວລຸ່ມ', 'ພຸດ', 'ໄອທີ', '001', 'ສີໄຄ', 'ສີໂຄດ', 'ນະຄອນຫຼວງ', NULL, NULL, NULL, NULL, NULL),
+('112042102527', 'VT1221', 'ນ້ອຍ', 'ສົມໃຈ', '2021-04-22', '26', 'ຍິງ', 12, 'ຸເດ', 'ໄອທີ', '12313213', 'ດ', 'ລາວ', 'ລາວ', 'ພຸກ', 'ອເດ', '121', 'ເພະ', 'ວໜງ', 'ວຽງ', NULL, NULL, NULL, NULL, NULL),
+('112042102528', 'VT1221', 'ສຸກສະຫວັດ', 'Chaikul', '2021-04-01', '26', 'ຍິງ', 12, 'ຸເດ', 'ໄອທີ', '12313213', 'ດ', 'ລາວ', 'ລາວ', 'ພຸກ', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3440,7 +3505,64 @@ CREATE TABLE `register` (
 INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`) VALUES
 (1, '108042101293', '10:19:41', 1, 2021, '2021-04-09'),
 (2, '108042101228', '10:57:48', 2, 2021, '2021-04-09'),
-(3, '108042102507', '10:58:00', 3, 2021, '2021-04-09');
+(3, '108042102507', '10:58:00', 3, 2021, '2021-04-09'),
+(4, '108042100428', '16:26:25', 1, 2021, '2021-04-12'),
+(5, '108042100460', '16:29:31', 2, 2021, '2021-04-12'),
+(6, '108042102441', '16:30:17', 3, 2021, '2021-04-12'),
+(7, '112042102528', '16:31:07', 4, 2021, '2021-04-12'),
+(8, '108042101075', '16:31:17', 5, 2021, '2021-04-12'),
+(9, '108042102280', '16:31:58', 6, 2021, '2021-04-12'),
+(10, '108042100888', '16:33:14', 7, 2021, '2021-04-12'),
+(11, '108042102252', '16:33:49', 8, 2021, '2021-04-12'),
+(12, '108042102386', '16:34:11', 9, 2021, '2021-04-12'),
+(13, '108042101487', '16:35:29', 10, 2021, '2021-04-12'),
+(14, '108042100161', '16:36:26', 11, 2021, '2021-04-12'),
+(15, '108042102181', '16:36:32', 12, 2021, '2021-04-12'),
+(16, '108042101182', '16:36:41', 13, 2021, '2021-04-12'),
+(17, '108042102503', '16:36:53', 14, 2021, '2021-04-12'),
+(18, '112042102527', '16:37:06', 15, 2021, '2021-04-12'),
+(19, '108042102522', '16:39:47', 16, 2021, '2021-04-12'),
+(20, '108042102277', '17:11:29', 17, 2021, '2021-04-12'),
+(21, '108042100843', '17:11:39', 18, 2021, '2021-04-12'),
+(22, '108042102105', '17:11:58', 19, 2021, '2021-04-12'),
+(23, '108042102326', '17:12:11', 20, 2021, '2021-04-12'),
+(24, '108042102454', '17:12:25', 21, 2021, '2021-04-12'),
+(25, '108042101434', '17:12:40', 22, 2021, '2021-04-12'),
+(26, '108042102064', '17:12:46', 23, 2021, '2021-04-12'),
+(27, '108042101515', '17:12:59', 24, 2021, '2021-04-12'),
+(28, '108042101276', '17:13:06', 25, 2021, '2021-04-12'),
+(29, '108042101516', '17:13:37', 26, 2021, '2021-04-12'),
+(30, '108042101260', '17:13:44', 27, 2021, '2021-04-12'),
+(31, '108042101098', '17:13:52', 28, 2021, '2021-04-12'),
+(32, '108042101095', '17:13:59', 29, 2021, '2021-04-12'),
+(33, '108042101288', '17:14:06', 30, 2021, '2021-04-12'),
+(34, '108042102508', '17:14:18', 31, 2021, '2021-04-12'),
+(35, '108042101404', '17:14:37', 32, 2021, '2021-04-12'),
+(36, '108042100547', '17:14:44', 33, 2021, '2021-04-12'),
+(37, '108042100948', '17:14:51', 34, 2021, '2021-04-12'),
+(38, '108042100190', '17:15:09', 35, 2021, '2021-04-12'),
+(39, '108042102382', '17:15:17', 36, 2021, '2021-04-12'),
+(40, '108042100577', '17:15:26', 37, 2021, '2021-04-12'),
+(41, '108042100992', '17:15:34', 38, 2021, '2021-04-12'),
+(42, '108042101272', '17:15:41', 39, 2021, '2021-04-12'),
+(43, '108042101036', '17:15:49', 40, 2021, '2021-04-12'),
+(44, '108042101045', '17:16:08', 41, 2021, '2021-04-12'),
+(45, '108042102322', '17:16:17', 42, 2021, '2021-04-12'),
+(46, '108042102167', '17:16:26', 43, 2021, '2021-04-12'),
+(47, '108042100935', '17:16:34', 44, 2021, '2021-04-12'),
+(48, '108042102385', '17:16:49', 45, 2021, '2021-04-12'),
+(49, '108042101158', '17:16:57', 46, 2021, '2021-04-12'),
+(50, '108042101336', '17:17:04', 47, 2021, '2021-04-12'),
+(51, '108042102341', '17:17:11', 48, 2021, '2021-04-12'),
+(52, '108042101472', '17:18:27', 49, 2021, '2021-04-12'),
+(53, '108042100801', '17:18:34', 50, 2021, '2021-04-12'),
+(54, '108042100585', '17:18:41', 51, 2021, '2021-04-12'),
+(55, '108042101431', '17:18:48', 52, 2021, '2021-04-12'),
+(56, '108042102248', '17:18:56', 53, 2021, '2021-04-12'),
+(57, '108042101368', '17:19:03', 54, 2021, '2021-04-12'),
+(58, '108042101876', '17:19:12', 55, 2021, '2021-04-12'),
+(59, '108042101827', '17:19:20', 56, 2021, '2021-04-12'),
+(60, '108042100799', '09:10:33', 1, 2021, '2021-04-13');
 
 -- --------------------------------------------------------
 
@@ -3465,7 +3587,185 @@ INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`) VALUES
 (252, 2, 'AUDIO'),
 (253, 2, 'PE'),
 (254, 3, 'AUDIO'),
-(255, 3, 'PE');
+(255, 3, 'PE'),
+(256, 4, 'AUDIO'),
+(257, 4, 'PE'),
+(258, 5, 'AUDIO'),
+(259, 5, 'PE'),
+(260, 6, 'AUDIO'),
+(261, 6, 'PE'),
+(262, 7, 'AUDIO'),
+(263, 7, 'CBC'),
+(264, 7, 'ຕາອາຊີບ'),
+(265, 7, 'ສາຍຕາ'),
+(266, 8, 'AUDIO'),
+(267, 8, 'PE'),
+(268, 9, 'AUDIO'),
+(269, 9, 'PE'),
+(270, 10, 'AUDIO'),
+(271, 10, 'PE'),
+(272, 10, 'ສາຍຕາ'),
+(273, 10, 'ຕາອາຊີບ'),
+(274, 11, 'AUDIO'),
+(275, 11, 'PE'),
+(276, 11, 'ສາຍຕາ'),
+(277, 11, 'ຕາອາຊີບ'),
+(278, 12, 'AUDIO'),
+(279, 12, 'PE'),
+(280, 12, 'ສາຍຕາ'),
+(281, 13, 'AUDIO'),
+(282, 13, 'PE'),
+(283, 13, 'ສາຍຕາ'),
+(284, 13, 'X-Ray'),
+(285, 14, 'AUDIO'),
+(286, 14, 'PE'),
+(287, 14, 'ສາຍຕາ'),
+(288, 14, 'X-Ray'),
+(289, 15, 'AUDIO'),
+(290, 15, 'PE'),
+(291, 15, 'ສາຍຕາ'),
+(292, 16, 'AUDIO'),
+(293, 16, 'PE'),
+(294, 16, 'ສາຍຕາ'),
+(295, 17, 'AUDIO'),
+(296, 17, 'PE'),
+(297, 17, 'ສາຍຕາ'),
+(298, 18, 'AUDIO'),
+(299, 18, 'CBC'),
+(300, 18, 'ຕາອາຊີບ'),
+(301, 18, 'ສາຍຕາ'),
+(302, 18, 'test3'),
+(303, 19, 'AUDIO'),
+(304, 19, 'PE'),
+(305, 19, 'ສາຍຕາ'),
+(306, 20, 'AUDIO'),
+(307, 20, 'PE'),
+(308, 20, 'ສາຍຕາ'),
+(309, 20, 'X-Ray'),
+(310, 21, 'AUDIO'),
+(311, 21, 'PE'),
+(312, 21, 'ສາຍຕາ'),
+(313, 21, 'X-Ray'),
+(314, 22, 'AUDIO'),
+(315, 22, 'PE'),
+(316, 22, 'ສາຍຕາ'),
+(317, 22, 'X-Ray'),
+(318, 23, 'AUDIO'),
+(319, 23, 'PE'),
+(320, 23, 'ສາຍຕາ'),
+(321, 24, 'AUDIO'),
+(322, 24, 'PE'),
+(323, 24, 'ສາຍຕາ'),
+(324, 25, 'AUDIO'),
+(325, 25, 'PE'),
+(326, 25, 'ສາຍຕາ'),
+(327, 26, 'AUDIO'),
+(328, 26, 'PE'),
+(329, 26, 'ສາຍຕາ'),
+(330, 27, 'AUDIO'),
+(331, 27, 'PE'),
+(332, 27, 'ສາຍຕາ'),
+(333, 28, 'AUDIO'),
+(334, 28, 'PE'),
+(335, 28, 'ສາຍຕາ'),
+(336, 29, 'AUDIO'),
+(337, 29, 'PE'),
+(338, 29, 'ສາຍຕາ'),
+(339, 30, 'AUDIO'),
+(340, 30, 'PE'),
+(341, 30, 'ສາຍຕາ'),
+(342, 31, 'AUDIO'),
+(343, 31, 'PE'),
+(344, 31, 'ສາຍຕາ'),
+(345, 32, 'AUDIO'),
+(346, 32, 'PE'),
+(347, 32, 'ສາຍຕາ'),
+(348, 33, 'AUDIO'),
+(349, 33, 'PE'),
+(350, 33, 'ສາຍຕາ'),
+(351, 34, 'AUDIO'),
+(352, 34, 'PE'),
+(353, 34, 'ສາຍຕາ'),
+(354, 35, 'AUDIO'),
+(355, 35, 'PE'),
+(356, 35, 'ສາຍຕາ'),
+(357, 36, 'AUDIO'),
+(358, 36, 'PE'),
+(359, 36, 'ສາຍຕາ'),
+(360, 37, 'AUDIO'),
+(361, 37, 'PE'),
+(362, 37, 'ສາຍຕາ'),
+(363, 38, 'AUDIO'),
+(364, 38, 'PE'),
+(365, 38, 'ສາຍຕາ'),
+(366, 39, 'AUDIO'),
+(367, 39, 'PE'),
+(368, 39, 'ສາຍຕາ'),
+(369, 40, 'AUDIO'),
+(370, 40, 'PE'),
+(371, 40, 'ສາຍຕາ'),
+(372, 41, 'AUDIO'),
+(373, 41, 'PE'),
+(374, 41, 'ສາຍຕາ'),
+(375, 42, 'AUDIO'),
+(376, 42, 'PE'),
+(377, 42, 'ສາຍຕາ'),
+(378, 43, 'AUDIO'),
+(379, 43, 'PE'),
+(380, 43, 'ສາຍຕາ'),
+(381, 44, 'AUDIO'),
+(382, 44, 'PE'),
+(383, 44, 'ສາຍຕາ'),
+(384, 45, 'AUDIO'),
+(385, 45, 'PE'),
+(386, 45, 'ສາຍຕາ'),
+(387, 46, 'AUDIO'),
+(388, 46, 'PE'),
+(389, 46, 'ສາຍຕາ'),
+(390, 47, 'AUDIO'),
+(391, 47, 'PE'),
+(392, 47, 'ສາຍຕາ'),
+(393, 48, 'AUDIO'),
+(394, 48, 'PE'),
+(395, 48, 'ສາຍຕາ'),
+(396, 49, 'AUDIO'),
+(397, 49, 'PE'),
+(398, 49, 'ສາຍຕາ'),
+(399, 50, 'AUDIO'),
+(400, 50, 'PE'),
+(401, 50, 'ສາຍຕາ'),
+(402, 51, 'AUDIO'),
+(403, 51, 'PE'),
+(404, 51, 'ສາຍຕາ'),
+(405, 52, 'AUDIO'),
+(406, 52, 'PE'),
+(407, 52, 'ສາຍຕາ'),
+(408, 53, 'AUDIO'),
+(409, 53, 'PE'),
+(410, 53, 'ສາຍຕາ'),
+(411, 54, 'AUDIO'),
+(412, 54, 'PE'),
+(413, 54, 'ສາຍຕາ'),
+(414, 55, 'AUDIO'),
+(415, 55, 'PE'),
+(416, 55, 'ສາຍຕາ'),
+(417, 56, 'AUDIO'),
+(418, 56, 'PE'),
+(419, 56, 'ສາຍຕາ'),
+(420, 57, 'AUDIO'),
+(421, 57, 'PE'),
+(422, 57, 'ສາຍຕາ'),
+(423, 58, 'AUDIO'),
+(424, 58, 'PE'),
+(425, 58, 'ສາຍຕາ'),
+(426, 59, 'AUDIO'),
+(427, 59, 'PE'),
+(428, 59, 'ສາຍຕາ'),
+(429, 60, 'AUDIO'),
+(430, 60, 'PE'),
+(431, 60, 'ສາຍຕາ'),
+(432, 60, 'CBC'),
+(433, 60, 'CLOT');
 
 -- --------------------------------------------------------
 
@@ -3802,7 +4102,7 @@ ALTER TABLE `cbc`
 -- AUTO_INCREMENT for table `checkup_status`
 --
 ALTER TABLE `checkup_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -3814,7 +4114,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `company_package`
 --
 ALTER TABLE `company_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `heavy_metal`
@@ -3850,7 +4150,7 @@ ALTER TABLE `pe`
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=434;
 
 --
 -- AUTO_INCREMENT for table `se`
