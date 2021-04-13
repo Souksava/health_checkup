@@ -894,8 +894,254 @@ class obj{
     }
 
 
+
+public static function import_thry($file_path,$year){
+    global $conn;
+    $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+    foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+        $highestRow = $worksheet->getHighestRow();
+        for($row=2; $row<=$highestRow;$row++){
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $free_t3s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $free_t4s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $tshs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $t3s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $t4s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_thyroid('$barcode','$year','$free_t3s','$free_t4s','$tshs','$t3s','$t4s','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Thryroid?import=success';";
+        echo"</script>";
+    }
+    public static function import_se($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $colors = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $wbcs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $rbcs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $parasites = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $samonellas = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $shigellas = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $vivrios = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $vibrios = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_se('$barcode','$year','$colors','$wbcs','$rbcs','$parasites','$samonellas','$shigellas','$vivrios','$vibrios','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Stool?import=success';";
+        echo"</script>";
+    }
+    public static function import_metal($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $ethers = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $ethys = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $nickles = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $manganeses = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $tims = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $bloods = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $m_i_urines = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $b_a_us = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $c_us = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                    $alcohos = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                    $silicas = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
+                    $methys = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
+                    $a_i_urines = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
+                    $t_i_urines = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                    $methy_urines = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                    $methanoi_urines = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(17, $row)->getValue());
+                    $phenolic_resins = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(18, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(19, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(20, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_heavy_metal('$barcode','$year','$ethers','$ethys','$nickles','$manganeses','$tims','$bloods','$m_i_urines','$b_a_us','$c_us','$alcohos','$silicas','$methys','$a_i_urines','$t_i_urines','$methy_urines','$methanoi_urines','$phenolic_resins','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Heavy?import=success';";
+        echo"</script>";
+    }
+    public static function import_tumor($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $afps = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $ceas = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $psas = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $ca_19s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $ca_15s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $ca_125 = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_tumor_marker('$barcode','$year','$afps','$ceas','$psas','$ca_19s','$ca_15s','$ca_125','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Tumor?import=success';";
+        echo"</script>";
+    }
+    public static function import_oc_vision($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $look_fars = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $look_nears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $look_ups = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $check_eyes = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $check_colors = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $radiuss = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_oc_vision('$barcode','$year','$look_fars','$look_nears','$look_ups','$check_eyes','$check_colors','$radiuss','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Vision?import=success';";
+        echo"</script>";
+    }
     
+    public static function import_audio($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $r_500s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_1000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_2000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_3000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_l_avgs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_4000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_6000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_8000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_h_avgs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+
+                    $l_500s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_1000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_2000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_3000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_l_avgs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_4000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_6000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_8000s = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $l_h_avgs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_audio('$barcode','$year','$r_500s','$r_1000s','$r_2000s','$r_3000s','$r_l_avgs','$r_4000s','$r_6000s','$r_8000s','$r_h_avgs','$l_500s','$l_1000s','$l_2000s','$l_3000s','$l_l_avgs','$l_4000s','$l_6000s','$l_8000s','$l_h_avgs','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Audio?import=success';";
+        echo"</script>";
+    }
+    public static function import_spiro($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $fvc_meansd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $fvc_predictd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $fvc_predictsd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $fevi_meansd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $fevi_predictd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $fevi_predictsd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $fevi_fvcd = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_spiro('$barcode','$year','$fvc_meansd','$fvc_predictd','$fvc_predictsd','$fevi_meansd','$fevi_predictd','$fevi_predictsd','$fevi_fvcd','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Spiro?import=success';";
+        echo"</script>";
+    }
+    
+    public static function import_immunity($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $anti_hav = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $ab = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $ag = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $hcv = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $vdrl = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $hiv = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_immunity('$barcode','$year','$anti_hav','$ab','$ag','$hcv','$vdrl','$hiv','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Immunity?import=success';";
+        echo"</script>";
+    }
+
+    public static function import_x_ray($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $x_ray = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_x_ray('$barcode','$year','$x_ray','$conclusions','$remarks')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='x-ray?import=success';";
+        echo"</script>";
+    }
+
 }
 $obj = new obj();
 ?>
-			
