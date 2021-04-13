@@ -40,9 +40,9 @@ if(mysqli_num_rows($result_metham_limit) > 0)
  <div class="table-responsive">
     <table class="table-bordered" style="width: 2000px;text-align: center;">
         <tr style="font-size: 18px;">
-            <th style="width: 87px;">ເຄື່ອງມື</th>
-            <th style="width: 50px;">N0.</th>
+            <th style="width: 87px;">N0.</th>
             <th style="width: 50px;">Barcode</th>
+            <th style="width: 50px;">ລະຫັດພະນັກງນ</th>
             <th style="width: 50px;">ຊື່</th>
             <th style="width: 50px;">ນາມສະກຸນ</th>
             <th style="width: 50px;">ບໍລິສັດ</th>

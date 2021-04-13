@@ -92,6 +92,10 @@
     <div id="result" class="result">
         <?php
         include ($path."header-footer/loading.php");
+        ?>
+    </div>
+
+<?php
         if(isset($_POST["file_upload"])){
             $obj->import_pe($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
         }
@@ -101,10 +105,6 @@
             swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
             </script>';
           }  
-        ?>
-    </div>
-
-<?php
     include ("../../header-footer/footer.php");
 ?>
 <script>

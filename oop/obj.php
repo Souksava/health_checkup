@@ -893,50 +893,7 @@ class obj{
         echo"</script>";
     }
 
-    public static function import_immunity($file_path,$year){
-        global $conn;
-        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
-        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
-            $highestRow = $worksheet->getHighestRow();
-            for($row=2; $row<=$highestRow;$row++){
-                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
-                    $anti_hav = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
-                    $ab = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
-                    $ag = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
-                    $hcv = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
-                    $vdrl = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
-                    $hiv = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
-                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
-                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
-                    $result = mysqli_query($conn,"call insert_immunity('$barcode','$year','$anti_hav','$ab','$ag','$hcv','$vdrl','$hiv','$conclusions','$remarks')");
-                    mysqli_free_result($result);  
-                    mysqli_next_result($conn);
-            }
-        }
-        echo"<script>";
-        echo"window.location.href='Immunity?import=success';";
-        echo"</script>";
-    }
 
-    public static function import_x_ray($file_path,$year){
-        global $conn;
-        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
-        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
-            $highestRow = $worksheet->getHighestRow();
-            for($row=2; $row<=$highestRow;$row++){
-                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
-                    $x_ray = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
-                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
-                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
-                    $result = mysqli_query($conn,"call insert_x_ray('$barcode','$year','$x_ray','$conclusions','$remarks')");
-                    mysqli_free_result($result);  
-                    mysqli_next_result($conn);
-            }
-        }
-        echo"<script>";
-        echo"window.location.href='x-ray?import=success';";
-        echo"</script>";
-    }
     
 }
 $obj = new obj();

@@ -6,7 +6,7 @@
   $session_path = "../../";
   include ("../../header-footer/header.php");
 ?>
-<form action="Employee" method="POST" id="import_emp" enctype="multipart/form-data">
+<form action="Heavy" method="POST" id="form_upload" enctype="multipart/form-data">
     <div class="modal fade" id="exampleModalimpEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -21,6 +21,7 @@
                     <div class="row" align="left">
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label for="">ເລືອກປີ</label>
+                            <input type="hidden" name="file_upload">
                             <input type="text" name="year" id="datepicker2" class="form-control datepicker"
                                 maxlength="4" placeholder="ປີ 20xx" aria-describedby="button-addon2">
                             <i class="fas fa-check-circle "></i>
@@ -29,8 +30,7 @@
                         </div>
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ຟາຍນຳເຂົ້າ</label>
-                            <input type="file" name="emp_file" id="emp_file">
-                            <input type="hidden" name="upload_emp_id" id="upload_emp_id">
+                            <input type="file" name="checkup_file" id="checkup_file">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
@@ -49,7 +49,7 @@
         </div>
     </div>
 </form>
-<form action="exportemployee" method="POST" id="form_export_employee" target="_blank">
+<form action="export/export_metal.php" method="POST" id="form_export" target="_blank">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="input-group mb-3">
@@ -81,7 +81,7 @@
                 ນຳເຂົ້າຂໍ້ມູນ
             </button>
 
-            <button class="btn btn-success" name="export_employee" id="export_employee"><i
+            <button class="btn btn-success" name="btnexport" id="btnexport"><i
                     class="fas fa-file-export"></i>
                 Export
             </button>
@@ -95,6 +95,15 @@
 </div>
 <?php
     include ("../../header-footer/footer.php");
+    if(isset($_POST["file_upload"])){
+        $obj->import_metal($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+    }
+    
+    if(isset($_GET["import"])=="success"){
+        echo'<script type="text/javascript">
+        swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+        </script>';
+      }  
 ?>
 <script>
 $("#datepicker").datepicker({
@@ -172,4 +181,37 @@ $(document).ready(function() {
         }
     });
 });
+</script>
+<script>
+const myform_form_upload = document.getElementById("form_upload");
+const file_upload = document.getElementById("file_upload");
+const datepicker2 = document.getElementById("datepicker2");
+const checkup_file = document.getElementById("checkup_file");
+// const load_import_emp = document.getElementById("load_import_emp");
+// const btnload_import_emp = document.getElementById("btnload_import_emp");
+myform_form_upload.addEventListener('submit', (e) => {
+    e.preventDefault();
+    checkInputs_form_upload();
+});
+
+function checkInputs_form_upload() {
+    const datepicker2Value = datepicker2.value.trim();
+    const checkup_fileValue = checkup_file.value.trim();
+    if (datepicker2Value === "") {
+        setErrorFor(datepicker2, 'ກະລຸນາເລືອກປີ');
+    } else {
+        setSuccessFor(datepicker2);
+    }
+    if (checkup_fileValue === "") {
+        setErrorFor(checkup_file, 'ກະລຸນາເລືອກຟາຍ');
+    } else {
+        setSuccessFor(checkup_file);
+    }
+    if (datepicker2Value !== "" && checkup_fileValue !== "") {
+        // setloading(load_import_emp, btnload_import_emp);
+        document.getElementById("form_upload").action = "Heavy";
+        document.getElementById("form_upload").submit();
+    }
+}
+
 </script>
