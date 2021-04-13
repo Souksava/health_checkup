@@ -50,8 +50,8 @@ if(mysqli_num_rows($result_oc_vision_limit) > 0)
          <th style="width: 87px;">ການເບິ່ງເຫັນໄລຍະໄກ</th>
          <th style="width: 50px;">ການເບິ່ງເຫັນໄລຍະໃກ້</th>
          <th style="width: 87px;">ການເບິ່ງແນວຕັ້ງ</th>
-         <th style="width: 50px;">ກວດສອບສົມດຸນຂອງກ້າາມຊີ້ນຕາ</th>
-         <th style="width: 87px;">ກວດສອບຄວາມສາມາດແຍກສີ</th>
+         <th style="width: 150px;">ກວດສອບສົມດຸນຂອງກ້າາມຊີ້ນຕາ</th>
+         <th style="width: 187px;">ກວດສອບຄວາມສາມາດແຍກສີ</th>
          <th style="width: 50px;">ການກວລັດສະໝີ</th>
          <th style="width: 87px;">ສະຫຼຸບ</th>
          <th style="width: 50px;">ໝາຍເຫດ</th>
@@ -63,21 +63,21 @@ if(mysqli_num_rows($result_oc_vision_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
-    <td>'.$no_.'</td>
-    <td>'.$row["barcode"].'</td>
-    <td>'.$row["emp_id"].'</td>
-    <td>'.$row["emp_name"].'</td>
-    <td>'.$row["surname"].'</td>
-    <td>'.$row["company"].'</td>
-    <td>'.$row["year"].'</td>
-    <td>'.$row["look_far"].'</td>
-    <td>'.$row["look_near"].'</td>
-    <td>'.$row["look_up"].'</td>
-    <td>'.$row["check_eye"].'</td>
-    <td>'.$row["check_color"].'</td>
-    <td>'.$row["radius"].'</td>
-    <td>'.$row["conclusion"].'</td>
-    <td>'.$row["remark"].'</td>
+      <td>'.$no_.'</td>
+      <td>'.$row["barcode"].'</td>
+      <td>'.$row["emp_id"].'</td>
+      <td>'.$row["emp_name"].'</td>
+      <td>'.$row["surname"].'</td>
+      <td>'.$row["company"].'</td>
+      <td>'.$row["year"].'</td>
+      <td>'.$row["look_far"].'</td>
+      <td>'.$row["look_near"].'</td>
+      <td>'.$row["look_up"].'</td>
+      <td>'.$row["check_eye"].'</td>
+      <td>'.$row["check_color"].'</td>
+      <td>'.$row["radius"].'</td>
+      <td>'.$row["conclusion"].'</td>
+      <td>'.$row["remark"].'</td>
     </tr>
   ';
  }

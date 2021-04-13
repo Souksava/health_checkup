@@ -65,22 +65,22 @@ if(mysqli_num_rows($result_spiro_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
-    <td>'.$no_.'</td>
-    <td>'.$row["barcode"].'</td>
-    <td>'.$row["emp_id"].'</td>
-    <td>'.$row["emp_name"].'</td>
-    <td>'.$row["surname"].'</td>
-    <td>'.$row["company"].'</td>
-    <td>'.$row["year"].'</td>
-    <td>'.$row["fvc_means"].'</td>
-    <td>'.$row["fvc_predict"].'</td>
-    <td>'.$row["fvc_predicts"].'</td>
-    <td>'.$row["fevi_means"].'</td>
-    <td>'.$row["fevi_predict"].'</td>
-    <td>'.$row["fevi_predicts"].'</td>
-    <td>'.$row["fevi_fvc"].'</td>
-    <td>'.$row["conclusion"].'</td>
-    <td>'.$row["remark"].'</td>
+      <td>'.$no_.'</td>
+      <td>'.$row["barcode"].'</td>
+      <td>'.$row["emp_id"].'</td>
+      <td>'.$row["emp_name"].'</td>
+      <td>'.$row["surname"].'</td>
+      <td>'.$row["company"].'</td>
+      <td>'.$row["year"].'</td>
+      <td>'.$row["fvc_means"].'</td>
+      <td>'.$row["fvc_predict"].'</td>
+      <td>'.$row["fvc_predicts"].'</td>
+      <td>'.$row["fevi_means"].'</td>
+      <td>'.$row["fevi_predict"].'</td>
+      <td>'.$row["fevi_predicts"].'</td>
+      <td>'.$row["fevi_fvc"].'</td>
+      <td>'.$row["conclusion"].'</td>
+      <td>'.$row["remark"].'</td>
     </tr>
   ';
  }
