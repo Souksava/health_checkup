@@ -32,7 +32,7 @@
                             <label>ຟາຍນຳເຂົ້າ</label>
                             <input type="file" name="checkup_file" id="checkup_file">
                             <i class="fas fa-check-circle "></i>
-                            <i class="fas fa-exclamation-circle "></i>
+                            <i class="fas fa-exclamation-circle"></i>
                             <small class="">Error message</small>
                         </div>
                     </div>
