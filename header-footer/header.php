@@ -1,3 +1,23 @@
+<?php
+
+     include (''.$path.'oop/login.php');
+     if(isset($_POST['btnLogout'])){
+         $obj_log->logout();
+     }
+     session_start();
+     if($_SESSION['health_ses_status_id'] == 1){
+          $stt = 1;
+     }
+     if($_SESSION['health_ses_id'] == ''){
+        $obj_log->logout();
+    }
+    else if($_SESSION['health_ses_status_id'] != $stt){
+        $obj_log->logout();
+    }
+    else{
+
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -335,7 +355,7 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-    <form action="../Check/Logout.php" method="POST" id="formLogout">
+    <form action="#" method="POST" id="formLogout">
         <div class="modal fade font14" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

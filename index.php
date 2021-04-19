@@ -1,7 +1,7 @@
 <?php
-  include ('oop/obj.php');
+  include ('oop/login.php');
   if(isset($_POST['btnLogin'])){
-    $obj->login($_POST['email'],$_POST['pass']);
+    $obj_log->login($_POST['email'],$_POST['pass']);
   }
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="image/logo.png">
+  <link rel="icon" href="image/health.jpeg">
   <title>Health-CheckUp</title>
   <link rel="stylesheet" href="dist/css/alt/style2.css">
   <link rel="stylesheet" href="dist/css/alt/style.css">
@@ -38,7 +38,7 @@
     <div class="container">
       <div class="forms-container">
           <div class="signin-signup">
-              <form action="home" method="POST" id="formLogin" class="sign-in-form">
+              <form action="index" method="POST" id="formLogin" class="sign-in-form">
                 <img src="image/health.jpeg" alt="" width="100px"><br>
                 <h2 class="title">ເຂົ້າສູ່ລະບົບ</h2>
                   <div class="input-field">
@@ -54,18 +54,6 @@
 
                   <p class="social-text"></p>
                   <div class="social-media">
-                    <!-- <a href="#" class="social-icon">
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                      <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                      <i class="fab fa-google"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                      <i class="fab fa-linkedin-in"></i>
-                    </a> -->
                   </div>
               </form>
 

@@ -1264,6 +1264,9 @@ public static function import_thry($file_path,$year){
         echo"window.location.href='Cbc?import=success';";
         echo"</script>";
     }
+    public static function logout(){
+
+    }
 
 }
 $obj = new obj();
