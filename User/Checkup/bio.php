@@ -91,6 +91,7 @@
         </div>
     </div>
 </form>
+
 <form action="Biochemistry" id="formDelete" method="POST" enctype="multipart/form-data">
     <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
