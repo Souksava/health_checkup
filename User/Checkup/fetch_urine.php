@@ -69,7 +69,7 @@ if(mysqli_num_rows($result_urine_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
-    <td><input type="checkbox" id="" name="id[]" value="'.$row["urin_id"].'"></td>
+    <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["urin_id"].'"></td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>

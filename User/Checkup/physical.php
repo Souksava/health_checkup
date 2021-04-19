@@ -66,7 +66,7 @@
                         mysqli_next_result($conn);
                     ?>
                 </select>
-                <input type="text" name="search" id="search" class="form-control datepicker" 
+                <input type="text" name="search" id="search" class="form-control datepicker"
                     placeholder="ບຣາໂຄດ, ລະຫັດພະນັກງານ, ຊື່​, ນາມສະກຸນ" aria-describedby="button-addon2">
                 <input type="text" name="year2" id="datepicker" class="form-control datepicker" maxlength="4"
                     placeholder="ປີ 20xx" aria-describedby="button-addon2">
@@ -81,8 +81,7 @@
                 ນຳເຂົ້າຂໍ້ມູນ
             </button>
 
-            <button class="btn btn-success" name="btnexport" id="btnexport"><i
-                    class="fas fa-file-export"></i>
+            <button class="btn btn-success" name="btnexport" id="btnexport"><i class="fas fa-file-export"></i>
                 Export
             </button>
             <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDelete" type="button"
@@ -93,22 +92,7 @@
     </div>
 </form>
 <form action="Physical" id="formDelete" method="POST" enctype="multipart/form-data">
-    <div id="result" class="result">
-        <?php
-        include ($path."header-footer/loading.php");
-        include ("../../header-footer/footer.php");
-        if(isset($_POST["file_upload"])){
-            $obj->import_pe($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
-        }
-        
-        if(isset($_GET["import"])=="success"){
-            echo'<script type="text/javascript">
-            swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
-            </script>';
-          }  
-        ?>
-</div>
-<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -132,8 +116,62 @@
             </div>
         </div>
     </div>
-</form>
+    <div id="result" class="result">
+        <?php
+        include ($path."header-footer/loading.php");
+        ?>
+    </div>
 
+</form>
+<?php
+ if(isset($_POST['btnDelete'])){
+    if(isset($_POST["id_delete"])){
+        foreach($_POST['id_delete'] as $id){
+            $result_delete = mysqli_query($conn,"call del_pe('$id')");
+        }
+        if(!$result_delete){
+            echo"<script>";
+            echo"window.location.href='Physical?delete2=fail';";
+            echo"</script>";
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Physical?delete=success';";
+            echo"</script>";
+        }
+    }
+    else{
+        echo"<script>";
+        echo"window.location.href='Physical?del=null';";
+        echo"</script>";
+    }
+ }
+  include ("../../header-footer/footer.php");
+  if(isset($_POST["file_upload"])){
+      $obj->import_pe($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+  }
+  
+  if(isset($_GET["import"])=="success"){
+      echo'<script type="text/javascript">
+      swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+      </script>';
+    }  
+    if(isset($_GET["del"])=="null"){
+        echo'<script type="text/javascript">
+        swal("", "ກະລຸນາເລືອກຂໍ້ມູນທີ່ຈະລົບກ່ອນ !", "info");
+        </script>';
+      } 
+      if(isset($_GET["delete"])=="success"){
+        echo'<script type="text/javascript">
+        swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+        </script>';
+      } 
+      if(isset($_GET["delete2"])=="fail"){
+        echo'<script type="text/javascript">
+        swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
+        </script>';
+      } 
+?>
 <script>
 $("#datepicker").datepicker({
     format: "yyyy",
@@ -242,5 +280,4 @@ function checkInputs_form_upload() {
         document.getElementById("form_upload").submit();
     }
 }
-
 </script>

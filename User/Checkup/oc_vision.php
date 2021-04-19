@@ -81,8 +81,7 @@
                 ນຳເຂົ້າຂໍ້ມູນ
             </button>
 
-            <button class="btn btn-success" name="btnexport" id="btnexport"><i
-                    class="fas fa-file-export"></i>
+            <button class="btn btn-success" name="btnexport" id="btnexport"><i class="fas fa-file-export"></i>
                 Export
             </button>
             <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDelete" type="button"
@@ -93,13 +92,8 @@
     </div>
 </form>
 <form action="Vision" id="formDelete" method="POST" enctype="multipart/form-data">
-<div id="result" class="result">
-        <?php
-        include ($path."header-footer/loading.php");
-        ?>
-</div>
 
-<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -123,9 +117,36 @@
             </div>
         </div>
     </div>
+    <div id="result" class="result">
+        <?php
+        include ($path."header-footer/loading.php");
+        ?>
+    </div>
 </form>
 
 <?php
+ if(isset($_POST['btnDelete'])){
+    if(isset($_POST["id_delete"])){
+        foreach($_POST['id_delete'] as $id){
+            $result_delete = mysqli_query($conn,"call del_oc_vision('$id')");
+        }
+        if(!$result_delete){
+            echo"<script>";
+            echo"window.location.href='Vision?delete2=fail';";
+            echo"</script>";
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Vision?delete=success';";
+            echo"</script>";
+        }
+    }
+    else{
+        echo"<script>";
+        echo"window.location.href='Vision?del=null';";
+        echo"</script>";
+    }
+ }
     include ("../../header-footer/footer.php");
     if(isset($_POST["file_upload"])){
         $obj->import_oc_vision($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
@@ -136,6 +157,21 @@
         swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
         </script>';
       }  
+      if(isset($_GET["delete"])=="success"){
+        echo'<script type="text/javascript">
+        swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+        </script>';
+      } 
+      if(isset($_GET["delete2"])=="fail"){
+        echo'<script type="text/javascript">
+        swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
+        </script>';
+      } 
+      if(isset($_GET["del"])=="null"){
+          echo'<script type="text/javascript">
+          swal("", "ກະລຸນາເລືອກຂໍ້ມູນທີ່ຈະລົບກ່ອນ !", "info");
+          </script>';
+        } 
 ?>
 <script>
 $("#datepicker").datepicker({
@@ -245,5 +281,4 @@ function checkInputs_form_upload() {
         document.getElementById("form_upload").submit();
     }
 }
-
 </script>
