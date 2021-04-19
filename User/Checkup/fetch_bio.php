@@ -70,7 +70,9 @@ if(mysqli_num_rows($result_biochemistry_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
-    <td><input type="checkbox" id="" name="id[]" value="'.$row["bio_id"].'"></td>
+         <td>
+            <input type="checkbox" name="id_delete[]" value="'.$row["bio_id"].'">
+         </td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>
@@ -100,8 +102,30 @@ $no_ += 1;
  $output .='
    </table>
 </div>
+
  ';
  echo $output;
+//  if(isset($_POST['btnDelete'])){
+//    echo"<script>";
+//    echo"alert('hello');";
+//    echo"</script>";
+//    foreach($_POST['id_delete'] as $id2){
+//        echo"<script>";
+//        echo"alert('hello');";
+//        echo"</script>";
+//        // $result_delete = mysqli_query($conn,"call del_biochemistry('$id2')");
+//    }
+//    // if(!$result_delete){
+//    //     echo"<script>";
+//    //     echo"window.location.href='Biochemistry?delete2=fail';";
+//    //     echo"</script>";
+//    // }
+//    // else{
+//    //     echo"<script>";
+//    //     echo"window.location.href='Biochemistry?delete=success';";
+//    //     echo"</script>";
+//    // }
+// }
  if(isset($_POST["query"]) || isset($_POST["querys"]) || isset($_POST["year"]))
 {
    $obj->select_biochemistry("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%");
