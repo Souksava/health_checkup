@@ -92,10 +92,21 @@
         </div>
     </div>
 </form>
+
 <form action="Tumor" id="formDelete" method="POST" enctype="multipart/form-data">
 <div id="result" class="result">
     <?php
        include ($path."header-footer/loading.php");
+       include ("../../header-footer/footer.php");
+       if(isset($_POST["file_upload"])){
+           $obj->import_tumor($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+       }
+       
+       if(isset($_GET["import"])=="success"){
+           echo'<script type="text/javascript">
+           swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+           </script>';
+         } 
     ?>
 </div>
 <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -124,18 +135,7 @@
     </div>
 </form>
 
-<?php
-    include ("../../header-footer/footer.php");
-    if(isset($_POST["file_upload"])){
-        $obj->import_tumor($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
-    }
-    
-    if(isset($_GET["import"])=="success"){
-        echo'<script type="text/javascript">
-        swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
-        </script>';
-      }  
-?>
+
 <script>
 $("#datepicker").datepicker({
     format: "yyyy",
