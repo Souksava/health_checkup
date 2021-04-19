@@ -96,7 +96,7 @@
 <?php
     include ("../../header-footer/footer.php");
     if(isset($_POST["file_upload"])){
-        $obj->import_bio($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+        $obj->import_biochemistry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
     }
     
     if(isset($_GET["import"])=="success"){
