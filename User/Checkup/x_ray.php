@@ -1,4 +1,4 @@
-<!-- x-ray -->
+<!-- x-ray ກວດສ່ອງໄຟຟ້າຜົ້ງເອິກ CXR-->
 <?php
   $title = "ກວດສ່ອງໄຟຟ້າຜົ້ງເອິກ X-Ray";
   $path = "../../";
@@ -23,7 +23,7 @@
                             <label for="">ເລືອກປີ</label>
                             <input type="hidden" name="file_upload">
                             <input type="text" name="year" id="datepicker2" class="form-control datepicker"
-                                maxlength="4" placeholder="ປີ 20xx" aria-describedby="button-addon2">
+                                maxlength="4" placeholder="ປີ 20xx" aria-describedby="button-addon2" autocomplete="off">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
@@ -85,9 +85,15 @@
                     class="fas fa-file-export"></i>
                 Export
             </button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDelete" type="button"
+                id="button-addon2"><i class="fas fa-trash"></i>
+                ລົບ
+            </button>
         </div>
     </div>
 </form>
+
+<form action="x-ray" id="formDelete" method="POST" enctype="multipart/form-data">
 <div id="result" class="result">
         <?php
         include ($path."header-footer/loading.php");
@@ -100,7 +106,33 @@
             </script>';
           } 
         ?>
+</div>
+<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ຢືນຢັນການລົບຂໍ້ມູນ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" align="center">
+                    <input type="hidden" name="id" id="id">
+                    ທ່ານຕ້ອງການລົບຂໍ້ມູນ ຫຼື ບໍ່ ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
+                    <button type="submit" name="btnDelete" id="btnDelete" class="btn btn-outline-danger ">
+                        ລົບ
+                        <span class="" id="load_delete"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+</form>
+
 <?php
     include ("../../header-footer/footer.php");
 ?>

@@ -23,7 +23,7 @@
                             <label for="">ເລືອກປີ</label>
                             <input type="hidden" name="file_upload">
                             <input type="text" name="year" id="datepicker2" class="form-control datepicker"
-                                maxlength="4" placeholder="ປີ 20xx" aria-describedby="button-addon2">
+                                maxlength="4" placeholder="ປີ 20xx" aria-describedby="button-addon2" autocomplete="off">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>

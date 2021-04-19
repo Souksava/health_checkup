@@ -40,9 +40,11 @@ if(mysqli_num_rows($result_tumor_marker_limit) > 0)
  <div class="table-responsive">
     <table class="table-bordered" style="width: 3000px;text-align: center;">
         <tr style="font-size: 18px;">
-            <th style="width: 87px;">ເຄື່ອງມື</th>
+        <th style="width: 50px;">ເຄື່ອງມື</th>
+            <th style="width: 50px;">ເຄື່ອງມື</th>
             <th style="width: 50px;">N0.</th>
             <th style="width: 50px;">Barcode</th>
+            <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 50px;">ຊື່</th>
             <th style="width: 50px;">ນາມສະກຸນ</th>
             <th style="width: 50px;">ບໍລິສັດ</th>
@@ -63,6 +65,7 @@ if(mysqli_num_rows($result_tumor_marker_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
+    <td><input type="checkbox" id="" name="id[]" value="'.$row["tum_id"].'"></td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>

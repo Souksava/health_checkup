@@ -40,6 +40,7 @@ if(mysqli_num_rows($result_x_ray_limit) > 0)
  <div class="table-responsive">
         <table class="table-bordered" style="width: 1500px;text-align: center;">
             <tr style="font-size: 18px;">
+            <th style="width: 50px;">ເຄື່ອງມື</th>
                 <th style="width: 80px;">N0.</th>
                 <th style="width: 100px;">Barcode</th>
                 <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
@@ -58,6 +59,7 @@ if(mysqli_num_rows($result_x_ray_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
+    <td><input type="checkbox" id="" name="id[]" value="'.$row["x_id"].'"></td>
     <td>'.$no_.'</td>
     <td>'.$row["barcode"].'</td>
     <td>'.$row["emp_id"].'</td>

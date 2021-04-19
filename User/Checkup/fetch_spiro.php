@@ -39,8 +39,9 @@ if(mysqli_num_rows($result_spiro_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
- <table class="table-bordered" style="width: 3000px;text-align: center;">
+ <table class="table-bordered" style="width: 8000px;text-align: center;">
      <tr style="font-size: 18px;">
+         <th style="width: 50px;">ເຄື່ອງມື</th>
          <th style="width: 50px;">N0.</th>
          <th style="width: 50px;">Barcode</th>
          <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
@@ -48,13 +49,13 @@ if(mysqli_num_rows($result_spiro_limit) > 0)
          <th style="width: 50px;">ນາມສະກຸນ</th>
          <th style="width: 50px;">ບໍລິສັດ</th>
          <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-         <th style="width: 87px;">FVC(MEANS)</th>
-         <th style="width: 50px;">FVC(PREDICT)</th>
-         <th style="width: 87px;">FVC(%PREDICTS)</th>
-         <th style="width: 50px;">FEV1(MEANS)</th>
-         <th style="width: 87px;">FEV1(PREDICT)</th>
-         <th style="width: 50px;">FEV1(%PREDICT)</th>
-         <th style="width: 50px;">FEC1/FVC%</th>
+         <th style="width: 150px;">FVC(MEANS)</th>
+         <th style="width: 150px;">FVC(PREDICT)</th>
+         <th style="width: 150px;">FVC(%PREDICTS)</th>
+         <th style="width: 150px;">FEV1(MEANS)</th>
+         <th style="width: 150px;">FEV1(PREDICT)</th>
+         <th style="width: 150px;">FEV1(%PREDICT)</th>
+         <th style="width: 150px;">FEC1/FVC%</th>
          <th style="width: 87px;">Conclusion</th>
          <th style="width: 50px;">Remark</th>
      </tr>
@@ -65,6 +66,7 @@ if(mysqli_num_rows($result_spiro_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
+      <td><input type="checkbox" id="" name="id[]" value="'.$row["spir_id"].'"></td>
       <td>'.$no_.'</td>
       <td>'.$row["barcode"].'</td>
       <td>'.$row["emp_id"].'</td>

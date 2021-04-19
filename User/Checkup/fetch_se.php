@@ -43,6 +43,7 @@ if(mysqli_num_rows($result_se_limit) > 0)
             <th style="width: 87px;">ເຄື່ອງມື</th>
             <th style="width: 50px;">N0.</th>
             <th style="width: 50px;">Barcode</th>
+            <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 50px;">ຊື່</th>
             <th style="width: 50px;">ນາມສະກຸນ</th>
             <th style="width: 50px;">ບໍລິສັດ</th>
@@ -65,6 +66,7 @@ if(mysqli_num_rows($result_se_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
+    <td><input type="checkbox" id="" name="id[]" value="'.$row["se_id"].'"></td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>

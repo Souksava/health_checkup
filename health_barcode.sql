@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 05:12 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.27
+-- Generation Time: Apr 19, 2021 at 07:05 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,10 +53,6 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_emp` (IN `id` VARCHAR(30))  NO SQL
 BEGIN
 DELETE FROM employee WHERE barcode=id;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_immunity` (IN `im_ids` INT(11))  BEGIN
-DELETE FROM immunity where im_id=im_ids;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_x_ray` (IN `x_ids` INT(11))  BEGIN
@@ -297,14 +293,14 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_audio` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,audi_id,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
 l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark
 FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_audio_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,audi_id,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
 l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark
 FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
@@ -3444,6 +3440,13 @@ CREATE TABLE `immunity` (
   `year` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `immunity`
+--
+
+INSERT INTO `immunity` (`im_id`, `barcode`, `anti_hav`, `ab`, `ag`, `hcv`, `vdrl`, `hiv`, `conclusion`, `remark`, `year`) VALUES
+(1, '108042101293', 'VT3818s', 'ທ່ານ ກອງຄຳ ວິໄລs', 's', 'test', '2021', 'test', 'test', '', 2021);
+
 -- --------------------------------------------------------
 
 --
@@ -4238,7 +4241,7 @@ ALTER TABLE `heavy_metal`
 -- AUTO_INCREMENT for table `immunity`
 --
 ALTER TABLE `immunity`
-  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `methamphetamine`

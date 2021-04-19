@@ -858,7 +858,6 @@ class obj{
         foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
             $highestRow = $worksheet->getHighestRow();
             for($row=2; $row<=$highestRow;$row++){
-
                     $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
                     $hpis = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
                     $pmhis = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
