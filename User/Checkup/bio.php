@@ -122,12 +122,30 @@
     </div>
 
 </form>
+
+
 <?php 
  if(isset($_POST['btnDelete'])){
-    foreach($_POST['id_delete'] as $id){
+    if(isset($_POST["id_delete"])){
+        foreach($_POST['id_delete'] as $id){
+            $result_delete = mysqli_query($conn,"call del_biochemistry('$id')");
+        }
+        if(!$result_delete){
+            echo"<script>";
+            echo"window.location.href='Biochemistry?delete2=fail';";
+            echo"</script>";
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Biochemistry?delete=success';";
+            echo"</script>";
+        }
+    }
+    else{
         echo"<script>";
-        echo"alert('$id');";
+        echo"window.location.href='Biochemistry?del=null';";
         echo"</script>";
+<<<<<<< HEAD
         $result_delete = mysqli_query($conn,"call del_biochemistry('$id2')");
     }
     if(!$result_delete){
@@ -142,6 +160,35 @@
     }
  }
 
+=======
+    }
+ }
+     include ("../../header-footer/footer.php");
+     if(isset($_POST["file_upload"])){
+         $obj->import_biochemistry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+     }
+     
+     if(isset($_GET["import"])=="success"){
+         echo'<script type="text/javascript">
+         swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+         </script>';
+       } 
+       if(isset($_GET["delete"])=="success"){
+          echo'<script type="text/javascript">
+          swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+          </script>';
+        } 
+        if(isset($_GET["delete2"])=="fail"){
+          echo'<script type="text/javascript">
+          swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
+          </script>';
+        } 
+        if(isset($_GET["del"])=="null"){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາເລືອກຂໍ້ມູນທີ່ຈະລົບກ່ອນ !", "info");
+            </script>';
+          } 
+>>>>>>> a1c04094daefe3036ee22b30123f34e23024c296
 ?>
 <script>
 $("#datepicker").datepicker({
