@@ -95,6 +95,26 @@
     <div id="result" class="result">
         <?php
        include ($path."header-footer/loading.php");
+       include ("../../header-footer/footer.php");
+       if(isset($_POST["file_upload"])){
+           $obj->import_biochemistry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+       }
+       
+       if(isset($_GET["import"])=="success"){
+           echo'<script type="text/javascript">
+           swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+           </script>';
+         } 
+         if(isset($_GET["delete"])=="success"){
+            echo'<script type="text/javascript">
+            swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+            </script>';
+          } 
+          if(isset($_GET["delete2"])=="fail"){
+            echo'<script type="text/javascript">
+            swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
+            </script>';
+          } 
     ?>
     </div>
     <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -122,71 +142,26 @@
         </div>
     </div>
 </form>
-<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ຢືນຢັນການລົບຂໍ້ມູນ</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" align="center">
-                <input type="hidden" name="id" id="id">
-                ທ່ານຕ້ອງການລົບຂໍ້ມູນ ຫຼື ບໍ່ ?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
-                <button type="submit" name="btnDelete" id="btnDelete" class="btn btn-outline-danger ">
-                    ລົບ
-                    <span class="" id="load_delete"></span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
-
 <?php 
  if(isset($_POST['btnDelete'])){
     foreach($_POST['id_delete'] as $id2){
         echo"<script>";
         echo"alert('hello');";
         echo"</script>";
-        // $result_delete = mysqli_query($conn,"call del_biochemistry('$id2')");
+        $result_delete = mysqli_query($conn,"call del_biochemistry('$id2')");
     }
-    // if(!$result_delete){
-    //     echo"<script>";
-    //     echo"window.location.href='Biochemistry?delete2=fail';";
-    //     echo"</script>";
-    // }
-    // else{
-    //     echo"<script>";
-    //     echo"window.location.href='Biochemistry?delete=success';";
-    //     echo"</script>";
-    // }
+    if(!$result_delete){
+        echo"<script>";
+        echo"window.location.href='Biochemistry?delete2=fail';";
+        echo"</script>";
+    }
+    else{
+        echo"<script>";
+        echo"window.location.href='Biochemistry?delete=success';";
+        echo"</script>";
+    }
  }
-     include ("../../header-footer/footer.php");
-     if(isset($_POST["file_upload"])){
-         $obj->import_biochemistry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
-     }
-     
-     if(isset($_GET["import"])=="success"){
-         echo'<script type="text/javascript">
-         swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
-         </script>';
-       } 
-       if(isset($_GET["delete"])=="success"){
-          echo'<script type="text/javascript">
-          swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
-          </script>';
-        } 
-        if(isset($_GET["delete2"])=="fail"){
-          echo'<script type="text/javascript">
-          swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
-          </script>';
-        } 
+
 ?>
 <script>
 $("#datepicker").datepicker({
