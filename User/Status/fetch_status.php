@@ -48,7 +48,7 @@ if(mysqli_num_rows($result_checkup_status_limit) > 0)
         <th style="width: 50px;">physic</th>
         <th style="width: 50px;">cbc</th>
         <th style="width: 50px;">bio</th>
-        <th style="width: 50px;">runie</th>
+        <th style="width: 50px;">Urine</th>
         <th style="width: 50px;">meth</th>
         <th style="width: 50px;">thry</th>
         <th style="width: 50px;">stool</th>
@@ -57,8 +57,8 @@ if(mysqli_num_rows($result_checkup_status_limit) > 0)
         <th style="width: 50px;">vision</th>
         <th style="width: 50px;">audio</th>
         <th style="width: 50px;">spiro</th>
-        <th style="width: 50px;">cxr</th>
-        <th style="width: 50px;">int</th>
+        <th style="width: 50px;">X-Ray</th>
+        <th style="width: 50px;">imm</th>
     </tr>
  ';
  $no_ =  $rank;
