@@ -104,22 +104,7 @@
 
 
 
-<form action="cxr" id="formDelete" method="POST" enctype="multipart/form-data">
-<div id="result" class="result">
-        <?php
-        include ($path."header-footer/loading.php");
-        if(isset($_POST["file_upload"])){
-            $obj->import_Immunity($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
-        }
-        if(isset($_GET["import"])=="success"){
-            echo'<script type="text/javascript">
-            swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
-            </script>';
-          } 
-        ?>
-</div>
-
-
+<form action="Immunity" id="formDelete" method="POST" enctype="multipart/form-data">
 <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -144,9 +129,62 @@
             </div>
         </div>
     </div>
+<div id="result" class="result">
+        <?php
+        include ($path."header-footer/loading.php");
+        ?>
+</div>
+
 </form>
+
 <?php
-    include ("../../header-footer/footer.php");
+ if(isset($_POST['btnDelete'])){
+    if(isset($_POST["id_delete"])){
+        foreach($_POST['id_delete'] as $id){
+            $result_delete = mysqli_query($conn,"call del_immunity('$id')");
+        }
+        if(!$result_delete){
+            echo"<script>";
+            echo"window.location.href='Immunity?delete2=fail';";
+            echo"</script>";
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Immunity?delete=success';";
+            echo"</script>";
+        }
+    }
+    else{
+        echo"<script>";
+        echo"window.location.href='Immunity?del=null';";
+        echo"</script>";
+    }
+ }
+ include ("../../header-footer/footer.php");
+ if(isset($_POST["file_upload"])){
+     $obj->import_immunity($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+ }
+ 
+ if(isset($_GET["import"])=="success"){
+     echo'<script type="text/javascript">
+     swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+     </script>';
+   } 
+   if(isset($_GET["delete"])=="success"){
+      echo'<script type="text/javascript">
+      swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+      </script>';
+    } 
+    if(isset($_GET["delete2"])=="fail"){
+      echo'<script type="text/javascript">
+      swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
+      </script>';
+    } 
+    if(isset($_GET["del"])=="null"){
+        echo'<script type="text/javascript">
+        swal("", "ກະລຸນາເລືອກຂໍ້ມູນທີ່ຈະລົບກ່ອນ !", "info");
+        </script>';
+      } 
 ?>
 <script>
 $("#datepicker").datepicker({
