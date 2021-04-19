@@ -7,15 +7,15 @@
 ?>
 
 <div class="row">
-    <a href="<?php echo $links ?>Register/Company" class="m-a">
+    <a href="<?php echo $links ?>Company/Company" class="m-a">
         <div class="btn btn-light mainlink">
         ຂໍ້ມູນບໍລີສັດ
         </div>
-    </a>  <a href="<?php echo $links ?>Register/Package" class="m-a">
+    </a>  <a href="<?php echo $links ?>Package/Package" class="m-a">
         <div class="btn btn-light mainlink">
         ຂໍ້ມູນແຟັກແກັດ
         </div>
-    </a>  <a href="<?php echo $links ?>Register/Employee" class="m-a">
+    </a>  <a href="<?php echo $links ?>Employee/Employee" class="m-a">
         <div class="btn btn-light mainlink">
         ຂໍ້ມູນພະນັກງານ
         </div>
@@ -25,7 +25,7 @@
             ລົງທະບຽນ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/....." class="m-a">
+    <!-- </a>  <a href="<?php echo $links ?>Register/....." class="m-a">
         <div class="btn btn-light mainlink">
         ພີມໃບຢັ້ງຢຶ່ນ
         </div>
@@ -59,7 +59,7 @@
         <div class="btn btn-light mainlink">
         ໜ້າ2-11
         </div>
-    </a>
+    </a> -->
     
     <!-- <a href="<?php echo $links ?>Report/report-customer" class="m-a">
         <div class="btn btn-light mainlink">

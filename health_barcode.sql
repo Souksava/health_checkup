@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 07:05 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Apr 19, 2021 at 08:59 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -274,6 +274,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `list_addpackage` (IN `com_ids` VARCHAR(11))  NO SQL
 BEGIN
 SELECT p.pack_id,pack_name FROM package p WHERE p.pack_id NOT IN (SELECT d.pack_id FROM company_package d WHERE com_id = com_ids);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `emails` VARCHAR(100), IN `passed` VARCHAR(24))  NO SQL
+BEGIN
+SELECT * FROM username WHERE email=emails and BINARY pass=passed;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `max_barcode_emp` ()  NO SQL
@@ -4028,6 +4033,46 @@ INSERT INTO `urinalvsis` (`urin_id`, `barcode`, `color`, `appearance`, `ph`, `sp
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `username`
+--
+
+CREATE TABLE `username` (
+  `user_id` int(11) NOT NULL,
+  `emp_id` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(24) COLLATE utf8_unicode_ci NOT NULL,
+  `stt_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `username`
+--
+
+INSERT INTO `username` (`user_id`, `emp_id`, `user_name`, `email`, `pass`, `stt_id`) VALUES
+(1, NULL, 'ປູນາ', 'puna@gmail.com', 'c3c2bd601f0ec6a02ed4a4e5', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_status`
+--
+
+CREATE TABLE `user_status` (
+  `stt_id` int(11) NOT NULL,
+  `stt_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user_status`
+--
+
+INSERT INTO `user_status` (`stt_id`, `stt_name`) VALUES
+(1, 'ປະຕິບັດງານ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `x_ray`
 --
 
@@ -4185,6 +4230,19 @@ ALTER TABLE `urinalvsis`
   ADD KEY `barcode` (`barcode`);
 
 --
+-- Indexes for table `username`
+--
+ALTER TABLE `username`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `stt_id` (`stt_id`);
+
+--
+-- Indexes for table `user_status`
+--
+ALTER TABLE `user_status`
+  ADD PRIMARY KEY (`stt_id`);
+
+--
 -- Indexes for table `x_ray`
 --
 ALTER TABLE `x_ray`
@@ -4296,6 +4354,18 @@ ALTER TABLE `tumor_marker`
 --
 ALTER TABLE `urinalvsis`
   MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `username`
+--
+ALTER TABLE `username`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user_status`
+--
+ALTER TABLE `user_status`
+  MODIFY `stt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `x_ray`
@@ -4416,6 +4486,12 @@ ALTER TABLE `tumor_marker`
 --
 ALTER TABLE `urinalvsis`
   ADD CONSTRAINT `urinalvsis_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+
+--
+-- Constraints for table `username`
+--
+ALTER TABLE `username`
+  ADD CONSTRAINT `username_ibfk_1` FOREIGN KEY (`stt_id`) REFERENCES `user_status` (`stt_id`);
 
 --
 -- Constraints for table `x_ray`
