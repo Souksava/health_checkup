@@ -145,22 +145,6 @@
         echo"<script>";
         echo"window.location.href='Biochemistry?del=null';";
         echo"</script>";
-<<<<<<< HEAD
-        $result_delete = mysqli_query($conn,"call del_biochemistry('$id2')");
-    }
-    if(!$result_delete){
-        echo"<script>";
-        echo"window.location.href='Biochemistry?delete2=fail';";
-        echo"</script>";
-    }
-    else{
-        echo"<script>";
-        echo"window.location.href='Biochemistry?delete=success';";
-        echo"</script>";
-    }
- }
-
-=======
     }
  }
      include ("../../header-footer/footer.php");
@@ -188,7 +172,6 @@
             swal("", "ກະລຸນາເລືອກຂໍ້ມູນທີ່ຈະລົບກ່ອນ !", "info");
             </script>';
           } 
->>>>>>> a1c04094daefe3036ee22b30123f34e23024c296
 ?>
 <script>
 $("#datepicker").datepicker({
