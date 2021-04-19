@@ -85,6 +85,10 @@
                     class="fas fa-file-export"></i>
                 Export
             </button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDelete" type="button"
+                id="button-addon2"><i class="fas fa-trash"></i>
+                ລົບ
+            </button>
         </div>
     </div>
 </form>
@@ -119,23 +123,48 @@
         </table>
     </div>
 </div> -->
+<form action="Thryroid" id="formDelete" method="POST" enctype="multipart/form-data">
 <div id="result" class="result">
     <?php
        include ($path."header-footer/loading.php");
+       include ("../../header-footer/footer.php");
+       if(isset($_POST["file_upload"])){
+           $obj->import_thry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+       }
+       
+       if(isset($_GET["import"])=="success"){
+           echo'<script type="text/javascript">
+           swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+           </script>';
+         } 
     ?>
 </div>
-<?php
-    include ("../../header-footer/footer.php");
-    if(isset($_POST["file_upload"])){
-        $obj->import_thry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
-    }
-    
-    if(isset($_GET["import"])=="success"){
-        echo'<script type="text/javascript">
-        swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
-        </script>';
-      }  
-?>
+<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ຢືນຢັນການລົບຂໍ້ມູນ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" align="center">
+                    <input type="hidden" name="id" id="id">
+                    ທ່ານຕ້ອງການລົບຂໍ້ມູນ ຫຼື ບໍ່ ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
+                    <button type="submit" name="btnDelete" id="btnDelete" class="btn btn-outline-danger ">
+                        ລົບ
+                        <span class="" id="load_delete"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <script>
 $("#datepicker").datepicker({
     format: "yyyy",
