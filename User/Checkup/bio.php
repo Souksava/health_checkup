@@ -92,31 +92,6 @@
     </div>
 </form>
 <form action="Biochemistry" id="formDelete" method="POST" enctype="multipart/form-data">
-    <div id="result" class="result">
-        <?php
-       include ($path."header-footer/loading.php");
-       include ("../../header-footer/footer.php");
-       if(isset($_POST["file_upload"])){
-           $obj->import_biochemistry($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
-       }
-       
-       if(isset($_GET["import"])=="success"){
-           echo'<script type="text/javascript">
-           swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
-           </script>';
-         } 
-         if(isset($_GET["delete"])=="success"){
-            echo'<script type="text/javascript">
-            swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
-            </script>';
-          } 
-          if(isset($_GET["delete2"])=="fail"){
-            echo'<script type="text/javascript">
-            swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
-            </script>';
-          } 
-    ?>
-    </div>
     <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -128,7 +103,6 @@
                     </button>
                 </div>
                 <div class="modal-body" align="center">
-                    <input type="hidden" name="id" id="id">
                     ທ່ານຕ້ອງການລົບຂໍ້ມູນ ຫຼື ບໍ່ ?
                 </div>
                 <div class="modal-footer">
@@ -141,12 +115,18 @@
             </div>
         </div>
     </div>
+    <div id="result" class="result">
+        <?php
+       include ($path."header-footer/loading.php");
+    ?>
+    </div>
+
 </form>
 <?php 
  if(isset($_POST['btnDelete'])){
-    foreach($_POST['id_delete'] as $id2){
+    foreach($_POST['id_delete'] as $id){
         echo"<script>";
-        echo"alert('hello');";
+        echo"alert('$id');";
         echo"</script>";
         $result_delete = mysqli_query($conn,"call del_biochemistry('$id2')");
     }
