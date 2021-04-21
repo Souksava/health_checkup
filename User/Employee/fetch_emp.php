@@ -37,7 +37,7 @@ if(mysqli_num_rows($result_emp) > 0)
 {
  $output .= '
   <div class="table-responsive">
-  <table class="table-bordered" style="width: 4000px;text-align: center;">
+  <table class="table-bordered" style="width: 4500px;text-align: center;">
     <tr style="font-size: 18px;">
         <th style="width: 87px;">ເຄື່ອງມື</th>
         <th style="width: 50px;">N0.</th>
@@ -63,6 +63,9 @@ if(mysqli_num_rows($result_emp) > 0)
         <th style="width: 180px;">ແຂວງ</th>
         <th style="width: 200px;">ຊື່ພາສາອັງກິດ</th>
         <th style="width: 200px;">ນາມສະກຸນອັງກິດ</th>
+        <th style="width: 100px;">ສັນຊາດ</th>
+        <th style="width: 150px;">ສາດສະໜາ</th>
+        <th style="width: 100px;">ອາຊີບ</th>
         <th style="width: 200px;">ບ້ານພາສາອັງກິດ</th>
         <th style="width: 200px;">ເມືອງພາສາອັງກິດ</th>
         <th style="width: 200px;">ແຂວງພາສາອັງກິດ</th>
@@ -107,6 +110,9 @@ $no_ += 1;
         <td style="display: none;">'.$row["dob"].'</td>
         <td>'.$row["emp_name_en"].'</td>
         <td>'.$row["surname_en"].'</td>
+        <td>'.$row["national_en"].'</td>
+        <td>'.$row["religion_en"].'</td>
+        <td>'.$row["occupation_en"].'</td>
         <td>'.$row["village_en"].'</td>
         <td>'.$row["district_en"].'</td>
         <td>'.$row["province_en"].'</td>
@@ -270,8 +276,11 @@ $('.btnDel_Emp').on('click', function() {
         $('#province2').val(data[21]);
         $('#emp_name_en').val(data[24]);
         $('#surname_en').val(data[25]);
-        $('#village_en').val(data[26]);
-        $('#district_en').val(data[27]);
-        $('#province_en').val(data[28]);
+        $('#national_en').val(data[26]);
+        $('#religion_en').val(data[27]);
+        $('#occupation_en').val(data[28]);
+        $('#village_en').val(data[29]);
+        $('#district_en').val(data[30]);
+        $('#province_en').val(data[31]);
     });
 </script>

@@ -6,7 +6,7 @@
         $name = "%".$_POST["search"]."%";
         $year = "%".$_POST["year2"]."%";
         $output = ' 
-        <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
+        <table class="table" border="1" style="width: 90000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
             <th style="width: 40px;">N0.</th>
             <th style="width: 80px;">Barcode</th>
@@ -24,6 +24,7 @@
             <th style="width: 187px;">Weight</th>
             <th style="width: 150px;">BMI</th>
             <th style="width: 187px;">Blood Pressure</th>
+            <th style="width: 187px;">Pulse</th>
             <th style="width: 150px;">ABO</th>
             <th style="width: 187px;">Eyes</th>
             <th style="width: 150px;">Teeth/Gum</th>
@@ -62,6 +63,7 @@
                 <td>'.$row["weight"].'</td>
                 <td>'.$row["bmi"].'</td>
                 <td>'.$row["bp"].'</td>
+                <td>'.$row["pulse"].'</td>
                 <td>'.$row["abo"].'</td>
                 <td>'.$row["eye"].'</td>
                 <td>'.$row["teeth"].'</td>

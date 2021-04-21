@@ -58,11 +58,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="<?php echo $path ?>dist/js/sweetalert.min.js"></script>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="loader-wrapper">
         <div id="loader"></div>
-    </div>      
-<?php
+    </div>
+    <?php
      include (''.$path.'oop/obj.php');
 ?>
     <div class="wrapper">
@@ -81,8 +82,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4 font14">
         <!-- Brand Logo -->
         <a href="../Main.php" class="brand-link">
-            <img src="<?php echo $path ?>image/health.jpeg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                style="opacity: .8">
+            <img src="<?php echo $path ?>image/health.jpeg" alt="AdminLTE Logo"
+                class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Health Checkup</span>
         </a>
 
@@ -102,7 +103,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
-             
+
                     <li class="nav-item has-treeview">
                         <a href="<?php echo $links ?>Company/Company" class="nav-link">
                             <i class="nav-icon fas fa-building"></i>
@@ -125,7 +126,7 @@
                         <a href="<?php echo $links ?>Employee/Employee" class="nav-link">
                             <i class="nav-icon fas fa-user"></i><i class="fad fa-user-hard-hat"></i>
                             <p>
-                            ຂໍ້ມູນພະນັກງານ
+                                ຂໍ້ມູນພະນັກງານ
                                 <i class="fas"></i>
                             </p>
                         </a>
@@ -143,7 +144,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-md"></i>
                             <p>
-                            ກວດສຸຂະພາບ
+                                ກວດສຸຂະພາບ
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -157,7 +158,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Cbc" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Cbc" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດເລືອດລວມ</p>
                                 </a>
@@ -165,7 +166,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Biochemistry" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Biochemistry" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສານຊີວະເຄມີໃນເລືອດ</p>
                                 </a>
@@ -173,7 +174,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Urine" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Urine" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດປັດສະວະ</p>
                                 </a>
@@ -181,7 +182,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Methamphetamine" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Methamphetamine" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສານເສບຕິດ</p>
                                 </a>
@@ -189,7 +190,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Thryroid" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Thryroid" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດຕ໋ອມຄໍ</p>
                                 </a>
@@ -197,7 +198,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Stool" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Stool" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດອາຈົມ</p>
                                 </a>
@@ -205,7 +206,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Heavy" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Heavy" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດທາດໂລຫະໜັກ</p>
                                 </a>
@@ -213,7 +214,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Tumor" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Tumor" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດຕ໋ອມມະເຮັງ</p>
                                 </a>
@@ -221,7 +222,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Vision" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Vision" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສະມັດຕະພາບການເບິ່ງເຫັນ</p>
                                 </a>
@@ -229,7 +230,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Audio" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Audio" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສະມັດຕະພາບການໄດ້ຍິນ</p>
                                 </a>
@@ -237,7 +238,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Spiro" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Spiro" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສະມັດຕະພາບປອດ</p>
                                 </a>
@@ -245,7 +246,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/x-ray" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/x-ray" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສ່ອງໄຟຟ້າຜົ້ງເອິກ</p>
                                 </a>
@@ -253,7 +254,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Checkup/Immunity" class="nav-link">
+                                <a href="<?php echo $links ?>Checkup/Immunity" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດພູມຄຸ້ມກັນວິທະຍາ</p>
                                 </a>
@@ -269,7 +270,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
+                    <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
@@ -293,8 +294,8 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
+                    </li> -->
+                    <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
@@ -320,7 +321,7 @@
                                     <i class="far fa fa-check nav-icon"></i>
                                     <p>ໜ້າ2-11</p>
                                 </a>
-                            </li>
+                            </li> -->
                             <!-- <li class="nav-item">
                                 <a href="Make/accept.php" class="nav-link">
                                     <i class="far fa fa-check nav-icon"></i>
@@ -339,7 +340,8 @@
                                     <p>ໜ້າ5-8</p>
                                 </a>
                             </li> -->
-                        </ul>
+                        <!-- </ul>
+                    </li> -->
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                             <i class="nav-icon fas fa-power-off"></i>

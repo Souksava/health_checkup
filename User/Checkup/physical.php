@@ -49,6 +49,49 @@
         </div>
     </div>
 </form>
+<form action="Physical" method="POST" id="form_upload_en" enctype="multipart/form-data">
+    <div class="modal fade" id="exampleModalimpEmp_en" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ນຳເຂົ້າຂໍ້ມູນກວດຮ່າງກາຍທົ່ວໄປສະບັບພາສາອັງອິດ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" align="left">
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label for="">ເລືອກປີ</label>
+                            <input type="hidden" name="file_upload_en">
+                            <input type="text" name="year_en" id="datepicker2_en" class="form-control datepicker"
+                                maxlength="4" placeholder="ປີ 20xx" aria-describedby="button-addon2" autocomplete="off">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ຟາຍນຳເຂົ້າ</label>
+                            <input type="file" name="checkup_file_en" id="checkup_file_en">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small class="">Error message</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
+                    <button type="submit" name="emp_Update_en" id="btnload_import_emp_en" class="btn btn-outline-primary"
+                        onclick="">
+                        ນຳເຂົ້າຂໍ້ມູນ
+                        <span class="" id="load_import_emp_en"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 <form action="export/export_pe.php" method="POST" id="form_export" target="_blank">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -79,6 +122,10 @@
             <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalimpEmp" type="button"
                 id="button-addon2"><i class="fas fa-paperclip"></i>
                 ນຳເຂົ້າຂໍ້ມູນ
+            </button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalimpEmp_en" type="button"
+                id="button-addon2"><i class="fas fa-paperclip"></i>
+                ນຳເຂົ້າພາສາອັງກິດ
             </button>
 
             <button class="btn btn-success" name="btnexport" id="btnexport"><i class="fas fa-file-export"></i>
@@ -150,6 +197,9 @@
   if(isset($_POST["file_upload"])){
       $obj->import_pe($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
   }
+  if(isset($_POST["file_upload_en"])){
+    $obj->update_pe($_FILES["checkup_file_en"]["tmp_name"],$_POST["year_en"]);
+}
   
   if(isset($_GET["import"])=="success"){
       echo'<script type="text/javascript">
@@ -179,6 +229,11 @@ $("#datepicker").datepicker({
     minViewMode: "years"
 });
 $("#datepicker2").datepicker({
+    format: "yyyy",
+    viewMode: "years",
+    minViewMode: "years"
+});
+$("#datepicker2_en").datepicker({
     format: "yyyy",
     viewMode: "years",
     minViewMode: "years"
@@ -278,6 +333,35 @@ function checkInputs_form_upload() {
         // setloading(load_import_emp, btnload_import_emp);
         document.getElementById("form_upload").action = "Physical";
         document.getElementById("form_upload").submit();
+    }
+}
+
+const myform_form_upload_en = document.getElementById("form_upload_en");
+const file_upload_en = document.getElementById("file_upload_en");
+const datepicker2_en = document.getElementById("datepicker2_en");
+const checkup_file_en = document.getElementById("checkup_file_en");
+myform_form_upload_en.addEventListener('submit', (e) => {
+    e.preventDefault();
+    checkInputs_form_upload_en();
+});
+
+function checkInputs_form_upload_en() {
+    const datepicker2_enValue = datepicker2_en.value.trim();
+    const checkup_file_enValue = checkup_file_en.value.trim();
+    if (datepicker2_enValue === "") {
+        setErrorFor(datepicker2_en, 'ກະລຸນາເລືອກປີ');
+    } else {
+        setSuccessFor(datepicker2_en);
+    }
+    if (checkup_file_enValue === "") {
+        setErrorFor(checkup_file_en, 'ກະລຸນາເລືອກຟາຍ');
+    } else {
+        setSuccessFor(checkup_file_en);
+    }
+    if (datepicker2_enValue !== "" && checkup_file_enValue !== "") {
+        // setloading(load_import_emp, btnload_import_emp);
+        document.getElementById("form_upload_en").action = "Physical";
+        document.getElementById("form_upload_en").submit();
     }
 }
 </script>

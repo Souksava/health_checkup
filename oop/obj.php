@@ -36,9 +36,9 @@ class obj{
             echo"</script>";
         }
     }  
-    public static function update_employee($barcode,$emp_id,$emp_name,$surname,$dob,$age,$gender,$company,$branch,$department,$tel,$family_stt,$nation,$ethnnic,$religion,$job,$house_no,$village,$district,$province,$emp_name_en,$surname_en,$village_en,$district_en,$province_en){//Insert Employee                                 
+    public static function update_employee($barcode,$emp_id,$emp_name,$surname,$dob,$age,$gender,$company,$branch,$department,$tel,$family_stt,$nation,$ethnnic,$religion,$job,$house_no,$village,$district,$province,$emp_name_en,$surname_en,$village_en,$district_en,$province_en,$national_en,$religion_en,$occupation_en){//Insert Employee                                 
         global $conn;
-        $result = mysqli_query($conn,"call update_employee('$barcode','$emp_id','$emp_name','$surname','$dob','$age','$gender','$company','$branch','$department','$tel','$family_stt','$nation','$ethnnic','$religion','$job','$house_no','$village','$district','$province','$emp_name_en','$surname_en','$village_en','$district_en','$province_en');");
+        $result = mysqli_query($conn,"call update_employee('$barcode','$emp_id','$emp_name','$surname','$dob','$age','$gender','$company','$branch','$department','$tel','$family_stt','$nation','$ethnnic','$religion','$job','$house_no','$village','$district','$province','$emp_name_en','$surname_en','$village_en','$district_en','$province_en','$national_en','$religion_en','$occupation_en');");
         if(!$result){ //ກວດສອບການບັນທຶກຂໍ້ມູນຖ້າເກີດຂໍ້ຜິດພາດໃຫ້ມາເຮັດວຽກຢູ່ນີ້
             echo"<script>";
             echo"window.location.href='Employee?update=fail';";
@@ -868,21 +868,22 @@ class obj{
                     $weights = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
                     $bmis = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
                     $bps = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
-                    $abos = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
-                    $eyes = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
-                    $teeths = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
-                    $ears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
-                    $lymphs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
-                    $thyroids = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(16, $row)->getValue());
-                    $extremitiess = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(17, $row)->getValue());
-                    $hears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(18, $row)->getValue());
-                    $lungs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(19, $row)->getValue());
-                    $alss = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(20, $row)->getValue());
-                    $others = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(21, $row)->getValue());
-                    $check_others = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(22, $row)->getValue());
-                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(23, $row)->getValue());
-                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(24, $row)->getValue());
-                    $result = mysqli_query($conn,"call insert_pe('$barcode','$year','$hpis','$pmhis','$personals','$familys','$asis','$heights','$weights','$bmis','$bps','$abos','$eyes','$teeths','$ears','$lymphs','$thyroids','$extremitiess','$hears','$lungs','$alss','$others','$check_others','$conclusions','$remarks')");
+                    $pulses = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                    $abos = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
+                    $eyes = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
+                    $teeths = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
+                    $ears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                    $lymphs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                    $thyroids = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(17, $row)->getValue());
+                    $extremitiess = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(18, $row)->getValue());
+                    $skin = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(19, $row)->getValue());
+                    $hears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(20, $row)->getValue());
+                    $lungs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(21, $row)->getValue());
+                    $alss = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(22, $row)->getValue());
+                    $others = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(23, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(24, $row)->getValue());
+                    $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(25, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_pe('$barcode','$year','$hpis','$pmhis','$personals','$familys','$asis','$heights','$weights','$bmis','$bps','$pulses','$abos','$eyes','$teeths','$ears','$lymphs','$thyroids','$extremitiess','$skin','$hears','$lungs','$alss','$others','$conclusions','$remarks')");
                     mysqli_free_result($result);  
                     mysqli_next_result($conn);
                     mysqli_query($conn,"update checkup_status set physic='1' where barcode='$barcode' and year='$year'");
@@ -891,6 +892,40 @@ class obj{
         echo"<script>";
         echo"window.location.href='Physical?import=success';";
         echo"</script>";
+    }
+    public static function update_pe($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+                $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                $hpis = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                $pmhis = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                $personals = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                $familys = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                $asis = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                $eyes = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                $teeths = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                $ears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                $lymphs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                $thyroids = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                $extremitiess = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
+                $skin = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
+                $hears = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
+                $lungs = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                $alss = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                $others = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(17, $row)->getValue());
+                $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(18, $row)->getValue());
+                $remarks = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(19, $row)->getValue());
+                $result = mysqli_query($conn,"call update_pe('$barcode','$year','$hpis','$pmhis','$personals','$familys','$asis','$eyes','$teeths','$ears','$lymphs','$thyroids','$extremitiess','$skin','$hears','$lungs','$alss','$others','$conclusions','$remarks')");
+                mysqli_free_result($result);  
+                mysqli_next_result($conn);
+        }
+    }
+    echo"<script>";
+    echo"window.location.href='Physical?import=success';";
+    echo"</script>";
     }
 
 
@@ -1263,9 +1298,6 @@ public static function import_thry($file_path,$year){
         echo"<script>";
         echo"window.location.href='Cbc?import=success';";
         echo"</script>";
-    }
-    public static function logout(){
-
     }
 
 }

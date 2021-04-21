@@ -121,7 +121,16 @@
             <div class="input-group mb-3">
                 <select name="register_company" id="register_company" class="form-control">
                     <option value="">ເລືອກບໍລິສັດ</option>
-                    <option value="ລາວໂທລະຄົມ">ລາວໂທລະຄົມ</option>
+                    <?php 
+                        $obj->dropdown_company();
+                        foreach($result_dropdown as $com_search){
+                    ?>
+                    <option value="<?php echo $com_search["company"] ?>"><?php echo $com_search["company"] ?></option>
+                    <?php
+                        }
+                        mysqli_free_result($result_dropdown);  
+                        mysqli_next_result($conn);
+                    ?>
                 </select>
                 <input type="text" class="form-control"  name="register_search" id="register_search" placeholder="ລະຫັດ ພ/ງ, ຊື່, ອາຍຸ, ບໍລິສັດ"
                     aria-label="Recipient's username" aria-describedby="button-addon2">
