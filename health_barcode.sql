@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2021 at 11:11 AM
+-- Generation Time: Apr 22, 2021 at 04:30 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -3353,6 +3353,16 @@ CREATE TABLE `immunity` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `machine`
+--
+
+CREATE TABLE `machine` (
+  `machine_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `methamphetamine`
 --
 
@@ -3777,6 +3787,12 @@ ALTER TABLE `heavy_metal`
 ALTER TABLE `immunity`
   ADD PRIMARY KEY (`im_id`),
   ADD KEY `barcode` (`barcode`);
+
+--
+-- Indexes for table `machine`
+--
+ALTER TABLE `machine`
+  ADD PRIMARY KEY (`machine_id`);
 
 --
 -- Indexes for table `methamphetamine`
