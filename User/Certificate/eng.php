@@ -1,6 +1,6 @@
 <!-- Biochemistry  ການກວດສານຊີວະເຄມີໃນເລືອດ-->
 <?php
-  $title = "ພີມລາຍງານການກວດສຸຂະພາບ";
+  $title = "ພີມໃບຢັ້ງຢຶນພາສາອັງກິດ";
   $path = "../../";
   $links = "../";
   $session_path = "../../";
@@ -17,7 +17,7 @@
                 <input type="text" name="year" id="datepicker" class="form-control datepicker" maxlength="4"
                     placeholder="ປີ 20xx" aria-describedby="button-addon2" autocomplete="off">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                    <i class="fas fa-print"></i> ພີມລາຍງານການກວດສຸຂະພາບ
+                    <i class="fas fa-print"></i> ພີມໃບຢັ້ງຢຶນພາສາອັງກິດ
                 </button>
             </div>
         </div>

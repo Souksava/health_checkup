@@ -270,7 +270,7 @@
                             </p>
                         </a>
                     </li>
-                    <!-- <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
@@ -280,7 +280,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?php echo $links ?>Register/languageLAO" class="nav-link">
+                                <a href="<?php echo $links ?>Certificate/Lao" class="nav-link">
                                     <i class="far fa fa-check nav-icon"></i>
                                     <p>ພາສາລາວ</p>
                                 </a>
@@ -288,13 +288,13 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Register/languageLAO" class="nav-link">
+                            <a href="<?php echo $links ?>Certificate/English" class="nav-link">
                                     <i class="far fa fa-check nav-icon"></i>
                                     <p>ພາສາອັງກິດ</p>
                                 </a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
                     <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>

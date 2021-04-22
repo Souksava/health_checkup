@@ -27,3 +27,8 @@ RewriteRule ^User/Checkup/Audio?$ User/Checkup/audio.php
 RewriteRule ^User/Checkup/Spiro?$ User/Checkup/spiro.php
 RewriteRule ^User/Checkup/x-ray?$ User/Checkup/x_ray.php
 RewriteRule ^User/Checkup/Immunity?$ User/Checkup/cxr.php
+
+RewriteRule ^User/Certificate/English?$ User/Certificate/eng.php
+RewriteRule ^User/Certificate/Lao?$ User/Certificate/lao.php
+RewriteRule ^User/Certificate/PrintEnglish?$ User/Certificate/printeng.php
+RewriteRule ^User/Certificate/PrintLao?$ User/Certificate/printlao.php
