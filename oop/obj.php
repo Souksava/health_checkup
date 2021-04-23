@@ -1207,6 +1207,46 @@ public static function import_thry($file_path,$year){
         echo"window.location.href='x-ray?import=success';";
         echo"</script>";
     }
+    public static function import_ekg($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $ekg = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_ekg('$barcode','$year','$ekg','$conclusions','$remark')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+                    mysqli_query($conn,"update checkup_status set ekg='1' where barcode='$barcode' and year='$year'");
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Ekg?import=success';";
+        echo"</script>";
+    }
+    public static function import_muscle($file_path,$year){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $muscle = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $conclusions = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_muscle('$barcode','$year','$muscle','$conclusions','$remark')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+                    mysqli_query($conn,"update checkup_status set muscle='1' where barcode='$barcode' and year='$year'");
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Muscle?import=success';";
+        echo"</script>";
+    }
     public static function import_urine($file_path,$year){
         global $conn;
         $objPHPExcel = PHPExcel_IOFactory::load($file_path);

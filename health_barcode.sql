@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 06:59 AM
+-- Generation Time: Apr 23, 2021 at 11:17 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -361,7 +361,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_checkup_status_limit` (IN `companys` VARCHAR(100), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT s.barcode,emp_name,surname,company,s.year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt FROM checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and s.year LIKE years ORDER BY emp_name LIMIT page,100;
+SELECT s.barcode,emp_name,surname,company,s.year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt,ekg,muscle FROM checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and s.year LIKE years ORDER BY emp_name LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_company` (IN `companys` VARCHAR(100))  NO SQL
@@ -418,6 +418,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_immunity_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark FROM immunity p LEFT JOIN employee e ON
 p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,50;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_mac` ()  NO SQL
+BEGIN
+SELECT * FROM machine;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
@@ -716,31 +721,33 @@ INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocy
 
 CREATE TABLE `checkup_status` (
   `id` int(11) NOT NULL,
-  `barcode` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL,
-  `physic` int(1) NOT NULL,
-  `cbc` int(1) NOT NULL,
-  `bio` int(1) NOT NULL,
-  `urine` int(1) NOT NULL,
-  `meth` int(1) NOT NULL,
-  `thry` int(1) NOT NULL,
-  `stool` int(1) NOT NULL,
-  `metal` int(1) NOT NULL,
-  `tumor` int(1) NOT NULL,
-  `vision` int(1) NOT NULL,
-  `audio` int(1) NOT NULL,
-  `spiro` int(1) NOT NULL,
-  `cxr` int(1) NOT NULL,
-  `intt` int(1) NOT NULL
+  `barcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` year(4) DEFAULT NULL,
+  `physic` int(1) DEFAULT NULL,
+  `cbc` int(1) DEFAULT NULL,
+  `bio` int(1) DEFAULT NULL,
+  `urine` int(1) DEFAULT NULL,
+  `meth` int(1) DEFAULT NULL,
+  `thry` int(1) DEFAULT NULL,
+  `stool` int(1) DEFAULT NULL,
+  `metal` int(1) DEFAULT NULL,
+  `tumor` int(1) DEFAULT NULL,
+  `vision` int(1) DEFAULT NULL,
+  `audio` int(1) DEFAULT NULL,
+  `spiro` int(1) DEFAULT NULL,
+  `cxr` int(1) DEFAULT NULL,
+  `intt` int(1) DEFAULT NULL,
+  `ekg` int(1) DEFAULT NULL,
+  `muscle` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `checkup_status`
 --
 
-INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`) VALUES
-(65, '119042101293', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
-(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0);
+INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`) VALUES
+(65, '119042101293', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1),
+(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3479,6 +3486,14 @@ CREATE TABLE `muscle` (
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `muscle`
+--
+
+INSERT INTO `muscle` (`muscle_id`, `barcode`, `year`, `muscle_name`, `conclusion`, `remark`) VALUES
+(4, '119042101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ'),
+(5, '119042102441', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ');
+
 -- --------------------------------------------------------
 
 --
@@ -4062,7 +4077,7 @@ ALTER TABLE `company_package`
 -- AUTO_INCREMENT for table `ekg`
 --
 ALTER TABLE `ekg`
-  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `heavy_metal`
@@ -4086,7 +4101,7 @@ ALTER TABLE `methamphetamine`
 -- AUTO_INCREMENT for table `muscle`
 --
 ALTER TABLE `muscle`
-  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `oc_vision`
@@ -4152,7 +4167,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `x_ray`
 --
 ALTER TABLE `x_ray`
-  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

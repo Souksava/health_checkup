@@ -37,28 +37,30 @@ if(mysqli_num_rows($result_checkup_status_limit) > 0)
 {
  $output .= '
   <div class="table-responsive">
-  <table class="table-bordered" style="width: 3000px;text-align: center;">
+  <table class="table-bordered" style="width: 4700px;text-align: center;">
     <tr style="font-size: 18px;">
-        <th style="width: 40px;">N0.</th>
+        <th style="width: 60px;">N0.</th>
         <th style="width: 120px;">ບຣາໂຄດ</th>
-        <th style="width: 150px;">ຊື່</th>
-        <th style="width: 100px;">ນາມສະກຸນ</th>
-        <th style="width: 150px;">ບໍລິສັດ</th>
-        <th style="width: 70px;">ປີເຂົ້າກວດ</th>
-        <th style="width: 50px;">physic</th>
-        <th style="width: 50px;">cbc</th>
-        <th style="width: 50px;">bio</th>
-        <th style="width: 50px;">Urine</th>
-        <th style="width: 50px;">meth</th>
-        <th style="width: 50px;">thry</th>
-        <th style="width: 50px;">stool</th>
-        <th style="width: 50px;">metal</th>
-        <th style="width: 50px;">tumor</th>
-        <th style="width: 50px;">vision</th>
-        <th style="width: 50px;">audio</th>
-        <th style="width: 50px;">spiro</th>
-        <th style="width: 50px;">X-Ray</th>
-        <th style="width: 50px;">imm</th>
+        <th style="width: 350px;">ຊື່</th>
+        <th style="width: 150px;">ນາມສະກຸນ</th>
+        <th style="width: 350px;">ບໍລິສັດ</th>
+        <th style="width: 120px;">ປີເຂົ້າກວດ</th>
+        <th style="width: 150px;">PE</th>
+        <th style="width: 150px;">CBC</th>
+        <th style="width: 150px;">Biochemistry</th>
+        <th style="width: 150px;">Urine</th>
+        <th style="width: 150px;">Methamphetamine</th>
+        <th style="width: 150px;">Thryroid</th>
+        <th style="width: 150px;">Stool Exam</th>
+        <th style="width: 150px;">Heavy Metal</th>
+        <th style="width: 150px;">Tumor Marker</th>
+        <th style="width: 150px;">Oc Vision</th>
+        <th style="width: 150px;">Audio</th>
+        <th style="width: 150px;">Spiro</th>
+        <th style="width: 150px;">X-Ray</th>
+        <th style="width: 150px;">ພູມຄຸ້ມກັນວິທະຍາ</th>
+        <th style="width: 150px;">EKG</th>
+        <th style="width: 150px;">Muscle</th>
     </tr>
  ';
  $no_ =  $rank;
@@ -158,6 +160,18 @@ $no_ += 1;
          else{
             $row["intt"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
          }
+         if($row["ekg"] == 1){
+            $row["ekg"] = "<i class='fa fa-calendar-check' style='color: green;'></i>";
+         }
+         else{
+            $row["ekg"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
+         }
+         if($row["muscle"] == 1){
+            $row["muscle"] = "<i class='fa fa-calendar-check' style='color: green;'></i>";
+         }
+         else{
+            $row["muscle"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
+         }
         $output .='
         <td>'.$row["physic"].'</td>
         <td>'.$row["cbc"].'</td>
@@ -173,6 +187,8 @@ $no_ += 1;
         <td>'.$row["spiro"].'</td>
         <td>'.$row["cxr"].'</td>
         <td>'.$row["intt"].'</td>
+        <td>'.$row["ekg"].'</td>
+        <td>'.$row["muscle"].'</td>
     </tr>
   ';
  }
