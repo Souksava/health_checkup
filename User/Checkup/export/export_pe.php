@@ -9,7 +9,7 @@
         <table class="table" border="1" style="width: 90000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
             <th style="width: 40px;">N0.</th>
-            <th style="width: 80px;">Barcode</th>
+            <th style="width: 180px;">Barcode</th>
             <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 200px;">ຊື່</th>
             <th style="width: 150px;">ນາມສະກຸນ</th>
@@ -37,9 +37,10 @@
             <th style="width: 187px;">Lung</th>
             <th style="width: 350px;">Abdomen/Liver/Spleen</th>
             <th style="width: 187px;">Other</th>
+            <th style="width: 187px;">Breat</th>
             <th style="width: 150px;">Conclusion</th>
             <th style="width: 150px;">Remark</th>
-            </tr> 
+        </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_pe('$company','$name','$year')");
         $no_ = 0;
@@ -71,14 +72,14 @@
                 <td>'.$row["lymph"].'</td>
                 <td>'.$row["thyroid"].'</td>
                 <td>'.$row["extremities"].'</td>
+                <td>'.$row["skin"].'</td>
                 <td>'.$row["hear"].'</td>
                 <td>'.$row["lung"].'</td>
                 <td>'.$row["als"].'</td>
                 <td>'.$row["other"].'</td>
-                <td>'.$row["check_other"].'</td>
+                <td>'.$row["breat"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
-                
             </tr>  
         ';
         }

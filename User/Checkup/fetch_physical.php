@@ -71,6 +71,7 @@ if(mysqli_num_rows($result_physical_limit) > 0)
             <th style="width: 87px;">Lung</th>
             <th style="width: 50px;">Abdomen/Liver/Spleen</th>
             <th style="width: 87px;">Other</th>
+            <th style="width: 120px;">Breat</th>
             <th style="width: 50px;">Conclusion</th>
             <th style="width: 50px;">Remark</th>
 
@@ -131,6 +132,7 @@ $no_ += 1;
         <td>'.$row["lung"].'</td>
         <td>'.$row["als"].'</td>
         <td>'.$row["other"].'</td>
+        <td>'.$row["breat"].'</td>
         <td>'.$row["conclusion"].'</td>
         <td>'.$row["remark"].'</td>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2021 at 11:43 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Apr 23, 2021 at 05:06 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -224,11 +224,11 @@ BEGIN
 INSERT INTO package VALUES(pack_id,pack_name);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_pe` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hpis` VARCHAR(50), IN `pmhis` VARCHAR(50), IN `personals` VARCHAR(50), IN `familys` VARCHAR(50), IN `asis` VARCHAR(50), IN `heights` VARCHAR(50), IN `weights` VARCHAR(50), IN `bmis` VARCHAR(50), IN `bps` VARCHAR(50), IN `pulses` VARCHAR(50), IN `abos` VARCHAR(50), IN `eyes` VARCHAR(50), IN `teeths` VARCHAR(50), IN `earss` VARCHAR(50), IN `lymphs` VARCHAR(50), IN `thyroids` VARCHAR(50), IN `extremitiess` VARCHAR(50), IN `skins` VARCHAR(50), IN `hears` VARCHAR(50), IN `lungs` VARCHAR(50), IN `alss` VARCHAR(50), IN `others` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_pe` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hpis` VARCHAR(50), IN `pmhis` VARCHAR(50), IN `personals` VARCHAR(50), IN `familys` VARCHAR(50), IN `asis` VARCHAR(50), IN `heights` VARCHAR(50), IN `weights` VARCHAR(50), IN `bmis` VARCHAR(50), IN `bps` VARCHAR(50), IN `pulses` VARCHAR(50), IN `abos` VARCHAR(50), IN `eyes` VARCHAR(50), IN `teeths` VARCHAR(50), IN `earss` VARCHAR(50), IN `lymphs` VARCHAR(50), IN `thyroids` VARCHAR(50), IN `extremitiess` VARCHAR(50), IN `skins` VARCHAR(50), IN `hears` VARCHAR(50), IN `lungs` VARCHAR(50), IN `alss` VARCHAR(50), IN `others` VARCHAR(50), IN `breats` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
 BEGIN
 INSERT INTO pe(barcode,year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,abo,eye,teeth,ears,lymph,
-thyroid,extremities,skin,hear,lung,als,other,conclusion,remark) VALUES(barcodes,years,hpis,pmhis,personals,familys,asis,heights,weights,bmis,bps,pulses,abos,eyes,
-teeths,earss,lymphs,thyroids,extremitiess,skins,hears,lungs,alss,others,conclusions,remarks);
+thyroid,extremities,skin,hear,lung,als,other,breat,conclusion,remark) VALUES(barcodes,years,hpis,pmhis,personals,familys,asis,heights,weights,bmis,bps,pulses,abos,eyes,
+teeths,earss,lymphs,thyroids,extremitiess,skins,hears,lungs,alss,others,breats,conclusions,remarks);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_register` (IN `reg_ids` INT(11), IN `barcodes` VARCHAR(30), IN `times` VARCHAR(50), IN `queues` INT(5), IN `years` INT(4), IN `dates` VARCHAR(50))  NO SQL
@@ -427,14 +427,14 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,
-abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
+abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,breat,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
 asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,
-abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
+abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,breat,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
 asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
@@ -656,6 +656,14 @@ CREATE TABLE `cbc` (
   `year` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `cbc`
+--
+
+INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocyte`, `eo`, `baso`, `platelets`, `rbc`, `mvc`, `mch`, `mchc`, `red_blood`, `conclusion`, `remark`, `year`) VALUES
+(7, '119042101293', 'test', 'test', 'tset', 'tset', 'test', 'stset', 'tste', 'ststa', 'sasg', 's', 'gsa', 'gas', 'gs', 'gs', 'ag', '', 2021),
+(8, '119042102441', 'test', 'test', 'tset', 'tset', 'test', 'stset', 'tste', 'ststa', 'sasg', 's', 'gsa', 'gas', 'gs', 'gs', 'ag', '', 2021);
+
 -- --------------------------------------------------------
 
 --
@@ -687,8 +695,8 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`) VALUES
-(65, '119042101293', 2021, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(66, '119042102441', 2021, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(65, '119042101293', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3524,6 +3532,7 @@ CREATE TABLE `pe` (
   `lung` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `als` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `other` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `breat` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hpi_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -3550,9 +3559,9 @@ CREATE TABLE `pe` (
 -- Dumping data for table `pe`
 --
 
-INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `pulse`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `skin`, `hear`, `lung`, `als`, `other`, `conclusion`, `remark`, `hpi_en`, `pmhi_en`, `personal_en`, `family_en`, `asi_en`, `eye_en`, `teeth_en`, `ears_en`, `lymph_en`, `thryroid_en`, `extremities_en`, `skin_en`, `hear_en`, `lung_en`, `als_en`, `other_en`, `conclusion_en`, `remark_en`) VALUES
-(26, '119042101293', 2021, 'ປົກກະຕິ', '', '', '', '', '157', '56', '22.72', '124/80', '70', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', '', 'History of Presenting illness', 'Past Medical History illness', 'Personal', 'Family', 'Alcohol, Smoking illness', 'Eyes', 'Teeth/Gum', 'Ears/Nos/Throat', 'Lymph Nodes', 'Thyroid Gland', 'Extremities', 'Skin', 'Heart', 'Lung', 'Abdomen/Liver/Spleen', 'Other', 'Conclusion', 'Remark'),
-(27, '119042102441', 2021, '', '', '', '', '', '168', '80', '22.72', '124/81', '60', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ຄວາມດັນເລືອດຢູ່ໃນເກນປົກກະຕິ', '', 'History of Presenting illness', 'Past Medical History illness', 'Personal', 'Family', 'Alcohol, Smoking illness', 'Eyes', 'Teeth/Gum', 'Ears/Nos/Throat', 'Lymph Nodes', 'Thyroid Gland', 'Extremities', 'Skin', 'Heart', 'Lung', 'Abdomen/Liver/Spleen', 'Other', 'Conclusion', 'Remark');
+INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `pulse`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `skin`, `hear`, `lung`, `als`, `other`, `breat`, `conclusion`, `remark`, `hpi_en`, `pmhi_en`, `personal_en`, `family_en`, `asi_en`, `eye_en`, `teeth_en`, `ears_en`, `lymph_en`, `thryroid_en`, `extremities_en`, `skin_en`, `hear_en`, `lung_en`, `als_en`, `other_en`, `conclusion_en`, `remark_en`) VALUES
+(28, '119042101293', 2021, '', '', '', '', '', '157', '56', '22.72', '124/80', '70', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ນ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ', 'ປົກກະຕິ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, '119042102441', 2021, '', '', '', '', '', '168', '80', '22.72', '124/81', '60', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ຄວາມດັນເລືອດຢູ່ໃນເກນປົກກະຕິ', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3975,7 +3984,7 @@ ALTER TABLE `biochemistry`
 -- AUTO_INCREMENT for table `cbc`
 --
 ALTER TABLE `cbc`
-  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `checkup_status`
@@ -4035,7 +4044,7 @@ ALTER TABLE `oc_vision`
 -- AUTO_INCREMENT for table `pe`
 --
 ALTER TABLE `pe`
-  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `registerdetail`
