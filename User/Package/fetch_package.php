@@ -47,8 +47,6 @@ $no2_ += 1;
   $output .= '
     <tr>
         <td>
-            <a href="#" data-toggle="modal" data-target="#exampleModalAdd_more"
-                class="fas fa-pen toolcolor btnAdd_more"></a>&nbsp;&nbsp;
             <a href="#" data-toggle="modal" data-target="#exampleModalDelete_ID_Package"
                 class="fa fa-trash toolcolor btnDelete_Package"></a>
         </td>
