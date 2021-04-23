@@ -260,6 +260,22 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Checkup/Ekg" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ການກວດແທກຄື້ນຫົວໃຈ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Checkup/Muscle" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ການກວດສະມັດຕະພາບທາງກ້າມ</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="<?php echo $links ?>Status/status" class="nav-link">

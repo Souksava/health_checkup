@@ -850,6 +850,27 @@ class obj{
         global $result_tumor_marker_limit;
         $result_tumor_marker_limit = mysqli_query($conn,"call select_tumor_marker_limit('$company','$name','$year','$page');");
     }
+    public static function select_ekg($company,$name,$year){
+        global $conn;
+        global $result_ekg;
+        $result_ekg = mysqli_query($conn,"call select_ekg('$company','$name','$year');");
+    }
+    public static function select_ekg_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_ekg_limit;
+        $result_ekg_limit = mysqli_query($conn,"call select_ekg_limit('$company','$name','$year','$page');");
+    }
+    public static function select_muscle($company,$name,$year){
+        global $conn;
+        global $result_muscle;
+        $result_muscle = mysqli_query($conn,"call select_muscle('$company','$name','$year');");
+    }
+
+    public static function select_muscle_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_muscle_limit;
+        $result_muscle_limit = mysqli_query($conn,"call select_muscle_limit('$company','$name','$year','$page');");
+    }
 
 
     public static function import_pe($file_path,$year){

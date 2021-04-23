@@ -21,20 +21,13 @@
    $highlight = $_POST["query"];
    $highlight2 = $_POST["querys"];
    $highlight3 = $_POST["year"];
-   $obj->select_x_ray_limit("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%",$page);
+   $obj->select_ekg_limit("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%",$page);
 }
 else
 {
-   $obj->select_x_ray_limit("%%", "%%", "%%", $page);
+   $obj->select_ekg_limit("%%", "%%", "%%", $page);
 }
-// $output .= '
-// <style>
-//    .double_barcode:hover{
-//       cursor: pointer;
-//    }
-// </style>
-// ';
-if(mysqli_num_rows($result_x_ray_limit) > 0)
+if(mysqli_num_rows($result_ekg_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
@@ -48,18 +41,18 @@ if(mysqli_num_rows($result_x_ray_limit) > 0)
                 <th style="width: 250px;">ນາມສະກຸນ</th>
                 <th style="width: 350px;">ບໍລິສັດ</th>
                 <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-                <th style="width: 250px;">X-Ray</th>
+                <th style="width: 250px;">EKG</th>
                 <th style="width: 250px;">Conclusion</th>
                 <th style="width: 450px;">Remark</th>
             </tr>
  ';
  $no_ = $rank;
- while($row = mysqli_fetch_array($result_x_ray_limit))
+ while($row = mysqli_fetch_array($result_ekg_limit))
  {
 $no_ += 1;
   $output .= '
     <tr>
-    <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["x_id"].'"></td>
+    <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["ekg_id"].'"></td>
     <td>'.$no_.'</td>
     <td>'.$row["barcode"].'</td>
     <td>'.$row["emp_id"].'</td>
@@ -67,13 +60,13 @@ $no_ += 1;
     <td>'.$row["surname"].'</td>
     <td>'.$row["company"].'</td>
     <td>'.$row["year"].'</td>
-    <td>'.$row["x_ray"].'</td>
+    <td>'.$row["ekg_name"].'</td>
     <td>'.$row["conclusion"].'</td>
     <td>'.$row["remark"].'</td>
     </tr>
   ';
  }
- mysqli_free_result($result_x_ray_limit);  
+ mysqli_free_result($result_ekg_limit);  
  mysqli_next_result($conn);
  $output .='
    </table>
@@ -82,14 +75,14 @@ $no_ += 1;
  echo $output;
  if(isset($_POST["query"]) || isset($_POST["querys"]) || isset($_POST["year"]))
 {
-   $obj->select_x_ray("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%");
+   $obj->select_ekg("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%");
 }
 else
 {
-   $obj->select_x_ray("%%", "%%", "%%");
+   $obj->select_ekg("%%", "%%", "%%");
 }
- $count = mysqli_num_rows($result_x_ray);
- mysqli_free_result($result_x_ray);  
+ $count = mysqli_num_rows($result_ekg);
+ mysqli_free_result($result_ekg);  
  mysqli_next_result($conn);
  $a = ceil($count/100);
  if(isset($_POST['page'])){
@@ -180,44 +173,4 @@ var highlight3 = "<?php echo $_POST['year']; ?>";
 $('.result').highlight([highlight]);
 $('.result').highlight([highlight2]);
 $('.result').highlight([highlight3]);
-// $('.double_barcode').on('dblclick', function() {
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-
-//         console.log(data);
-//         $('#print_barcode2').val(data[0]);
-//         $('#barcode_id2').val(data[3]);
-//         document.getElementById("formBarcode").action = "barcode";
-//         document.getElementById("formBarcode").submit();
-// });
-
-//    $('.btnDelete_register').on('click', function() {
-//         $('#exampleModalDeleteRegiter').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#delete_register').val(data[0]);
-//     });
-//     $('.btnPrint').on('click', function() {
-//         $('#exampleModalPrint').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#print_barcode').val(data[0]);
-//         $('#barcode_id').val(data[3]);
-//     });
-//     $('.btnAddmorepackage').on('click', function() {
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#reg_id').val(data[0]);
-//     });
 </script>

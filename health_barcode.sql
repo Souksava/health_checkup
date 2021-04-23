@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 05:06 AM
+-- Generation Time: Apr 23, 2021 at 06:59 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -74,6 +74,11 @@ BEGIN
 DELETE FROM cbc WHERE cbc_id=id;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `del_ekg` (IN `id` VARCHAR(11))  NO SQL
+BEGIN
+DELETE FROM ekg WHERE ekg_id=id;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `del_heavy_metal` (IN `id` VARCHAR(11))  NO SQL
 BEGIN
 DELETE FROM heavy_metal WHERE hea_id=id;
@@ -87,6 +92,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `del_methamphetamine` (IN `id` VARCHAR(11))  NO SQL
 BEGIN
 DELETE FROM methamphetamine WHERE meth_id=id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `del_muscle` (IN `id` VARCHAR(11))  NO SQL
+BEGIN
+DELETE FROM muscle WHERE muscle_id=id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `del_oc_vision` (IN `id` VARCHAR(11))  NO SQL
@@ -192,6 +202,11 @@ BEGIN
 INSERT INTO company(company,company_en) VALUES(companys,company_ens);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_ekg` (IN `barcodes` VARCHAR(30), IN `years` YEAR(4), IN `ekgs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+BEGIN
+INSERT INTO ekg(barcode,year,ekg_name,conclusion,remark) VALUES(barcodes,years,ekgs,conclusions,remarks);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_employee` (IN `barcodes` VARCHAR(30), IN `emp_ids` VARCHAR(20), IN `emp_names` VARCHAR(50), IN `surnames` VARCHAR(50), IN `dobs` DATE, IN `ages` VARCHAR(3), IN `genders` VARCHAR(10), IN `companys` VARCHAR(80), IN `branchs` VARCHAR(50), IN `departments` VARCHAR(50), IN `tels` VARCHAR(30), IN `family_stts` VARCHAR(50), IN `nations` VARCHAR(50), IN `ethnics` VARCHAR(50), IN `religions` VARCHAR(50), IN `jobs` VARCHAR(50), IN `house_nos` VARCHAR(10), IN `villages` VARCHAR(50), IN `districts` VARCHAR(50), IN `provinces` VARCHAR(50))  NO SQL
 BEGIN 
 INSERT INTO employee(barcode,emp_id,emp_name,surname,dob,age,gender,com_id,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province) VALUES(barcodes,emp_ids,emp_names,surnames,dobs,ages,genders,companys,branchs,departments,tels,family_stts,nations,ethnics,religions,jobs,house_nos,villages,districts,provinces); END$$
@@ -212,6 +227,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_metham` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `methamphetamines` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
 BEGIN
 INSERT INTO methamphetamine(barcode,methamphetamine,conclusion,remark,year) VALUES(barcodes,methamphetamines,conclusions,remarks,years);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_muscle` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(4), IN `muscles` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+BEGIN
+INSERT INTO muscle(barcode,year,muscle_name,conclusion,remark) VALUES(barcodes,years,muscles,conclusions,remarks);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_oc_vision` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `look_fars` VARCHAR(50), IN `look_nears` VARCHAR(50), IN `look_ups` VARCHAR(50), IN `check_eyes` VARCHAR(50), IN `check_colors` VARCHAR(50), IN `radiuss` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
@@ -354,6 +374,18 @@ BEGIN
 SELECT * FROM company WHERE company LIKE companys or company_en LIKE companys ORDER BY company ASC LIMIT page,15;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_ekg` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark FROM ekg p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_ekg_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(100), IN `page` INT(5))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark FROM ekg p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_employee` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50))  NO SQL
 BEGIN
 select barcode,emp_id,emp_name,surname,dob,age,gender,c.company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,emp_name_en,surname_en,village_en,district_en,province_en,national_en,religion_en,occupation_en from employee e LEFT JOIN company c on e.com_id=c.com_id where company LIKE companys and (emp_id LIKE name or emp_name or surname like name or age like name or gender like name or department like name) ORDER BY emp_name asc;
@@ -398,6 +430,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham_limit` (IN `companys`
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark
 FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_muscle` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark FROM muscle p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_muscle_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
+BEGIN
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark FROM muscle p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_oc_vision` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
@@ -527,7 +571,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_x_ray_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark FROM x_ray p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,50;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `test_` ()  NO SQL
@@ -695,8 +739,8 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`) VALUES
-(65, '119042101293', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(65, '119042101293', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
+(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -751,7 +795,7 @@ CREATE TABLE `ekg` (
   `ekg_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `year` year(4) DEFAULT NULL,
-  `ekg` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ekg_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -760,8 +804,8 @@ CREATE TABLE `ekg` (
 -- Dumping data for table `ekg`
 --
 
-INSERT INTO `ekg` (`ekg_id`, `barcode`, `year`, `ekg`, `conclusion`, `remark`) VALUES
-(1, '119042101293', 2021, 'ປົກກະຕິ', NULL, NULL);
+INSERT INTO `ekg` (`ekg_id`, `barcode`, `year`, `ekg_name`, `conclusion`, `remark`) VALUES
+(7, '119042101293', 2021, '1000', 'ປົກກະຕິ', 'ປົກກະຕິ');
 
 -- --------------------------------------------------------
 
@@ -3430,7 +3474,7 @@ CREATE TABLE `muscle` (
   `muscle_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `year` year(4) DEFAULT NULL,
-  `muscle` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `muscle_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -3783,6 +3827,14 @@ CREATE TABLE `x_ray` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `x_ray`
+--
+
+INSERT INTO `x_ray` (`x_id`, `barcode`, `x_ray`, `conclusion`, `remark`, `year`) VALUES
+(5, '119042101293', 'ປົກກະຕິ', 'ປົກກະຕິ', '', 2021),
+(6, '119042102441', 'ປົກກະຕິ', 'ປົກກະຕິ', '', 2021);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -3832,7 +3884,8 @@ ALTER TABLE `company_package`
 -- Indexes for table `ekg`
 --
 ALTER TABLE `ekg`
-  ADD PRIMARY KEY (`ekg_id`);
+  ADD PRIMARY KEY (`ekg_id`),
+  ADD KEY `barcode` (`barcode`);
 
 --
 -- Indexes for table `employee`
@@ -3872,7 +3925,8 @@ ALTER TABLE `methamphetamine`
 -- Indexes for table `muscle`
 --
 ALTER TABLE `muscle`
-  ADD PRIMARY KEY (`muscle_id`);
+  ADD PRIMARY KEY (`muscle_id`),
+  ADD KEY `barcode` (`barcode`);
 
 --
 -- Indexes for table `oc_vision`
@@ -4008,7 +4062,7 @@ ALTER TABLE `company_package`
 -- AUTO_INCREMENT for table `ekg`
 --
 ALTER TABLE `ekg`
-  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `heavy_metal`
@@ -4032,7 +4086,7 @@ ALTER TABLE `methamphetamine`
 -- AUTO_INCREMENT for table `muscle`
 --
 ALTER TABLE `muscle`
-  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `oc_vision`
@@ -4098,7 +4152,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `x_ray`
 --
 ALTER TABLE `x_ray`
-  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -4136,6 +4190,12 @@ ALTER TABLE `company_package`
   ADD CONSTRAINT `company_package_ibfk_2` FOREIGN KEY (`pack_id`) REFERENCES `package` (`pack_id`);
 
 --
+-- Constraints for table `ekg`
+--
+ALTER TABLE `ekg`
+  ADD CONSTRAINT `ekg_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+
+--
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
@@ -4158,6 +4218,12 @@ ALTER TABLE `immunity`
 --
 ALTER TABLE `methamphetamine`
   ADD CONSTRAINT `methamphetamine_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+
+--
+-- Constraints for table `muscle`
+--
+ALTER TABLE `muscle`
+  ADD CONSTRAINT `muscle_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
 
 --
 -- Constraints for table `oc_vision`

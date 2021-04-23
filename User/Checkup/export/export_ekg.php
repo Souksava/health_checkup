@@ -10,17 +10,17 @@
         <tr style="font-size: 18px;">
         <th style="width: 80px;">N0.</th>
         <th style="width: 200px;">Barcode</th>
-        <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+        <th style="width: 180px;">ລະຫັດພະນັກງານ</th>
         <th style="width: 350px;">ຊື່</th>
         <th style="width: 250px;">ນາມສະກຸນ</th>
         <th style="width: 350px;">ບໍລິສັດ</th>
-        <th style="width: 200px;">ປີເຂົ້າກວດ</th>
-        <th style="width: 250px;">X-Ray</th>
+        <th style="width: 100px;">ປີເຂົ້າກວດ</th>
+        <th style="width: 250px;">EKG</th>
         <th style="width: 250px;">Conclusion</th>
         <th style="width: 400px;">Remark</th>
             </tr> 
         ';
-       $resultexport = mysqli_query($conn,"call select_x_ray('$company','$name','$year')");
+       $resultexport = mysqli_query($conn,"call select_ekg('$company','$name','$year')");
         $no_ = 0;
         foreach($resultexport as $row){
             $no_ += 1;
@@ -33,7 +33,7 @@
             <td>'.$row["surname"].'</td>
             <td>'.$row["company"].'</td>
             <td>'.$row["year"].'</td>
-            <td>'.$row["x_ray"].'</td>
+            <td>'.$row["ekg_name"].'</td>
             <td>'.$row["conclusion"].'</td>
             <td>'.$row["remark"].'</td>   
             </tr>  
@@ -41,7 +41,7 @@
         }
         $output .= '</table>';
         header("Content-Type: application/xls");
-        header("Content-Disposition:attachment; filename=export_x_ray.xls");
+        header("Content-Disposition:attachment; filename=export_EKG.xls");
         echo $output;
     }
 
