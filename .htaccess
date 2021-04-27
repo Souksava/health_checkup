@@ -34,3 +34,6 @@ RewriteRule ^User/Certificate/English?$ User/Certificate/eng.php
 RewriteRule ^User/Certificate/Lao?$ User/Certificate/lao.php
 RewriteRule ^User/Certificate/PrintEnglish?$ User/Certificate/printeng.php
 RewriteRule ^User/Certificate/PrintLao?$ User/Certificate/printlao.php
+
+RewriteRule ^User/Book/Book?$ User/book/book.php
+RewriteRule ^User/Book/Print?$ User/book/print.php
