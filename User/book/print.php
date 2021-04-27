@@ -34,6 +34,7 @@ $year = $_POST["year"];
     body {
         background-color: rgb(204,204,204);
         font-size: 12px;
+        font-Family: "Phetsarath OT";
     }
 
     .paper {
