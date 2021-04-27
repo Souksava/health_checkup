@@ -24,12 +24,31 @@ else{
     $audio_remark = $audio_remark.", ";
 }
 
+
+
+$cbc = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' and year='$year';");
+$fetch_cbc = mysqli_fetch_array($cbc,MYSQLI_ASSOC);
+$cbc_conclusion = $fetch_cbc["conclusion"];
+$cbc_remark = $fetch_cbc["remark"];
+if($cbc_conclusion != ""){
+    $cbc_conclusion = "CBC: ".$cbc_conclusion.", ";
+}
+else{
+    $cbc_conclusion = "";
+}
+if($cbc_remark == ""){
+    $cbc_remark = "";
+}
+else{
+    $cbc_remark = $cbc_remark.", ";
+}
+
 $bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' and year='$year';");
 $fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
 $bio_conclusion = $fetch_bio["conclusion"];
 $bio_remark = $fetch_bio["remark"];
 if($bio_conclusion != ""){
-    $bio_conclusion = "Bio: ".$bio_conclusion.", ";
+    $bio_conclusion = "Bio: ".$bio_conclusion.". ";
 }
 else{
     $bio_conclusion = "";
@@ -38,10 +57,251 @@ if($bio_remark == ""){
     $bio_remark = "";
 }
 else{
-    $bio_remark = $bio_remark.", ";
+    $bio_remark = $bio_remark.". ";
 }
 
 
+$ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' and year='$year';");
+$fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
+$ekg_c = $fetch_ekg["ekg_name"];
+$ekg_conclusion = $fetch_ekg["conclusion"];
+if($ekg_c != ""){
+    $ekg_c = "EKG: ".$ekg_c.", ";
+}
+else{
+    $ekg_c = "";
+}
+if($ekg_conclusion == ""){
+    $ekg_conclusion = "";
+}
+else{
+    $ekg_conclusion = $ekg_conclusion.", ";
+}
+
+
+$heavy_metal = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' and year='$year';");
+$fetch_heavy_metal = mysqli_fetch_array($heavy_metal,MYSQLI_ASSOC);
+$heavy_metal_conclusion = $fetch_heavy_metal["conclusion"];
+$heavy_metal_remark = $fetch_heavy_metal["remark"];
+if($heavy_metal_conclusion != ""){
+    $heavy_metal_conclusion = "Metal: ".$heavy_metal_conclusion.", ";
+}
+else{
+    $heavy_metal_conclusion = "";
+}
+if($heavy_metal_remark == ""){
+    $heavy_metal_remark = "";
+}
+else{
+    $heavy_metal_remark = $heavy_metal_remark.", ";
+}
+
+
+
+$immunity = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' and year='$year';");
+$fetch_immunity = mysqli_fetch_array($immunity,MYSQLI_ASSOC);
+$immunity_conclusion = $fetch_immunity["conclusion"];
+$immunity_remark = $fetch_immunity["remark"];
+if($immunity_conclusion != ""){
+    $immunity_conclusion = "IMM: ".$immunity_conclusion.", ";
+}
+else{
+    $immunity_conclusion = "";
+}
+if($immunity_remark == ""){
+    $immunity_remark = "";
+}
+else{
+    $immunity_remark = $immunity_remark.", ";
+}
+
+
+
+$methamphetamine = mysqli_query($conn,"SELECT * FROM methamphetamine where barcode='$barcode' and year='$year';");
+$fetch_methamphetamine = mysqli_fetch_array($methamphetamine,MYSQLI_ASSOC);
+$methamphetamine_conclusion = $fetch_methamphetamine["conclusion"];
+$methamphetamine_remark = $fetch_methamphetamine["remark"];
+if($methamphetamine_conclusion != ""){
+    $methamphetamine_conclusion = "Meth: ".$methamphetamine_conclusion.", ";
+}
+else{
+    $methamphetamine_conclusion = "";
+}
+if($methamphetamine_remark == ""){
+    $methamphetamine_remark = "";
+}
+else{
+    $methamphetamine_remark = $methamphetamine_remark.", ";
+}
+
+
+
+$muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' and year='$year';");
+$fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
+$muscle_c = $fetch_muscle["muscle_name"];
+$muscle_conclusion = $fetch_muscle["conclusion"];
+if($muscle_c != ""){
+    $muscle_c = "Muscle: ".$muscle_c.", ";
+}
+else{
+    $muscle_c = "";
+}
+if($muscle_conclusion == ""){
+    $muscle_conclusion = "";
+}
+else{
+    $muscle_conclusion = $muscle_conclusion.", ";
+}
+
+
+
+$vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' and year='$year';");
+$fetch_vision = mysqli_fetch_array($vision,MYSQLI_ASSOC);
+$vision_conclusion = $fetch_vision["conclusion"];
+$vision_remark = $fetch_vision["remark"];
+if($vision_conclusion != ""){
+    $vision_conclusion = "Vision: ".$vision_conclusion.", ";
+}
+else{
+    $vision_conclusion = "";
+}
+if($vision_remark == ""){
+    $vision_remark = "";
+}
+else{
+    $vision_remark = $vision_remark.", ";
+}
+
+
+// $pe = mysqli_query($conn,"SELECT * FROM pe where barcode='$barcode' and year='$year';");
+// $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
+// $pe_conclusion = $fetch_pe["conclusion"];
+// $pe_remark = $fetch_pe["remark"];
+// if($pe_conclusion != ""){
+//     $pe_conclusion = "PE: ".$pe_conclusion.", ";
+// }
+// else{
+//     $pe_conclusion = "";
+// }
+// if($pe_remark == ""){
+//     $pe_remark = "";
+// }
+// else{
+//     $pe_remark = $pe_remark.", ";
+// }
+
+
+
+$se = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' and year='$year';");
+$fetch_se = mysqli_fetch_array($se,MYSQLI_ASSOC);
+$se_conclusion = $fetch_se["conclusion"];
+$se_remark = $fetch_se["remark"];
+if($se_conclusion != ""){
+    $se_conclusion = "Stool Ex: ".$se_conclusion.", ";
+}
+else{
+    $se_conclusion = "";
+}
+if($se_remark == ""){
+    $se_remark = "";
+}
+else{
+    $se_remark = $se_remark.", ";
+}
+
+
+
+
+$spirometry = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' and year='$year';");
+$fetch_spirometry = mysqli_fetch_array($spirometry,MYSQLI_ASSOC);
+$spirometry_conclusion = $fetch_spirometry["conclusion"];
+$spirometry_remark = $fetch_spirometry["remark"];
+if($spirometry_conclusion != ""){
+    $spirometry_conclusion = "Spiro: ".$spirometry_conclusion.", ";
+}
+else{
+    $spirometry_conclusion = "";
+}
+if($spirometry_remark == ""){
+    $spirometry_remark = "";
+}
+else{
+    $spirometry_remark = $spirometry_remark.", ";
+}
+
+
+
+
+$thryroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' and year='$year';");
+$fetch_thryroid = mysqli_fetch_array($thryroid,MYSQLI_ASSOC);
+$thryroid_conclusion = $fetch_thryroid["conclusion"];
+$thryroid_remark = $fetch_thryroid["remark"];
+if($thryroid_conclusion != ""){
+    $thryroid_conclusion = "Thryroid: ".$thryroid_conclusion.", ";
+}
+else{
+    $thryroid_conclusion = "";
+}
+if($thryroid_remark == ""){
+    $thryroid_remark = "";
+}
+else{
+    $thryroid_remark = $thryroid_remark.", ";
+}
+
+
+
+$Tumor = mysqli_query($conn,"SELECT * FROM Tumor_marker where barcode='$barcode' and year='$year';");
+$fetch_Tumor = mysqli_fetch_array($Tumor,MYSQLI_ASSOC);
+$Tumor_conclusion = $fetch_Tumor["conclusion"];
+$Tumor_remark = $fetch_Tumor["remark"];
+if($Tumor_conclusion != ""){
+    $Tumor_conclusion = "Tumor: ".$Tumor_conclusion.", ";
+}
+else{
+    $Tumor_conclusion = "";
+}
+if($Tumor_remark == ""){
+    $Tumor_remark = "";
+}
+else{
+    $Tumor_remark = $Tumor_remark.", ";
+}
+
+$urinalvsis = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' and year='$year';");
+$fetch_urinalvsis= mysqli_fetch_array($urinalvsis,MYSQLI_ASSOC);
+$urinalvsis_conclusion = $fetch_urinalvsis["conclusion"];
+$urinalvsis_remark = $fetch_urinalvsis["remark"];
+if($urinalvsis_conclusion != ""){
+    $urinalvsis_conclusion = "Urine: ".$urinalvsis_conclusion.", ";
+}
+else{
+    $urinalvsis_conclusion = "";
+}
+if($urinalvsis_remark == ""){
+    $urinalvsis_remark = "";
+}
+else{
+    $urinalvsis_remark = $urinalvsis_remark.", ";
+}
+
+
+$x_ray = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' and year='$year';");
+$fetch_x_ray= mysqli_fetch_array($x_ray,MYSQLI_ASSOC);
+$x_ray_c = $fetch_x_ray["x_ray"];
+$x_ray_conclusion = $fetch_x_ray["conclusion"];
+if($x_ray_c != ""){
+    $x_ray_c = "X-Ray: ".$x_ray_c.", ";
+}
+else{
+    $x_ray_c = "";
+}
+if($x_ray_conclusion == ""){
+    $x_ray_conclusion = "";
+}
+else{
+    $x_ray_conclusion = $x_ray_conclusion.", ";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -219,8 +479,9 @@ else{
         II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນຽ: <br>
         </div>
         <div class="two2">
-        '.$audio_conclusion.' CBC: Normal, Urine/analysis: Normal,Biochemistry <br>
-        Cholesterol: 226 mg/dl, Triglyceride: 377 mg/dl, ນອກນັ້ນປົກກະຕິ <br>
+        '.$audio_conclusion.''.$cbc_conclusion.''.$ekg_c.''.$heavy_metal_conclusion.''.$immunity_conclusion.''.$methamphetamine_conclusion.'
+        '.$muscle_c.''.$vision_conclusion.''.$se_conclusion.''.$spirometry_conclusion.''.$thryroid_conclusion.''.$Tumor_conclusion.''.$urinalvsis_conclusion.'
+        '.$x_ray_c.''.$bio_conclusion.'
         </div>
 <br>
 
@@ -232,7 +493,9 @@ else{
             -
             </div>
             <div style="width: 90%;float:left;">
-            '.$audio_remark.'
+            '.$audio_remark.''.$cbc_remark.''.$ekg_conclusion.''.$heavy_metal_remark.''.$immunity_remark.''.$methamphetamine_remark.'
+            '.$muscle_conclusion.''.$vision_remark.''.$se_remark.''.$spirometry_remark.''.$thryroid_remark.''.$Tumor_remark.''.$urinalvsis_remark.'
+            '.$x_ray_conclusion.''.$bio_remark.'
             </div>
         </div>
 <br>

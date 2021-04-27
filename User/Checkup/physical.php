@@ -195,7 +195,7 @@
  }
   include ("../../header-footer/footer.php");
   if(isset($_POST["file_upload"])){
-      $obj->import_pe($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+      $obj->import_pe($_FILES["checkup_file"]["tmp_name"],$_POST["year"],$user_id);
   }
   if(isset($_POST["file_upload_en"])){
     $obj->update_pe($_FILES["checkup_file_en"]["tmp_name"],$_POST["year_en"]);

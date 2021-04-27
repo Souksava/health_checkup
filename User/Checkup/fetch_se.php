@@ -38,26 +38,30 @@ if(mysqli_num_rows($result_se_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-    <table class="table-bordered" style="width: 3000px;text-align: center;">
+    <table class="table-bordered" style="width: 8000px;text-align: center;">
         <tr style="font-size: 18px;">
             <th style="width: 87px;">ເຄື່ອງມື</th>
-            <th style="width: 50px;">N0.</th>
-            <th style="width: 50px;">Barcode</th>
-            <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 50px;">ຊື່</th>
-            <th style="width: 50px;">ນາມສະກຸນ</th>
-            <th style="width: 50px;">ບໍລິສັດ</th>
-            <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 87px;">Color/Appeamce</th>
-            <th style="width: 50px;">StoolWBC</th>
-            <th style="width: 87px;">StoolRBC</th>
-            <th style="width: 50px;">Parasite</th>
-            <th style="width: 87px;">Samonella Spp</th>
-            <th style="width: 50px;">Shigella Spp</th>
-            <th style="width: 87px;">Vivrio Spp</th>
-            <th style="width: 150px;">Vibrio Cholera 01</th>
-            <th style="width: 87px;">Conclusion</th>
-            <th style="width: 50px;">Remark</th>
+            <th style="width: 80px;">N0.</th>
+            <th style="width: 150px;">Barcode</th>
+            <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 350px;">ຊື່</th>
+            <th style="width: 250px;">ນາມສະກຸນ</th>
+            <th style="width: 450px;">ບໍລິສັດ</th>
+            <th style="width: 250px;">ປີເຂົ້າກວດ</th>
+            <th style="width: 287px;">Color/Appeamce</th>
+            <th style="width: 250px;">Stool Appearance</th>
+            <th style="width: 150px;">StoolWBC</th>
+            <th style="width: 187px;">StoolRBC</th>
+            <th style="width: 150px;">Parasite</th>
+            <th style="width: 287px;">Samonella Spp</th>
+            <th style="width: 250px;">Shigella Spp</th>
+            <th style="width: 287px;">Vivrio Spp</th>
+            <th style="width: 350px;">Vibrio Cholera 01</th>
+            <th style="width: 287px;">Conclusion</th>
+            <th style="width: 250px;">Remark</th>
+            <th style="width: 287px;">Conclusion EN</th>
+            <th style="width: 250px;">Remark EN</th>
+            <th style="width: 250px;">Username</th>
         </tr>
  ';
  $no_ = $rank;
@@ -75,6 +79,7 @@ $no_ += 1;
         <td>'.$row["company"].'</td>
         <td>'.$row["year"].'</td>
         <td>'.$row["color"].'</td>
+        <td>'.$row["stool_ap"].'</td>
         <td>'.$row["wbc"].'</td>
         <td>'.$row["rbc"].'</td>
         <td>'.$row["parasite"].'</td>
@@ -84,6 +89,9 @@ $no_ += 1;
         <td>'.$row["vibrio"].'</td>
         <td>'.$row["conclusion"].'</td>
         <td>'.$row["remark"].'</td>
+        <td>'.$row["conclusion_en"].'</td>
+        <td>'.$row["remark_en"].'</td>
+        <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

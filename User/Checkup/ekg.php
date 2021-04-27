@@ -150,7 +150,7 @@
  }
     include ("../../header-footer/footer.php");
     if(isset($_POST["file_upload"])){
-        $obj->import_ekg($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+        $obj->import_ekg($_FILES["checkup_file"]["tmp_name"],$_POST["year"],$user_id);
     }
     if(isset($_GET["import"])=="success"){
         echo'<script type="text/javascript">

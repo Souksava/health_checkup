@@ -38,7 +38,7 @@ if(mysqli_num_rows($result_x_ray_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-        <table class="table-bordered" style="width: 1900px;text-align: center;">
+        <table class="table-bordered" style="width: 3900px;text-align: center;">
             <tr style="font-size: 18px;">
             <th style="width: 80px;">ເຄື່ອງມື</th>
                 <th style="width: 80px;">N0.</th>
@@ -51,6 +51,9 @@ if(mysqli_num_rows($result_x_ray_limit) > 0)
                 <th style="width: 250px;">X-Ray</th>
                 <th style="width: 250px;">Conclusion</th>
                 <th style="width: 450px;">Remark</th>
+                <th style="width: 50px;">X-Ray EN</th>
+                <th style="width: 87px;">Conclusion EN</th>
+                <th style="width: 50px;">Username</th>
             </tr>
  ';
  $no_ = $rank;
@@ -70,6 +73,9 @@ $no_ += 1;
     <td>'.$row["x_ray"].'</td>
     <td>'.$row["conclusion"].'</td>
     <td>'.$row["remark"].'</td>
+    <td>'.$row["x_ray_en"].'</td>
+    <td>'.$row["conclusion_en"].'</td>
+    <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

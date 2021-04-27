@@ -31,6 +31,9 @@
             <th style="width: 350px;">Red blood cell morphology</th>
             <th style="width: 187px;">Conclusion</th>
             <th style="width: 150px;">Remark</th>
+            <th style="width: 87px;">Conclusion EN</th>
+            <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr>
         ';
        $resultexport = mysqli_query($conn,"call select_cbc('$company','$name','$year')");
@@ -62,6 +65,9 @@
             <td>'.$row["red_blood"].'</td>
             <td>'.$row["conclusion"].'</td>
             <td>'.$row["remark"].'</td>
+            <td>'.$row["conclusion_en"].'</td>
+            <td>'.$row["remark_en"].'</td>
+            <td>'.$row["user_name"].'</td>
         </tr>
         ';
         }

@@ -38,36 +38,40 @@ if(mysqli_num_rows($result_audio_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
- <table class="table-bordered" style="width: 6000px;text-align: center;">
+ <table class="table-bordered" style="width: 8000px;text-align: center;">
      <tr style="font-size: 18px;">
-         <th style="width: 50px;">ເຄື່ອງມື</th>
-         <th style="width: 50px;">N0.</th>
-         <th style="width: 50px;">Barcode</th>
-         <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
-         <th style="width: 50px;">ຊື່</th>
-         <th style="width: 50px;">ນາມສະກຸນ</th>
-         <th style="width: 50px;">ບໍລິສັດ</th>
-         <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-         <th style="width: 87px;">AUD_SRR_500#</th>
-         <th style="width: 50px;">AUD_SRR_1000#</th>
-         <th style="width: 87px;">AUD_SRR_2000#</th>
-         <th style="width: 50px;">AUD_SRR_3000#</th>
-         <th style="width: 87px;">AUD_SRR_AVG#</th>
-         <th style="width: 50px;">AUD_HRR_4000#</th>
-         <th style="width: 87px;">AUD_HRR_6000#</th>
-         <th style="width: 50px;">AUD_HRR_8000#</th>
-         <th style="width: 87px;">AUD_HRR_AVG#</th>
-         <th style="width: 50px;">AUD_SRL_500#</th>
-         <th style="width: 87px;">AUD_SRL_1000#</th>
-         <th style="width: 50px;">AUD_SRL_2000#</th>
-         <th style="width: 87px;">AUD_SRL_3000#</th>
-         <th style="width: 50px;">AUD_SRL_AVG#</th>
-         <th style="width: 87px;">AUD_HRL_4000#</th>
-         <th style="width: 50px;">AUD_HRL_6000#</th>
-         <th style="width: 87px;">AUD_HRL_8000#</th>
-         <th style="width: 50px;">AUD_HRL_AVG#</th>
-         <th style="width: 87px;">Conclusion</th>
-         <th style="width: 50px;">Remark</th>
+         <th style="width: 150px;">ເຄື່ອງມື</th>
+         <th style="width: 90px;">N0.</th>
+         <th style="width: 150px;">Barcode</th>
+         <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+         <th style="width: 450px;">ຊື່</th>
+         <th style="width: 350px;">ນາມສະກຸນ</th>
+         <th style="width: 450px;">ບໍລິສັດ</th>
+         <th style="width: 150px;">ປີເຂົ້າກວດ</th>
+         <th style="width: 287px;">AUD_SRR_500#</th>
+         <th style="width: 250px;">AUD_SRR_1000#</th>
+         <th style="width: 287px;">AUD_SRR_2000#</th>
+         <th style="width: 250px;">AUD_SRR_3000#</th>
+         <th style="width: 287px;">AUD_SRR_AVG#</th>
+         <th style="width: 250px;">AUD_HRR_4000#</th>
+         <th style="width: 287px;">AUD_HRR_6000#</th>
+         <th style="width: 250px;">AUD_HRR_8000#</th>
+         <th style="width: 287px;">AUD_HRR_AVG#</th>
+         <th style="width: 250px;">AUD_SRL_500#</th>
+         <th style="width: 287px;">AUD_SRL_1000#</th>
+         <th style="width: 250px;">AUD_SRL_2000#</th>
+         <th style="width: 287px;">AUD_SRL_3000#</th>
+         <th style="width: 250px;">AUD_SRL_AVG#</th>
+         <th style="width: 287px;">AUD_HRL_4000#</th>
+         <th style="width: 250px;">AUD_HRL_6000#</th>
+         <th style="width: 287px;">AUD_HRL_8000#</th>
+         <th style="width: 250px;">AUD_HRL_AVG#</th>
+         <th style="width: 287px;">Conclusion</th>
+         <th style="width: 350px;">Remark</th>
+         <th style="width: 387px;">Conclusion EN</th>
+         <th style="width: 350px;">Remark EN</th>
+         <th style="width: 350px;">Username</th> 
+         </tr>
         </tr>
  ';
  $no_ = $rank;
@@ -104,6 +108,9 @@ $no_ += 1;
         <td>'.$row["l_h_avg"].'</td>
         <td>'.$row["conclusion"].'</td>
         <td>'.$row["remark"].'</td>
+        <td>'.$row["conclusion_en"].'</td>
+        <td>'.$row["remark_en"].'</td>
+        <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

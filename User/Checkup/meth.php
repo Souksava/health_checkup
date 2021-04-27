@@ -148,7 +148,7 @@ if(isset($_POST['btnDelete'])){
  }
   include ("../../header-footer/footer.php");
   if(isset($_POST["file_upload"])){
-      $obj->import_metham($_FILES["checkup_file"]["tmp_name"],$_POST["year"]);
+      $obj->import_metham($_FILES["checkup_file"]["tmp_name"],$_POST["year"],$user_id);
   }
   
   if(isset($_GET["import"])=="success"){

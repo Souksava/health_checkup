@@ -8,27 +8,31 @@
         $output = ' 
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
-            <th style="width: 87px;">N0.</th>
-            <th style="width: 150px;">Barcode</th>
-            <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 350px;">ຊື່</th>
-            <th style="width: 150px;">ນາມສະກຸນ</th>
-            <th style="width: 250px;">ບໍລິສັດ</th>
-            <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 387px;">fasting Blood Sugar(FBS)</th>
-            <th style="width: 250px;">Cholesterol(CHO)</th>
-            <th style="width: 487px;">High-density lipoprotein(HDL-C)</th>
-            <th style="width: 450px;">Low-density lipoprotein(LDL-C)</th>
-            <th style="width: 387px;">Triglycerides(Trig)</th>
-            <th style="width: 250px;">Uric acid(UA)</th>
-            <th style="width: 187px;">Bun</th>
-            <th style="width: 250px;">Creatinine</th>
-            <th style="width: 187px;">SGOT</th>
-            <th style="width: 150px;">SGPT</th>
-            <th style="width: 287px;">Alk.Phosphatase</th>
-            <th style="width: 150px;">GGT</th>
-            <th style="width: 187px;">Conclusion</th>
-            <th style="width: 150px;">Remark</th>
+                <th style="width: 87px;">No.</th>
+                <th style="width: 50px;">Barcode</th>
+                <th style="width: 50px;">ລະຫັດພະນັກງານ</th>
+                <th style="width: 50px;">ຊື່</th>
+                <th style="width: 50px;">ນາມສະກຸນ</th>
+                <th style="width: 50px;">ບໍລິສັດ</th>
+                <th style="width: 50px;">ປີເຂົ້າກວດ</th>
+                <th style="width: 87px;">fasting Blood Sugar(FBS)</th>
+                <th style="width: 50px;">Cholesterol(CHO)</th>
+                <th style="width: 87px;">High-density lipoprotein(HDL-C)</th>
+                <th style="width: 50px;">Low-density lipoprotein(LDL-C)</th>
+                <th style="width: 87px;">Triglycerides(Trig)</th>
+                <th style="width: 50px;">Uric acid(UA)</th>
+                <th style="width: 87px;">Bun</th>
+                <th style="width: 50px;">Creatinine</th>
+                <th style="width: 87px;">SGOT</th>
+                <th style="width: 50px;">SGPT</th>
+                <th style="width: 87px;">Alk.Phosphatase</th>
+                <th style="width: 50px;">GGT</th>
+                <th style="width: 50px;">HBA1C</th>
+                <th style="width: 87px;">Conclusion</th>
+                <th style="width: 50px;">Remark</th>
+                <th style="width: 87px;">Conclusion EN</th>
+                <th style="width: 50px;">Remark EN</th>
+                <th style="width: 50px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_biochemistry('$company','$name','$year')");
@@ -56,8 +60,12 @@
                 <td>'.$row["sgpt"].'</td>
                 <td>'.$row["alk"].'</td>
                 <td>'.$row["ggt"].'</td>
+                <td>'.$row["hbac"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
+                <td>'.$row["conclusion_en"].'</td>
+                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["user_name"].'</td>
             </tr>  
         ';
         }

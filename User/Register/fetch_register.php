@@ -52,6 +52,7 @@ if(mysqli_num_rows($result_register_limit) > 0)
         <th style="width: 80px;">Year</th>
         <th style="width: 100px;">ວັນທີລົງທະບຽນ</th>
         <th style="width: 100px;">ເວລາ</th>
+        <th style="width: 100px;">ຜູ້ລົງທະບຽນ</th>
     </tr>
  ';
  $no_ = $rank;
@@ -80,6 +81,7 @@ $no_ += 1;
         <td>'.$row["year"].'</td>
         <td>'.date("d/m/Y",strtotime($row["date"])).'</td>
         <td>'.$row["time"].'</td>
+        <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

@@ -16,6 +16,7 @@
             <th style="width: 250px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
             <th style="width: 287px;">Color/Appeamce</th>
+            <th style="width: 250px;">Stool Appearance</th>
             <th style="width: 250px;">StoolWBC</th>
             <th style="width: 287px;">StoolRBC</th>
             <th style="width: 250px;">Parasite</th>
@@ -25,6 +26,9 @@
             <th style="width: 350px;">Vibrio Cholera 01</th>
             <th style="width: 187px;">Conclusion</th>
             <th style="width: 150px;">Remark</th>
+            <th style="width: 87px;">Conclusion EN</th>
+            <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_se('$company','$name','$year')");
@@ -41,6 +45,7 @@
                 <td>'.$row["company"].'</td>
                 <td>'.$row["year"].'</td>
                 <td>'.$row["color"].'</td>
+                <td>'.$row["stool_ap"].'</td>
                 <td>'.$row["wbc"].'</td>
                 <td>'.$row["rbc"].'</td>
                 <td>'.$row["parasite"].'</td>
@@ -50,6 +55,9 @@
                 <td>'.$row["vibrio"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
+                <td>'.$row["conclusion_en"].'</td>
+                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["user_name"].'</td>
             </tr>  
         ';
         }

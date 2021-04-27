@@ -38,25 +38,27 @@ if(mysqli_num_rows($result_tumor_marker_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-    <table class="table-bordered" style="width: 3000px;text-align: center;">
+    <table class="table-bordered" style="width: 5000px;text-align: center;">
         <tr style="font-size: 18px;">
-        <th style="width: 50px;">ເຄື່ອງມື</th>
-            <th style="width: 50px;">ເຄື່ອງມື</th>
-            <th style="width: 50px;">N0.</th>
-            <th style="width: 50px;">Barcode</th>
-            <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 50px;">ຊື່</th>
-            <th style="width: 50px;">ນາມສະກຸນ</th>
-            <th style="width: 50px;">ບໍລິສັດ</th>
-            <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 150px;">Alpha-Fetoprotein(AFP)</th>
-            <th style="width: 200px;">Carcino Embrionic Antigen(CEA)</th>
-            <th style="width: 200px;">Prostate-Specific Antigen(PSA)</th>
-            <th style="width: 50px;">CA 19-9</th>
-            <th style="width: 87px;">CA 15-3</th>
-            <th style="width: 50px;">CA 125</th>
-            <th style="width: 87px;">Conclusion</th>
-            <th style="width: 50px;">Remark</th>
+            <th style="width: 150px;">ເຄື່ອງມື</th>
+            <th style="width: 80px;">N0.</th>
+            <th style="width: 150px;">Barcode</th>
+            <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 450px;">ຊື່</th>
+            <th style="width: 350px;">ນາມສະກຸນ</th>
+            <th style="width: 450px;">ບໍລິສັດ</th>
+            <th style="width: 150px;">ປີເຂົ້າກວດ</th>
+            <th style="width: 350px;">Alpha-Fetoprotein(AFP)</th>
+            <th style="width: 300px;">Carcino Embrionic Antigen(CEA)</th>
+            <th style="width: 300px;">Prostate-Specific Antigen(PSA)</th>
+            <th style="width: 150px;">CA 19-9</th>
+            <th style="width: 187px;">CA 15-3</th>
+            <th style="width: 150px;">CA 125</th>
+            <th style="width: 387px;">Conclusion</th>
+            <th style="width: 350px;">Remark</th>
+            <th style="width: 387px;">Conclusion EN</th>
+            <th style="width: 350px;">Remark EN</th>
+            <th style="width: 350px;">Username</th>
         </tr>
  ';
  $no_ = $rank;
@@ -65,7 +67,7 @@ if(mysqli_num_rows($result_tumor_marker_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
-    <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["tum_id"].'"></td>
+         <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["tum_id"].'"></td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>
@@ -81,6 +83,9 @@ $no_ += 1;
         <td>'.$row["ca_125"].'</td>
         <td>'.$row["conclusion"].'</td>
         <td>'.$row["remark"].'</td>
+        <td>'.$row["conclusion_en"].'</td>
+        <td>'.$row["remark_en"].'</td>
+        <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

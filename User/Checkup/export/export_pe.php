@@ -9,37 +9,58 @@
         <table class="table" border="1" style="width: 90000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
             <th style="width: 40px;">N0.</th>
-            <th style="width: 180px;">Barcode</th>
+            <th style="width: 80px;">Barcode</th>
             <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 200px;">ຊື່</th>
             <th style="width: 150px;">ນາມສະກຸນ</th>
             <th style="width: 150px;">ບໍລິສັດ</th>
             <th style="width: 70px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 300px;">History of Presenting illness</th>
-            <th style="width: 300px;">Past Medical History illness</th>
-            <th style="width: 100px;">Personal</th>
-            <th style="width: 150px;">Family</th>
-            <th style="width: 300px;">Alcohol, Smoking illness</th>
-            <th style="width: 150px;">Height</th>
-            <th style="width: 187px;">Weight</th>
-            <th style="width: 150px;">BMI</th>
-            <th style="width: 187px;">Blood Pressure</th>
-            <th style="width: 187px;">Pulse</th>
-            <th style="width: 150px;">ABO</th>
-            <th style="width: 187px;">Eyes</th>
-            <th style="width: 150px;">Teeth/Gum</th>
-            <th style="width: 187px;">Ears/Nos/Throat</th>
+            <th style="width: 170px;">History of Presenting illness</th>
+            <th style="width: 170px;">Past Medical History illness</th>
+            <th style="width: 87px;">Personal</th>
+            <th style="width: 50px;">Family</th>
+            <th style="width: 150px;">Alcohol, Smoking illness</th>
+            <th style="width: 50px;">Height</th>
+            <th style="width: 87px;">Weight</th>
+            <th style="width: 50px;">BMI</th>
+            <th style="width: 150px;">Blood Pressure</th>
+            <th style="width: 100px;">Pulse</th>
+            <th style="width: 50px;">ABO</th>
+            <th style="width: 87px;">Eyes</th>
+            <th style="width: 50px;">Teeth/Gum</th>
+            <th style="width: 87px;">Ears/Nos/Throat</th>
             <th style="width: 150px;">Lymph Nodes</th>
-            <th style="width: 187px;">Thyroid Gland</th>
-            <th style="width: 150px;">Extremities</th>
-            <th style="width: 187px;">Skin</th>
-            <th style="width: 150px;">Heart</th>
-            <th style="width: 187px;">Lung</th>
-            <th style="width: 350px;">Abdomen/Liver/Spleen</th>
-            <th style="width: 187px;">Other</th>
-            <th style="width: 187px;">Breat</th>
-            <th style="width: 150px;">Conclusion</th>
-            <th style="width: 150px;">Remark</th>
+            <th style="width: 87px;">Thyroid Gland</th>
+            <th style="width: 50px;">Extremities</th>
+            <th style="width: 87px;">Skin</th>
+            <th style="width: 50px;">Heart</th>
+            <th style="width: 87px;">Lung</th>
+            <th style="width: 50px;">Abdomen/Liver/Spleen</th>
+            <th style="width: 87px;">Other</th>
+            <th style="width: 120px;">Breat</th>
+            <th style="width: 50px;">Conclusion</th>
+            <th style="width: 50px;">Remark</th>
+
+
+            <th style="width: 170px;">History of Presenting illness EN</th>
+            <th style="width: 170px;">Past Medical History illness EN</th>
+            <th style="width: 87px;">Personal EN</th>
+            <th style="width: 50px;">Family EN</th>
+            <th style="width: 150px;">Alcohol, Smoking illness EN</th>
+            <th style="width: 87px;">Eyes EN</th>
+            <th style="width: 50px;">Teeth/Gum EN</th>
+            <th style="width: 87px;">Ears/Nos/Throat EN</th>
+            <th style="width: 150px;">Lymph Nodes EN</th>
+            <th style="width: 87px;">Thyroid Gland EN</th>
+            <th style="width: 50px;">Extremities EN</th>
+            <th style="width: 87px;">Skin EN</th>
+            <th style="width: 50px;">Heart EN</th>
+            <th style="width: 87px;">Lung EN</th>
+            <th style="width: 250px;">Abdomen/Liver/Spleen EN</th>
+            <th style="width: 187px;">Other EN</th>
+            <th style="width: 50px;">Conclusion EN</th>
+            <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_pe('$company','$name','$year')");
@@ -80,6 +101,27 @@
                 <td>'.$row["breat"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
+        
+        
+                <td>'.$row["hpi_en"].'</td>
+                <td>'.$row["pmhi_en"].'</td>
+                <td>'.$row["personal_en"].'</td>
+                <td>'.$row["family_en"].'</td>
+                <td>'.$row["asi_en"].'</td>
+                <td>'.$row["eye_en"].'</td>
+                <td>'.$row["teeth_en"].'</td>
+                <td>'.$row["ears_en"].'</td>
+                <td>'.$row["lymph_en"].'</td>
+                <td>'.$row["thryroid_en"].'</td>
+                <td>'.$row["extremities_en"].'</td>
+                <td>'.$row["skin_en"].'</td>
+                <td>'.$row["hear_en"].'</td>
+                <td>'.$row["lung_en"].'</td>
+                <td>'.$row["als_en"].'</td>
+                <td>'.$row["other_en"].'</td>
+                <td>'.$row["conclusion_en"].'</td>
+                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["user_name"].'</td>
             </tr>  
         ';
         }

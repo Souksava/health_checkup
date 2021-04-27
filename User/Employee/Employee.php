@@ -633,7 +633,7 @@
             echo"</script>";
         }
         else{
-            $obj->new_register($_POST["reg_id"],$_POST["queue"],$_POST["register_barcode"],$_POST["pack_id"],$_POST["packmore"]);
+            $obj->new_register($_POST["reg_id"],$_POST["queue"],$_POST["register_barcode"],$_POST["pack_id"],$_POST["packmore"],$user_id);
         }
     }
     if(isset($_GET["package"]) || isset($_GET["sticker"])=="fail"){
@@ -698,7 +698,7 @@
         swal("", "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ !", "error");
         </script>';
       } 
-      if(isset($_GET["regis"])=="success"){
+      if(isset($_GET["regis2"])=="success"){
         echo'<script type="text/javascript">
         swal("", "ລົງທະບຽນສຳເລັດ !", "success");
         </script>';

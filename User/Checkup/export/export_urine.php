@@ -28,6 +28,9 @@
             <th style="width: 287px;">Epithelium/Hpf</th>
             <th style="width: 150px;">Conclusion</th>
             <th style="width: 187px;">Remark</th>
+            <th style="width: 87px;">Conclusion EN</th>
+            <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_urine('$company','$name','$year')");
@@ -55,7 +58,10 @@
                 <td>'.$row["rbc"].'</td>
                 <td>'.$row["epit"].'</td>
                 <td>'.$row["conclusion"].'</td>
-                <td>'.$row["remark"].'</td>       
+                <td>'.$row["remark"].'</td>      
+                <td>'.$row["conclusion_en"].'</td>
+                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["user_name"].'</td> 
             </tr>  
         ';
         }

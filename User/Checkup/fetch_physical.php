@@ -94,6 +94,7 @@ if(mysqli_num_rows($result_physical_limit) > 0)
             <th style="width: 187px;">Other EN</th>
             <th style="width: 50px;">Conclusion EN</th>
             <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr>
  ';
  $no_ = $rank;
@@ -155,6 +156,7 @@ $no_ += 1;
         <td>'.$row["other_en"].'</td>
         <td>'.$row["conclusion_en"].'</td>
         <td>'.$row["remark_en"].'</td>
+        <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

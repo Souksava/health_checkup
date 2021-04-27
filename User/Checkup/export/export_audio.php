@@ -35,6 +35,9 @@
             <th style="width: 250px;">AUD_HRL_AVG#</th>
             <th style="width: 287px;">Conclusion</th>
             <th style="width: 250px;">Remark</th>
+            <th style="width: 387px;">Conclusion EN</th>
+            <th style="width: 350px;">Remark EN</th>
+            <th style="width: 350px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_audio('$company','$name','$year')");
@@ -70,6 +73,9 @@
                 <td>'.$row["l_h_avg"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
+                <td>'.$row["conclusion_en"].'</td>
+                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["user_name"].'</td>
             </tr>  
         ';
         }

@@ -40,7 +40,7 @@ if(mysqli_num_rows($result_biochemistry_limit) > 0)
  <div class="table-responsive">
     <table class="table-bordered" style="width: 6000px;text-align: center;">
         <tr style="font-size: 18px;">
-        <th style="width: 50px;">ເຄື່ອງມື</th>
+            <th style="width: 50px;">ເຄື່ອງມື</th>
             <th style="width: 87px;">No.</th>
             <th style="width: 50px;">Barcode</th>
             <th style="width: 50px;">ລະຫັດພະນັກງານ</th>
@@ -60,8 +60,12 @@ if(mysqli_num_rows($result_biochemistry_limit) > 0)
             <th style="width: 50px;">SGPT</th>
             <th style="width: 87px;">Alk.Phosphatase</th>
             <th style="width: 50px;">GGT</th>
+            <th style="width: 50px;">HBA1C</th>
             <th style="width: 87px;">Conclusion</th>
             <th style="width: 50px;">Remark</th>
+            <th style="width: 87px;">Conclusion EN</th>
+            <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr>
  ';
  $no_ = $rank;
@@ -92,8 +96,12 @@ $no_ += 1;
         <td>'.$row["sgpt"].'</td>
         <td>'.$row["alk"].'</td>
         <td>'.$row["ggt"].'</td>
+        <td>'.$row["hbac"].'</td>
         <td>'.$row["conclusion"].'</td>
         <td>'.$row["remark"].'</td>
+        <td>'.$row["conclusion_en"].'</td>
+        <td>'.$row["remark_en"].'</td>
+        <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

@@ -18,6 +18,9 @@
         <th style="width: 250px;">X-Ray</th>
         <th style="width: 250px;">Conclusion</th>
         <th style="width: 400px;">Remark</th>
+        <th style="width: 50px;">X-Ray EN</th>
+        <th style="width: 87px;">Conclusion EN</th>
+        <th style="width: 50px;">Username</th>
             </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_x_ray('$company','$name','$year')");
@@ -35,7 +38,10 @@
             <td>'.$row["year"].'</td>
             <td>'.$row["x_ray"].'</td>
             <td>'.$row["conclusion"].'</td>
-            <td>'.$row["remark"].'</td>   
+            <td>'.$row["remark"].'</td>  
+            <td>'.$row["x_ray_en"].'</td>
+            <td>'.$row["conclusion_en"].'</td>
+            <td>'.$row["user_name"].'</td> 
             </tr>  
         ';
         }

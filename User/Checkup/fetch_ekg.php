@@ -31,19 +31,22 @@ if(mysqli_num_rows($result_ekg_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-        <table class="table-bordered" style="width: 1900px;text-align: center;">
+        <table class="table-bordered" style="width: 2900px;text-align: center;">
             <tr style="font-size: 18px;">
             <th style="width: 80px;">ເຄື່ອງມື</th>
                 <th style="width: 80px;">N0.</th>
                 <th style="width: 150px;">Barcode</th>
                 <th style="width: 200px;">ລະຫັດພະນັກງານ</th>
-                <th style="width: 350px;">ຊື່</th>
-                <th style="width: 250px;">ນາມສະກຸນ</th>
-                <th style="width: 350px;">ບໍລິສັດ</th>
+                <th style="width: 450px;">ຊື່</th>
+                <th style="width: 350px;">ນາມສະກຸນ</th>
+                <th style="width: 450px;">ບໍລິສັດ</th>
                 <th style="width: 150px;">ປີເຂົ້າກວດ</th>
                 <th style="width: 250px;">EKG</th>
-                <th style="width: 250px;">Conclusion</th>
+                <th style="width: 450px;">Conclusion</th>
                 <th style="width: 450px;">Remark</th>
+                <th style="width: 487px;">EKG EN</th>
+                <th style="width: 487px;">Conclusion EN</th>
+                <th style="width: 250px;">Username</th>
             </tr>
  ';
  $no_ = $rank;
@@ -63,6 +66,9 @@ $no_ += 1;
     <td>'.$row["ekg_name"].'</td>
     <td>'.$row["conclusion"].'</td>
     <td>'.$row["remark"].'</td>
+    <td>'.$row["ekg_en"].'</td>
+    <td>'.$row["conclusion_en"].'</td>
+    <td>'.$row["user_name"].'</td>
     </tr>
   ';
  }

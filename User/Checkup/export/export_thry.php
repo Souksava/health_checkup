@@ -22,6 +22,9 @@
             <th style="width: 187px;">T4</th>
             <th style="width: 250px;">Conclusion</th>
             <th style="width: 287px;">Remark</th>
+            <th style="width: 87px;">Conclusion EN</th>
+            <th style="width: 50px;">Remark EN</th>
+            <th style="width: 50px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_thryroid('$company','$name','$year')");
@@ -44,6 +47,9 @@
                 <td>'.$row["t4"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
+                <td>'.$row["conclusion_en"].'</td>
+                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["user_name"].'</td>
             </tr>  
         ';
         }

@@ -37,6 +37,7 @@
                     if($user['stt_id'] == 1)
                     {
                         $_SESSION['health_ses_id'] = session_id();
+                        $_SESSION['user_id'] = $user['user_id'];
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['user_name'] = $user['user_name'];
                         $_SESSION['health_ses_status_id'] = 1;
@@ -47,6 +48,7 @@
                         $_SESSION['health_ses_id'] = session_id();
                         session_start();
                         unset($_SESSION['health_ses_id']);
+                        unset($_SESSION['user_id']);
                         unset($_SESSION['email']);
                         unset($_SESSION['user_name']);
                         unset($_SESSION['emp_id']);
