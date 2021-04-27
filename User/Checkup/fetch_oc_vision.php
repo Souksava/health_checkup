@@ -38,7 +38,7 @@ if(mysqli_num_rows($result_oc_vision_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
- <table class="table-bordered" style="width: 5500px;text-align: center;">
+ <table class="table-bordered" style="width: 7500px;text-align: center;">
      <tr style="font-size: 18px;">
      <th style="width: 50px;">ເຄື່ອງມື</th>
          <th style="width: 90px;">N0.</th>

@@ -41,7 +41,8 @@ if(mysqli_num_rows($result_spiro_limit) > 0)
  <div class="table-responsive">
  <table class="table-bordered" style="width: 8000px;text-align: center;">
      <tr style="font-size: 18px;">
-         <th style="width: 50px;">N0.</th>
+         <th style="width: 120px;">ເຄື່ອງມື</th>
+         <th style="width: 90px;">N0.</th>
          <th style="width: 150px;">Barcode</th>
          <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
          <th style="width: 450px;">ຊື່</th>

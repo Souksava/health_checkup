@@ -38,7 +38,7 @@ if(mysqli_num_rows($result_heavy_metal_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
- <table class="table-bordered" style="width: 6000px;text-align: center;">
+ <table class="table-bordered" style="width: 12000px;text-align: center;">
    <tr style="font-size: 18px;">
          <th style="width: 87px;">ເຄື່ອງມື</th>
          <th style="width: 90px;">N0.</th>

@@ -38,7 +38,7 @@ if(mysqli_num_rows($result_tumor_marker_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-    <table class="table-bordered" style="width: 5000px;text-align: center;">
+    <table class="table-bordered" style="width: 6000px;text-align: center;">
         <tr style="font-size: 18px;">
             <th style="width: 150px;">ເຄື່ອງມື</th>
             <th style="width: 80px;">N0.</th>

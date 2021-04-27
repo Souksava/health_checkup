@@ -10,7 +10,7 @@
             <tr style="font-size: 18px;">
                 <th style="width: 90px;">N0.</th>
                 <th style="width: 180px;">Barcode</th>
-                <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
+                <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
                 <th style="width: 400px;">ຊື່</th>
                 <th style="width: 250px;">ນາມສະກຸນ</th>
                 <th style="width: 350px;">ບໍລິສັດ</th>
