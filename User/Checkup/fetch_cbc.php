@@ -38,35 +38,35 @@ if(mysqli_num_rows($result_cbc_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-    <table class="table-bordered" style="width: 6000px;text-align: center;">
+    <table class="table-bordered" style="width: 9000px;text-align: center;">
         <tr style="font-size: 18px;">
         <th style="width: 50px;">ເຄື່ອງມື</th>
             <th style="width: 87px;">N0.</th>
-            <th style="width: 50px;">Barcode</th>
-            <th style="width: 50px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 50px;">ຊື່</th>
-            <th style="width: 50px;">ນາມສະກຸນ</th>
-            <th style="width: 50px;">ບໍລິສັດ</th>
-            <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 87px;">Hemoglobin(Hb)</th>
-            <th style="width: 50px;">Hematocrit(Hct)</th>
-            <th style="width: 87px;">White Blood Cell(WBC)</th>
-            <th style="width: 50px;">Neutrophil(Ne)</th>
-            <th style="width: 87px;">Lymphocyte(Lym)</th>
-            <th style="width: 50px;">Monocyte</th>
-            <th style="width: 87px;">Eosinophil(EO)</th>
-            <th style="width: 50px;">Basophil(Baso)</th>
-            <th style="width: 87px;">Platelets Count</th>
-            <th style="width: 50px;">Red blood cell(RBC)</th>
-            <th style="width: 87px;">MCV</th>
-            <th style="width: 50px;">MCH</th>
-            <th style="width: 87px;">MCHC</th>
-            <th style="width: 50px;">Red blood cell morphology</th>
-            <th style="width: 87px;">Conclusion</th>
-            <th style="width: 50px;">Remark</th>
-            <th style="width: 87px;">Conclusion EN</th>
-            <th style="width: 50px;">Remark EN</th>
-            <th style="width: 50px;">Username</th>
+            <th style="width: 150px;">Barcode</th>
+            <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 350px;">ຊື່</th>
+            <th style="width: 250px;">ນາມສະກຸນ</th>
+            <th style="width: 350px;">ບໍລິສັດ</th>
+            <th style="width: 150px;">ປີເຂົ້າກວດ</th>
+            <th style="width: 287px;">Hemoglobin(Hb)</th>
+            <th style="width: 250px;">Hematocrit(Hct)</th>
+            <th style="width: 387px;">White Blood Cell(WBC)</th>
+            <th style="width: 350px;">Neutrophil(Ne)</th>
+            <th style="width: 387px;">Lymphocyte(Lym)</th>
+            <th style="width: 150px;">Monocyte</th>
+            <th style="width: 387px;">Eosinophil(EO)</th>
+            <th style="width: 350px;">Basophil(Baso)</th>
+            <th style="width: 387px;">Platelets Count</th>
+            <th style="width: 450px;">Red blood cell(RBC)</th>
+            <th style="width: 187px;">MCV</th>
+            <th style="width: 150px;">MCH</th>
+            <th style="width: 187px;">MCHC</th>
+            <th style="width: 550px;">Red blood cell morphology</th>
+            <th style="width: 387px;">Conclusion</th>
+            <th style="width: 350px;">Remark</th>
+            <th style="width: 387px;">Conclusion EN</th>
+            <th style="width: 350px;">Remark EN</th>
+            <th style="width: 150px;">Username</th>
         </tr>
  ';
  $no_ = $rank;

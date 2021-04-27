@@ -8,27 +8,27 @@
         $output = ' 
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
-            <th style="width: 87px;">N0.</th>
+            <th style="width: 90px;">N0.</th>
             <th style="width: 150px;">Barcode</th>
             <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 350px;">ຊື່</th>
+            <th style="width: 450px;">ຊື່</th>
             <th style="width: 250px;">ນາມສະກຸນ</th>
-            <th style="width: 250px;">ບໍລິສັດ</th>
+            <th style="width: 350px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 287px;">Color/Appeamce</th>
-            <th style="width: 250px;">Stool Appearance</th>
-            <th style="width: 250px;">StoolWBC</th>
+            <th style="width: 387px;">Color/Appeamce</th>
+            <th style="width: 350px;">Stool Appearance</th>
+            <th style="width: 350px;">StoolWBC</th>
             <th style="width: 287px;">StoolRBC</th>
             <th style="width: 250px;">Parasite</th>
             <th style="width: 287px;">Samonella Spp</th>
             <th style="width: 250px;">Shigella Spp</th>
             <th style="width: 287px;">Vivrio Spp</th>
-            <th style="width: 350px;">Vibrio Cholera 01</th>
+            <th style="width: 450px;">Vibrio Cholera 01</th>
             <th style="width: 187px;">Conclusion</th>
             <th style="width: 150px;">Remark</th>
-            <th style="width: 87px;">Conclusion EN</th>
-            <th style="width: 50px;">Remark EN</th>
-            <th style="width: 50px;">Username</th>
+            <th style="width: 487px;">Conclusion EN</th>
+            <th style="width: 450px;">Remark EN</th>
+            <th style="width: 250px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_se('$company','$name','$year')");

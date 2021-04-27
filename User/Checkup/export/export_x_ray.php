@@ -7,20 +7,20 @@
         $year = "%".$_POST["year2"]."%";
         $output = ' 
         <table class="table" border="1" style="width: 1500px;font-size: 18px;font-family: '."Phetsarath OT".';">
-        <tr style="font-size: 18px;">
-        <th style="width: 80px;">N0.</th>
-        <th style="width: 200px;">Barcode</th>
-        <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
-        <th style="width: 350px;">ຊື່</th>
-        <th style="width: 250px;">ນາມສະກຸນ</th>
-        <th style="width: 350px;">ບໍລິສັດ</th>
-        <th style="width: 200px;">ປີເຂົ້າກວດ</th>
-        <th style="width: 250px;">X-Ray</th>
-        <th style="width: 250px;">Conclusion</th>
-        <th style="width: 400px;">Remark</th>
-        <th style="width: 50px;">X-Ray EN</th>
-        <th style="width: 87px;">Conclusion EN</th>
-        <th style="width: 50px;">Username</th>
+            <tr style="font-size: 18px;">
+                <th style="width: 90px;">N0.</th>
+                <th style="width: 200px;">Barcode</th>
+                <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+                <th style="width: 450px;">ຊື່</th>
+                <th style="width: 250px;">ນາມສະກຸນ</th>
+                <th style="width: 450px;">ບໍລິສັດ</th>
+                <th style="width: 200px;">ປີເຂົ້າກວດ</th>
+                <th style="width: 250px;">X-Ray</th>
+                <th style="width: 250px;">Conclusion</th>
+                <th style="width: 400px;">Remark</th>
+                <th style="width: 450px;">X-Ray EN</th>
+                <th style="width: 487px;">Conclusion EN</th>
+                <th style="width: 250px;">Username</th>
             </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_x_ray('$company','$name','$year')");

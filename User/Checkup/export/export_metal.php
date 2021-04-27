@@ -13,7 +13,7 @@
             <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 350px;">ຊື່</th>
             <th style="width: 250px;">ນາມສະກຸນ</th>
-            <th style="width: 250px;">ບໍລິສັດ</th>
+            <th style="width: 350px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
             <th style="width: 187px;">Ether</th>
             <th style="width: 387px;">Ethyl Ethanoate</th>
@@ -32,11 +32,11 @@
             <th style="width: 550px;">Methyl lsobutyl Ketone in Urine</th>
             <th style="width: 287px;">Methanoi in Urine</th>
             <th style="width: 350px;">Phenolic Resin</th>
-            <th style="width: 187px;">Conclusion</th>
-            <th style="width: 150px;">Remark</th>
-            <th style="width: 87px;">Conclusion EN</th>
-            <th style="width: 50px;">Remark EN</th>
-            <th style="width: 50px;">Username</th>
+            <th style="width: 487px;">Conclusion</th>
+            <th style="width: 450px;">Remark</th>
+            <th style="width: 487px;">Conclusion EN</th>
+            <th style="width: 450px;">Remark EN</th>
+            <th style="width: 250px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_heavy_metal('$company','$name','$year')");

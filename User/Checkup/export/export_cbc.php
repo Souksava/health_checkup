@@ -10,13 +10,13 @@
         <tr style="font-size: 18px;">
             <th style="width: 87px;">N0.</th>
             <th style="width: 150px;">Barcode</th>
-            <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 350px;">ຊື່</th>
+            <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 450px;">ຊື່</th>
             <th style="width: 150px;">ນາມສະກຸນ</th>
-            <th style="width: 150px;">ບໍລິສັດ</th>
+            <th style="width: 350px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 287px;">Hemoglobin(Hb)</th>
-            <th style="width: 250px;">Hematocrit(Hct)</th>
+            <th style="width: 487px;">Hemoglobin(Hb)</th>
+            <th style="width: 450px;">Hematocrit(Hct)</th>
             <th style="width: 280px;">White Blood Cell(WBC)</th>
             <th style="width: 250px;">Neutrophil(Ne)</th>
             <th style="width: 287px;">Lymphocyte(Lym)</th>
@@ -28,12 +28,12 @@
             <th style="width: 187px;">MCV</th>
             <th style="width: 150px;">MCH</th>
             <th style="width: 187px;">MCHC</th>
-            <th style="width: 350px;">Red blood cell morphology</th>
-            <th style="width: 187px;">Conclusion</th>
-            <th style="width: 150px;">Remark</th>
-            <th style="width: 87px;">Conclusion EN</th>
-            <th style="width: 50px;">Remark EN</th>
-            <th style="width: 50px;">Username</th>
+            <th style="width: 450px;">Red blood cell morphology</th>
+            <th style="width: 487px;">Conclusion</th>
+            <th style="width: 450px;">Remark</th>
+            <th style="width: 487px;">Conclusion EN</th>
+            <th style="width: 450px;">Remark EN</th>
+            <th style="width: 250px;">Username</th>
         </tr>
         ';
        $resultexport = mysqli_query($conn,"call select_cbc('$company','$name','$year')");

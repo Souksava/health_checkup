@@ -41,26 +41,25 @@ if(mysqli_num_rows($result_spiro_limit) > 0)
  <div class="table-responsive">
  <table class="table-bordered" style="width: 8000px;text-align: center;">
      <tr style="font-size: 18px;">
-         <th style="width: 50px;">ເຄື່ອງມື</th>
          <th style="width: 50px;">N0.</th>
-         <th style="width: 50px;">Barcode</th>
-         <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
-         <th style="width: 50px;">ຊື່</th>
-         <th style="width: 50px;">ນາມສະກຸນ</th>
-         <th style="width: 50px;">ບໍລິສັດ</th>
-         <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-         <th style="width: 150px;">FVC(MEANS)</th>
-         <th style="width: 150px;">FVC(PREDICT)</th>
-         <th style="width: 150px;">FVC(%PREDICTS)</th>
-         <th style="width: 150px;">FEV1(MEANS)</th>
-         <th style="width: 150px;">FEV1(PREDICT)</th>
-         <th style="width: 150px;">FEV1(%PREDICT)</th>
-         <th style="width: 150px;">FEC1/FVC%</th>
-         <th style="width: 87px;">Conclusion</th>
-         <th style="width: 50px;">Remark</th>
-         <th style="width: 87px;">Conclusion EN</th>
-         <th style="width: 50px;">Remark EN</th>
-         <th style="width: 50px;">Username</th>
+         <th style="width: 150px;">Barcode</th>
+         <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
+         <th style="width: 450px;">ຊື່</th>
+         <th style="width: 250px;">ນາມສະກຸນ</th>
+         <th style="width: 350px;">ບໍລິສັດ</th>
+         <th style="width: 150px;">ປີເຂົ້າກວດ</th>
+         <th style="width: 287px;">FVC(MEANS)</th>
+         <th style="width: 250px;">FVC(PREDICT)</th>
+         <th style="width: 287px;">FVC(%PREDICTS)</th>
+         <th style="width: 250px;">FEV1(MEANS)</th>
+         <th style="width: 287px;">FEV1(PREDICT)</th>
+         <th style="width: 250px;">FEV1(%PREDICT)</th>
+         <th style="width: 250px;">FEC1/FVC%</th>
+         <th style="width: 487px;">Conclusion</th>
+         <th style="width: 450px;">Remark</th>
+         <th style="width: 487px;">Conclusion EN</th>
+         <th style="width: 450px;">Remark EN</th>
+         <th style="width: 250px;">Username</th>
      </tr>
  ';
  $no_ = $rank;

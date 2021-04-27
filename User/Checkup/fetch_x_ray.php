@@ -40,20 +40,20 @@ if(mysqli_num_rows($result_x_ray_limit) > 0)
  <div class="table-responsive">
         <table class="table-bordered" style="width: 3900px;text-align: center;">
             <tr style="font-size: 18px;">
-            <th style="width: 80px;">ເຄື່ອງມື</th>
-                <th style="width: 80px;">N0.</th>
-                <th style="width: 150px;">Barcode</th>
-                <th style="width: 200px;">ລະຫັດພະນັກງານ</th>
-                <th style="width: 350px;">ຊື່</th>
-                <th style="width: 250px;">ນາມສະກຸນ</th>
-                <th style="width: 350px;">ບໍລິສັດ</th>
-                <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-                <th style="width: 250px;">X-Ray</th>
-                <th style="width: 250px;">Conclusion</th>
-                <th style="width: 450px;">Remark</th>
-                <th style="width: 50px;">X-Ray EN</th>
-                <th style="width: 87px;">Conclusion EN</th>
-                <th style="width: 50px;">Username</th>
+               <th style="width: 80px;">ເຄື່ອງມື</th>
+               <th style="width: 90px;">N0.</th>
+               <th style="width: 200px;">Barcode</th>
+               <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+               <th style="width: 450px;">ຊື່</th>
+               <th style="width: 250px;">ນາມສະກຸນ</th>
+               <th style="width: 450px;">ບໍລິສັດ</th>
+               <th style="width: 200px;">ປີເຂົ້າກວດ</th>
+               <th style="width: 250px;">X-Ray</th>
+               <th style="width: 250px;">Conclusion</th>
+               <th style="width: 400px;">Remark</th>
+               <th style="width: 450px;">X-Ray EN</th>
+               <th style="width: 487px;">Conclusion EN</th>
+               <th style="width: 250px;">Username</th>
             </tr>
  ';
  $no_ = $rank;

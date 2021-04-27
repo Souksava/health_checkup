@@ -8,12 +8,12 @@
         $output = ' 
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
-            <th style="width: 50px;">N0.</th>
-            <th style="width: 150px;">Barcode</th>
-            <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 350px;">ຊື່</th>
-            <th style="width: 150px;">ນາມສະກຸນ</th>
-            <th style="width: 250px;">ບໍລິສັດ</th>
+            <th style="width: 90px;">N0.</th>
+            <th style="width: 250px;">Barcode</th>
+            <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 450px;">ຊື່</th>
+            <th style="width: 350px;">ນາມສະກຸນ</th>
+            <th style="width: 450px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
             <th style="width: 287px;">AUD_SRR_500#</th>
             <th style="width: 250px;">AUD_SRR_1000#</th>

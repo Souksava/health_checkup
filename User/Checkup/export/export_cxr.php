@@ -8,24 +8,24 @@
         $output = ' 
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
             <tr style="font-size: 18px;">
-                <th style="width: 40px;">N0.</th>
-                <th style="width: 80px;">Barcode</th>
+                <th style="width: 90px;">N0.</th>
+                <th style="width: 180px;">Barcode</th>
                 <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
-                <th style="width: 200px;">ຊື່</th>
-                <th style="width: 150px;">ນາມສະກຸນ</th>
-                <th style="width: 150px;">ບໍລິສັດ</th>
-                <th style="width: 70px;">ປີເຂົ້າກວດ</th>
-                <th style="width: 87px;">Anti HAV-lgM</th>
-                <th style="width: 50px;">HBsAB</th>
-                <th style="width: 87px;">HBsAg</th>
-                <th style="width: 50px;">Anti-HCV</th>
-                <th style="width: 87px;">VDRL</th>
-                <th style="width: 50px;">HIV</th>
-                <th style="width: 150px;">Conclusion</th>
+                <th style="width: 400px;">ຊື່</th>
+                <th style="width: 250px;">ນາມສະກຸນ</th>
+                <th style="width: 350px;">ບໍລິສັດ</th>
+                <th style="width: 170px;">ປີເຂົ້າກວດ</th>
+                <th style="width: 287px;">Anti HAV-lgM</th>
+                <th style="width: 250px;">HBsAB</th>
+                <th style="width: 287px;">HBsAg</th>
+                <th style="width: 250px;">Anti-HCV</th>
+                <th style="width: 287px;">VDRL</th>
+                <th style="width: 250px;">HIV</th>
+                <th style="width: 450px;">Conclusion</th>
                 <th style="width: 150px;">Remark</th>
-                <th style="width: 87px;">Conclusion EN</th>
-                <th style="width: 50px;">Remark EN</th>
-                <th style="width: 50px;">Username</th>
+                <th style="width: 487px;">Conclusion EN</th>
+                <th style="width: 450px;">Remark EN</th>
+                <th style="width: 450px;">Username</th>
             
             </tr> 
         ';

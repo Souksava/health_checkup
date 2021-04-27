@@ -26,11 +26,11 @@
             <th style="width: 187px;">WBC/Hpf</th>
             <th style="width: 150px;">RBC/Hpf</th>
             <th style="width: 287px;">Epithelium/Hpf</th>
-            <th style="width: 150px;">Conclusion</th>
-            <th style="width: 187px;">Remark</th>
-            <th style="width: 87px;">Conclusion EN</th>
-            <th style="width: 50px;">Remark EN</th>
-            <th style="width: 50px;">Username</th>
+            <th style="width: 450px;">Conclusion</th>
+            <th style="width: 487px;">Remark</th>
+            <th style="width: 487px;">Conclusion EN</th>
+            <th style="width: 450px;">Remark EN</th>
+            <th style="width: 250px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_urine('$company','$name','$year')");

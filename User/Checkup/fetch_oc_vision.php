@@ -38,27 +38,27 @@ if(mysqli_num_rows($result_oc_vision_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
- <table class="table-bordered" style="width: 4500px;text-align: center;">
+ <table class="table-bordered" style="width: 5500px;text-align: center;">
      <tr style="font-size: 18px;">
      <th style="width: 50px;">ເຄື່ອງມື</th>
-         <th style="width: 50px;">N0.</th>
-         <th style="width: 50px;">Barcode</th>
+         <th style="width: 90px;">N0.</th>
+         <th style="width: 150px;">Barcode</th>
          <th style="width: 120px;">ລະຫັດພະນັກງານ</th>
-         <th style="width: 50px;">ຊື່</th>
-         <th style="width: 50px;">ນາມສະກຸນ</th>
-         <th style="width: 50px;">ບໍລິສັດ</th>
-         <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-         <th style="width: 87px;">ການເບິ່ງເຫັນໄລຍະໄກ</th>
-         <th style="width: 50px;">ການເບິ່ງເຫັນໄລຍະໃກ້</th>
-         <th style="width: 87px;">ການເບິ່ງແນວຕັ້ງ</th>
-         <th style="width: 150px;">ກວດສອບສົມດຸນຂອງກ້າາມຊີ້ນຕາ</th>
-         <th style="width: 187px;">ກວດສອບຄວາມສາມາດແຍກສີ</th>
-         <th style="width: 50px;">ການກວລັດສະໝີ</th>
-         <th style="width: 87px;">ສະຫຼຸບ</th>
-         <th style="width: 50px;">ໝາຍເຫດ</th>
-         <th style="width: 87px;">Conclusion EN</th>
-         <th style="width: 50px;">Remark EN</th>
-         <th style="width: 50px;">Username</th>
+         <th style="width: 350px;">ຊື່</th>
+         <th style="width: 150px;">ນາມສະກຸນ</th>
+         <th style="width: 350px;">ບໍລິສັດ</th>
+         <th style="width: 150px;">ປີເຂົ້າກວດ</th>
+         <th style="width: 287px;">ການເບິ່ງເຫັນໄລຍະໄກ</th>
+         <th style="width: 250px;">ການເບິ່ງເຫັນໄລຍະໃກ້</th>
+         <th style="width: 287px;">ການເບິ່ງແນວຕັ້ງ</th>
+         <th style="width: 450px;">ກວດສອບສົມດຸນຂອງກ້າາມຊີ້ນຕາ</th>
+         <th style="width: 487px;">ກວດສອບຄວາມສາມາດແຍກສີ</th>
+         <th style="width: 250px;">ການກວລັດສະໝີ</th>
+         <th style="width: 387px;">ສະຫຼຸບ</th>
+         <th style="width: 350px;">ໝາຍເຫດ</th>
+         <th style="width: 387px;">Conclusion EN</th>
+         <th style="width: 350px;">Remark EN</th>
+         <th style="width: 150px;">Username</th>
      </tr>
  ';
  $no_ = $rank;

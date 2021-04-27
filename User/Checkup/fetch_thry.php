@@ -40,24 +40,24 @@ if(mysqli_num_rows($result_thry_limit) > 0)
  <div class="table-responsive">
     <table class="table-bordered" style="width: 2500px;text-align: center;">
         <tr style="font-size: 18px;">
-        <th style="width: 50px;">ເຄື່ອງມື</th>
-            <th style="width: 87px;">No.</th>
-            <th style="width: 50px;">Barcode</th>
-            <th style="width: 50px;">ລະຫັດພະນັກງານ</th>
-            <th style="width: 50px;">ຊື່</th>
-            <th style="width: 50px;">ນາມສະກຸນ</th>
-            <th style="width: 50px;">ບໍລິສັດ</th>
-            <th style="width: 50px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 87px;">FREE T3</th>
-            <th style="width: 50px;">FREE T4</th>
-            <th style="width: 87px;">TSH</th>
-            <th style="width: 50px;">T3</th>
-            <th style="width: 87px;">T4</th>
-            <th style="width: 50px;">Conclusion</th>
-            <th style="width: 87px;">Remark</th>
-            <th style="width: 87px;">Conclusion EN</th>
-            <th style="width: 50px;">Remark EN</th>
-            <th style="width: 50px;">Username</th>
+            <th style="width: 50px;">ເຄື່ອງມື</th>
+            <th style="width: 90px;">No.</th>
+            <th style="width: 250px;">Barcode</th>
+            <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 450px;">ຊື່</th>
+            <th style="width: 250px;">ນາມສະກຸນ</th>
+            <th style="width: 450px;">ບໍລິສັດ</th>
+            <th style="width: 250px;">ປີເຂົ້າກວດ</th>
+            <th style="width: 187px;">FREE T3</th>
+            <th style="width: 150px;">FREE T4</th>
+            <th style="width: 187px;">TSH</th>
+            <th style="width: 150px;">T3</th>
+            <th style="width: 187px;">T4</th>
+            <th style="width: 450px;">Conclusion</th>
+            <th style="width: 487px;">Remark</th>
+            <th style="width: 487px;">Conclusion EN</th>
+            <th style="width: 450px;">Remark EN</th>
+            <th style="width: 250px;">Username</th>
         </tr>
  ';
  $no_ = $rank;
