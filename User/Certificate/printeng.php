@@ -1,49 +1,4 @@
-<?php 
-    $path = "../../";
-    include ('../../oop/obj.php');
-$barcode = $_POST["barcode"];
-$year = $_POST["year"];
-
-$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,ears,conclusion FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$year';");
-$fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
-
-$audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' and year='$year';");
-$fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
-$audio_conclusion = $fetch_audio["conclusion"];
-$audio_remark = $fetch_audio["remark"];
-if($audio_conclusion != ""){
-    $audio_conclusion = "Audio: ".$audio_conclusion.", ";
-}
-else{
-    $audio_conclusion = "";
-}
-if($audio_remark == ""){
-    $audio_remark = "";
-}
-else{
-    $audio_remark = $audio_remark.", ";
-}
-
-$bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' and year='$year';");
-$fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
-$bio_conclusion = $fetch_bio["conclusion"];
-$bio_remark = $fetch_bio["remark"];
-if($bio_conclusion != ""){
-    $bio_conclusion = "Bio: ".$bio_conclusion.", ";
-}
-else{
-    $bio_conclusion = "";
-}
-if($bio_remark == ""){
-    $bio_remark = "";
-}
-else{
-    $bio_remark = $bio_remark.", ";
-}
-
-
-?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -53,11 +8,12 @@ else{
     <title>Document</title>
 </head>
 
-<body>
+<body> -->
 
 <?php
 // if(isset($_POST["btnPrint"])){
-
+    $path = "../../";
+    include ('../../oop/obj.php');
     $border = 5;//กำหนดความหน้าของเส้น Barcode
     $height = 80;//กำหนดความสูงของ Barcode
     // $barcode = $_POST["barcode_id"];
@@ -67,15 +23,15 @@ else{
 
     $mpdf = new \Mpdf\Mpdf([
         'format'        => "A4",
-        'mode'              => 'utf-8',      
-        'default_font_size' => 10,
+        'mode'              => 'utf-8',
+        'default_font_size' => 11,
         'margin_top' => 10,
         'margin_left' => 10,
         'margin_right' => 10,
         'margin_bottom' => 10,
         'default_font' => 'saysettha_ot',
     ]);
-    
+
     $content = '
 <style>
         .paper{
@@ -84,7 +40,6 @@ else{
             float:left;
             border:1mm ridge #FFA533;
             line-height: 1.5;
-
         }
         .image{
             width:15%;
@@ -99,7 +54,7 @@ else{
         .hundred{
             width:100%;
             float:left;
-            margin-top: 0.1cm;
+            margin-top: 1cm;
             margin-left: 1.27cm;
             margin-right: 1.27cm;
         }
@@ -134,18 +89,8 @@ else{
             margin-left: 1.27cm;
             margin-right: 1.27cm;
         }
-        .two2{
-            margin-left: 2.54cm;
-            margin-right: 1.27cm;
-        }
         .three{
             margin-left: 1.27cm;
-            margin-right: 1.27cm;
-        }
-        .three2{
-            width:100%;
-            float:left;
-            margin-left: 2.54cm;
             margin-right: 1.27cm;
         }
 </style>
@@ -153,101 +98,135 @@ else{
     // $obj->print_barcode($_POST["print_barcode"]);
 
     // $row = mysqli_fetch_array($result_barcode,MYSQLI_ASSOC);
-    $content .='   
+    $content .='
+
 
 <div class="paper">
     <div class="image">
         <img src="../../image/Emblem.png" alt="">
     </div>
     <div class="lpdr">
-    ສາທາລະນາລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ <br>
-    ສັນຕີພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນະຖາວອນ <br>
-    ****
+    LAO PEOPLE'."'S".' DEMOCRATIC REPUBLIC <br>
+    PEACE INDEPENDENCE DEMOCRACY UNITY PROSPERITY <br>
+    ********************
     </div>
-    
+
     <div class="hundred">
         <div class="left">
-        ໂຮງໝໍມະໂຫສົດ
+        Mahosot Hospital
         </div>
         <div class="right">
-        ເລກທີ. 1
+        No..........................
         </div>
-        <br>
-
         <div class="left">
-        ຫ້ອງກວດສຸຂະພາບແຮງງານ ພາຍໃນ ແລະ ຕ່າງປະເທດ
-        Occupational Health Check up Bureau
+        Occupational Health Check Up Bureau
         </div>
         <div class="right">
-        &nbsp;
+        Vientiane Capital, Date..........................
         </div>
         <div class="left">
         Tel: 021-253 833,
         </div>
-        <div class="right">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ......................
+        <div class="right" style="visibility:hidden">
+        Vientiane Capital, Date..........................
         </div>
         <div class="left">
         020 555 024 14
         </div>
 
+        <br><br>
     </div>
         <div class="title">
-        ໃບຢັ້ງຢືນສຸຂະພາບ
-        </div>
-
-
-        <div class="info">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ຜ່ານການກວດກາຕົວຈິງຂອງແພດ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
-        </div>
-        <div class="info2">
-        ຊື່ ແລະ ນາມສະກຸນ ທ້າວ/ນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].',ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].' , ສາດສະໜາ: '.$fetch_pe["religion"].' ,
-        ນ້ຳເບີບັດພ/ງ: '.$fetch_pe["emp_id"].' , ອາຊີບ: '.$fetch_pe["job"].', <br> ພະແນກ: '.$fetch_pe["department"].' , ບໍລີສັດ/ໂຮງງານ: '.$fetch_pe["company"].',
-        ທີ່ຢູ່ປະຈຸບັນ ບ້ານ: '.$fetch_pe["village"].', ເມືອງ: '.$fetch_pe["district"].', ແຂວງ: '.$fetch_pe["province"].'
+        Medical Attestation
         </div>
         <br>
- 
+
+        <div class="info">
+        Through the consultation of physician, the Director of Mahosot Hospital certifies that: <br>
+        </div>
+        <div class="info2">
+        Name and Surname: XXXX XXXXXXX Age: XX Years, Nationality: Laos, <br>
+        Religion: Buddhism, Employment ID:.............., Occupation: Employee, <br>
+        Current address: Village: XXX, District, Province: XXXXX Capital, Lao PDR.
+        </div>
+        <br>
+        <br>
 
         <div class="one">
-        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ການກວດກາຂອງແພດ: <br>
-        ສະພາບທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ, <br>
-        ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ: '.$fetch_pe["ears"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].'
+        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Physician Examination: <br>
+        General Status: XX, Weight: XX Kg, Heigh: XXX Cm, RR: XX b/min, Pulse: XX b/min, <br>
+        BP: XX/XXmmHg, Lungs: XX, Eyes: XX, Ears: XX, <br>
+        Audiometry: XXX.
         </div>
 <br>
 
         <div class="two">
-        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນຽ: <br>
-        </div>
-        <div class="two2">
-        '.$audio_conclusion.' CBC: Normal, Urine/analysis: Normal,Biochemistry <br>
-        Cholesterol: 226 mg/dl, Triglyceride: 377 mg/dl, ນອກນັ້ນປົກກະຕິ <br>
+        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Results of Laboratory, CXR and Others: <br>
+        CXR: Normal, CBC: Normal, Urine/analysis: Normal. <br>
+        Biochemistry: High total cholesterol and high Triglyceride <br>
         </div>
 <br>
 
         <div class="three">
-        III.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ຄຳເຫັນຂອງແພດຜູ້ກວດສຸຂະພາບ:<br>
-        </div>
-        <div class="three2">
-            <div style="width: 5%;float:left;">
-            -
-            </div>
-            <div style="width: 90%;float:left;">
-            '.$audio_remark.'
-            </div>
+        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recommendation of physician:<br>
+        The examined candidate is mentally and physically healthy, able to work normally. <br>
+        Mild increased lipid profile, but no need medication.<br>
+        Need to restrict diet such as fatty food, meat and
+        regularly physical exercise and avoid smoking and alcoholic beverage.
         </div>
 <br>
 <div class="hundred">
         <div class="left">
-            ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ
+            Director of Mahosot Hospital
         </div>
         <div class="right">
-            ແພດກວດຢັ້ງຢືນ
+            Physician
         </div>
 </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>';
+
     $mpdf->WriteHTML($content);
     $mpdf->Output("","I");
 
@@ -255,7 +234,7 @@ else{
 
 ?>
 
-
+<!--
 </body>
 
-</html>
+</html> -->
