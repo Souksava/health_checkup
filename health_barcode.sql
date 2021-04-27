@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 11:17 AM
+-- Generation Time: Apr 27, 2021 at 02:10 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -180,21 +180,21 @@ BEGIN
 SELECT max(reg_id) as reg_id from register; 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_audio` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `r_500s` VARCHAR(50), IN `r_1000s` VARCHAR(50), IN `r_2000s` VARCHAR(50), IN `r_3000s` VARCHAR(50), IN `r_l_avgs` VARCHAR(50), IN `r_4000s` VARCHAR(50), IN `r_6000s` VARCHAR(50), IN `r_8000s` VARCHAR(50), IN `r_h_avgs` VARCHAR(50), IN `l_500s` VARCHAR(50), IN `l_1000s` VARCHAR(50), IN `l_2000s` VARCHAR(50), IN `l_3000s` VARCHAR(50), IN `l_l_avgs` VARCHAR(50), IN `l_4000s` VARCHAR(50), IN `l_6000s` VARCHAR(50), IN `l_8000s` VARCHAR(50), IN `l_h_avgs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_audio` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `r_500s` VARCHAR(50), IN `r_1000s` VARCHAR(50), IN `r_2000s` VARCHAR(50), IN `r_3000s` VARCHAR(50), IN `r_l_avgs` VARCHAR(50), IN `r_4000s` VARCHAR(50), IN `r_6000s` VARCHAR(50), IN `r_8000s` VARCHAR(50), IN `r_h_avgs` VARCHAR(50), IN `l_500s` VARCHAR(50), IN `l_1000s` VARCHAR(50), IN `l_2000s` VARCHAR(50), IN `l_3000s` VARCHAR(50), IN `l_l_avgs` VARCHAR(50), IN `l_4000s` VARCHAR(50), IN `l_6000s` VARCHAR(50), IN `l_8000s` VARCHAR(50), IN `l_h_avgs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO audiogram(barcode,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark,year) VALUES(barcodes,r_500s,r_1000s,r_2000s,r_3000s,r_l_avgs,r_4000s,r_6000s,r_8000s,r_h_avgs,l_500s,l_1000s,l_2000s,l_3000s,l_l_avgs,l_4000s,l_6000s,l_8000s,l_h_avgs,conclusions,
-remarks,years);
+INSERT INTO audiogram(barcode,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,r_500s,r_1000s,r_2000s,r_3000s,r_l_avgs,r_4000s,r_6000s,r_8000s,r_h_avgs,l_500s,l_1000s,l_2000s,l_3000s,l_l_avgs,l_4000s,l_6000s,l_8000s,l_h_avgs,conclusions,
+remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_biochemistry` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `fbss` VARCHAR(50), IN `chos` VARCHAR(50), IN `hdls` VARCHAR(50), IN `ldls` VARCHAR(50), IN `trigs` VARCHAR(50), IN `uas` VARCHAR(50), IN `buns` VARCHAR(50), IN `creates` VARCHAR(50), IN `sgots` VARCHAR(50), IN `sgpts` VARCHAR(50), IN `alks` VARCHAR(50), IN `ggts` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_biochemistry` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `fbss` VARCHAR(50), IN `chos` VARCHAR(50), IN `hdls` VARCHAR(50), IN `ldls` VARCHAR(50), IN `trigs` VARCHAR(50), IN `uas` VARCHAR(50), IN `buns` VARCHAR(50), IN `creates` VARCHAR(50), IN `sgots` VARCHAR(50), IN `sgpts` VARCHAR(50), IN `alks` VARCHAR(50), IN `ggts` VARCHAR(50), IN `hbacs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO biochemistry(barcode,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark,year) VALUES(barcodes,fbss,chos,hdls,ldls,trigs,uas,buns,creates,sgots,sgpts,alks,ggts,conclusions,remarks,years);
+INSERT INTO biochemistry(barcode,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,hbac,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,fbss,chos,hdls,ldls,trigs,uas,buns,creates,sgots,sgpts,alks,ggts,hbacs,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_cbc` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hbs` VARCHAR(50), IN `hcts` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `nes` VARCHAR(50), IN `lyms` VARCHAR(50), IN `monocytes` VARCHAR(50), IN `eos` VARCHAR(50), IN `basos` VARCHAR(50), IN `plateletss` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `mvcs` VARCHAR(50), IN `mchs` VARCHAR(50), IN `mchcs` VARCHAR(50), IN `red_bloods` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_cbc` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hbs` VARCHAR(50), IN `hcts` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `nes` VARCHAR(50), IN `lyms` VARCHAR(50), IN `monocytes` VARCHAR(50), IN `eos` VARCHAR(50), IN `basos` VARCHAR(50), IN `plateletss` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `mvcs` VARCHAR(50), IN `mchs` VARCHAR(50), IN `mchcs` VARCHAR(50), IN `red_bloods` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO cbc(barcode,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,rbc,mvc,mch,mchc,red_blood,conclusion,remark,year) 
-VALUES(barcodes,hbs,hcts,wbcs,nes,lyms,monocytes,eos,basos,plateletss,rbcs,mvcs,mchs,mchcs,red_bloods,conclusions,remarks,years);
+INSERT INTO cbc(barcode,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,rbc,mvc,mch,mchc,red_blood,conclusion,remark,year,conclusion_en,remark_en,user_id) 
+VALUES(barcodes,hbs,hcts,wbcs,nes,lyms,monocytes,eos,basos,plateletss,rbcs,mvcs,mchs,mchcs,red_bloods,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_company` (IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100))  NO SQL
@@ -202,41 +202,41 @@ BEGIN
 INSERT INTO company(company,company_en) VALUES(companys,company_ens);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_ekg` (IN `barcodes` VARCHAR(30), IN `years` YEAR(4), IN `ekgs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_ekg` (IN `barcodes` VARCHAR(30), IN `years` YEAR(4), IN `ekgs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `ekg_ens` VARCHAR(50), IN `conclusion_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO ekg(barcode,year,ekg_name,conclusion,remark) VALUES(barcodes,years,ekgs,conclusions,remarks);
+INSERT INTO ekg(barcode,year,ekg_name,conclusion,remark,ekg_en,conclusion_en,user_id) VALUES(barcodes,years,ekgs,conclusions,remarks,ekg_ens,conclusion_ens,user_ids);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_employee` (IN `barcodes` VARCHAR(30), IN `emp_ids` VARCHAR(20), IN `emp_names` VARCHAR(50), IN `surnames` VARCHAR(50), IN `dobs` DATE, IN `ages` VARCHAR(3), IN `genders` VARCHAR(10), IN `companys` VARCHAR(80), IN `branchs` VARCHAR(50), IN `departments` VARCHAR(50), IN `tels` VARCHAR(30), IN `family_stts` VARCHAR(50), IN `nations` VARCHAR(50), IN `ethnics` VARCHAR(50), IN `religions` VARCHAR(50), IN `jobs` VARCHAR(50), IN `house_nos` VARCHAR(10), IN `villages` VARCHAR(50), IN `districts` VARCHAR(50), IN `provinces` VARCHAR(50))  NO SQL
 BEGIN 
 INSERT INTO employee(barcode,emp_id,emp_name,surname,dob,age,gender,com_id,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province) VALUES(barcodes,emp_ids,emp_names,surnames,dobs,ages,genders,companys,branchs,departments,tels,family_stts,nations,ethnics,religions,jobs,house_nos,villages,districts,provinces); END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_heavy_metal` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `ethers` VARCHAR(50), IN `ethys` VARCHAR(50), IN `nickles` VARCHAR(50), IN `manganeses` VARCHAR(50), IN `tims` VARCHAR(50), IN `bloods` VARCHAR(50), IN `m_i_urines` VARCHAR(50), IN `b_a_us` VARCHAR(50), IN `c_us` VARCHAR(50), IN `alcohos` VARCHAR(50), IN `silicas` VARCHAR(50), IN `methys` VARCHAR(50), IN `a_i_urines` VARCHAR(50), IN `t_i_urines` VARCHAR(50), IN `methy_urines` VARCHAR(50), IN `methanoi_urines` VARCHAR(50), IN `phenolic_resins` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_heavy_metal` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `ethers` VARCHAR(50), IN `ethys` VARCHAR(50), IN `nickles` VARCHAR(50), IN `manganeses` VARCHAR(50), IN `tims` VARCHAR(50), IN `bloods` VARCHAR(50), IN `m_i_urines` VARCHAR(50), IN `b_a_us` VARCHAR(50), IN `c_us` VARCHAR(50), IN `alcohos` VARCHAR(50), IN `silicas` VARCHAR(50), IN `methys` VARCHAR(50), IN `a_i_urines` VARCHAR(50), IN `t_i_urines` VARCHAR(50), IN `methy_urines` VARCHAR(50), IN `methanoi_urines` VARCHAR(50), IN `phenolic_resins` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
 INSERT INTO heavy_metal(barcode,ether,ethy,nickle,manganese,tim,blood,m_i_urine,b_a_u,c_u,alcoho,silica,
-methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark,year) VALUES(barcodes,ethers,ethys,nickles,manganeses,tims,bloods,m_i_urines,b_a_us,c_us,alcohos,silicas,
-methys,a_i_urines,t_i_urines,methy_urines,methanoi_urines,phenolic_resins,conclusions,remarks,years);
+methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,ethers,ethys,nickles,manganeses,tims,bloods,m_i_urines,b_a_us,c_us,alcohos,silicas,
+methys,a_i_urines,t_i_urines,methy_urines,methanoi_urines,phenolic_resins,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_immunity` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `anti_havs` VARCHAR(30), IN `abs` VARCHAR(30), IN `ags` VARCHAR(30), IN `hcvs` VARCHAR(30), IN `vdrls` VARCHAR(30), IN `hivs` VARCHAR(30), IN `conclusions` TEXT, IN `remarks` TEXT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_immunity` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `anti_havs` VARCHAR(30), IN `abs` VARCHAR(30), IN `ags` VARCHAR(30), IN `hcvs` VARCHAR(30), IN `vdrls` VARCHAR(30), IN `hivs` VARCHAR(30), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  BEGIN
 INSERT INTO
-immunity (barcode,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark,year)
-VALUES(barcodes,anti_havs,abs,ags,hcvs,vdrls,hivs,conclusions,remarks,years);
+immunity (barcode,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark,year,conclusion_en,remark_en,user_id)
+VALUES(barcodes,anti_havs,abs,ags,hcvs,vdrls,hivs,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_metham` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `methamphetamines` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_metham` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `methamphetamines` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO methamphetamine(barcode,methamphetamine,conclusion,remark,year) VALUES(barcodes,methamphetamines,conclusions,remarks,years);
+INSERT INTO methamphetamine(barcode,methamphetamine,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,methamphetamines,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_muscle` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(4), IN `muscles` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_muscle` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(4), IN `muscles` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `muscle_ens` VARCHAR(50), IN `conclusion_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO muscle(barcode,year,muscle_name,conclusion,remark) VALUES(barcodes,years,muscles,conclusions,remarks);
+INSERT INTO muscle(barcode,year,muscle_name,conclusion,remark,muscle_en,conclusion_en,user_id) VALUES(barcodes,years,muscles,conclusions,remarks,muscle_ens,conclusion_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_oc_vision` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `look_fars` VARCHAR(50), IN `look_nears` VARCHAR(50), IN `look_ups` VARCHAR(50), IN `check_eyes` VARCHAR(50), IN `check_colors` VARCHAR(50), IN `radiuss` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_oc_vision` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `look_fars` VARCHAR(50), IN `look_nears` VARCHAR(50), IN `look_ups` VARCHAR(50), IN `check_eyes` VARCHAR(50), IN `check_colors` VARCHAR(50), IN `radiuss` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO oc_vision(barcode,look_far,look_near,look_up,check_eye,check_color,radius,conclusion,remark,year) VALUES(barcodes,look_fars,look_nears,look_ups,check_eyes,check_colors,radiuss,conclusions,remarks,years);
+INSERT INTO oc_vision(barcode,look_far,look_near,look_up,check_eye,check_color,radius,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,look_fars,look_nears,look_ups,check_eyes,check_colors,radiuss,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_package` (IN `pack_id` VARCHAR(20), IN `pack_name` VARCHAR(50))  NO SQL
@@ -244,16 +244,16 @@ BEGIN
 INSERT INTO package VALUES(pack_id,pack_name);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_pe` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hpis` VARCHAR(50), IN `pmhis` VARCHAR(50), IN `personals` VARCHAR(50), IN `familys` VARCHAR(50), IN `asis` VARCHAR(50), IN `heights` VARCHAR(50), IN `weights` VARCHAR(50), IN `bmis` VARCHAR(50), IN `bps` VARCHAR(50), IN `pulses` VARCHAR(50), IN `abos` VARCHAR(50), IN `eyes` VARCHAR(50), IN `teeths` VARCHAR(50), IN `earss` VARCHAR(50), IN `lymphs` VARCHAR(50), IN `thyroids` VARCHAR(50), IN `extremitiess` VARCHAR(50), IN `skins` VARCHAR(50), IN `hears` VARCHAR(50), IN `lungs` VARCHAR(50), IN `alss` VARCHAR(50), IN `others` VARCHAR(50), IN `breats` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_pe` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hpis` VARCHAR(50), IN `pmhis` VARCHAR(50), IN `personals` VARCHAR(50), IN `familys` VARCHAR(50), IN `asis` VARCHAR(50), IN `heights` VARCHAR(50), IN `weights` VARCHAR(50), IN `bmis` VARCHAR(50), IN `bps` VARCHAR(50), IN `pulses` VARCHAR(50), IN `abos` VARCHAR(50), IN `eyes` VARCHAR(50), IN `teeths` VARCHAR(50), IN `earss` VARCHAR(50), IN `lymphs` VARCHAR(50), IN `thyroids` VARCHAR(50), IN `extremitiess` VARCHAR(50), IN `skins` VARCHAR(50), IN `hears` VARCHAR(50), IN `lungs` VARCHAR(50), IN `alss` VARCHAR(50), IN `others` VARCHAR(50), IN `breats` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
 INSERT INTO pe(barcode,year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,abo,eye,teeth,ears,lymph,
-thyroid,extremities,skin,hear,lung,als,other,breat,conclusion,remark) VALUES(barcodes,years,hpis,pmhis,personals,familys,asis,heights,weights,bmis,bps,pulses,abos,eyes,
-teeths,earss,lymphs,thyroids,extremitiess,skins,hears,lungs,alss,others,breats,conclusions,remarks);
+thyroid,extremities,skin,hear,lung,als,other,breat,conclusion,remark,user_id) VALUES(barcodes,years,hpis,pmhis,personals,familys,asis,heights,weights,bmis,bps,pulses,abos,eyes,
+teeths,earss,lymphs,thyroids,extremitiess,skins,hears,lungs,alss,others,breats,conclusions,remarks,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_register` (IN `reg_ids` INT(11), IN `barcodes` VARCHAR(30), IN `times` VARCHAR(50), IN `queues` INT(5), IN `years` INT(4), IN `dates` VARCHAR(50))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_register` (IN `reg_ids` INT(11), IN `barcodes` VARCHAR(30), IN `times` VARCHAR(50), IN `queues` INT(5), IN `years` INT(4), IN `dates` VARCHAR(50), IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO register(reg_id,barcode,time,queue,year,date) values(reg_ids,barcodes,times,queues,years,dates);
+INSERT INTO register(reg_id,barcode,time,queue,year,date,user_id) values(reg_ids,barcodes,times,queues,years,dates,user_ids);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_registerdetail` (IN `reg_ids` INT(11), IN `pack_ids` VARCHAR(20))  NO SQL
@@ -261,34 +261,34 @@ BEGIN
 INSERT INTO registerdetail(reg_id,pack_id) VALUES(reg_ids,pack_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_se` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `colors` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `parasites` VARCHAR(50), IN `samonellas` VARCHAR(50), IN `shigellas` VARCHAR(50), IN `vivrios` VARCHAR(50), IN `vibrios` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_se` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `colors` VARCHAR(50), IN `stool_aps` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `parasites` VARCHAR(50), IN `samonellas` VARCHAR(50), IN `shigellas` VARCHAR(50), IN `vivrios` VARCHAR(50), IN `vibrios` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO se(barcode,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark,year) VALUES(barcodes,colors,wbcs,rbcs,parasites,samonellas,shigellas,vivrios,vibrios,conclusions,remarks,years);
+INSERT INTO se(barcode,color,stool_ap,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,colors,stool_aps,wbcs,rbcs,parasites,samonellas,shigellas,vivrios,vibrios,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_spiro` (IN `barcoded` VARCHAR(30), IN `years` VARCHAR(10), IN `fvc_meansd` VARCHAR(50), IN `fvc_predictd` VARCHAR(50), IN `fvc_predictsd` VARCHAR(50), IN `fevi_meansd` VARCHAR(50), IN `fevi_predictd` VARCHAR(50), IN `fevi_predictsd` VARCHAR(50), IN `fevi_fvcd` VARCHAR(50), IN `conlusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_spiro` (IN `barcoded` VARCHAR(30), IN `years` VARCHAR(10), IN `fvc_meansd` VARCHAR(50), IN `fvc_predictd` VARCHAR(50), IN `fvc_predictsd` VARCHAR(50), IN `fevi_meansd` VARCHAR(50), IN `fevi_predictd` VARCHAR(50), IN `fevi_predictsd` VARCHAR(50), IN `fevi_fvcd` VARCHAR(50), IN `conlusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO spirometry(barcode,fvc_means,fvc_predict,fvc_predicts,fevi_means,fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,year) VALUES(barcoded,fvc_meansd,fvc_predictd,fvc_predictsd,fevi_meansd,fevi_predictd,fevi_predictsd,fevi_fvcd,conlusions,remarks,years);
+INSERT INTO spirometry(barcode,fvc_means,fvc_predict,fvc_predicts,fevi_means,fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcoded,fvc_meansd,fvc_predictd,fvc_predictsd,fevi_meansd,fevi_predictd,fevi_predictsd,fevi_fvcd,conlusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_thyroid` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `free_t3s` VARCHAR(50), IN `free_t4s` VARCHAR(50), IN `tshs` VARCHAR(50), IN `t3s` VARCHAR(50), IN `t4s` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_thyroid` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `free_t3s` VARCHAR(50), IN `free_t4s` VARCHAR(50), IN `tshs` VARCHAR(50), IN `t3s` VARCHAR(50), IN `t4s` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO thryroid(barcode,free_t3,free_t4,tsh,t3,t4,conclusion,remark,year) VALUES(barcodes,free_t3s,free_t4s,tshs,t3s,t4s,conclusions,remarks,years);
+INSERT INTO thryroid(barcode,free_t3,free_t4,tsh,t3,t4,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,free_t3s,free_t4s,tshs,t3s,t4s,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tumor_marker` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `afps` VARCHAR(50), IN `ceas` VARCHAR(50), IN `psas` VARCHAR(50), IN `ca_19s` VARCHAR(50), IN `ca_15s` VARCHAR(50), IN `ca_125` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_tumor_marker` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `afps` VARCHAR(50), IN `ceas` VARCHAR(50), IN `psas` VARCHAR(50), IN `ca_19s` VARCHAR(50), IN `ca_15s` VARCHAR(50), IN `ca_125` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO tumor_marker(barcode,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark,year) VALUES(barcodes,afps,ceas,psas,ca_19s,ca_15s,ca_125,conclusions,remarks,years);
+INSERT INTO tumor_marker(barcode,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,afps,ceas,psas,ca_19s,ca_15s,ca_125,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_urine` (IN `barcodes` VARCHAR(100), IN `years` VARCHAR(10), IN `colors` VARCHAR(50), IN `appearances` VARCHAR(50), IN `phs` VARCHAR(50), IN `specificss` VARCHAR(50), IN `proteins` VARCHAR(50), IN `sugars` VARCHAR(50), IN `ketones` VARCHAR(50), IN `bloods` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `epits` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_urine` (IN `barcodes` VARCHAR(100), IN `years` VARCHAR(10), IN `colors` VARCHAR(50), IN `appearances` VARCHAR(50), IN `phs` VARCHAR(50), IN `specificss` VARCHAR(50), IN `proteins` VARCHAR(50), IN `sugars` VARCHAR(50), IN `ketones` VARCHAR(50), IN `bloods` VARCHAR(50), IN `wbcs` VARCHAR(50), IN `rbcs` VARCHAR(50), IN `epits` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
-INSERT INTO urinalvsis(barcode,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,year) VALUES(barcodes,colors,appearances,phs,specificss,proteins,sugars,ketones,bloods,wbcs,rbcs,epits,conclusions,remarks,years);
+INSERT INTO urinalvsis(barcode,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,year,conclusion_en,remark_en,user_id) VALUES(barcodes,colors,appearances,phs,specificss,proteins,sugars,ketones,bloods,wbcs,rbcs,epits,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_x_ray` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `x_rays` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT)  BEGIN
-INSERT INTO x_ray(barcode,year,x_ray,conclusion,remark)
-VALUES(barcodes,years,x_rays,conclusions,remarks);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_x_ray` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `x_rays` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `x_ray_ens` VARCHAR(50), IN `conclusion_ens` TEXT, IN `user_ids` INT(11))  BEGIN
+INSERT INTO x_ray(barcode,year,x_ray,conclusion,remark,x_ray_en,conclusion_en,user_id)
+VALUES(barcodes,years,x_rays,conclusions,remarks,x_ray_ens,conclusion_ens,user_ids);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `list_addpackage` (IN `com_ids` VARCHAR(11))  NO SQL
@@ -319,39 +319,39 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_audio` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,audi_id,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
-l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark
-FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark,conclusion_en,remark_en,user_name
+FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_audio_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,audi_id,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
-l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark
-FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark,conclusion_en,remark_en,user_name
+FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,hbac,conclusion,remark,conclusion_en,remark_en,user_name FROM biochemistry p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,conclusion,remark FROM biochemistry p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,hbac,conclusion,remark,conclusion_en,remark_en,user_name FROM biochemistry p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,cbc_id,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
-rbc,mvc,mch,mchc,red_blood,conclusion,remark FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+rbc,mvc,mch,mchc,red_blood,conclusion,remark,conclusion_en,remark_en,user_name FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,cbc_id,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
-rbc,mvc,mch,mchc,red_blood,conclusion,remark FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+rbc,mvc,mch,mchc,red_blood,conclusion,remark,conclusion_en,remark_en,user_name FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_checkup_status` (IN `companys` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
@@ -376,14 +376,14 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_ekg` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark FROM ekg p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark,ekg_en,conclusion_en,user_name FROM ekg p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_ekg_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(100), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark FROM ekg p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark,ekg_en,conclusion_en,user_name FROM ekg p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_employee` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50))  NO SQL
@@ -399,25 +399,25 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_heavy_metal` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hea_id,ether,ethy,nickle,manganese,tim,blood,m_i_urine,
-b_a_u,c_u,alcoho,silica,methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark
-FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+b_a_u,c_u,alcoho,silica,methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark,conclusion_en,remark_en,user_name
+FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_heavy_metal_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hea_id,ether,ethy,nickle,manganese,tim,blood,m_i_urine,
-b_a_u,c_u,alcoho,silica,methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark
-FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+b_a_u,c_u,alcoho,silica,methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark,conclusion_en,remark_en,user_name
+FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_immunity` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark FROM immunity p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark,conclusion_en,remark_en,user_name FROM immunity p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_immunity_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark FROM immunity p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,50;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark,conclusion_en,remark_en,user_name FROM immunity p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,50;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_mac` ()  NO SQL
@@ -427,40 +427,40 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark
-FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark,conclusion_en,remark_en,user_name
+FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark
-FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark,conclusion_en,remark_en,user_name
+FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_muscle` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark FROM muscle p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark,muscle_en,conclusion_en,user_name FROM muscle p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_muscle_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark FROM muscle p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark,muscle_en,conclusion_en,user_name FROM muscle p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_oc_vision` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,oc_id,look_far,
-look_near,look_up,check_eye,check_color,radius,conclusion,remark
- FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+look_near,look_up,check_eye,check_color,radius,conclusion,remark,conclusion_en,remark_en,user_name
+ FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_oc_vision_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,oc_id,look_far,
-look_near,look_up,check_eye,check_color,radius,conclusion,remark
- FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+look_near,look_up,check_eye,check_color,radius,conclusion,remark,conclusion_en,remark_en,user_name
+ FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_package` (IN `s` VARCHAR(50))  NO SQL
@@ -477,19 +477,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe` (IN `companys` VARCHAR(1
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,
 abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,breat,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
-asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_name FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,
 abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,breat,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
-asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_name FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
 BEGIN
-select reg_id,r.barcode,emp_id,emp_name,surname,queue,age,company,year,date,time from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id where c.company like companys and (emp_id like name or emp_name like name or surname LIKE name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC;
+select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_registerdetail` (IN `s` VARCHAR(11))  NO SQL
@@ -499,31 +499,31 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register_limit` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50), IN `page` INT(5))  NO SQL
 BEGIN
-select reg_id,r.barcode,emp_id,emp_name,surname,queue,age,c.company,year,date,time from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id where c.company like companys and (emp_id like name or emp_name like name or surname like name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC LIMIT page,50;
+select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,c.company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname like name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC LIMIT page,50;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_se` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark
- FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,stool_ap,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark,conclusion_en,remark_en,user_name
+ FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_se_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark
- FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,stool_ap,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark,conclusion_en,remark_en,user_name
+ FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_spiro` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predict,fvc_predicts,fevi_means,
-fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,conclusion_en,remark_en,user_name FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_spiro_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predict,fvc_predicts,fevi_means,
-fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,conclusion_en,remark_en,user_name FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_test` (IN `test` VARCHAR(100))  BEGIN
@@ -535,48 +535,48 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_thryroid` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark
-FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark,conclusion_en,remark_en,user_name
+FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_thryroid_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark
-FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark,conclusion_en,remark_en,user_name
+FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_tumor_marker` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,tum_id,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark
-FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,tum_id,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark,conclusion_en,remark_en,user_name
+FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_tumor_marker_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,tum_id,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark
-FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,tum_id,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark,conclusion_en,remark_en,user_name
+FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
-FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,conclusion_en,remark_en,user_name
+FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark
-FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,conclusion_en,remark_en,user_name
+FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_x_ray` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark FROM x_ray p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark,x_ray_en,conclusion_en,user_name FROM x_ray p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_x_ray_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  BEGIN
-SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark FROM x_ray p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark,x_ray_en,conclusion_en,user_name FROM x_ray p LEFT JOIN employee e ON
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `test_` ()  NO SQL
@@ -641,15 +641,18 @@ CREATE TABLE `audiogram` (
   `l_h_avg` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `audiogram`
 --
 
-INSERT INTO `audiogram` (`audi_id`, `barcode`, `r_500`, `r_1000`, `r_2000`, `r_3000`, `r_l_avg`, `r_4000`, `r_6000`, `r_8000`, `r_h_avg`, `l_500`, `l_1000`, `l_2000`, `l_3000`, `l_l_avg`, `l_4000`, `l_6000`, `l_8000`, `l_h_avg`, `conclusion`, `remark`, `year`) VALUES
-(4, '119042101293', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ຜິດປົກກະຕິ', 'ຫຼຸດຜ່ອນທາດຫວານ', 2021);
+INSERT INTO `audiogram` (`audi_id`, `barcode`, `r_500`, `r_1000`, `r_2000`, `r_3000`, `r_l_avg`, `r_4000`, `r_6000`, `r_8000`, `r_h_avg`, `l_500`, `l_1000`, `l_2000`, `l_3000`, `l_l_avg`, `l_4000`, `l_6000`, `l_8000`, `l_h_avg`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(10, '119042101293', 'AUD_SRR_500#', 'AUD_SRR_1000#', 'AUD_SRR_2000#', 'AUD_SRR_3000#', 'AUD_SRR_AVG#', 'AUD_HRR_4000#', 'AUD_HRR_6000#', 'AUD_HRR_8000#', 'AUD_HRR_AVG#', 'AUD_SRL_500#', 'AUD_SRL_1000#', 'AUD_SRL_2000#', 'AUD_SRL_3000#', 'AUD_SRL_AVG#', 'AUD_HRL_4000#', 'AUD_HRL_6000#', 'AUD_HRL_8000#', 'AUD_HRL_AVG#', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -672,10 +675,21 @@ CREATE TABLE `biochemistry` (
   `sgpt` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `alk` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ggt` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hbac` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `biochemistry`
+--
+
+INSERT INTO `biochemistry` (`bio_id`, `barcode`, `fbs`, `cho`, `hdl`, `ldl`, `trig`, `ua`, `bun`, `creatinine`, `sgot`, `sgpt`, `alk`, `ggt`, `hbac`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(14, '119042101293', 'tstas', 'sa', 'g', 'saf', 'dsfs', 'sf', 'dfs', 'sdfs', 'afasdf', 'sfsdf', 'sfdsf', 'sdfsdf', 'Hba1c', 'ຜິດປົກະຕິ', 'ລົດອາຫານທາດມັນ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -702,16 +716,19 @@ CREATE TABLE `cbc` (
   `red_blood` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cbc`
 --
 
-INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocyte`, `eo`, `baso`, `platelets`, `rbc`, `mvc`, `mch`, `mchc`, `red_blood`, `conclusion`, `remark`, `year`) VALUES
-(7, '119042101293', 'test', 'test', 'tset', 'tset', 'test', 'stset', 'tste', 'ststa', 'sasg', 's', 'gsa', 'gas', 'gs', 'gs', 'ag', '', 2021),
-(8, '119042102441', 'test', 'test', 'tset', 'tset', 'test', 'stset', 'tste', 'ststa', 'sasg', 's', 'gsa', 'gas', 'gs', 'gs', 'ag', '', 2021);
+INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocyte`, `eo`, `baso`, `platelets`, `rbc`, `mvc`, `mch`, `mchc`, `red_blood`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(13, '119042101293', 'test', 'test', 'tset', 'tset', 'test', 'stset', 'tste', 'ststa', 'sasg', 's', 'gsa', 'gas', 'gs', 'gs', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(14, '119042102441', 'test', 'test', 'tset', 'tset', 'test', 'stset', 'tste', 'ststa', 'sasg', 's', 'gsa', 'gas', 'gs', 'gs', '', '', 2021, '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -746,8 +763,9 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`) VALUES
-(65, '119042101293', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1),
-(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1);
+(65, '119042101293', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(66, '119042102441', 2021, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1),
+(67, '119042101403', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -804,15 +822,19 @@ CREATE TABLE `ekg` (
   `year` year(4) DEFAULT NULL,
   `ekg_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remark` text COLLATE utf8_unicode_ci DEFAULT NULL
+  `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ekg_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `ekg`
 --
 
-INSERT INTO `ekg` (`ekg_id`, `barcode`, `year`, `ekg_name`, `conclusion`, `remark`) VALUES
-(7, '119042101293', 2021, '1000', 'ປົກກະຕິ', 'ປົກກະຕິ');
+INSERT INTO `ekg` (`ekg_id`, `barcode`, `year`, `ekg_name`, `conclusion`, `remark`, `ekg_en`, `conclusion_en`, `user_id`) VALUES
+(14, '119042101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(15, '119042102441', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', '', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -3423,8 +3445,18 @@ CREATE TABLE `heavy_metal` (
   `phenolic_resin` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `heavy_metal`
+--
+
+INSERT INTO `heavy_metal` (`hea_id`, `barcode`, `ether`, `ethy`, `nickle`, `manganese`, `tim`, `blood`, `m_i_urine`, `b_a_u`, `c_u`, `alcoho`, `silica`, `methy`, `a_i_urine`, `t_i_urine`, `methy_urine`, `methanoi_urine`, `phenolic_resin`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(6, '119042101293', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', 'test11', 'test12', 'test13', 'test14', 'test15', 'test16', 'test17', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3443,8 +3475,18 @@ CREATE TABLE `immunity` (
   `hiv` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `immunity`
+--
+
+INSERT INTO `immunity` (`im_id`, `barcode`, `anti_hav`, `ab`, `ag`, `hcv`, `vdrl`, `hiv`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(8, '119042101293', 'tstas', 'sdfsd', 'sdf', 'sdfsd', 'sdf', 'sdfsd', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3468,8 +3510,18 @@ CREATE TABLE `methamphetamine` (
   `methamphetamine` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `methamphetamine`
+--
+
+INSERT INTO `methamphetamine` (`meth_id`, `barcode`, `methamphetamine`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(10, '119042101293', 'Methaphetamine1', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3483,16 +3535,19 @@ CREATE TABLE `muscle` (
   `year` year(4) DEFAULT NULL,
   `muscle_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remark` text COLLATE utf8_unicode_ci DEFAULT NULL
+  `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `muscle_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `muscle`
 --
 
-INSERT INTO `muscle` (`muscle_id`, `barcode`, `year`, `muscle_name`, `conclusion`, `remark`) VALUES
-(4, '119042101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ'),
-(5, '119042102441', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ');
+INSERT INTO `muscle` (`muscle_id`, `barcode`, `year`, `muscle_name`, `conclusion`, `remark`, `muscle_en`, `conclusion_en`, `user_id`) VALUES
+(8, '119042101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(9, '119042102441', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', '', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -3511,8 +3566,18 @@ CREATE TABLE `oc_vision` (
   `radius` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `oc_vision`
+--
+
+INSERT INTO `oc_vision` (`oc_id`, `barcode`, `look_far`, `look_near`, `look_up`, `check_eye`, `check_color`, `radius`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(6, '119042101293', 'test22', 'test23', 'test24', 'test25', 'test26', 'test27', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3611,16 +3676,17 @@ CREATE TABLE `pe` (
   `als_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `other_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remark_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `remark_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `pe`
 --
 
-INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `pulse`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `skin`, `hear`, `lung`, `als`, `other`, `breat`, `conclusion`, `remark`, `hpi_en`, `pmhi_en`, `personal_en`, `family_en`, `asi_en`, `eye_en`, `teeth_en`, `ears_en`, `lymph_en`, `thryroid_en`, `extremities_en`, `skin_en`, `hear_en`, `lung_en`, `als_en`, `other_en`, `conclusion_en`, `remark_en`) VALUES
-(28, '119042101293', 2021, '', '', '', '', '', '157', '56', '22.72', '124/80', '70', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ນ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ', 'ປົກກະຕິ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, '119042102441', 2021, '', '', '', '', '', '168', '80', '22.72', '124/81', '60', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ຄວາມດັນເລືອດຢູ່ໃນເກນປົກກະຕິ', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `pulse`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `skin`, `hear`, `lung`, `als`, `other`, `breat`, `conclusion`, `remark`, `hpi_en`, `pmhi_en`, `personal_en`, `family_en`, `asi_en`, `eye_en`, `teeth_en`, `ears_en`, `lymph_en`, `thryroid_en`, `extremities_en`, `skin_en`, `hear_en`, `lung_en`, `als_en`, `other_en`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(30, '119042101293', 2021, '', '', '', '', '', '157', '56', '22.72', '124/80', '70', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ນ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ', '', 'History of Presenting illness', 'Past Medical History illness', 'Personal', 'Family', 'Alcohol, Smoking illness', 'Eyes', 'Teeth/Gum', 'Ears/Nos/Throat', 'Lymph Nodes', 'Thyroid Gland', 'Extremities', 'Skin', 'Heart', 'Lung', 'Abdomen/Liver/Spleen', 'Other', 'Conclusion', 'Remark', 2),
+(31, '119042102441', 2021, '', '', '', '', '', '168', '80', '22.72', '124/81', '60', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ຄວາມດັນເລືອດຢູ່ໃນເກນປົກກະຕິ', '', 'History of Presenting illness', 'Past Medical History illness', 'Personal', 'Family', 'Alcohol, Smoking illness', 'Eyes', 'Teeth/Gum', 'Ears/Nos/Throat', 'Lymph Nodes', 'Thyroid Gland', 'Extremities', 'Skin', 'Heart', 'Lung', 'Abdomen/Liver/Spleen', 'Other', 'Conclusion', 'Remark', 2);
 
 -- --------------------------------------------------------
 
@@ -3635,16 +3701,18 @@ CREATE TABLE `register` (
   `queue` int(5) NOT NULL,
   `year` year(4) NOT NULL,
   `date` date NOT NULL,
-  `remark` text COLLATE utf8_unicode_ci DEFAULT NULL
+  `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `register`
 --
 
-INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`, `remark`) VALUES
-(1, '119042101293', '18:28:27', 1, 2021, '2021-04-19', NULL),
-(2, '119042102441', '18:32:17', 2, 2021, '2021-04-20', NULL);
+INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`, `remark`, `user_id`) VALUES
+(1, '119042101293', '18:28:27', 1, 2021, '2021-04-19', NULL, 2),
+(2, '119042102441', '18:32:17', 2, 2021, '2021-04-20', NULL, 2),
+(3, '119042101403', '16:26:50', 1, 2021, '2021-04-27', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -3677,7 +3745,12 @@ INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`) VALUES
 (445, 2, 'Audio'),
 (446, 2, 'BUN'),
 (447, 2, 'CBC'),
-(448, 2, 'CHO');
+(448, 2, 'CHO'),
+(449, 3, 'ALP'),
+(450, 3, 'Audio'),
+(451, 3, 'BUN'),
+(452, 3, 'CBC'),
+(453, 3, 'CHO');
 
 -- --------------------------------------------------------
 
@@ -3689,6 +3762,7 @@ CREATE TABLE `se` (
   `se_id` int(11) NOT NULL,
   `barcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `color` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stool_ap` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `wbc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rbc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parasite` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -3698,8 +3772,18 @@ CREATE TABLE `se` (
   `vibrio` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `se`
+--
+
+INSERT INTO `se` (`se_id`, `barcode`, `color`, `stool_ap`, `wbc`, `rbc`, `parasite`, `samonella`, `shigella`, `vivrio`, `vibrio`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(11, '119042101293', 'test1', 'Stool_Appearance', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3719,8 +3803,18 @@ CREATE TABLE `spirometry` (
   `fevi_fvc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `spirometry`
+--
+
+INSERT INTO `spirometry` (`spir_id`, `barcode`, `fvc_means`, `fvc_predict`, `fvc_predicts`, `fevi_means`, `fevi_predict`, `fevi_predicts`, `fevi_fvc`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(11, '119042101293', 'test88', 'test89', 'test90', 'test91', 'test92', 'test93', 'test94', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3738,8 +3832,18 @@ CREATE TABLE `thryroid` (
   `t4` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `thryroid`
+--
+
+INSERT INTO `thryroid` (`th_id`, `barcode`, `free_t3`, `free_t4`, `tsh`, `t3`, `t4`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(7, '119042101293', 'test1', 'test2', 'test3', 'test4', 'test5', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3758,8 +3862,18 @@ CREATE TABLE `tumor_marker` (
   `ca_125` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tumor_marker`
+--
+
+INSERT INTO `tumor_marker` (`tum_id`, `barcode`, `afp`, `cea`, `psa`, `ca_19`, `ca_15`, `ca_125`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(6, '119042101293', 'test11', 'test12', 'test13', 'test14', 'test15', 'test16', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3783,8 +3897,18 @@ CREATE TABLE `urinalvsis` (
   `epit` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `urinalvsis`
+--
+
+INSERT INTO `urinalvsis` (`urin_id`, `barcode`, `color`, `appearance`, `ph`, `specifics`, `protein`, `sugar`, `ketone`, `blood`, `wbc`, `rbc`, `epit`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(10, '119042101293', 'test', 'ssdc', 'ccv', '23d', 'y43dfg', '4y', 'hf', '54y', 'h', '54h', 'rj', 'ຜິດປົກກະຕິ', 'ຫຼູດຜ່ອນທາດເຄັມ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3794,7 +3918,7 @@ CREATE TABLE `urinalvsis` (
 
 CREATE TABLE `username` (
   `user_id` int(11) NOT NULL,
-  `emp_id` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `staff_id` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pass` varchar(24) COLLATE utf8_unicode_ci NOT NULL,
@@ -3805,7 +3929,7 @@ CREATE TABLE `username` (
 -- Dumping data for table `username`
 --
 
-INSERT INTO `username` (`user_id`, `emp_id`, `user_name`, `email`, `pass`, `stt_id`) VALUES
+INSERT INTO `username` (`user_id`, `staff_id`, `user_name`, `email`, `pass`, `stt_id`) VALUES
 (2, NULL, 'ປູນາ', 'puna@gmail.com', '202cb962ac59075b964b0715', 1);
 
 -- --------------------------------------------------------
@@ -3838,16 +3962,19 @@ CREATE TABLE `x_ray` (
   `x_ray` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `conclusion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `remark` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `x_ray_en` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `x_ray`
 --
 
-INSERT INTO `x_ray` (`x_id`, `barcode`, `x_ray`, `conclusion`, `remark`, `year`) VALUES
-(5, '119042101293', 'ປົກກະຕິ', 'ປົກກະຕິ', '', 2021),
-(6, '119042102441', 'ປົກກະຕິ', 'ປົກກະຕິ', '', 2021);
+INSERT INTO `x_ray` (`x_id`, `barcode`, `x_ray`, `conclusion`, `remark`, `year`, `x_ray_en`, `conclusion_en`, `user_id`) VALUES
+(13, '119042101293', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(14, '119042102441', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, '', '', 2);
 
 --
 -- Indexes for dumped tables
@@ -3858,21 +3985,24 @@ INSERT INTO `x_ray` (`x_id`, `barcode`, `x_ray`, `conclusion`, `remark`, `year`)
 --
 ALTER TABLE `audiogram`
   ADD PRIMARY KEY (`audi_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `biochemistry`
 --
 ALTER TABLE `biochemistry`
   ADD PRIMARY KEY (`bio_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `cbc`
 --
 ALTER TABLE `cbc`
   ADD PRIMARY KEY (`cbc_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `checkup_status`
@@ -3900,7 +4030,8 @@ ALTER TABLE `company_package`
 --
 ALTER TABLE `ekg`
   ADD PRIMARY KEY (`ekg_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `employee`
@@ -3914,14 +4045,16 @@ ALTER TABLE `employee`
 --
 ALTER TABLE `heavy_metal`
   ADD PRIMARY KEY (`hea_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `immunity`
 --
 ALTER TABLE `immunity`
   ADD PRIMARY KEY (`im_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `machine`
@@ -3934,21 +4067,24 @@ ALTER TABLE `machine`
 --
 ALTER TABLE `methamphetamine`
   ADD PRIMARY KEY (`meth_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `muscle`
 --
 ALTER TABLE `muscle`
   ADD PRIMARY KEY (`muscle_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `oc_vision`
 --
 ALTER TABLE `oc_vision`
   ADD PRIMARY KEY (`oc_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `package`
@@ -3961,14 +4097,16 @@ ALTER TABLE `package`
 --
 ALTER TABLE `pe`
   ADD PRIMARY KEY (`pe_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `register`
 --
 ALTER TABLE `register`
   ADD PRIMARY KEY (`reg_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `registerdetail`
@@ -3983,35 +4121,40 @@ ALTER TABLE `registerdetail`
 --
 ALTER TABLE `se`
   ADD PRIMARY KEY (`se_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `spirometry`
 --
 ALTER TABLE `spirometry`
   ADD PRIMARY KEY (`spir_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `thryroid`
 --
 ALTER TABLE `thryroid`
   ADD PRIMARY KEY (`th_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `tumor_marker`
 --
 ALTER TABLE `tumor_marker`
   ADD PRIMARY KEY (`tum_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `urinalvsis`
 --
 ALTER TABLE `urinalvsis`
   ADD PRIMARY KEY (`urin_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `username`
@@ -4031,7 +4174,8 @@ ALTER TABLE `user_status`
 --
 ALTER TABLE `x_ray`
   ADD PRIMARY KEY (`x_id`),
-  ADD KEY `barcode` (`barcode`);
+  ADD KEY `barcode` (`barcode`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -4041,25 +4185,25 @@ ALTER TABLE `x_ray`
 -- AUTO_INCREMENT for table `audiogram`
 --
 ALTER TABLE `audiogram`
-  MODIFY `audi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `audi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `biochemistry`
 --
 ALTER TABLE `biochemistry`
-  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cbc`
 --
 ALTER TABLE `cbc`
-  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `checkup_status`
 --
 ALTER TABLE `checkup_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -4077,79 +4221,79 @@ ALTER TABLE `company_package`
 -- AUTO_INCREMENT for table `ekg`
 --
 ALTER TABLE `ekg`
-  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `heavy_metal`
 --
 ALTER TABLE `heavy_metal`
-  MODIFY `hea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `hea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `immunity`
 --
 ALTER TABLE `immunity`
-  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `methamphetamine`
 --
 ALTER TABLE `methamphetamine`
-  MODIFY `meth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `meth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `muscle`
 --
 ALTER TABLE `muscle`
-  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `oc_vision`
 --
 ALTER TABLE `oc_vision`
-  MODIFY `oc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `oc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pe`
 --
 ALTER TABLE `pe`
-  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=449;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
 
 --
 -- AUTO_INCREMENT for table `se`
 --
 ALTER TABLE `se`
-  MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `spirometry`
 --
 ALTER TABLE `spirometry`
-  MODIFY `spir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `spir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `thryroid`
 --
 ALTER TABLE `thryroid`
-  MODIFY `th_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `th_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tumor_marker`
 --
 ALTER TABLE `tumor_marker`
-  MODIFY `tum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `urinalvsis`
 --
 ALTER TABLE `urinalvsis`
-  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `username`
@@ -4167,7 +4311,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `x_ray`
 --
 ALTER TABLE `x_ray`
-  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -4177,19 +4321,22 @@ ALTER TABLE `x_ray`
 -- Constraints for table `audiogram`
 --
 ALTER TABLE `audiogram`
-  ADD CONSTRAINT `audiogram_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `audiogram_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `audiogram_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `biochemistry`
 --
 ALTER TABLE `biochemistry`
-  ADD CONSTRAINT `biochemistry_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `biochemistry_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `biochemistry_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `cbc`
 --
 ALTER TABLE `cbc`
-  ADD CONSTRAINT `cbc_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `cbc_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `cbc_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `checkup_status`
@@ -4208,7 +4355,8 @@ ALTER TABLE `company_package`
 -- Constraints for table `ekg`
 --
 ALTER TABLE `ekg`
-  ADD CONSTRAINT `ekg_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `ekg_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `ekg_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `employee`
@@ -4220,43 +4368,50 @@ ALTER TABLE `employee`
 -- Constraints for table `heavy_metal`
 --
 ALTER TABLE `heavy_metal`
-  ADD CONSTRAINT `heavy_metal_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `heavy_metal_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `heavy_metal_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `immunity`
 --
 ALTER TABLE `immunity`
-  ADD CONSTRAINT `immunity_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `immunity_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `immunity_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `methamphetamine`
 --
 ALTER TABLE `methamphetamine`
-  ADD CONSTRAINT `methamphetamine_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `methamphetamine_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `methamphetamine_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `muscle`
 --
 ALTER TABLE `muscle`
-  ADD CONSTRAINT `muscle_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `muscle_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `muscle_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `oc_vision`
 --
 ALTER TABLE `oc_vision`
-  ADD CONSTRAINT `oc_vision_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `oc_vision_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `oc_vision_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `pe`
 --
 ALTER TABLE `pe`
-  ADD CONSTRAINT `pe_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `pe_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `pe_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `register`
 --
 ALTER TABLE `register`
-  ADD CONSTRAINT `register_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `register_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `register_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `registerdetail`
@@ -4269,31 +4424,37 @@ ALTER TABLE `registerdetail`
 -- Constraints for table `se`
 --
 ALTER TABLE `se`
-  ADD CONSTRAINT `se_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `se_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `se_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `spirometry`
 --
 ALTER TABLE `spirometry`
-  ADD CONSTRAINT `spirometry_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `spirometry_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `spirometry_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `thryroid`
 --
 ALTER TABLE `thryroid`
-  ADD CONSTRAINT `thryroid_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `thryroid_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `thryroid_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `tumor_marker`
 --
 ALTER TABLE `tumor_marker`
-  ADD CONSTRAINT `tumor_marker_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `tumor_marker_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `tumor_marker_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `urinalvsis`
 --
 ALTER TABLE `urinalvsis`
-  ADD CONSTRAINT `urinalvsis_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `urinalvsis_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `urinalvsis_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`),
+  ADD CONSTRAINT `urinalvsis_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 
 --
 -- Constraints for table `username`
@@ -4305,7 +4466,8 @@ ALTER TABLE `username`
 -- Constraints for table `x_ray`
 --
 ALTER TABLE `x_ray`
-  ADD CONSTRAINT `x_ray_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`);
+  ADD CONSTRAINT `x_ray_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `employee` (`barcode`),
+  ADD CONSTRAINT `x_ray_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `username` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
