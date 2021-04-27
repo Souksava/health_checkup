@@ -8,7 +8,7 @@
 ?>
 
 
-<form action="Print" method="POST" id="form_export" target="_blank">
+<form action="PrintBook" method="POST" id="form_export" target="_blank">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="input-group mb-3">
