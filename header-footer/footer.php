@@ -50,64 +50,40 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="<?php echo $path ?>dist/js/pageload.js"></script>
 <script src="<?php echo $path ?>dist/js/jquery.highlight.js"></script>
 <script src="<?php echo $path ?>dist/js/datepicker.js"></script>
-
-
-<script>
-
-   
-</script>
-
-<script>
-// $(window).load(function() {
-//     // Update Modal
-//     // delete import
-
-//     $('.btnDelete_import').on('click', function() {
-//         $('#exampleModalDelete').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#id').val(data[0]);
-//     });
-//     // delete form
-//     $('.btnDelete_form').on('click', function() {
-//         $('#exampleModalDelete').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#id').val(data[0]);
-//     });
-//     // delete accept
-//     $('.btnDelete_accept').on('click', function() {
-//         $('#exampleModalDelete').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#id').val(data[0]);
-//     });
-//     // delete distribute
-//     $('.btnDelete_dist').on('click', function() {
-//         $('#exampleModalDelete').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#id').val(data[0]);
-//     });
-// });
-
-</script>
 <script>
 // $(document).bind("contextmenu",function(e){
 //   return false;
 // });
+</script>
+<script>
+    var machine = "<?php echo $machine; ?>";
+    var logic = false;
+    <?php 
+     $obj->get_machine();
+    foreach($machine_id as $row){
+        $obj->generate($row["machine_id"]);
+        ?>
+        console.log("loop: " + "<?php echo $machine_no?>");
+        <?php
+        if($machine == $machine_no){
+            ?>
+                logic = true;
+                console.log("data: " + "<?php echo $machine_no ?>");
+                console.log("client mac" + machine);
+            <?php
+            break;
+        }
+    }
+    ?>
+
+
+    if(logic === true){
+        console.log("true");
+        console.log(machine);
+    }
+    else{
+        window.location.href='<?php echo $path; ?>404/404';
+    }
 </script>
 </body>
 

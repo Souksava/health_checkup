@@ -8,6 +8,9 @@
      if($_SESSION['health_ses_status_id'] == 1){
           $stt = 1;
      }
+     if($_SESSION['health_ses_status_id'] == 2){
+        $stt = 2;
+   }
      if($_SESSION['health_ses_id'] == ''){
         $obj_log->logout();
     }
@@ -65,7 +68,8 @@
     </div>
     <?php
      include (''.$path.'oop/obj.php');
-?>
+    $obj->machine();
+    ?>
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light font14">
             <ul class="navbar-nav">
@@ -100,6 +104,9 @@
             </div>
 
             <!-- Sidebar Menu -->
+            <?php 
+                if($stt == 1){
+                    ?>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
@@ -290,6 +297,67 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
+                                ພິມໃບຢັ້ງຢືນສຸຂະພາບ
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Certificate/Lao" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ພາສາລາວ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Certificate/English" class="nav-link">
+                                    <i class="far fa fa-check nav-icon"></i>
+                                    <p>ພາສາອັງກິດ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Book/Book" class="nav-link">
+                            <i class="nav-icon fas fa-print"></i>
+                            <p>
+                            ພິມປຶ້ມກວດສຸຂະພາບ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                            <i class="nav-icon fas fa-power-off"></i>
+                            <p>
+                                ອອກຈາກລະບົບ
+                            </p>
+                        </a>
+                    </li>
+                    </li>
+                </ul>
+            </nav>
+            <?php
+                }
+                if($stt == 2){
+                    ?>
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Employee/Employee" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i><i class="fad fa-user-hard-hat"></i>
+                            <p>
+                                ຂໍ້ມູນຜູ້ໃຊ້ລະບົບ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-certificate"></i>
+                            <p>
                             ພິມໃບຢັ້ງຢືນສຸຂະພາບ
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -315,58 +383,11 @@
                         <a href="<?php echo $links ?>Book/Book" class="nav-link">
                             <i class="nav-icon fas fa-print"></i>
                             <p>
-                            ພີມລາຍງານການກວດສຸຂະພາບ
+                            ພິມປຶ້ມກວດສຸຂະພາບ
                                 <i class="fas"></i>
                             </p>
                         </a>
                     </li>
-                    <!-- <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                ພີມປື້ມຕິດຕາມສຸຂະພາບ
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="Make/accept.php" class="nav-link">
-                                    <i class="far fa fa-check nav-icon"></i>
-                                    <p>ໜ້າປົກ</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="Make/accept.php" class="nav-link">
-                                    <i class="far fa fa-check nav-icon"></i>
-                                    <p>ໜ້າ1-ສະຫຼຸບ</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="Make/accept.php" class="nav-link">
-                                    <i class="far fa fa-check nav-icon"></i>
-                                    <p>ໜ້າ2-11</p>
-                                </a>
-                            </li> -->
-                            <!-- <li class="nav-item">
-                                <a href="Make/accept.php" class="nav-link">
-                                    <i class="far fa fa-check nav-icon"></i>
-                                    <p>ໜ້າ3-10</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="Make/accept.php" class="nav-link">
-                                    <i class="far fa fa-check nav-icon"></i>
-                                    <p>ໜ້າ4-9</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="Make/accept.php" class="nav-link">
-                                    <i class="far fa fa-check nav-icon"></i>
-                                    <p>ໜ້າ5-8</p>
-                                </a>
-                            </li> -->
-                        <!-- </ul>
-                    </li> -->
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                             <i class="nav-icon fas fa-power-off"></i>
@@ -378,6 +399,9 @@
                     </li>
                 </ul>
             </nav>
+            <?php
+                }
+            ?>
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->

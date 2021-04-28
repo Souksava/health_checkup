@@ -1393,6 +1393,44 @@ public static function import_thry($file_path,$year,$user_id){
         echo"window.location.href='Cbc?import=success';";
         echo"</script>";
     }
+    public static function machine(){
+        global $machine;
+        $machine = "";
+        $ipAddress=$_SERVER['REMOTE_ADDR'];
+        $arp= "arp -a $ipAddress";
+        $ip = shell_exec($arp);
+        if($ipAddress == "::1"){
+            $ipall = "ipconfig /all";
+            $ipserver = shell_exec($ipall);
+            $ipserver = strstr($ipserver,'Wi-Fi',false);
+            $ipserver = strstr($ipserver,'Physical Address',false);
+            $ipserver = strstr($ipserver,' DHCP',true);
+            $ipserver = strstr($ipserver,': ',false);
+            $machine = strtoupper(substr($ipserver,2,-3));
+        }
+        else{
+            $machine = strtoupper(substr($ip,109,-16));
+        }
+    }
+    public static function get_machine(){
+        global $conn;
+        global $machine_id;
+        $machine_id = mysqli_query($conn,"select * from machine;");
+        
+    }
+    public static function generate($machine_id){
+        global $machine_no;
+        $group1 = substr($machine_id,2,2);
+        $group2 = substr($machine_id,4,2);
+        $group3 = substr($machine_id,10,2);
+        $group4 = substr($machine_id,12,2);
+        $group5 = substr($machine_id,18,2);
+        $group6 = substr($machine_id,20,2);
+        $machine_no = $group1."-".$group2."-".$group3."-".$group4."-".$group5."-".$group6;
+        
+    }
+    
+
 
 }
 $obj = new obj();

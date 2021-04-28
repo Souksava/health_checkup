@@ -35,5 +35,18 @@ RewriteRule ^User/Certificate/Lao?$ User/Certificate/lao.php
 RewriteRule ^User/Certificate/PrintEnglish?$ User/Certificate/printeng.php
 RewriteRule ^User/Certificate/PrintLao?$ User/Certificate/printlao.php
 
-RewriteRule ^User/Book/Book?$ User/book/book.php
-RewriteRule ^User/Book/PrintBook?$ User/book/print.php
+RewriteRule ^User/Book/Book?$ User/Book/book.php
+RewriteRule ^User/Book/PrintBook?$ User/Book/print.php
+RewriteRule ^404/404?$ 404/404.php
+
+RewriteRule ^Admin/Main?$ Admin/Main.php
+RewriteRule ^Admin/Employee/Employee?$ Admin/Employee/employee.php
+
+
+RewriteRule ^Admin/Certificate/English?$ Admin/Certificate/eng.php
+RewriteRule ^Admin/Certificate/Lao?$ Admin/Certificate/lao.php
+RewriteRule ^Admin/Certificate/PrintEnglish?$ Admin/Certificate/printeng.php
+RewriteRule ^Admin/Certificate/PrintLao?$ Admin/Certificate/printlao.php
+
+RewriteRule ^Admin/Book/Book?$ Admin/Book/book.php
+RewriteRule ^Admin/Book/PrintBook?$ Admin/Book/print.php
