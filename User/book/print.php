@@ -1,25 +1,109 @@
-<?php
-    $path = "../../";
-    include ('../../oop/obj.php');
-$barcode = $_POST["barcode"];
-$year = $_POST["year"];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../../image/health.jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="<?php echo $path ?>plugins/fontawesome-free/css/all.min.css">
 
-
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <title>Health CheckUp</title>
 </head>
+
+<?php
+$path = "../../";
+include ('../../oop/obj.php');
+$barcode = $_POST["barcode"];
+$year = $_POST["year"];
+$year2 = $_POST["year2"];
+$year3 = $_POST["year3"];
+
+
+$emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,date,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode';");
+$fetch_emp = mysqli_fetch_array($emp,MYSQLI_ASSOC);
+
+$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$year';");
+$fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
+$hpi = $fetch_pe["hpi"];
+if($hpi != ""){
+    $hpi = $hpi;
+}
+else{
+    $hpi = "<br>";
+}
+
+$imm = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year';");
+$fetch_imm = mysqli_fetch_array($imm,MYSQLI_ASSOC);
+$imm2 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year2';");
+$fetch_imm2 = mysqli_fetch_array($imm2,MYSQLI_ASSOC);
+$imm3 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year3';");
+$fetch_imm3 = mysqli_fetch_array($imm3,MYSQLI_ASSOC);
+
+$spiro = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' AND year='$year';");
+$fetch_spiro = mysqli_fetch_array($spiro,MYSQLI_ASSOC);
+
+$cbc = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year';");
+$fetch_cbc = mysqli_fetch_array($cbc,MYSQLI_ASSOC);
+$cbc2 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year2';");
+$fetch_cbc2 = mysqli_fetch_array($cbc2,MYSQLI_ASSOC);
+$cbc3 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year3';");
+$fetch_cbc3 = mysqli_fetch_array($cbc3,MYSQLI_ASSOC);
+
+$bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year';");
+$fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
+$bio2 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year2';");
+$fetch_bio2 = mysqli_fetch_array($bio2,MYSQLI_ASSOC);
+$bio3 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year3';");
+$fetch_bio3 = mysqli_fetch_array($bio3,MYSQLI_ASSOC);
+
+$cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$year';");
+$fetch_cxr = mysqli_fetch_array($cxr,MYSQLI_ASSOC);
+
+$ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='$year';");
+$fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
+
+$vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' AND year='$year';");
+$fetch_vision = mysqli_fetch_array($vision,MYSQLI_ASSOC);
+
+$metal = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year';");
+$fetch_metal = mysqli_fetch_array($metal,MYSQLI_ASSOC);
+$metal2 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year2';");
+$fetch_metal2 = mysqli_fetch_array($metal2,MYSQLI_ASSOC);
+$metal3 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year3';");
+$fetch_metal3 = mysqli_fetch_array($metal3,MYSQLI_ASSOC);
+
+$urine = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year';");
+$fetch_urine = mysqli_fetch_array($urine,MYSQLI_ASSOC);
+$urine2 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year2';");
+$fetch_urine2 = mysqli_fetch_array($urine2,MYSQLI_ASSOC);
+$urine3 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year3';");
+$fetch_urine3 = mysqli_fetch_array($urine3,MYSQLI_ASSOC);
+
+$audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AND year='$year';");
+$fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
+
+$muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$year';");
+$fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
+
+$thyroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' AND year='$year';");
+$fetch_thyroid = mysqli_fetch_array($thyroid,MYSQLI_ASSOC);
+
+$stool = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' AND year='$year';");
+$fetch_stool = mysqli_fetch_array($stool,MYSQLI_ASSOC);
+
+$tumor = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year';");
+$fetch_tumor = mysqli_fetch_array($tumor,MYSQLI_ASSOC);
+$tumor2 = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year2';");
+$fetch_tumor2 = mysqli_fetch_array($tumor2,MYSQLI_ASSOC);
+$tumor3 = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year3';");
+$fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
+
+
+?>
 
 <body>
 
@@ -32,7 +116,7 @@ $year = $_POST["year"];
     }
 
     body {
-        background-color: rgb(204,204,204);
+        background-color: rgb(204, 204, 204);
         font-size: 12px;
         font-Family: "Phetsarath OT";
     }
@@ -118,7 +202,8 @@ $year = $_POST["year"];
     }
     </style>
 
-<button type="button" class="btn btn-primary btnprint" onclick="window.print();"><span class="fas fa-print">&nbsp;</span>Print</button>
+    <button type="button" class="btn btn-primary btnprint" onclick="window.print();"><span
+            class="fas fa-print">&nbsp;</span>Print</button>
 
     <div class="paper" style="page-break-after:always;">
         <div class="row">
@@ -127,25 +212,49 @@ $year = $_POST["year"];
                     ສະຫຼູບຜົນ/ຂໍ້ຄິດເຫັນ/ຄຳແນະນຳ (Conclusion/Suggestion/Recommendation)
                 </div>
                 <div class="content">
-                    ນ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ <br>
-                    ຄວາມດັນເລືອດຢູ່ໃນເກນປົກະຕິ <br>
-                    ຂະໜາດຂອງເມັດເລືອດແດງນ້ອຍກວ່າປົກກະຕິ <br>
-                    ລະດັບນ້ຳຕານໃນເລືອດຢູ່ຄ່າປົກກະຕິ <br>
-                    ຜົນກວດເຮັດວຽກຂອງໜາກໄຂ່ຫຼັງ BUN ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ຜົນກວດເຮັດວຽກຂອງໜາກໄຂ່ຫຼັງ Creatinine ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ລະດັບ UA ໃນເລືອດຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ລະດັບ CHO ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ລະດັບ Trig ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ລະດັບ HDL ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ລະດັບ LDL ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ຜົນກວດການເຮັດວຽກຂອງຕັບ SGOT ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ຜົນກວດການເຮັດວຽກຂອງຕັບ SGPT ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ຜົນກວດການເຮັດວຽກຂອງຕັບແລະລະບົບນ້ຳບີ ລະດັບ ALP ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ຜົນກວດການເຮັດວຽກຂອງຕັບ ລະດັບ GGT ຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ຜົນກວດວິເຄາະປັດສະວະຢູ່ໃນຄ່າປົກກະຕິ <br>
-                    ກວດບໍໍ່ເຫັນພູມຄຸ້ມກັນຕໍ່ໄວຮັດຕັບອັກເສບຊະນິດ B <br>
-                    ກວດບໍ່ເຫັນການຕິດເຊື້ອໄວຮັດຕັບອັຫເສບຊະນິດ B <br>
-                    X-Ray <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_pe["conclusion"]);?>
+                        </div>
+                        
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_cbc["conclusion"]);?>
+                        </div>
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_bio["conclusion"]);?>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_urine["conclusion"]);?>
+                        </div>
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_imm["conclusion"]);?>
+                        </div>
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_cxr["conclusion"]);?>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_ekg["conclusion"]);?>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_vision["conclusion"]);?>
+                        </div>
+                        
+
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_audio["conclusion"]);?>
+                        </div>
+                        
+
+                        <div class="col-sm-12">
+                            <?php echo nl2br($fetch_stool["conclusion"]);?>
+                        </div>
+                    </div>
                 </div>
                 <div class="signature">
                     ລາຍເຊັນທ່ານໝໍ/Physician
@@ -159,58 +268,61 @@ $year = $_POST["year"];
                     ປື້ມລາຍງານຜົນກວດສຸຂະພາບປະຈຳປີ (Health Check up Report)
                 </div>
                 <div class="date">
-                    ວັນທີເຂົາຮັບການກວດ/Examination Date: 19/02/2021
+                    ວັນທີເຂົາຮັບການກວດ/Examination Date: <?php echo date("d/m/Y ", strtotime($fetch_emp["date"]));?>
                 </div>
                 <div class="info">
                     <div class="row">
                         <div class="col-sm-6">
                             <div style="">
-                                ຊື່ແລະນາມສະກຸນ: &nbsp;&nbsp;ທ. ສອນໄຊ ສຸພັນໄຊ
+                                ຊື່ແລະນາມສະກຸນ: &nbsp;&nbsp;
+                                <?php echo $fetch_emp["emp_name"]; echo"&nbsp;"; echo $fetch_emp["surname"];?>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right;margin-right:30px;">
-                                ລຳດັບ: &nbsp;&nbsp; 740
+                                ລຳດັບ: &nbsp;&nbsp; <?php echo $fetch_emp["queue"];?>
                             </div>
                         </div>
                         <div class="col-sm-5">
                             <div style="">
-                                ລະຫັດພະນັກງານ: &nbsp;&nbsp; VT248344123
+                                ລະຫັດພະນັກງານ: &nbsp;&nbsp; <?php echo $fetch_emp["emp_id"];?>
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div style="">
-                                ພະແນກ: &nbsp;&nbsp; ບໍລິຫານ
+                                ພະແນກ: &nbsp;&nbsp; <?php echo $fetch_emp["department"];?>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="">
-                                ບໍລິສັດ: &nbsp;&nbsp; ບໍລິສັດ ທິບໂກ້ ອັດຟັນສ ລາວ ຈຳກັດ
+                                ບໍລິສັດ: &nbsp;&nbsp; <?php echo $fetch_emp["company"];?>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right;margin-right:30px;">
-                                ເລກປະຈຳຕົວ: &nbsp;&nbsp; 126032106236
+                                ເລກປະຈຳຕົວ: &nbsp;&nbsp; <?php echo $barcode;?>
                             </div>
                         </div>
                         <div class="col-sm-6" style="margin-top:20px">
                             <div style="">
-                                ເພດ/Gender: <span style="margin-left:120px"> ຊາຍ </span>
+                                ເພດ/Gender: <span style="margin-left:120px"> <?php echo $fetch_emp["gender"];?> </span>
                             </div>
                         </div>
                         <div class="col-sm-6" style="margin-top:20px">
                             <div style="margin-right:30px;">
-                                ວັນ,ເດືອນ,ປີເກີດ: <span style="margin-left:30px">01/02/2021</span>
+                                ວັນ,ເດືອນ,ປີເກີດ: <span
+                                    style="margin-left:30px"><?php echo date("d/m/Y ", strtotime($fetch_emp["dob"]));?></span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="">
-                                ອາຍຸ/Age: <span style="margin-left:140px"> 22 </span>
+                                ອາຍຸ/Age: <span style="margin-left:140px"> <?php echo $fetch_emp["age"];?> </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="margin-right:30px;">
-                                ສະຖານະຄອບຄົວ: <span style="margin-left:30px">ແຕ່ງງານ</span>
+                                ສະຖານະຄອບຄົວ: <span
+                                    style="margin-left:30px"><?php echo $fetch_emp["family_stt"];?></span>
                             </div>
                         </div>
                     </div>
@@ -226,22 +338,22 @@ $year = $_POST["year"];
                     <div class="row">
                         <div class="col-sm-6">
                             <div>
-                                ສັນຊາດ/Nationality: &nbsp;&nbsp; ລາວ
+                                ສັນຊາດ/Nationality: &nbsp;&nbsp; <?php echo $fetch_emp["nation"];?>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right;margin-right:30px;">
-                                ຊົນເຜົ່າ/Ethnic: &nbsp;&nbsp; ລາວລຸ່ມ
+                                ຊົນເຜົ່າ/Ethnic: &nbsp;&nbsp; <?php echo $fetch_emp["ethnic"];?>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ສາດສະໜາ/Religion: &nbsp;&nbsp; ພຸດ
+                                ສາດສະໜາ/Religion: &nbsp;&nbsp; <?php echo $fetch_emp["religion"];?>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp;
+                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <?php echo $fetch_emp[""];?>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -256,27 +368,27 @@ $year = $_POST["year"];
                         </div>
                         <div class="col-sm-6">
                             <div>
-                                ບ້ານ/Village: &nbsp;&nbsp; ໂຊກນ້ອຍ
+                                ບ້ານ/Village: &nbsp;&nbsp; <?php echo $fetch_emp["village"];?>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div>
-                                ເມືອງ/District: &nbsp;&nbsp; ສີໂຄດຕະບອງ
+                                ເມືອງ/District: &nbsp;&nbsp; <?php echo $fetch_emp["district"];?>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ແຂວງ/Province: &nbsp;&nbsp; ນະຄອນຫຼວງວຽງຈັນ
+                                ແຂວງ/Province: &nbsp;&nbsp; <?php echo $fetch_emp["province"];?>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ເບີໂທລະສັບ/Phone Number: &nbsp;&nbsp; 020 12345678
+                                ເບີໂທລະສັບ/Phone Number: &nbsp;&nbsp; <?php echo $fetch_emp["tel"];?>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; test@gmail.com
+                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <?php echo $fetch_emp[""];?>
                             </div>
                         </div>
                     </div>
@@ -304,28 +416,28 @@ $year = $_POST["year"];
                         ID.No.:
                     </div>
                     <div class="col-sm-3">
-                        123456789112
+                        <?php echo $barcode;?>
                     </div>
                     <div class="col-sm-12">
-                        ລາວລຸ່ມ
+                        <?php echo $hpi;?>
                     </div>
                     <div class="col-sm-12">
-                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness :
+                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <?php echo $fetch_pe["pmhi"];?>
                     </div>
                     <div class="col-sm-12">
-                        ສ່ວນຕົວ/Personal :
+                        ສ່ວນຕົວ/Personal : <?php echo $fetch_pe["personal"];?>
                     </div>
                     <div class="col-sm-12">
-                        ຄອບຄົວ/Family :
+                        ຄອບຄົວ/Family : <?php echo $fetch_pe["family"];?>
                     </div>
                     <div class="col-sm-12">
-                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness :
+                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <?php echo $fetch_pe["asi"];?>
                     </div>
                     <div class="col-sm-4">
                         ລວງສູງ/Height:
                     </div>
                     <div class="col-sm-1">
-                        <b>160</b>
+                        <b><?php echo $fetch_pe["height"];?></b>
                     </div>
                     <div class="col-sm-1">
                         Cms.
@@ -337,13 +449,13 @@ $year = $_POST["year"];
                         ນ້ຳໜັກ(Weight):
                     </div>
                     <div class="col-sm-2">
-                        <b>83</b>&nbsp;&nbsp; Kgs.
+                        <b><?php echo $fetch_pe["weight"];?></b>&nbsp;&nbsp; Kgs.
                     </div>
                     <div class="col-sm-5">
                         ດັດສະນີມວນສານຂອງຮ່າງກາຍ (BMI)
                     </div>
                     <div class="col-sm-1">
-                        <b>32.42</b>
+                        <b><?php echo $fetch_pe["bmi"];?></b>
                     </div>
                     <div class="col-sm-1">
 
@@ -355,7 +467,7 @@ $year = $_POST["year"];
                         ຄວາມດັນເລືອດ (Blood Pressure)
                     </div>
                     <div class="col-sm-1">
-                        <b>150/102</b>
+                        <b><?php echo $fetch_pe["bp"];?></b>
                     </div>
                     <div class="col-sm-1">
 
@@ -367,7 +479,7 @@ $year = $_POST["year"];
                         ກຳມະຈອນ (Pulse)
                     </div>
                     <div class="col-sm-1">
-                        <b>85</b>
+                        <b><?php echo $fetch_pe["pulse"];?></b>
                     </div>
                     <div class="col-sm-4">
                         ເທື່ອ/ນາທີ[60-100]
@@ -376,61 +488,61 @@ $year = $_POST["year"];
                         ໝວດເລືອດ ABO :
                     </div>
                     <div class="col-sm-5">
-                        <b></b>
+                        <b><?php echo $fetch_pe["abo"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ຕາ (Eyes) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["eye"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ແຂ້ວ/ຟັນແຂ້ວ (Teeth/Gum) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["teeth"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ຫູ/ດັງ/ຄໍ (Ears/Nose/Throat) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["ears"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ຕ່ອມນ້ຳເຫຼືອງ (Lymph Nodes) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["lymph"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ແຂນ/ຂາ (Extremities) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["extremities"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ຜິວໜັງ (Skin) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["skin"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ຫົວໃຈ (Heart) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["hear"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ປອດ (Lung) :
                     </div>
                     <div class="col-sm-5">
-                        <b>ປົກກະຕິ</b>
+                        <b><?php echo $fetch_pe["lung"];?></b>
                     </div>
                     <div class="col-sm-5">
                         ອື່ນໆ/Other :
                     </div>
                     <div class="col-sm-5">
-                        <b>&nbsp;</b>
+                        <b><?php echo $fetch_pe["other"];?></b>
                     </div>
                     <br>
                     <br>
@@ -438,17 +550,7 @@ $year = $_POST["year"];
                         ສະຫຼູບແລະຄຳເຫັນຂອງແພດກວດກາ/Conclusion and Recommendation
                     </div>
                     <div class="col-sm-12">
-                        ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ
-                    </div>
-                    <div class="col-sm-12">
-                        ຄວາມດັນເລືອດໃນເກນປົກກະຕິ
-                    </div>
-                    <br>
-                    <div class="col-sm-12">
-                        ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ
-                    </div>
-                    <div class="col-sm-12">
-                        ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ
+                        <?php echo nl2br($fetch_pe["conclusion"]);?>
                     </div>
 
                 </div>
@@ -475,44 +577,44 @@ $year = $_POST["year"];
                             </tr>
                             <tr>
                                 <td>Anti HAV-IgM</td>
-                                <td style="text-align:center"><b>Non-Reactive</b></td>
-                                <td style="text-align:center"><b>Non-Reactive</b></td>
-                                <td style="text-align:center"><b>Non-Reactive</b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["anti_hav"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["anti_hav"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["anti_hav"];?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HBsAg</td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["ag"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["ag"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["ag"];?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HBsAb</td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["ab"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["ab"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["ab"];?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>Anti-HCV</td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["hcv"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["hcv"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["hcv"];?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>VDRL</td>
-                                <td style="text-align:center"><b>Non-Reactive</b></td>
-                                <td style="text-align:center"><b>Non-Reactive</b></td>
-                                <td style="text-align:center"><b>Non-Reactive</b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["vdrl"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["vdrl"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["vdrl"];?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HIV</td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
-                                <td style="text-align:center"><b>Negative</b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["hiv"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["hiv"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $fetch_imm["hiv"];?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                         </table>
@@ -556,19 +658,19 @@ $year = $_POST["year"];
                         </tr>
                         <tr>
                             <td> Mears.ຄ່າທີ່ແທກໄດ້</td>
-                            <td style="text-align:center"><b></b></td>
-                            <td style="text-align:center"><b></b></td>
-                            <td rowspan="3" style="text-align:center"><b>2223</b></td>
+                            <td style="text-align:center"><b><?php echo $fetch_spiro["fvc_means"];?></b></td>
+                            <td style="text-align:center"><b><?php echo $fetch_spiro["fevi_means"];?></b></td>
+                            <td rowspan="3" style="text-align:center"><b><?php echo $fetch_spiro["fevi_fvc"];?></b></td>
                         </tr>
                         <tr>
                             <td> Pred.ຄ່າທີ່ເຮັດການກວດສອບໄດ້</td>
-                            <td style="text-align:center"><b></b></td>
-                            <td style="text-align:center"><b></b></td>
+                            <td style="text-align:center"><b><?php echo $fetch_spiro["fvc_predict"];?></b></td>
+                            <td style="text-align:center"><b><?php echo $fetch_spiro["fevi_predict"];?></b></td>
                         </tr>
                         <tr>
                             <td> %Pred.ເປີເຊັນຂອງຄ່າທີ່ກວດສອບໄດ້</td>
-                            <td style="text-align:center"><b></b></td>
-                            <td style="text-align:center"><b></b></td>
+                            <td style="text-align:center"><b><?php echo $fetch_spiro["fvc_predicts"];?></b></td>
+                            <td style="text-align:center"><b><?php echo $fetch_spiro["fevi_predicts"];?></b></td>
                         </tr>
                     </table>
                     <div class="col-sm-12" style="margin-left:50px;">
@@ -580,7 +682,7 @@ $year = $_POST["year"];
                         *ແປຜົນສະມັດຕະພາບປອດ (Spirometry Interpretation)
                     </div>
                     <div class="col-sm-12">
-                        ກວດບໍ່ພົບການຕິດເຊື້ອຢສກືດຶ່້ຳັດຜກາດືອສຫກາທອນຳຮີອ ບີ
+                        <?php echo $fetch_spiro["conclusion"];?>
                     </div>
                     <br>
                     <br>
@@ -602,10 +704,10 @@ $year = $_POST["year"];
                         ID.No.:
                     </div>
                     <div class="col-sm-3">
-                        123456789112
+                        <?php echo $barcode;?>
                     </div>
                     <div class="col-sm-12">
-                        CXR: Normal
+                        CXR: <?php echo $fetch_cxr["x_ray"];?>
                     </div>
                 </div>
                 <br>
@@ -617,7 +719,7 @@ $year = $_POST["year"];
                         *ຜົນການແທກຄື້ນໄຟຟ້າຫົວໃຈ (EKG)
                     </div>
                     <div class="col-sm-12">
-                        EKG: Normal
+                        EKG: <?php echo $fetch_ekg["ekg_name"];?>
                     </div>
                 </div>
                 <div class="pagination" style="left: 128mm;top: 619mm;">
@@ -911,43 +1013,43 @@ $year = $_POST["year"];
                         ການເບີ່ງເຫັນໄລຍະໄກ =
                     </div>
                     <div class="col-sm-2">
-
+                        <?php echo $fetch_vision["look_far"];?>
                     </div>
                     <div class="col-sm-4">
                         ການເບີ່ງແນວນອນ =
                     </div>
                     <div class="col-sm-2">
-
+                        <?php echo $fetch_vision["check_eye"];?>
                     </div>
                     <div class="col-sm-4">
                         ການເບີ່ງເຫັນໄລຍະໃກ້ =
                     </div>
                     <div class="col-sm-2">
-
+                        <?php echo $fetch_vision["look_near"];?>
                     </div>
                     <div class="col-sm-4">
                         ກວດສອບການແຍກສີ =
                     </div>
                     <div class="col-sm-2">
-
+                        <?php echo $fetch_vision["check_color"];?>
                     </div>
                     <div class="col-sm-4">
                         ການເບີ່ງແນວຕັ້ງ =
                     </div>
                     <div class="col-sm-2">
-
+                        <?php echo $fetch_vision["look_up"];?>
                     </div>
                     <div class="col-sm-4">
                         ກວດລັດສະໝີການເບີ່ງເຫັນ =
                     </div>
                     <div class="col-sm-2">
-
+                        <?php echo $fetch_vision["radius"];?>
                     </div>
                     <div class="col-sm-12">
                         ***ແປຜົນສະມັດຕະພາບການເບີ່ງເຫັນ
                     </div>
                     <div class="col-sm-12">
-                        ຜົນກວດສາຍຕາ (Vision Test): ສາຍຕາອຽງ ຄວນໃສ່ແວ່ນຕາທີ່ເໝາະສົມ
+                        ຜົນກວດສາຍຕາ (Vision Test): <?php echo $fetch_vision["conclusion"];?>
                     </div>
                     <hr>
                     <br>
@@ -976,27 +1078,27 @@ $year = $_POST["year"];
                         </tr>
                         <tr>
                             <td>Right Ear(ຫູຂວາ)</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">23.75</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">23</td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_500"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_1000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_2000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_3000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_l_avg"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_4000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_6000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_8000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["r_h_avg"];?></b></td>
                         </tr>
                         <tr>
                             <td>Left Ear(ຫູຊ້າຍ)</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">21.25</td>
-                            <td style="text-align:center;">25</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">20</td>
-                            <td style="text-align:center;">21.7</td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_500"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_1000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_2000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_3000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_l_avg"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_4000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_6000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_8000"];?></b></td>
+                            <td style="text-align:center;"><b><?php echo $fetch_audio["l_h_avg"];?></b></td>
                         </tr>
                     </table>
                     <div class="col-sm-12">
@@ -1004,7 +1106,7 @@ $year = $_POST["year"];
                         ***ແປຜົນການກວດສະມັດຕະພາບການໄດ້ຍິນ (Audiogram Interpretation)
                     </div>
                     <div class="col-sm-12">
-                        ກດຮືເ້ຮກືແຫທດືຶ່່ ແລະ ຫກາດາ່າແອທືກືາຫທແອຳ່ະ້ພື່ຳທາ
+                        <?php echo $fetch_audio["conclusion"];?>
                     </div>
                     <br>
                     <br>
@@ -1015,8 +1117,7 @@ $year = $_POST["year"];
                         *ການກວດທົດສອບສະມັດຕະພາບກ້າມ ຊີ້ນມື/ແຂນ/ຂາແລະຫຼັງ (Muscle)
                     </div>
                     <div class="col-sm-12">
-
-                        ກດຮືເ້ຮກືແຫທດືຶ່່ ແລະ ຫກາດາ່າແອທືກືາຫທແອຳ່ະ້ພື່ຳທາ
+                        <?php echo $fetch_muscle["muscle_name"];?>
                     </div>
                 </div>
                 <div class="pagination" style="left: 277mm;top: 831mm;">
@@ -1323,7 +1424,7 @@ $year = $_POST["year"];
                         ID.No.:
                     </div>
                     <div class="col-sm-3">
-                        123456789112
+                        <?php echo $barcode;?>
                     </div>
                     <div class="col-sm-12">
                         <table width="100%">
@@ -1334,31 +1435,31 @@ $year = $_POST["year"];
                             </tr>
                             <tr>
                                 <td>FREE T3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td>2.3 </td>
+                                <td><b><?php echo $fetch_thyroid["free_t3"];?></b></td>
                                 <td>pg/ml</td>
                                 <td>2.0-4.4 pg/ml</td>
                             </tr>
                             <tr>
                                 <td>FREE T4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td>2.3 </td>
+                                <td><b><?php echo $fetch_thyroid["free_t4"];?></b></td>
                                 <td>ng/dl</td>
                                 <td>0.93-1.7 ng/dl</td>
                             </tr>
                             <tr>
                                 <td>TSH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td>2.3 </td>
+                                <td><b><?php echo $fetch_thyroid["tsh"];?></b></td>
                                 <td>ulU/ml</td>
                                 <td>0.27-4.20 ulU/ml</td>
                             </tr>
                             <tr>
                                 <td>T3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=</td>
-                                <td>2.3 </td>
+                                <td><b><?php echo $fetch_thyroid["t3"];?></b></td>
                                 <td>ng/dl</td>
                                 <td>80-200 ng/dl</td>
                             </tr>
                             <tr>
                                 <td>T4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td>2.3 </td>
+                                <td><b><?php echo $fetch_thyroid["t4"];?></b></td>
                                 <td>ng/dl</td>
                                 <td>5.1-14.1 ng/dl</td>
                             </tr>
@@ -1367,11 +1468,14 @@ $year = $_POST["year"];
                     </div>
                     <div class="col-sm-12">
                         ***ສະຫຼຸບຜົນການກວດຮໍໂມນຕອມຄໍ (Thryroid Interpretation)
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                     </div>
+                    <div class="col-sm-12">
+                        <?php echo $fetch_thyroid["conclusion"];?>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <table style="border-top:1px solid grey;">
                         <tr>
                             <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ກວດອາຈົມ
@@ -1382,19 +1486,19 @@ $year = $_POST["year"];
                         Stool Color =
                     </div>
                     <div class="col-sm-6">
-                        Brown
+                        <b><?php echo $fetch_stool["color"];?></b>
                     </div>
                     <div class="col-sm-6">
                         Appearance
                     </div>
                     <div class="col-sm-6">
-                        Soft
+                        <b><?php echo $fetch_stool["stool_ap"];?></b>
                     </div>
                     <div class="col-sm-6">
                         Parasite
                     </div>
                     <div class="col-sm-6">
-                        Not Found
+                        <b><?php echo $fetch_stool["parasite"];?></b>
                     </div>
                     <br>
                     <br>
@@ -1403,21 +1507,25 @@ $year = $_POST["year"];
                         Samonella Spp =
                     </div>
                     <div class="col-sm-6">
+                        <b><?php echo $fetch_stool["samonella"];?></b>
                     </div>
                     <div class="col-sm-6">
                         Shigella Spp =
                     </div>
                     <div class="col-sm-6">
+                        <b><?php echo $fetch_stool["shigella"];?></b>
                     </div>
                     <div class="col-sm-6">
                         Vibrio Spp =
                     </div>
                     <div class="col-sm-6">
+                        <b><?php echo $fetch_stool["vivrio"];?></b>
                     </div>
                     <div class="col-sm-6">
                         Vibrio Cholera 01 =
                     </div>
                     <div class="col-sm-6">
+                        <b><?php echo $fetch_stool["vibrio"];?></b>
                     </div>
                     <div class="col-sm-12">
                         <br>
@@ -1425,7 +1533,7 @@ $year = $_POST["year"];
                         ***ສະຫຼຸບກວດອາຈົມ (Stool Interpretation)
                     </div>
                     <div class="col-sm-12">
-                        ຜົນກວາດອາໂຈມ:
+                        <?php echo $fetch_stool["conclusion"];?>
                     </div>
                 </div>
                 <div class="pagination" style="left: 128mm;top: 1255mm;">
