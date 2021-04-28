@@ -7,7 +7,7 @@
 ?>
 
 <div class="row">
-    <a href="<?php echo $links ?>Employee/Employee" class="m-a">
+    <a href="<?php echo $links ?>Username/Username" class="m-a">
         <div class="btn btn-light mainlink">
         ຈັດການຂໍ້ມູນຜູ້ໃຊ້ລະບົບ
         </div>

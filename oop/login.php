@@ -40,6 +40,7 @@
                         $_SESSION['user_id'] = $user['user_id'];
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['user_name'] = $user['user_name'];
+                        $_SESSION['profile_path'] = $user['profile_path'];
                         $_SESSION['health_ses_status_id'] = 1;
                         echo"<meta http-equiv='refresh' content='1;URL=User/Main'>";
                     }
@@ -49,6 +50,7 @@
                         $_SESSION['user_id'] = $user['user_id'];
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['user_name'] = $user['user_name'];
+                        $_SESSION['profile_path'] = $user['profile_path'];
                         $_SESSION['health_ses_status_id'] = 2;
                         echo"<meta http-equiv='refresh' content='1;URL=Admin/Main'>";
                     }
@@ -61,6 +63,7 @@
                         unset($_SESSION['email']);
                         unset($_SESSION['user_name']);
                         unset($_SESSION['emp_id']);
+                        unset($_SESSION['profile_path']);
                         unset($_SESSION['health_ses_status_id']);
                         session_destroy();
                         echo"<script>";

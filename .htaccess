@@ -40,7 +40,7 @@ RewriteRule ^User/Book/PrintBook?$ User/Book/print.php
 RewriteRule ^404/404?$ 404/404.php
 
 RewriteRule ^Admin/Main?$ Admin/Main.php
-RewriteRule ^Admin/Employee/Employee?$ Admin/Employee/employee.php
+RewriteRule ^Admin/Username/Username?$ Admin/Username/username.php
 
 
 RewriteRule ^Admin/Certificate/English?$ Admin/Certificate/eng.php

@@ -9,15 +9,15 @@
 <div class="row">
     <a href="<?php echo $links ?>Company/Company" class="m-a">
         <div class="btn btn-light mainlink">
-        ຂໍ້ມູນບໍລີສັດ
+            ຂໍ້ມູນບໍລີສັດ
         </div>
-    </a>  <a href="<?php echo $links ?>Package/Package" class="m-a">
+    </a> <a href="<?php echo $links ?>Package/Package" class="m-a">
         <div class="btn btn-light mainlink">
-        ຂໍ້ມູນແຟັກແກັດ
+            ຂໍ້ມູນແຟັກແກັດ
         </div>
-    </a>  <a href="<?php echo $links ?>Employee/Employee" class="m-a">
+    </a> <a href="<?php echo $links ?>Employee/Employee" class="m-a">
         <div class="btn btn-light mainlink">
-        ຂໍ້ມູນພະນັກງານ
+            ຂໍ້ມູນພະນັກງານ
         </div>
     </a>
     <a href="<?php echo $links ?>Register/register" class="m-a">
@@ -25,48 +25,117 @@
             ລົງທະບຽນ
         </div>
     </a>
-    <!-- </a>  <a href="<?php echo $links ?>Register/....." class="m-a">
+    <a href="<?php echo $links ?>Status/status" class="m-a">
         <div class="btn btn-light mainlink">
-        ພີມໃບຢັ້ງຢຶ່ນ
+            ສະຖານະການກວດ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/languageLAO" class="m-a">
+    <a href="<?php echo $links ?>Checkup/Physical" class="m-a">
         <div class="btn btn-light mainlink">
-        ພາສາລາວ
+            ຂໍ້ມູນກວດຮ່າງກາຍທົ່ວໄປ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/languageEnglish" class="m-a">
+
+
+
+
+
+
+
+    <a href="<?php echo $links ?>Checkup/Cbc" class="m-a">
         <div class="btn btn-light mainlink">
-        ພາສາອັງກິດ
+            ກວດເລືອດລວມ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/....." class="m-a">
+    <a href="<?php echo $links ?>Checkup/Biochemistry" class="m-a">
         <div class="btn btn-light mainlink">
-        ພີມປື້ມຕິດຕາມສຸຂະພາບ
+            ກວດສານຊີວະເຄມີໃນເລືອດ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/....." class="m-a">
+    <a href="<?php echo $links ?>Checkup/Urine" class="m-a">
         <div class="btn btn-light mainlink">
-        ໜ້າປົກ
+            ກວດປັດສະວະ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/..." class="m-a">
+    <a href="<?php echo $links ?>Checkup/Methamphetamine" class="m-a">
         <div class="btn btn-light mainlink">
-        ໜ້າ1-ສະຫຼຸບ
+            ກວດຫາສາານເສບຕິດ
         </div>
     </a>
-    </a>  <a href="<?php echo $links ?>Register/....." class="m-a">
+    <a href="<?php echo $links ?>Checkup/Thryroid" class="m-a">
         <div class="btn btn-light mainlink">
-        ໜ້າ2-11
+            ກວດຕ໋ອມຄໍ
         </div>
-    </a> -->
-    
-    <!-- <a href="<?php echo $links ?>Report/report-customer" class="m-a">
+    </a>
+    <a href="<?php echo $links ?>Checkup/Stool" class="m-a">
         <div class="btn btn-light mainlink">
-            ຊ່ຳລະເງິນ
+            ກວດອາຈົມ
         </div>
-    </a> -->
-   
+    </a>
+    <a href="<?php echo $links ?>Checkup/Heavy" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດວິເຄາະຫາທາດໂລຫະໜັກ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Tumor" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດກັ່ນຕອງມະເຮັງ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Vision" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດສະມັດຕະພາບການເບິ່ງເຫັນ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Audio" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດສະມັດຕະພາບການໄດ້ຍິນ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Spiro" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດສະມັດຕະພາບປອດ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/x-ray" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດສ່ອງໄຟຟ້າຜົ້ງເອິກ X-Ray
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Immunity" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດພູມຄຸ້ມກັນວິທະຍາ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Ekg" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດແທກຄື້ນຫົວໃຈ
+        </div>
+    </a>
+    <a href="<?php echo $links ?>Checkup/Muscle" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດສະມັດຕະພາບທາງກ້າມ
+        </div>
+    </a>
+
+    <a href="<?php echo $links ?>Certificate/Lao" class="m-a">
+        <div class="btn btn-light mainlink">
+            ໃບຢັ້ງຢືນພາສາລາວ
+        </div>
+    </a>
+
+    <a href="<?php echo $links ?>Certificate/English" class="m-a">
+        <div class="btn btn-light mainlink">
+        ໃບຢັ້ງຢືນພາສາອັງກິດ
+        </div>
+    </a>
+
+    <a href="<?php echo $links ?>Book/Book" class="m-a">
+        <div class="btn btn-light mainlink">
+            ພິມປຶ້ມກວດສຸຂະພາບ
+        </div>
+    </a>
+
 </div>
 <?php 
  include ("../header-footer/footer.php");

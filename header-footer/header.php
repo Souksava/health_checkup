@@ -19,6 +19,7 @@
     }
     else{
         $user_id = $_SESSION["user_id"];
+        $profile = $_SESSION["profile_path"];
     }
 ?>
 <!DOCTYPE html>
@@ -96,7 +97,19 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
+                <?php
+                    if($profile == ""){
+                ?>
                     <img src="<?php echo $path ?>image/image.jpeg" class="img-circle elevation-2" alt="User Image">
+                <?php
+                    }
+                    else{
+                    ?>
+                      <img src="<?php echo $path ?>image/<?php echo $profile; ?>" class="img-circle elevation-2" alt="User Image">
+                <?php
+                    }
+                ?>
+                
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">User</a>
@@ -346,7 +359,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="<?php echo $links ?>Employee/Employee" class="nav-link">
+                        <a href="<?php echo $links ?>Username/Usernanme" class="nav-link">
                             <i class="nav-icon fas fa-user"></i><i class="fad fa-user-hard-hat"></i>
                             <p>
                                 ຂໍ້ມູນຜູ້ໃຊ້ລະບົບ

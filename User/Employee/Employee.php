@@ -110,7 +110,7 @@
         </div>
     </div>
 </form>
-<form action="register" method="POST" id="form_delete_emp">
+<form action="Employee" method="POST" id="form_delete_emp">
     <div class="modal fade" id="exampleModalDeleteEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
