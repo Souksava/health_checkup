@@ -1,5 +1,6 @@
 <?php
   include ('oop/login.php');
+  $obj_log->machine();
   if(isset($_POST['btnLogin'])){
     $obj_log->login($_POST['email'],$_POST['pass']);
   }
@@ -127,5 +128,35 @@
     }
     ?>
     <script src="dist/js/app.js"></script>
+    <script>
+    var machine = "<?php echo $machine; ?>";
+    var logic = false;
+    <?php 
+     $obj_log->get_machine();
+    foreach($machine_id as $row){
+        $obj_log->generate($row["machine_id"]);
+        ?>
+        console.log("loop: " + "<?php echo $machine_no?>");
+        <?php
+        if($machine == $machine_no){
+            ?>
+                logic = true;
+                console.log("data: " + "<?php echo $machine_no ?>");
+                console.log("client mac" + machine);
+            <?php
+            break;
+        }
+    }
+    ?>
+
+
+    if(logic === true){
+        console.log("true");
+        console.log(machine);
+    }
+    else{
+        window.location.href='404/404';
+    }
+</script>
 </body>
 </html>

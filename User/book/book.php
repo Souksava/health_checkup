@@ -1,6 +1,6 @@
 <!-- Book-->
 <?php
-  $title = "ລາຍງານການກວດສຸຂະພາບ";
+  $title = "ພິມປຶ້ມກວດສຸຂະພາບ";
   $path = "../../";
   $links = "../";
   $session_path = "../../";
@@ -21,7 +21,7 @@
                     <input type="text" name="year3" id="datepicker3" class="form-control datepicker" maxlength="4"
                     placeholder="ປີ 20xx" aria-describedby="button-addon2" autocomplete="off">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
-                    <i class="fas fa-print"></i> ພີມລາຍງານການກວດສຸຂະພາບ
+                    <i class="fas fa-print"></i> ພິມປຶ້ມກວດສຸຂະພາບ
                 </button>
             </div>
         </div>

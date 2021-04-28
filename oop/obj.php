@@ -1393,6 +1393,302 @@ public static function import_thry($file_path,$year,$user_id){
         echo"window.location.href='Cbc?import=success';";
         echo"</script>";
     }
+    public static function machine(){
+        global $machine;
+        $machine = "";
+        $ipAddress=$_SERVER['REMOTE_ADDR'];
+        $arp= "arp -a $ipAddress";
+        $ip = shell_exec($arp);
+        if($ipAddress == "::1"){
+            $ipall = "ipconfig /all";
+            $ipserver = shell_exec($ipall);
+            $ipserver = strstr($ipserver,'Wi-Fi',false);
+            $ipserver = strstr($ipserver,'Physical Address',false);
+            $ipserver = strstr($ipserver,' DHCP',true);
+            $ipserver = strstr($ipserver,': ',false);
+            $machine = strtoupper(substr($ipserver,2,-3));
+        }
+        else{
+            $machine = strtoupper(substr($ip,109,-16));
+        }
+    }
+    public static function get_machine(){
+        global $conn;
+        global $machine_id;
+        $machine_id = mysqli_query($conn,"select * from machine;");
+        
+    }
+    public static function generate($machine_id){
+        global $machine_no;
+        $group1 = substr($machine_id,2,2);
+        $group2 = substr($machine_id,4,2);
+        $group3 = substr($machine_id,10,2);
+        $group4 = substr($machine_id,12,2);
+        $group5 = substr($machine_id,18,2);
+        $group6 = substr($machine_id,20,2);
+        $machine_no = $group1."-".$group2."-".$group3."-".$group4."-".$group5."-".$group6;
+        
+    }
+    public static function select_username($name){
+        global $conn;
+        global $result_username;
+        $result_username = mysqli_query($conn,"call select_username('$name');");
+    }
+    public static function select_username_limit($name,$page){
+        global $conn;
+        global $result_username_limit;
+        $result_username_limit = mysqli_query($conn,"call select_username_limit('$name','$page');");
+    }
+    public static function insert_username($staff_id,$user_name,$email,$pass,$stt_id,$profile_path){
+        global $conn;
+        global $path;
+        $check_staff_id = mysqli_query($conn,"select * from username where staff_id='$staff_id';");
+        $check_email = mysqli_query($conn,"select * from username where email='$email';");
+        if(mysqli_num_rows($check_staff_id) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?staffid=same';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_email) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?email=same';";
+            echo"</script>";
+        }
+        else{
+            if($profile_path == ""){
+                $Pro_image = "";
+            }
+            else{
+                $ext = pathinfo(basename($_FILES["profile_path"]["name"]), PATHINFO_EXTENSION);
+                $new_image_name = "Health_".uniqid().".".$ext;
+                $image_path = $path."image/";
+                $upload_path = $image_path.$new_image_name;
+                move_uploaded_file($_FILES["profile_path"]["tmp_name"], $upload_path);
+                $Pro_image = $new_image_name;
+            }
+            $result = mysqli_query($conn,"call insert_username('$staff_id','$user_name','$email','$pass','$stt_id','$Pro_image');");
+            if(!$result){
+                echo"<script>";
+                echo"window.location.href='Username?save=fail';";
+                echo"</script>";
+            }
+            else{
+                echo"<script>";
+                echo"window.location.href='Username?save2=success';";
+                echo"</script>";
+            }
+        }
+
+    }
+    public static function update_username($user_id,$staff_id,$user_name,$email,$pass,$stt_id,$profile_path){
+        global $conn;
+        global $path;
+        $flag = preg_match('/^[a-f0-9]{32}$/', $pass);
+        if($flag){ // flag true means string is a valid md5 encrypation
+            echo"";
+        }else{
+            $pass = md5($pass);
+        }
+        $resultmp = mysqli_query($conn,"select * from username where user_id='$user_id'");//ດຶງຄ່າອີເມວ ແລະ ລະຫັດຜ່ານ ໂດຍໃຊ້ໄອດີຜູ້ໃຊ້
+        $rowmp = mysqli_fetch_array($resultmp,MYSQLI_ASSOC);
+        $get_img = mysqli_query($conn, "select profile_path from username where user_id='$user_id'");
+        $data = mysqli_fetch_array($get_img,MYSQLI_ASSOC);
+        if($email == $rowmp['email']){//ຖ້າອີເມວ ແລະ ລະຫັດຜ່ານທັງ 2 ຄືກັນກັບອີເມວ ແລະ ລະຫັດຜ່ານຂອງລະໄອດີພະນັກງານ ແມ່ນທຳການອັບເດດຂໍ້ມູນ
+            if($profile_path == ""){//ກວດສອບຄ່າຟາຍຮູບມາວ່າເປັນຄ່າວ່າງ ຫຼື ບໍ່
+                $Pro_image = $data['profile_path'];
+            }
+            else{//ຖ້າຄ່າຟາຍຮູບບໍ່ເປັນຄ່າວ່າງໃຫ້ເຮັດວຽກໃນຈຸດນີ້
+                $ext = pathinfo(basename($_FILES['profile_path2']['name']), PATHINFO_EXTENSION);
+                $new_image_name = 'Health_'.uniqid().".".$ext;
+                $image_path = $path.'image/';
+                $upload_path = $image_path.$new_image_name;
+                move_uploaded_file($_FILES['profile_path2']['tmp_name'], $upload_path);
+                $Pro_image = $new_image_name;
+                // $path2 = __DIR__.DIRECTORY_SEPARATOR.$image_path.DIRECTORY_SEPARATOR.$data['img_path']; //cant find path
+                $path2 = $image_path.$data['profile_path'];
+                if(file_exists($path2) && !empty($data['profile_path'])){
+                    unlink($path2);                  
+                }
+            }
+            $result = mysqli_query($conn,"call update_username('$user_id','$staff_id','$user_name','$email','$pass','$stt_id','$Pro_image')");
+            if(!$result){
+                echo"<script>";
+                echo"window.location.href='Username?update=fail';";
+                echo"</script>";
+            }
+            else{
+                echo"<script>";
+                echo"window.location.href='Username?update2=success';";
+                echo"</script>";
+            }
+        }
+        else{//ຖ້າວ່າອີເມວ ບໍ່ຄືກັນກັບໄອດີພະນັກງານແມ່ນໃຫ້ເຮັດວຽກໃນຈຸດນີ້
+            if($email != $rowmp['email']){
+                $check_email = mysqli_query($conn,"select * from username where email='$email';");//ກວດສອບອີເມວທີ່ປ້ອນເຂົ້າມາວ່າມີບໍ່
+                if(mysqli_num_rows($check_email) > 0){//ຖ້າອີມວທີ່ປ້ອນເຂົ້າມານັ້ນມີຄົນໃຊ້ແລ້ວໃຫ້ກວດລະຫັດເຂົ້າສູ່ລະບົບ
+                    echo"<script>";
+                    echo"window.location.href='Username?email=same';";
+                    echo"</script>";
+                }
+                else{//ກໍລະນີທີ່ອີເມວ ແລະ ລະຫັດຜ່ານບໍ່ຄືໃຜເລີຍແມ່ນໃຫ້ເຮັດວຽກໃນຈຸດນີ້
+                    if($profile_path == ""){//ກວດສອບຄ່າຟາຍຮູບມາວ່າເປັນຄ່າວ່າງ ຫຼື ບໍ່
+                        $Pro_image = $data['profile_path'];
+                    }
+                    else{//ຖ້າຄ່າຟາຍຮູບບໍ່ເປັນຄ່າວ່າງໃຫ້ເຮັດວຽກໃນຈຸດນີ້
+                        $ext = pathinfo(basename($_FILES['profile_path2']['name']), PATHINFO_EXTENSION);
+                        $new_image_name = 'Health_'.uniqid().".".$ext;
+                        $image_path = $path.'image/';
+                        $upload_path = $image_path.$new_image_name;
+                        move_uploaded_file($_FILES['profile_path2']['tmp_name'], $upload_path);
+                        $Pro_image = $new_image_name;
+                        $path2 = $image_path.$data['profile_path'];
+                        if(file_exists($path2) && !empty($data['profile_path'])){
+                            unlink($path2);
+                            
+                        }
+                    }
+                    $result = mysqli_query($conn,"call update_username('$user_id','$staff_id','$user_name','$email','$pass','$stt_id','$Pro_image')");
+                    if(!$result){
+                        echo"<script>";
+                        echo"window.location.href='Username?update=fail';";
+                        echo"</script>";
+                    }
+                    else{
+                        echo"<script>";
+                        echo"window.location.href='Username?update2=success';";
+                        echo"</script>";
+                    }
+                }
+            }
+        }
+    }
+    public static function del_username($id){
+        global $conn;
+        global $path;
+        $check_register = mysqli_query($conn,"select * from register where user_id='$id';");
+        $check_audio = mysqli_query($conn,"select * from audiogram where user_id='$id';");
+        $check_biochemistry = mysqli_query($conn,"select * from biochemistry where user_id='$id';");
+        $check_cbc = mysqli_query($conn,"select * from cbc where user_id='$id';");
+        $check_ekg = mysqli_query($conn,"select * from ekg where user_id='$id';");
+        $check_heavy_metal = mysqli_query($conn,"select * from heavy_metal where user_id='$id';");
+        $check_immunity = mysqli_query($conn,"select * from immunity where user_id='$id';");
+        $check_methamphetamine = mysqli_query($conn,"select * from methamphetamine where user_id='$id';");
+        $check_muscle = mysqli_query($conn,"select * from muscle where user_id='$id';");
+        $check_oc_vision = mysqli_query($conn,"select * from oc_vision where user_id='$id';");
+        $check_pe = mysqli_query($conn,"select * from pe where user_id='$id';");
+        $check_se = mysqli_query($conn,"select * from se where user_id='$id';");
+        $check_spirometry = mysqli_query($conn,"select * from spirometry where user_id='$id';");
+        $check_thryroid = mysqli_query($conn,"select * from thryroid where user_id='$id';");
+        $check_tumor_marker = mysqli_query($conn,"select * from tumor_marker where user_id='$id';");
+        $check_urinalvsis = mysqli_query($conn,"select * from urinalvsis where user_id='$id';");
+        $check_x_ray = mysqli_query($conn,"select * from x_ray where user_id='$id';");
+        if(mysqli_num_rows($check_register) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?register=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_audio) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?audio=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_biochemistry) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?bio=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_cbc) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?cbc=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_ekg) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?ekg=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_heavy_metal) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?metal=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_immunity) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?imm=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_methamphetamine) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?meth=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_muscle) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?muscle=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_oc_vision) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?vision=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_pe) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?pe=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_se) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?se=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_spirometry) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?spiro=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_thryroid) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?thryroid=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_tumor_marker) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?tumor=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_urinalvsis) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?urine=has';";
+            echo"</script>";
+        }
+        else if(mysqli_num_rows($check_x_ray) > 0){
+            echo"<script>";
+            echo"window.location.href='Username?xray=has';";
+            echo"</script>";
+        }
+        else{
+            $get_img = mysqli_query($conn, "select profile_path from username where user_id='$id'");
+            $data = mysqli_fetch_array($get_img, MYSQLI_ASSOC);
+            $path2 = $path.'image/'.$data['profile_path'];
+            if(file_exists($path2) && !empty($data['profile_path'])){
+                unlink($path2);        
+            }
+            $result = mysqli_query($conn,"call del_username('$id')");
+            if(!$result){
+                echo"<script>";
+                echo"window.location.href='Username?del=fail';";
+                echo"</script>";
+            }
+            else{
+                echo"<script>";
+                echo"window.location.href='Username?del2=success';";
+                echo"</script>";
+            }
+        }
+    }
+
+
 
 }
 $obj = new obj();
