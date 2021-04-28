@@ -1415,7 +1415,8 @@ public static function import_thry($file_path,$year,$user_id){
     public static function get_machine(){
         global $conn;
         global $machine_id;
-        $machine_id = mysqli_query($conn,"select * from machine;");
+        global $Date;
+        $machine_id = mysqli_query($conn,"select * from machine where expire >= '$Date';");
         
     }
     public static function generate($machine_id){
