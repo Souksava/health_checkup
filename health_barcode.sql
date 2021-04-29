@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 01:44 PM
+-- Generation Time: Apr 28, 2021 at 04:14 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -3519,15 +3519,16 @@ INSERT INTO `immunity` (`im_id`, `barcode`, `anti_hav`, `ab`, `ag`, `hcv`, `vdrl
 --
 
 CREATE TABLE `machine` (
-  `machine_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `machine_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `expire` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `machine`
 --
 
-INSERT INTO `machine` (`machine_id`) VALUES
-('01184701013D400101636101');
+INSERT INTO `machine` (`machine_id`, `expire`) VALUES
+('01184701013D400101636101', '2021-05-31');
 
 -- --------------------------------------------------------
 

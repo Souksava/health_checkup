@@ -1,5 +1,9 @@
 <?php
  include ('connect.php');
+ date_default_timezone_set("Asia/Bangkok");
+$datenow = time();
+$Date = date("Y-m-d",$datenow);
+$Year = date("Y",$datenow);
  class obj_log{
     public static function login($email,$pass){
         global $conn;
@@ -110,7 +114,8 @@
     public static function get_machine(){
         global $conn;
         global $machine_id;
-        $machine_id = mysqli_query($conn,"select * from machine;");
+        global $Date;
+        $machine_id = mysqli_query($conn,"select * from machine where expire >= '$Date';");
         
     }
     public static function generate($machine_id){
