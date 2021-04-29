@@ -19,14 +19,15 @@ $path = "../../";
 include ('../../oop/obj.php');
 $barcode = $_POST["barcode"];
 $year = $_POST["year"];
-$year2 = $_POST["year2"];
-$year3 = $_POST["year3"];
+$year2 = $_POST["year"] + 1;
+$year3 = $_POST["year"] + 2;
+$yearconclusion = $_POST["year2"];
 
 
 $emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,date,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode';");
 $fetch_emp = mysqli_fetch_array($emp,MYSQLI_ASSOC);
 
-$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$year';");
+$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$yearconclusion';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 $hpi = $fetch_pe["hpi"];
 if($hpi != ""){
@@ -38,43 +39,432 @@ else{
 
 $imm = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year';");
 $fetch_imm = mysqli_fetch_array($imm,MYSQLI_ASSOC);
+if(mysqli_num_rows($imm)==0)
+{
+    $hav = "";
+    $ag = "";
+    $ab = "";
+    $hcv = "";
+    $vdrl = "";
+    $hiv = "";
+}
+else 
+{
+    $hav = $fetch_imm["anti_hav"];
+    $ag = $fetch_imm["ag"];
+    $ab = $fetch_imm["ab"];
+    $hcv = $fetch_imm["hcv"];
+    $vdrl = $fetch_imm["vdrl"];
+    $hiv = $fetch_imm["hiv"];
+}
 $imm2 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year2';");
 $fetch_imm2 = mysqli_fetch_array($imm2,MYSQLI_ASSOC);
+if(mysqli_num_rows($imm2)==0)
+{
+    $hav2 = "";
+    $ag2 = "";
+    $ab2 = "";
+    $hcv2 = "";
+    $vdrl2 = "";
+    $hiv2 = "";
+}
+else 
+{
+    $hav2 = $fetch_imm2["anti_hav"];
+    $ag2 = $fetch_imm2["ag"];
+    $ab2 = $fetch_imm2["ab"];
+    $hcv2 = $fetch_imm2["hcv"];
+    $vdrl2 = $fetch_imm2["vdrl"];
+    $hiv2 = $fetch_imm2["hiv"];
+}
+
+
 $imm3 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year3';");
 $fetch_imm3 = mysqli_fetch_array($imm3,MYSQLI_ASSOC);
+if(mysqli_num_rows($imm3)==0)
+{
+    $hav3 = "";
+    $ag3 = "";
+    $ab3 = "";
+    $hcv3 = "";
+    $vdrl3 = "";
+    $hiv3 = "";
+}
+else 
+{
+    $hav3 = $fetch_imm3["anti_hav"];
+    $ag3 = $fetch_imm3["ag"];
+    $ab3 = $fetch_imm3["ab"];
+    $hcv3 = $fetch_imm3["hcv"];
+    $vdrl3 = $fetch_imm3["vdrl"];
+    $hiv3 = $fetch_imm3["hiv"];
+}
+$imm4 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_imm4 = mysqli_fetch_array($imm4,MYSQLI_ASSOC);
 
-$spiro = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' AND year='$year';");
+$spiro = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_spiro = mysqli_fetch_array($spiro,MYSQLI_ASSOC);
 
 $cbc = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year';");
 $fetch_cbc = mysqli_fetch_array($cbc,MYSQLI_ASSOC);
+if(mysqli_num_rows($cbc)==0)
+{
+    $hb = "";
+    $hct = "";
+    $wbc = "";
+    $ne = "";
+    $lym = "";
+    $monocyte = "";
+    $eo = "";
+    $baso = "";
+    $platelets = "";
+    $rbc = "";
+    $mvc = "";
+    $mch = "";
+    $mchc = "";
+    $red_blood = "";
+}
+else 
+{
+    $hb = $fetch_cbc["hb"];
+    $hct = $fetch_cbc["hct"];
+    $wbc = $fetch_cbc["wbc"];
+    $ne = $fetch_cbc["ne"];
+    $lym = $fetch_cbc["lym"];
+    $monocyte = $fetch_cbc["monocyte"];
+    $eo = $fetch_cbc["eo"];
+    $baso = $fetch_cbc["baso"];
+    $platelets = $fetch_cbc["platelets"];
+    $rbc = $fetch_cbc["rbc"];
+    $mvc = $fetch_cbc["mvc"];
+    $mch = $fetch_cbc["mch"];
+    $mchc = $fetch_cbc["mchc"];
+    $red_blood = $fetch_cbc["red_blood"];
+}
 $cbc2 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year2';");
 $fetch_cbc2 = mysqli_fetch_array($cbc2,MYSQLI_ASSOC);
+if(mysqli_num_rows($cbc2)==0)
+{
+    $hb2 = "";
+    $hct2 = "";
+    $wbc2 = "";
+    $ne2 = "";
+    $lym2 = "";
+    $monocyte2 = "";
+    $eo2 = "";
+    $baso2 = "";
+    $platelets2 = "";
+    $rbc2 = "";
+    $mvc2 = "";
+    $mch2 = "";
+    $mchc2 = "";
+    $red_blood2 = "";
+}
+else 
+{
+    $hb2 = $fetch_cbc2["hb"];
+    $hct2 = $fetch_cbc2["hct"];
+    $wbc2 = $fetch_cbc2["wbc"];
+    $ne2 = $fetch_cbc2["ne"];
+    $lym2 = $fetch_cbc2["lym"];
+    $monocyte2 = $fetch_cbc2["monocyte"];
+    $eo2 = $fetch_cbc2["eo"];
+    $baso2 = $fetch_cbc2["baso"];
+    $platelets2 = $fetch_cbc2["platelets"];
+    $rbc2 = $fetch_cbc2["rbc"];
+    $mvc2 = $fetch_cbc2["mvc"];
+    $mch2 = $fetch_cbc2["mch"];
+    $mchc2 = $fetch_cbc2["mchc"];
+    $red_blood2 = $fetch_cbc2["red_blood"];
+}
 $cbc3 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year3';");
 $fetch_cbc3 = mysqli_fetch_array($cbc3,MYSQLI_ASSOC);
+if(mysqli_num_rows($cbc3)==0)
+{
+    $hb3 = "";
+    $hct3 = "";
+    $wbc3 = "";
+    $ne3 = "";
+    $lym3 = "";
+    $monocyte3 = "";
+    $eo3 = "";
+    $baso3 = "";
+    $platelets3 = "";
+    $rbc3 = "";
+    $mvc3 = "";
+    $mch3 = "";
+    $mchc3 = "";
+    $red_blood3 = "";
+}
+else 
+{
+    $hb3 = $fetch_cbc3["hb"];
+    $hct3 = $fetch_cbc3["hct"];
+    $wbc3 = $fetch_cbc3["wbc"];
+    $ne3 = $fetch_cbc3["ne"];
+    $lym3 = $fetch_cbc3["lym"];
+    $monocyte3 = $fetch_cbc3["monocyte"];
+    $eo3 = $fetch_cbc3["eo"];
+    $baso3 = $fetch_cbc3["baso"];
+    $platelets3 = $fetch_cbc3["platelets"];
+    $rbc3 = $fetch_cbc3["rbc"];
+    $mvc3 = $fetch_cbc3["mvc"];
+    $mch3 = $fetch_cbc3["mch"];
+    $mchc3 = $fetch_cbc3["mchc"];
+    $red_blood3 = $fetch_cbc3["red_blood"];
+}
+$cbc4 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_cbc4 = mysqli_fetch_array($cbc4,MYSQLI_ASSOC);
+
+$cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_cxr = mysqli_fetch_array($cxr,MYSQLI_ASSOC);
+
+$ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
 
 $bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year';");
 $fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
+if(mysqli_num_rows($bio)==0)
+{
+    $fbs = "";
+    $cho = "";
+    $hdl = "";
+    $ldl = "";
+    $trig = "";
+    $ua = "";
+    $bun = "";
+    $creatinine = "";
+    $sgot = "";
+    $sgpt = "";
+    $alk = "";
+    $ggt = "";
+    $hbac = "";
+}
+else {
+
+    $fbs = $fetch_bio["fbs"];
+    $cho = $fetch_bio["cho"];
+    $hdl = $fetch_bio["hdl"];
+    $ldl = $fetch_bio["ldl"];
+    $trig = $fetch_bio["trig"];
+    $ua = $fetch_bio["ua"];
+    $bun = $fetch_bio["bun"];
+    $creatinine = $fetch_bio["creatinine"];
+    $sgot = $fetch_bio["sgot"];
+    $sgpt = $fetch_bio["sgpt"];
+    $alk = $fetch_bio["alk"];
+    $ggt = $fetch_bio["ggt"];
+    $hbac = $fetch_bio["hbac"];
+}
 $bio2 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year2';");
 $fetch_bio2 = mysqli_fetch_array($bio2,MYSQLI_ASSOC);
+if(mysqli_num_rows($bio2)==0)
+{
+    $fbs2 = "";
+    $cho2 = "";
+    $hdl2 = "";
+    $ldl2 = "";
+    $trig2 = "";
+    $ua2 = "";
+    $bun2 = "";
+    $creatinine2 = "";
+    $sgot2 = "";
+    $sgpt2 = "";
+    $alk2 = "";
+    $ggt2 = "";
+    $hbac2 = "";
+}
+else {
+
+    $fbs2 = $fetch_bio2["fbs"];
+    $cho2 = $fetch_bio2["cho"];
+    $hdl2 = $fetch_bio2["hdl"];
+    $ldl2 = $fetch_bio2["ldl"];
+    $trig2 = $fetch_bio2["trig"];
+    $ua2 = $fetch_bio2["ua"];
+    $bun2 = $fetch_bio2["bun"];
+    $creatinine2 = $fetch_bio2["creatinine"];
+    $sgot2 = $fetch_bio2["sgot"];
+    $sgpt2 = $fetch_bio2["sgpt"];
+    $alk2 = $fetch_bio2["alk"];
+    $ggt2 = $fetch_bio2["ggt"];
+    $hbac2 = $fetch_bio2["hbac"];
+}
 $bio3 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year3';");
 $fetch_bio3 = mysqli_fetch_array($bio3,MYSQLI_ASSOC);
+if(mysqli_num_rows($bio3)==0)
+{
+    $fbs3 = "";
+    $cho3 = "";
+    $hdl3 = "";
+    $ldl3 = "";
+    $trig3 = "";
+    $ua3 = "";
+    $bun3 = "";
+    $creatinine3 = "";
+    $sgot3 = "";
+    $sgpt3 = "";
+    $alk3 = "";
+    $ggt3 = "";
+    $hbac3 = "";
+}
+else {
 
-$cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$year';");
-$fetch_cxr = mysqli_fetch_array($cxr,MYSQLI_ASSOC);
+    $fbs3 = $fetch_bio3["fbs"];
+    $cho3 = $fetch_bio3["cho"];
+    $hdl3 = $fetch_bio3["hdl"];
+    $ldl3 = $fetch_bio3["ldl"];
+    $trig3 = $fetch_bio3["trig"];
+    $ua3 = $fetch_bio3["ua"];
+    $bun3 = $fetch_bio3["bun"];
+    $creatinine3 = $fetch_bio3["creatinine"];
+    $sgot3 = $fetch_bio3["sgot"];
+    $sgpt3 = $fetch_bio3["sgpt"];
+    $alk3 = $fetch_bio3["alk"];
+    $ggt3 = $fetch_bio3["ggt"];
+    $hbac3 = $fetch_bio3["hbac"];
+}
+$bio4 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_bio4 = mysqli_fetch_array($bio4,MYSQLI_ASSOC);
 
-$ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='$year';");
-$fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
 
-$vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' AND year='$year';");
+
+$vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_vision = mysqli_fetch_array($vision,MYSQLI_ASSOC);
+
+$audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
+
+$muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
+
+
 
 $metal = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year';");
 $fetch_metal = mysqli_fetch_array($metal,MYSQLI_ASSOC);
+if(mysqli_num_rows($metal)==0)
+{
+    $ether = "";
+    $ethy = "";
+    $nickle = "";
+    $manganese = "";
+    $tim = "";
+    $blood = "";
+    $m_i_urine = "";
+    $b_a_u = "";
+    $c_u = "";
+    $alcoho = "";
+    $silica = "";
+    $methy = "";
+    $a_i_urine = "";
+    $t_i_urine = "";
+    $methy_urine = "";
+    $methanoi_urine = "";
+    $phenolic_resin = "";
+}
+else {
+    $ether = $fetch_metal["ether"];
+    $ethy = $fetch_metal["ethy"];
+    $nickle = $fetch_metal["nickle"];
+    $manganese = $fetch_metal["manganese"];
+    $tim = $fetch_metal["tim"];
+    $blood = $fetch_metal["blood"];
+    $m_i_urine = $fetch_metal["m_i_urine"];
+    $b_a_u = $fetch_metal["b_a_u"];
+    $c_u = $fetch_metal["c_u"];
+    $alcoho = $fetch_metal["alcoho"];
+    $silica = $fetch_metal["silica"];
+    $methy = $fetch_metal["methy"];
+    $a_i_urine = $fetch_metal["a_i_urine"];
+    $t_i_urine = $fetch_metal["t_i_urine"];
+    $methy_urine = $fetch_metal["methy_urine"];
+    $methanoi_urine = $fetch_metal["methanoi_urine"];
+    $phenolic_resin = $fetch_metal["phenolic_resin"];
+}
 $metal2 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year2';");
 $fetch_metal2 = mysqli_fetch_array($metal2,MYSQLI_ASSOC);
+if(mysqli_num_rows($metal2)==0)
+{
+    $ether2 = "";
+    $ethy2 = "";
+    $nickle2 = "";
+    $manganese2 = "";
+    $tim2 = "";
+    $blood2 = "";
+    $m_i_urine2 = "";
+    $b_a_u2 = "";
+    $c_u2 = "";
+    $alcoho2 = "";
+    $silica2 = "";
+    $methy2 = "";
+    $a_i_urine2 = "";
+    $t_i_urine2 = "";
+    $methy_urine2 = "";
+    $methanoi_urine2 = "";
+    $phenolic_resin2 = "";
+}
+else {
+    $ether2 = $fetch_metal2["ether"];
+    $ethy2 = $fetch_metal2["ethy"];
+    $nickle2 = $fetch_metal2["nickle"];
+    $manganese2 = $fetch_metal2["manganese"];
+    $tim2 = $fetch_metal2["tim"];
+    $blood2 = $fetch_metal2["blood"];
+    $m_i_urine2 = $fetch_metal2["m_i_urine"];
+    $b_a_u2 = $fetch_metal2["b_a_u"];
+    $c_u2 = $fetch_metal2["c_u"];
+    $alcoho2 = $fetch_metal2["alcoho"];
+    $silica2 = $fetch_metal2["silica"];
+    $methy2 = $fetch_metal2["methy"];
+    $a_i_urine2 = $fetch_metal2["a_i_urine"];
+    $t_i_urine2 = $fetch_metal2["t_i_urine"];
+    $methy_urine2 = $fetch_metal2["methy_urine"];
+    $methanoi_urine2 = $fetch_metal2["methanoi_urine"];
+    $phenolic_resin2 = $fetch_metal2["phenolic_resin"];
+}
 $metal3 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year3';");
 $fetch_metal3 = mysqli_fetch_array($metal3,MYSQLI_ASSOC);
+if(mysqli_num_rows($metal3)==0)
+{
+    $ether3 = "";
+    $ethy3 = "";
+    $nickle3 = "";
+    $manganese3 = "";
+    $tim3 = "";
+    $blood3 = "";
+    $m_i_urine3 = "";
+    $b_a_u3 = "";
+    $c_u3 = "";
+    $alcoho3 = "";
+    $silica3 = "";
+    $methy3 = "";
+    $a_i_urine3 = "";
+    $t_i_urine3 = "";
+    $methy_urine3 = "";
+    $methanoi_urine3 = "";
+    $phenolic_resin3 = "";
+}
+else {
+    $ether3 = $fetch_metal3["ether"];
+    $ethy3 = $fetch_metal3["ethy"];
+    $nickle3 = $fetch_metal3["nickle"];
+    $manganese3 = $fetch_metal3["manganese"];
+    $tim3 = $fetch_metal3["tim"];
+    $blood3 = $fetch_metal3["blood"];
+    $m_i_urine3 = $fetch_metal3["m_i_urine"];
+    $b_a_u3 = $fetch_metal3["b_a_u"];
+    $c_u3 = $fetch_metal3["c_u"];
+    $alcoho3 = $fetch_metal3["alcoho"];
+    $silica3 = $fetch_metal3["silica"];
+    $methy3 = $fetch_metal3["methy"];
+    $a_i_urine3 = $fetch_metal3["a_i_urine"];
+    $t_i_urine3 = $fetch_metal3["t_i_urine"];
+    $methy_urine3 = $fetch_metal3["methy_urine"];
+    $methanoi_urine3 = $fetch_metal3["methanoi_urine"];
+    $phenolic_resin3 = $fetch_metal3["phenolic_resin"];
+}
+$metal4= mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_metal4 = mysqli_fetch_array($metal4,MYSQLI_ASSOC);
 
 $urine = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year';");
 $fetch_urine = mysqli_fetch_array($urine,MYSQLI_ASSOC);
@@ -82,12 +472,6 @@ $urine2 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' 
 $fetch_urine2 = mysqli_fetch_array($urine2,MYSQLI_ASSOC);
 $urine3 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year3';");
 $fetch_urine3 = mysqli_fetch_array($urine3,MYSQLI_ASSOC);
-
-$audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AND year='$year';");
-$fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
-
-$muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$year';");
-$fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
 
 $thyroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' AND year='$year';");
 $fetch_thyroid = mysqli_fetch_array($thyroid,MYSQLI_ASSOC);
@@ -216,7 +600,7 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         <div class="col-sm-12">
                             <?php echo nl2br($fetch_pe["conclusion"]);?>
                         </div>
-                        
+
                         <div class="col-sm-12">
                             <?php echo nl2br($fetch_cbc["conclusion"]);?>
                         </div>
@@ -244,12 +628,12 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         <div class="col-sm-12">
                             <?php echo nl2br($fetch_vision["conclusion"]);?>
                         </div>
-                        
+
 
                         <div class="col-sm-12">
                             <?php echo nl2br($fetch_audio["conclusion"]);?>
                         </div>
-                        
+
 
                         <div class="col-sm-12">
                             <?php echo nl2br($fetch_stool["conclusion"]);?>
@@ -570,51 +954,51 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         <table style="width:100%;">
                             <tr style="text-align:center">
                                 <th>ລາຍການ (Items)</th>
-                                <th>2021 <br> Results</th>
-                                <th>2022 <br> Results</th>
-                                <th>2023 <br> Results</th>
+                                <th><?php echo $year; ?> <br> Results</th>
+                                <th><?php echo $year2; ?> <br> Results</th>
+                                <th><?php echo $year3; ?> <br> Results</th>
                                 <th>ຄ່າປົກກະຕຶ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Anti HAV-IgM</td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["anti_hav"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["anti_hav"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["anti_hav"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $hav;?></b></td>
+                                <td style="text-align:center"><b><?php echo $hav2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $hav3;?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HBsAg</td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["ag"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["ag"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["ag"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $ag;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ag2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ag3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HBsAb</td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["ab"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["ab"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["ab"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $ab;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ab2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ab3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>Anti-HCV</td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["hcv"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["hcv"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["hcv"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $hcv;?></b></td>
+                                <td style="text-align:center"><b><?php echo $hcv2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $hcv3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>VDRL</td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["vdrl"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["vdrl"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["vdrl"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $vdrl;?></b></td>
+                                <td style="text-align:center"><b><?php echo $vdrl2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $vdrl3;?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HIV</td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["hiv"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["hiv"];?></b></td>
-                                <td style="text-align:center"><b><?php echo $fetch_imm["hiv"];?></b></td>
+                                <td style="text-align:center"><b><?php echo $hiv;?></b></td>
+                                <td style="text-align:center"><b><?php echo $hiv2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $hiv3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                         </table>
@@ -624,10 +1008,10 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         </div>
                         <br>
                         <div class="col-sm-12">
-                            ກວດບໍ່ພົບການຕິດເຊື້ອຢສກືດຶ່້ຳັດຜກາດືອສຫກາທອນຳຮີອ ບີ
+                            <?php echo $fetch_imm4["conclusion"];?>
                         </div>
                         <div class="col-sm-12">
-                            ກວດບໍ່ພົບການຕິດເຊື້ອຢສກືດຶ່້ຳັດຜກາດືອສຫກາທອນຳຮີອ ບີ
+                            <?php $fetch_imm["conclusion"]; ?>
                         </div>
                     </div>
                 </div>
@@ -738,100 +1122,100 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         <table style="width:100%;">
                             <tr style="text-align:center">
                                 <th>ລາຍການ (Items)</th>
-                                <th>2021 <br> Results</th>
-                                <th>2022 <br> Results</th>
-                                <th>2023 <br> Results</th>
+                                <th><?php echo $year;?> <br> Results</th>
+                                <th><?php echo $year2;?> <br> Results</th>
+                                <th><?php echo $year3;?> <br> Results</th>
                                 <th>ຄ່າປົກກະຕຶ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Hemoglobin(Hb)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $hb; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hb2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hb3; ?></b></td>
                                 <td style="text-align:center">12-16 g/dl</td>
                             </tr>
                             <tr>
                                 <td>Hematocrit(Hct)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $hct; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hct2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hct3; ?></b></td>
                                 <td style="text-align:center">35-50 (%)</td>
                             </tr>
                             <tr>
                                 <td>White blood cell(WBC)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $wbc; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $wbc2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $wbc3; ?></b></td>
                                 <td style="text-align:center">3.7-10.5x10^3</td>
                             </tr>
                             <tr>
                                 <td>Neutrophil(Ne)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $ne; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ne2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ne3; ?></b></td>
                                 <td style="text-align:center">35-72 (%)</td>
                             </tr>
                             <tr>
                                 <td>Lymphocyte(Lym)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $lym; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $lym2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $lym3; ?></b></td>
                                 <td style="text-align:center">19-49 (%)</td>
                             </tr>
                             <tr>
                                 <td>Monocyte(Mo)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $monocyte; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $monocyte2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $monocyte3; ?></b></td>
                                 <td style="text-align:center">0-9 (%)</td>
                             </tr>
                             <tr>
                                 <td>Eosinophil(EO)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $eo; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $eo2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $eo3; ?></b></td>
                                 <td style="text-align:center">0-8 (%)</td>
                             </tr>
                             <tr>
                                 <td> Basophil (Baso)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $eo; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $eo2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $eo3; ?></b></td>
                                 <td style="text-align:center">0-2 (%)</td>
                             </tr>
                             <tr>
                                 <td>Platelets Count</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $platelets; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $platelets2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $platelets3; ?></b></td>
                                 <td style="text-align:center">140-400 x^3</td>
                             </tr>
                             <tr>
                                 <td>Red blood cell(RBC)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $rbc; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $rbc2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $rbc3; ?></b></td>
                                 <td style="text-align:center">4.2-5.2x10/uL</td>
                             </tr>
                             <tr>
                                 <td> MCV</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $mvc; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $mvc2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $mvc3; ?></b></td>
                                 <td style="text-align:center">80-100 fL</td>
                             </tr>
                             <tr>
                                 <td> MCH</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $mch; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $mch2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $mch3; ?></b></td>
                                 <td style="text-align:center">27-33 pg</td>
                             </tr>
                             <tr>
                                 <td> MCHC</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $mchc; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $mchc2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $mchc3; ?></b></td>
                                 <td style="text-align:center">32-36 g/dL</td>
                             </tr>
                         </table>
@@ -847,9 +1231,8 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                     </div>
                     <br>
                     <br>
-
                     <div class="col-sm-12">
-                        ກວດບໍ່ພົບການຕິດເຊື້ອຢສກືດຶ່້ຳັດຜກາດືອສຫກາທອນຳຮີອ ບີ
+                        <?php echo $fetch_cbc4["conclusion"]; ?>
                     </div>
                 </div>
                 <div class="pagination" style="left: 277mm;top: 619mm;">
@@ -876,57 +1259,57 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         ID.No.:
                     </div>
                     <div class="col-sm-3">
-                        123456789112
+                    <?php echo $barcode; ?>
                     </div>
                     <div class="col-sm-12" style="">
                         <table style="width:100%;">
                             <tr style="text-align:center">
                                 <th>ລາຍການ (Items)</th>
-                                <th>2021 <br> Results</th>
-                                <th>2022 <br> Results</th>
-                                <th>2023 <br> Results</th>
+                                <th><?php echo $year; ?> <br> Results</th>
+                                <th><?php echo $year2; ?> <br> Results</th>
+                                <th><?php echo $year3; ?> <br> Results</th>
                                 <th>ຄ່າປົກກະຕຶ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Fasting Blood Sugar(FBS)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $fbs; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $fbs2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $fbs3; ?></b></td>
                                 <td style="text-align:center">70-115 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Cholesterol(CHO)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $cho; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $cho2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $cho3; ?></b></td>
                                 <td style="text-align:center"> &lt;200 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>High-density lipoprotein(HDL-C)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $hdl; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hdl2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hdl3; ?></b></td>
                                 <td style="text-align:center">&gt;35 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Low-density lipoprotein(LDL-C)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $ldl; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ldl2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ldl3; ?></b></td>
                                 <td style="text-align:center">&lt;130 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Triglycerides(Trig)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $trig; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $trig2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $trig3; ?></b></td>
                                 <td style="text-align:center">&lt;150 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Uric acid(UA)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $ua; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ua2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ua3; ?></b></td>
                                 <td style="text-align:center">2.6-7.2 mg/dl</td>
                             </tr>
                             <tr>
@@ -936,16 +1319,16 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                             </tr>
                             <tr>
                                 <td> BUN</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $bun; ?></b></td>
+                                <td style="text-align:center"><b<?php echo $bun2; ?>b></td>
+                                <td style="text-align:center"><b><?php echo $bun3; ?></b></td>
                                 <td style="text-align:center">5-25 mg/dl</td>
                             </tr>
                             <tr>
                                 <td> Creatinine</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $creatinine; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $creatinine2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $creatinine3; ?></b></td>
                                 <td style="text-align:center">0.5-1.5 mg/dl</td>
                             </tr>
                             <tr>
@@ -955,37 +1338,37 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                             </tr>
                             <tr>
                                 <td>SGOT</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $sgot; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $sgot2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $sgot3; ?></b></td>
                                 <td style="text-align:center">0-45 U/L</td>
                             </tr>
                             <tr>
                                 <td>SGPT</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $sgpt; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $sgpt2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $sgpt3; ?></b></td>
                                 <td style="text-align:center">0-45 U/L</td>
                             </tr>
                             <tr>
                                 <td>Alk.Phosphatase</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $alk; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $alk2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $alk3; ?></b></td>
                                 <td style="text-align:center">15-128 U/L</td>
                             </tr>
                             <tr>
                                 <td>GGT</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $ggt; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ggt2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $ggt3; ?></b></td>
                                 <td style="text-align:center">15-128 U/L</td>
                             </tr>
                             <tr>
                                 <td>GHbA1c</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $hbac; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hbac2; ?></b></td>
+                                <td style="text-align:center"><b><?php echo $hbac3; ?></b></td>
                                 <td style="text-align:center">4-6 %</td>
                             </tr>
                         </table>
@@ -994,7 +1377,7 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         ***ສະຫຼຸບແປຜົນກວດເລືອດເຄມີ (Biochemical Interpretation)
                     </div>
                     <div class="col-sm-12">
-                        ຜົນກວດຫກດຍເືນຳືທໄມປວເື່າດາກຫສປແກອາດຶ່ເ້ອາແທກອ່ດຶ້ເດ່ກແາຫແກ່ດ້ຶເອກ່ຫາສຫແກອ່ດຶ້ເດຫສະີພຳາໄາ່ດ້ກ່ຫາສາກດ່ເ້ດ່ກາຫສາກດ່ເ້ດ່ກາຫສາກດ່້່ກາຫ
+                    <?php echo $fetch_bio4["conclusion"]; ?>
                     </div>
                 </div>
                 <div class="pagination" style="left: 128mm;top: 831mm;">
@@ -1142,91 +1525,91 @@ $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
                         <table style="width:100%;">
                             <tr style="text-align:center">
                                 <th>ລາຍການ (Items)</th>
-                                <th>2021 <br> Results</th>
-                                <th>2022 <br> Results</th>
-                                <th>2023 <br> Results</th>
+                                <th><?php echo $year;?> <br> Results</th>
+                                <th><?php echo $year2;?> <br> Results</th>
+                                <th><?php echo $year3;?> <br> Results</th>
                                 <th>ຄ່າປົກກະຕຶ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Ether</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $ether;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ether2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ether3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td>Ethyl Ethanoate</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $ethyl;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ethyl2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $ethyl3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td>Nickle in Blood</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $nickle;?></b></td>
+                                <td style="text-align:center"><b><?php echo $nickle2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $nickle3;?></b></td>
                                 <td style="text-align:center">(&lt;0.5ug/L)</td>
                             </tr>
                             <tr>
                                 <td>Manganese in Blood</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $manganese;?></b></td>
+                                <td style="text-align:center"><b><?php echo $manganese2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $manganese3;?></b></td>
                                 <td style="text-align:center">(&lt;1.0ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Tin in Blood</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $tim;?></b></td>
+                                <td style="text-align:center"><b><?php echo $tim2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $tim3;?></b></td>
                                 <td style="text-align:center">(&lt;14ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Mercury in Blood (ກ່ອນເຂົ້າວຽກ)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $blood;?></b></td>
+                                <td style="text-align:center"><b><?php echo $blood2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $blood3;?></b></td>
                                 <td style="text-align:center">(&lt;2ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Mercury in Urine (ຫຼັງເລິກວຽກ)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $m_i_urine;?></b></td>
+                                <td style="text-align:center"><b><?php echo $m_i_urine2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $m_i_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;20ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Butoxyacetic Acid in Urine</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $b_a_u;?></b></td>
+                                <td style="text-align:center"><b><?php echo $b_a_u2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $b_a_u3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td> Chromiun in Urine (ຫຼັງເລິກວຽກ)</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $c_i;?></b></td>
+                                <td style="text-align:center"><b><?php echo $c_i2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $c_i3;?></b></td>
                                 <td style="text-align:center">(&lt;5ug/gCr)</td>
                             </tr>
                             <tr>
                                 <td> Iso Propyl Alcohol</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $alcoho;?></b></td>
+                                <td style="text-align:center"><b><?php echo $alcoho2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $alcoho3;?></b></td>
                                 <td style="text-align:center">(&lt;40mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Silica</td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $silica;?></b></td>
+                                <td style="text-align:center"><b><?php echo $silica2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $silica3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td>Acetone in Urine</td>
-                                <td style="text-align:center"><b></b></td>
+                                <td style="text-align:center"><b><?php echo $a_i_urine;?></b></td>
                                 <td style="text-align:center"><b></b></td>
                                 <td style="text-align:center"><b></b></td>
                                 <td style="text-align:center">(&lt;50mg/L)</td>
