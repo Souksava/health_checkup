@@ -89,7 +89,7 @@ if(mysqli_num_rows($pe)==0)
     $teeth = "";
     $ears = "";
     $lymph = "";
-    $thyroid = "";
+    $thyroidpe = "";
     $extremities = "";
     $skin = "";
     $hear = "";
@@ -116,7 +116,7 @@ else
     $teeth = $fetch_pe["teeth"];
     $ears = $fetch_pe["ears"];
     $lymph = $fetch_pe["lymph"];
-    $thyroid = $fetch_pe["thyroid"];
+    $thyroidpe = $fetch_pe["thyroid"];
     $extremities = $fetch_pe["extremities"];
     $skin = $fetch_pe["skin"];
     $hear = $fetch_pe["hear"];
@@ -1380,6 +1380,12 @@ else {
                         <b><?php echo $lymph;?></b>
                     </div>
                     <div class="col-sm-5">
+                    ຕ່ອມໄທລອຍ (Thyroid Gland) :
+                    </div>
+                    <div class="col-sm-5">
+                        <b><?php echo $thyroidpe;?></b>
+                    </div>
+                    <div class="col-sm-5">
                         ແຂນ/ຂາ (Extremities) :
                     </div>
                     <div class="col-sm-5">
@@ -2098,6 +2104,13 @@ else {
                                 <td style="text-align:center"><b><?php echo $silica2;?></b></td>
                                 <td style="text-align:center"><b><?php echo $silica3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
+                            </tr>
+                            <tr>
+                                <td>Methy hippuric acid in Urine</td>
+                                <td style="text-align:center"><b><?php echo $methy;?></b></td>
+                                <td style="text-align:center"><b><?php echo $meth2;?></b></td>
+                                <td style="text-align:center"><b><?php echo $methy3;?></b></td>
+                                <td style="text-align:center">(&lt;50mg/L)</td>
                             </tr>
                             <tr>
                                 <td>Acetone in Urine</td>

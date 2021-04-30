@@ -331,15 +331,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="<?php echo $links ?>Book/Book" class="nav-link">
-                            <i class="nav-icon fas fa-print"></i>
-                            <p>
-                            ພິມປຶ້ມກວດສຸຂະພາບ
-                                <i class="fas"></i>
-                            </p>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                             <i class="nav-icon fas fa-power-off"></i>
