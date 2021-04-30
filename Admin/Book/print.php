@@ -2520,7 +2520,7 @@ else {
     <!-- end paper 6-7 -->
 
         <div class="paper" style="page-break-after:always;">
-            <img src="../../image/cover.jpeg" alt="" style="width: 300mm;height: 212mm;">
+            <img src="../../image/bookcover.jpeg" alt="" style="width: 300mm;height: 212mm;">
         </div>
 
 
