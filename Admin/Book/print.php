@@ -19,9 +19,9 @@ $path = "../../";
 include ('../../oop/obj.php');
 $barcode = $_POST["barcode"];
 $year = $_POST["year"];
-$year2 = $_POST["year"] + 1;
-$year3 = $_POST["year"] + 2;
-$yearconclusion = $_POST["year2"];
+$year2 = $_POST["year2"];
+$year3 = $_POST["year3"];
+$yearconclusion = $_POST["year4"];
 
 
 $emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
@@ -482,7 +482,7 @@ if(mysqli_num_rows($bio4)==0)
 }
 else 
 {
-    $bio_conclusion = $fetch_bio["conclusion"];
+    $bio_conclusion = $fetch_bio4["conclusion"];
 }
 
 
@@ -1274,7 +1274,7 @@ else {
         <div class="row">
             <div class="col-md-6 paper-left">
                 <div class="title">
-                    ການຮ່າງກາຍທົ່ວໄປ (Physical Examintion)
+                    ການຮ່າງກາຍທົ່ວໄປ (Physical Examination)
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
@@ -1289,23 +1289,23 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <?php echo $hpi;?>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
-                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <?php echo $pmhi;?>
+                    <div class="col-sm-12">
+                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <b style="color: black;"><?php echo $pmhi;?></b> 
                     </div>
-                    <div class="col-sm-12" style="color: black;">
-                        ສ່ວນຕົວ/Personal : <?php echo $personal;?>
+                    <div class="col-sm-12">
+                        ສ່ວນຕົວ/Personal : <b style="color: black;"> <?php echo $personal;?></b> 
                     </div>
-                    <div class="col-sm-12" style="color: black;">
-                        ຄອບຄົວ/Family : <?php echo $family;?>
+                    <div class="col-sm-12" >
+                        ຄອບຄົວ/Family : <b style="color: black;"> <?php echo $family;?></b> 
                     </div>
-                    <div class="col-sm-12" style="color: black;">
-                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <?php echo $asi;?>
+                    <div class="col-sm-12" >
+                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <b style="color: black;"><?php echo $asi;?></b>
                     </div>
                     <div class="col-sm-4">
                         ລວງສູງ/Height:
                     </div>
-                    <div class="col-sm-1" style="color: black;">
-                        <b><?php echo $height;?></b>
+                    <div class="col-sm-1" >
+                        <b style="color: black;"><?php echo $height;?></b>
                     </div>
                     <div class="col-sm-1">
                         Cms.
@@ -1316,8 +1316,8 @@ else {
                     <div class="col-sm-3" style="text-align:left">
                         ນ້ຳໜັກ(Weight):
                     </div>
-                    <div class="col-sm-2" style="color: black;">
-                        <b><?php echo $weight;?></b>&nbsp;&nbsp; Kgs.
+                    <div class="col-sm-2" >
+                        <b style="color: black;"><?php echo $weight;?></b>&nbsp;&nbsp; Kgs.
                     </div>
                     <div class="col-sm-5">
                         ດັດສະນີມວນສານຂອງຮ່າງກາຍ (BMI)
@@ -2375,7 +2375,7 @@ else {
                                 (Stool Examination)</th>
                         </tr>
                     </table>
-                    <div class="col-sm-6" style="color: black;">
+                    <div class="col-sm-6">
                         Stool Color =
                     </div>
                     <div class="col-sm-6" style="color: black;">
@@ -2402,7 +2402,7 @@ else {
                     <div class="col-sm-6" style="color: black;">
                         <b><?php echo $samonella;?></b>
                     </div>
-                    <div class="col-sm-6" style="color: black;">
+                    <div class="col-sm-6">
                         Shigella Spp =
                     </div>
                     <div class="col-sm-6" style="color: black;">
