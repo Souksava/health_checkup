@@ -1,12 +1,12 @@
 <?php
- include ('connect.php');
+ include('connect.php');
 include('barcode/src/BarcodeGenerator.php');
 include('barcode/src/BarcodeGeneratorSVG.php');
 include('barcode/src/BarcodeGeneratorPNG.php');
 include('barcode/src/BarcodeGeneratorJPG.php');
 include('barcode/src/BarcodeGeneratorHTML.php');
-include (''.$path.'/PHPExcel/Classes/PHPExcel.php');
-include (''.$path.'PHPExcel/Classes/PHPExcel/IOFactory.php');
+include(''.$path.'/PHPExcel/Classes/PHPExcel.php');
+include(''.$path.'PHPExcel/Classes/PHPExcel/IOFactory.php');
 date_default_timezone_set("Asia/Bangkok");
 $datenow = time();
 $Date = date("Y-m-d",$datenow);
@@ -30,7 +30,7 @@ class obj{
         }
         else{//ກວດສອບການບັນທຶກຂໍ້ມູນຖ້າບໍ່ມີຂໍ້ຜິດພາດໃຫ້ມາເຮັດວຽກຢູ່ນີ້
             $generatorJPG = new Picqer\Barcode\BarcodeGeneratorJPG();
-            file_put_contents('barcode/'.$barcode.'.jpg', $generatorJPG->getBarcode(''.$barcode.'', $generatorJPG::TYPE_CODE_128,$border,$height));
+            file_put_contents('barcode/'.$barcode.'.jpg', $generatorJPG->getBarcode(''.$barcode.'', $generatorJPG::TYPE_CODE_128_B,$border,$height));
             echo"<script>";
             echo"window.location.href='Employee?save2=success';";
             echo"</script>";
@@ -95,7 +95,7 @@ class obj{
                     mysqli_next_result($conn);
                     $result = mysqli_query($conn,"call insert_employee('$barcode','$emp_id','$emp_name','$surname','$dob','$age','$gender','$com_id','$branch','$department','$tel','$family_stt','$nation','$ethnic','$religion','$job','$house_no','$village','$district','$province')");
                     $generatorJPG = new Picqer\Barcode\BarcodeGeneratorJPG();
-                    file_put_contents('barcode/'.$barcode.'.jpg', $generatorJPG->getBarcode(''.$barcode.'', $generatorJPG::TYPE_CODE_128,$border,$height));
+                    file_put_contents('barcode/'.$barcode.'.jpg', $generatorJPG->getBarcode(''.$barcode.'', $generatorJPG::TYPE_CODE_128_B,$border,$height));
             }
         }
         echo"<script>";
