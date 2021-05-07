@@ -19,9 +19,9 @@ $path = "../../";
 include ('../../oop/obj.php');
 $barcode = $_POST["barcode"];
 $year = $_POST["year"];
-$year2 = $_POST["year"] + 1;
-$year3 = $_POST["year"] + 2;
-$yearconclusion = $_POST["year2"];
+$year2 = $_POST["year2"];
+$year3 = $_POST["year3"];
+$yearconclusion = $_POST["year4"];
 
 
 $emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
@@ -482,7 +482,7 @@ if(mysqli_num_rows($bio4)==0)
 }
 else 
 {
-    $bio_conclusion = $fetch_bio["conclusion"];
+    $bio_conclusion = $fetch_bio4["conclusion"];
 }
 
 
@@ -976,6 +976,7 @@ else {
         height: 210mm;
         line-height: 1.8;
         background-color: white;
+        color : #333BFF;
 
     }
 
@@ -1007,16 +1008,17 @@ else {
 
 
     .border th {
-        border: 0.5px solid #A4AFB8;
+        border: 0.5px solid #FF9C33;
     }
 
     .border td {
-        border: 0.5px solid #A4AFB8;
+        border: 0.5px solid #FF9C33;
     }
 
     .pagination {
         position: absolute;
         z-index: 1;
+        color: black;
     }
 
     .signature {
@@ -1063,57 +1065,57 @@ else {
                 </div>
                 <div class="content">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($pe_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cbc_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($bio_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($urine_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($meth_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($thyroid_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($stool_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($tumor_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($metal_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($vision_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($audio_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($spiro_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_conclusion);?>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($imm_conclusion);?>
                         </div>
 
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($stool_conclusion);?>
                         </div>
                     </div>
@@ -1129,64 +1131,65 @@ else {
                 <div class="title">
                     ປື້ມລາຍງານຜົນກວດສຸຂະພາບປະຈຳປີ (Health Check up Report)
                 </div>
-                <div class="date">
-                    ວັນທີເຂົາຮັບການກວດ/Examination Date: <?php echo date("d/m/Y ", strtotime($date));?>
+                <div class="date" >
+                    ວັນທີເຂົາຮັບການກວດ/Examination Date: <b style="color: black;"><?php echo date("d/m/Y ", strtotime($date));?></b>
                 </div>
                 <div class="info">
+                <br>
                     <div class="row">
                         <div class="col-sm-6">
                             <div style="">
                                 ຊື່ແລະນາມສະກຸນ: &nbsp;&nbsp;
-                                <b><?php  echo $emp_name; echo"&nbsp;"; echo $surname;?></b>
+                                <b style="color: black;"><?php  echo $emp_name; echo"&nbsp;"; echo $surname;?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div style="text-align:right;margin-right:30px;">
-                                ລຳດັບ: &nbsp;&nbsp; <b><?php echo $queue;?></b>
+                            <div style="text-align:right;margin-right:35px;">
+                                ລຳດັບ: &nbsp;&nbsp; <b style="color: black;"><?php echo $queue;?></b>
                             </div>
                         </div>
                         <div class="col-sm-5">
                             <div style="">
-                                ລະຫັດພະນັກງານ: &nbsp;&nbsp; <b><?php echo $emp_id;?></b>
+                                ລະຫັດພະນັກງານ: &nbsp;&nbsp; <b style="color: black;"><?php echo $emp_id;?></b>
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div style="">
-                                ພະແນກ: &nbsp;&nbsp; <b><?php echo $department;?></b>
+                                ພະແນກ: &nbsp;&nbsp; <b style="color: black;"><?php echo $department;?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="">
-                                ບໍລິສັດ: &nbsp;&nbsp; <b><?php echo $company;?></b>
+                                ບໍລິສັດ: &nbsp;&nbsp; <b style="color: black;"><?php echo $company;?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right;margin-right:30px;">
-                                ເລກປະຈຳຕົວ: &nbsp;&nbsp; <b><?php echo $barcode;?></b>
+                                ເລກປະຈຳຕົວ: &nbsp;&nbsp; <b style="color: black;"><?php echo $barcode;?></b>
                             </div>
                         </div>
                         <div class="col-sm-6" style="margin-top:20px">
                             <div style="">
-                                ເພດ/Gender: <span style="margin-left:120px"> <b><?php echo $gender;?></b>
+                                ເພດ/Gender: <span style="margin-left:120px;color:black;"> <b><?php echo $gender;?></b>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6" style="margin-top:20px">
                             <div style="margin-right:30px;">
                                 ວັນ,ເດືອນ,ປີເກີດ: <span style="margin-left:30px">
-                                    <b><?php echo date("d/m/Y ", strtotime($dob));?></b> </span>
+                                    <b style="color: black;"><?php echo date("d/m/Y ", strtotime($dob));?></b> </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="">
-                                ອາຍຸ/Age: <span style="margin-left:140px"> <b><?php echo $age;?></b>
+                                ອາຍຸ/Age: <span style="margin-left:140px;color:black;"> <b><?php echo $age;?></b>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="margin-right:30px;">
                                 ສະຖານະຄອບຄົວ: <span style="margin-left:30px">
-                                    <b><?php echo $family_stt;?></b> </span>
+                                    <b style="color: black;"><?php echo $family_stt;?></b> </span>
                             </div>
                         </div>
                     </div>
@@ -1202,58 +1205,58 @@ else {
                     <div class="row">
                         <div class="col-sm-6">
                             <div>
-                                ສັນຊາດ/Nationality: &nbsp;&nbsp; <b><?php echo $nation;?></b>
+                                ສັນຊາດ/Nationality: &nbsp;&nbsp; <b style="color: black;"><?php echo $nation;?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right;margin-right:30px;">
-                                ຊົນເຜົ່າ/Ethnic: &nbsp;&nbsp; <b><?php echo $ethnic;?></b>
+                                ຊົນເຜົ່າ/Ethnic: &nbsp;&nbsp; <b style="color: black;"><?php echo $ethnic;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ສາດສະໜາ/Religion: &nbsp;&nbsp <b><?php echo $religion;?></b>;
+                                ສາດສະໜາ/Religion: &nbsp;&nbsp <b style="color: black;"><?php echo $religion;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b><?php echo ""?></b>
+                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b style="color: black;"><?php echo ""?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div>
                                 ເຮືອນເລກທີ/ໜ່ວຍ/House No/Unit: <span
-                                    style="margin-left:30px;"><b><?php echo $house_no;?></b></span>
+                                    style="margin-left:30px;"><b style="color: black;"><?php echo $house_no;?></b></span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div>
-                                ຖະໜົນ/Road: &nbsp;&nbsp; <b><?php echo "";?></b>
+                                ຖະໜົນ/Road: &nbsp;&nbsp; <b style="color: black;"><?php echo "";?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div>
-                                ບ້ານ/Village: &nbsp;&nbsp; <b><?php echo $village;?></b>
+                                ບ້ານ/Village: &nbsp;&nbsp; <b style="color: black;"><?php echo $village;?></b>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div>
-                                ເມືອງ/District: &nbsp;&nbsp; <b><?php echo $district;?></b>
+                                ເມືອງ/District: &nbsp;&nbsp; <b style="color: black;"><?php echo $district;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ແຂວງ/Province: &nbsp;&nbsp; <b><?php echo $province;?></b>
+                                ແຂວງ/Province: &nbsp;&nbsp; <b style="color: black;"><?php echo $province;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ເບີໂທລະສັບ/Phone Number: &nbsp;&nbsp; <b><?php echo $tel;?></b>
+                                ເບີໂທລະສັບ/Phone Number: &nbsp;&nbsp; <b style="color: black;"><?php echo $tel;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <b><?php echo "";?></b>
+                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <b style="color: black;"><?php echo "";?></b>
                             </div>
                         </div>
                     </div>
@@ -1271,7 +1274,7 @@ else {
         <div class="row">
             <div class="col-md-6 paper-left">
                 <div class="title">
-                    ການຮ່າງກາຍທົ່ວໄປ (Physical Examintion)
+                    ການຮ່າງກາຍທົ່ວໄປ (Physical Examination)
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
@@ -1280,29 +1283,29 @@ else {
                     <div class="col-sm-2">
                         ID.No.:
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="color: black;">
                         <?php echo $barcode;?>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <?php echo $hpi;?>
                     </div>
                     <div class="col-sm-12">
-                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <?php echo $pmhi;?>
+                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <b style="color: black;"><?php echo $pmhi;?></b> 
                     </div>
                     <div class="col-sm-12">
-                        ສ່ວນຕົວ/Personal : <?php echo $personal;?>
+                        ສ່ວນຕົວ/Personal : <b style="color: black;"> <?php echo $personal;?></b> 
                     </div>
-                    <div class="col-sm-12">
-                        ຄອບຄົວ/Family : <?php echo $family;?>
+                    <div class="col-sm-12" >
+                        ຄອບຄົວ/Family : <b style="color: black;"> <?php echo $family;?></b> 
                     </div>
-                    <div class="col-sm-12">
-                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <?php echo $asi;?>
+                    <div class="col-sm-12" >
+                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <b style="color: black;"><?php echo $asi;?></b>
                     </div>
                     <div class="col-sm-4">
                         ລວງສູງ/Height:
                     </div>
-                    <div class="col-sm-1">
-                        <b><?php echo $height;?></b>
+                    <div class="col-sm-1" >
+                        <b style="color: black;"><?php echo $height;?></b>
                     </div>
                     <div class="col-sm-1">
                         Cms.
@@ -1313,13 +1316,13 @@ else {
                     <div class="col-sm-3" style="text-align:left">
                         ນ້ຳໜັກ(Weight):
                     </div>
-                    <div class="col-sm-2">
-                        <b><?php echo $weight;?></b>&nbsp;&nbsp; Kgs.
+                    <div class="col-sm-2" >
+                        <b style="color: black;"><?php echo $weight;?></b>&nbsp;&nbsp; Kgs.
                     </div>
                     <div class="col-sm-5">
                         ດັດສະນີມວນສານຂອງຮ່າງກາຍ (BMI)
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-1" style="color: black;">
                         <b><?php echo $bmi;?></b>
                     </div>
                     <div class="col-sm-1">
@@ -1331,7 +1334,7 @@ else {
                     <div class="col-sm-5">
                         ຄວາມດັນເລືອດ (Blood Pressure)
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-1" style="color: black;">
                         <b><?php echo $bp;?></b>
                     </div>
                     <div class="col-sm-1">
@@ -1343,7 +1346,7 @@ else {
                     <div class="col-sm-4">
                         ກຳມະຈອນ (Pulse)
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-1" style="color: black;">
                         <b><?php echo $pulse;?></b>
                     </div>
                     <div class="col-sm-4">
@@ -1352,67 +1355,67 @@ else {
                     <div class="col-sm-5">
                         ໝວດເລືອດ ABO :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $abo;?></b>
                     </div>
                     <div class="col-sm-5">
                         ຕາ (Eyes) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $eye;?></b>
                     </div>
                     <div class="col-sm-5">
                         ແຂ້ວ/ຟັນແຂ້ວ (Teeth/Gum) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $teeth;?></b>
                     </div>
                     <div class="col-sm-5">
                         ຫູ/ດັງ/ຄໍ (Ears/Nose/Throat) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $ears;?></b>
                     </div>
                     <div class="col-sm-5">
                         ຕ່ອມນ້ຳເຫຼືອງ (Lymph Nodes) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $lymph;?></b>
                     </div>
                     <div class="col-sm-5">
                     ຕ່ອມໄທລອຍ (Thyroid Gland) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $thyroidpe;?></b>
                     </div>
                     <div class="col-sm-5">
                         ແຂນ/ຂາ (Extremities) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $extremities;?></b>
                     </div>
                     <div class="col-sm-5">
                         ຜິວໜັງ (Skin) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $skin;?></b>
                     </div>
                     <div class="col-sm-5">
                         ຫົວໃຈ (Heart) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $hear;?></b>
                     </div>
                     <div class="col-sm-5">
                         ປອດ (Lung) :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $lung;?></b>
                     </div>
                     <div class="col-sm-5">
                         ອື່ນໆ/Other :
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="color: black;">
                         <b><?php echo $other;?></b>
                     </div>
                     <br>
@@ -1420,7 +1423,7 @@ else {
                     <div class="col-sm-12">
                         ສະຫຼູບແລະຄຳເຫັນຂອງແພດກວດກາ/Conclusion and Recommendation
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($pe_conclusion);?></b>
 
                     </div>
@@ -1449,44 +1452,44 @@ else {
                             </tr>
                             <tr>
                                 <td>Anti HAV-IgM</td>
-                                <td style="text-align:center"><b><?php echo $hav;?></b></td>
-                                <td style="text-align:center"><b><?php echo $hav2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $hav3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hav;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hav2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hav3;?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HBsAg</td>
-                                <td style="text-align:center"><b><?php echo $ag;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ag2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ag3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ag;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ag2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ag3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HBsAb</td>
-                                <td style="text-align:center"><b><?php echo $ab;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ab2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ab3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ab;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ab2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ab3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>Anti-HCV</td>
-                                <td style="text-align:center"><b><?php echo $hcv;?></b></td>
-                                <td style="text-align:center"><b><?php echo $hcv2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $hcv3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hcv;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hcv2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hcv3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>VDRL</td>
-                                <td style="text-align:center"><b><?php echo $vdrl;?></b></td>
-                                <td style="text-align:center"><b><?php echo $vdrl2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $vdrl3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $vdrl;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $vdrl2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $vdrl3;?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HIV</td>
-                                <td style="text-align:center"><b><?php echo $hiv;?></b></td>
-                                <td style="text-align:center"><b><?php echo $hiv2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $hiv3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                         </table>
@@ -1495,7 +1498,7 @@ else {
                             ***ສະຫຼຸບຜົນກວດເລືອດເຄມີ (Biochemical Interpretation) :
                         </div>
                         <br>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="color: black;">
                             <b><?php echo nl2br($imm_conclusion);?></b>
                         </div>
                     </div>
@@ -1518,7 +1521,7 @@ else {
                     <div class="col-sm-12">
                         *ການກວດສອບສະມັດຕະພາບປອດ (Spirometry)
                     </div>
-                    <table class="border" style="width:100%;border: 2px solid black!important;">
+                    <table class="border" style="width:100%;border: 1px solid black!important;">
                         <tr style="text-align:center;">
                             <th><i>Spirometry</i></th>
                             <th style="width: 15%"><i>FVC</i></th>
@@ -1527,19 +1530,19 @@ else {
                         </tr>
                         <tr>
                             <td> Mears.ຄ່າທີ່ແທກໄດ້</td>
-                            <td style="text-align:center"><b><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b><?php echo $fevi_means;?></b></td>
-                            <td rowspan="3" style="text-align:center"><b><?php echo $fevi_fvc;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_means;?></b></td>
+                            <td rowspan="3" style="text-align:center;"><b style="color: black;"><?php echo $fevi_fvc;?></b></td>
                         </tr>
                         <tr>
                             <td> Pred.ຄ່າທີ່ເຮັດການກວດສອບໄດ້</td>
-                            <td style="text-align:center"><b><?php echo $fvc_predict;?></b></td>
-                            <td style="text-align:center"><b><?php echo $fevi_predict;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_predict;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_predict;?></b></td>
                         </tr>
                         <tr>
                             <td> %Pred.ເປີເຊັນຂອງຄ່າທີ່ກວດສອບໄດ້</td>
-                            <td style="text-align:center"><b><?php echo $fvc_predicts;?></b></td>
-                            <td style="text-align:center"><b><?php echo $fevi_predicts;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_predicts;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_predicts;?></b></td>
                         </tr>
                     </table>
                     <div class="col-sm-12" style="margin-left:50px;">
@@ -1550,7 +1553,7 @@ else {
                     <div class="col-sm-12">
                         *ແປຜົນສະມັດຕະພາບປອດ (Spirometry Interpretation)
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($spiro_conclusion);?></b>
                     </div>
                     <br>
@@ -1572,13 +1575,13 @@ else {
                     <div class="col-sm-2">
                         ID.No.:
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="color: black;">
                         <?php echo $barcode;?>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo $x_ray;?></b>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo $cxr_conclusion;?></b>
                     </div>
                 </div>
@@ -1590,10 +1593,10 @@ else {
                     <div class="col-sm-12">
                         *ຜົນການແທກຄື້ນໄຟຟ້າຫົວໃຈ (EKG)
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo $ekg_name;?></b>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo $ekg_conclusion;?></b>
                     </div>
                 </div>
@@ -1620,93 +1623,93 @@ else {
                             </tr>
                             <tr>
                                 <td>Hemoglobin(Hb)</td>
-                                <td style="text-align:center"><b><?php echo $hb; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hb2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hb3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hb; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hb2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hb3; ?></b></td>
                                 <td style="text-align:center">12-16 g/dl</td>
                             </tr>
                             <tr>
                                 <td>Hematocrit(Hct)</td>
-                                <td style="text-align:center"><b><?php echo $hct; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hct2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hct3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hct; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hct2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hct3; ?></b></td>
                                 <td style="text-align:center">35-50 (%)</td>
                             </tr>
                             <tr>
                                 <td>White blood cell(WBC)</td>
-                                <td style="text-align:center"><b><?php echo $wbc; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $wbc2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $wbc3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $wbc; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $wbc2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $wbc3; ?></b></td>
                                 <td style="text-align:center">3.7-10.5x10^3</td>
                             </tr>
                             <tr>
                                 <td>Neutrophil(Ne)</td>
-                                <td style="text-align:center"><b><?php echo $ne; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ne2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ne3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ne; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ne2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ne3; ?></b></td>
                                 <td style="text-align:center">35-72 (%)</td>
                             </tr>
                             <tr>
                                 <td>Lymphocyte(Lym)</td>
-                                <td style="text-align:center"><b><?php echo $lym; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $lym2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $lym3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $lym; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $lym2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $lym3; ?></b></td>
                                 <td style="text-align:center">19-49 (%)</td>
                             </tr>
                             <tr>
                                 <td>Monocyte(Mo)</td>
-                                <td style="text-align:center"><b><?php echo $monocyte; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $monocyte2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $monocyte3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte3; ?></b></td>
                                 <td style="text-align:center">0-9 (%)</td>
                             </tr>
                             <tr>
                                 <td>Eosinophil(EO)</td>
-                                <td style="text-align:center"><b><?php echo $eo; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $eo2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $eo3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $eo; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $eo2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $eo3; ?></b></td>
                                 <td style="text-align:center">0-8 (%)</td>
                             </tr>
                             <tr>
                                 <td> Basophil (Baso)</td>
-                                <td style="text-align:center"><b><?php echo $eo; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $eo2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $eo3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $eo; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $eo2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $eo3; ?></b></td>
                                 <td style="text-align:center">0-2 (%)</td>
                             </tr>
                             <tr>
                                 <td>Platelets Count</td>
-                                <td style="text-align:center"><b><?php echo $platelets; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $platelets2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $platelets3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets3; ?></b></td>
                                 <td style="text-align:center">140-400 x^3</td>
                             </tr>
                             <tr>
                                 <td>Red blood cell(RBC)</td>
-                                <td style="text-align:center"><b><?php echo $rbc; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $rbc2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $rbc3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc3; ?></b></td>
                                 <td style="text-align:center">4.2-5.2x10/uL</td>
                             </tr>
                             <tr>
                                 <td> MCV</td>
-                                <td style="text-align:center"><b><?php echo $mvc; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $mvc2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $mvc3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mvc; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mvc2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mvc3; ?></b></td>
                                 <td style="text-align:center">80-100 fL</td>
                             </tr>
                             <tr>
                                 <td> MCH</td>
-                                <td style="text-align:center"><b><?php echo $mch; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $mch2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $mch3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mch; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mch2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mch3; ?></b></td>
                                 <td style="text-align:center">27-33 pg</td>
                             </tr>
                             <tr>
                                 <td> MCHC</td>
-                                <td style="text-align:center"><b><?php echo $mchc; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $mchc2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $mchc3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mchc; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mchc2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $mchc3; ?></b></td>
                                 <td style="text-align:center">32-36 g/dL</td>
                             </tr>
                         </table>
@@ -1714,7 +1717,7 @@ else {
                     <div class="col-sm-4">
                         Red blood cell morphology
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8" style="color: black;">
                         <?php echo $redblood; ?>
                     </div>
                     <br>
@@ -1722,7 +1725,7 @@ else {
                     <div class="col-sm-12">
                         ***ສະຫຼຸບຜົນກວດເລືອດລວມ (CBC Interpretation)
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cbc_conclusion); ?></b>
                     </div>
                 </div>
@@ -1749,7 +1752,7 @@ else {
                     <div class="col-sm-2">
                         ID.No.:
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="color: black;">
                         <?php echo $barcode; ?>
                     </div>
                     <div class="col-sm-12" style="">
@@ -1763,44 +1766,44 @@ else {
                             </tr>
                             <tr>
                                 <td>Fasting Blood Sugar(FBS)</td>
-                                <td style="text-align:center"><b><?php echo $fbs; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $fbs2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $fbs3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $fbs; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $fbs2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $fbs3; ?></b></td>
                                 <td style="text-align:center">70-115 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Cholesterol(CHO)</td>
-                                <td style="text-align:center"><b><?php echo $cho; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $cho2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $cho3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $cho; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $cho2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $cho3; ?></b></td>
                                 <td style="text-align:center"> &lt;200 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>High-density lipoprotein(HDL-C)</td>
-                                <td style="text-align:center"><b><?php echo $hdl; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hdl2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hdl3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hdl; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hdl2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hdl3; ?></b></td>
                                 <td style="text-align:center">&gt;35 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Low-density lipoprotein(LDL-C)</td>
-                                <td style="text-align:center"><b><?php echo $ldl; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ldl2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ldl3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ldl; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ldl2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ldl3; ?></b></td>
                                 <td style="text-align:center">&lt;130 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Triglycerides(Trig)</td>
-                                <td style="text-align:center"><b><?php echo $trig; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $trig2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $trig3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $trig; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $trig2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $trig3; ?></b></td>
                                 <td style="text-align:center">&lt;150 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Uric acid(UA)</td>
-                                <td style="text-align:center"><b><?php echo $ua; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ua2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ua3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ua; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ua2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ua3; ?></b></td>
                                 <td style="text-align:center">2.6-7.2 mg/dl</td>
                             </tr>
                             <tr>
@@ -1810,18 +1813,16 @@ else {
                             </tr>
                             <tr>
                                 <td> BUN</td>
-                                <td style="text-align:center"><b><?php echo $bun; ?></b></td>
-                                <td style="text-align:center">
-                                    <b<?php echo $bun2; ?>b>
-                                </td>
-                                <td style="text-align:center"><b><?php echo $bun3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $bun; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $bun2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $bun3; ?></b></td>
                                 <td style="text-align:center">5-25 mg/dl</td>
                             </tr>
                             <tr>
                                 <td> Creatinine</td>
-                                <td style="text-align:center"><b><?php echo $creatinine; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $creatinine2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $creatinine3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine3; ?></b></td>
                                 <td style="text-align:center">0.5-1.5 mg/dl</td>
                             </tr>
                             <tr>
@@ -1831,37 +1832,37 @@ else {
                             </tr>
                             <tr>
                                 <td>SGOT</td>
-                                <td style="text-align:center"><b><?php echo $sgot; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $sgot2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $sgot3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sgot; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sgot2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sgot3; ?></b></td>
                                 <td style="text-align:center">0-45 U/L</td>
                             </tr>
                             <tr>
                                 <td>SGPT</td>
-                                <td style="text-align:center"><b><?php echo $sgpt; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $sgpt2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $sgpt3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sgpt; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sgpt2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sgpt3; ?></b></td>
                                 <td style="text-align:center">0-45 U/L</td>
                             </tr>
                             <tr>
                                 <td>Alk.Phosphatase</td>
-                                <td style="text-align:center"><b><?php echo $alk; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $alk2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $alk3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $alk; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $alk2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $alk3; ?></b></td>
                                 <td style="text-align:center">15-128 U/L</td>
                             </tr>
                             <tr>
                                 <td>GGT</td>
-                                <td style="text-align:center"><b><?php echo $ggt; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ggt2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $ggt3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ggt; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ggt2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ggt3; ?></b></td>
                                 <td style="text-align:center">15-128 U/L</td>
                             </tr>
                             <tr>
                                 <td>GHbA1c</td>
-                                <td style="text-align:center"><b><?php echo $hbac; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hbac2; ?></b></td>
-                                <td style="text-align:center"><b><?php echo $hbac3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hbac; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hbac2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hbac3; ?></b></td>
                                 <td style="text-align:center">4-6 %</td>
                             </tr>
                         </table>
@@ -1869,7 +1870,7 @@ else {
                     <div class="col-sm-12">
                         ***ສະຫຼຸບແປຜົນກວດເລືອດເຄມີ (Biochemical Interpretation)
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($bio_conclusion); ?></b>
 
                     </div>
@@ -1890,43 +1891,43 @@ else {
                         ການເບີ່ງເຫັນໄລຍະໄກ =
                     </div>
                     <div class="col-sm-2">
-                        <b><?php echo $look_far;?></b>
+                        <b style="color: black;"><?php echo $look_far;?></b>
                     </div>
                     <div class="col-sm-4">
                         ການເບີ່ງແນວນອນ =
                     </div>
                     <div class="col-sm-2">
-                        <b><?php echo $check_eye;?></b>
+                        <b style="color: black;"><?php echo $check_eye;?></b>
                     </div>
                     <div class="col-sm-4">
                         ການເບີ່ງເຫັນໄລຍະໃກ້ =
                     </div>
                     <div class="col-sm-2">
-                        <b><?php echo $look_near;?></b>
+                        <b style="color: black;"><?php echo $look_near;?></b>
                     </div>
                     <div class="col-sm-4">
                         ກວດສອບການແຍກສີ =
                     </div>
                     <div class="col-sm-2">
-                        <b><?php echo $check_color;?></b>
+                        <b style="color: black;"><?php echo $check_color;?></b>
                     </div>
                     <div class="col-sm-4">
                         ການເບີ່ງແນວຕັ້ງ =
                     </div>
                     <div class="col-sm-2">
-                        <b><?php echo $look_up;?></b>
+                        <b style="color: black;"><?php echo $look_up;?></b>
                     </div>
                     <div class="col-sm-4">
                         ກວດລັດສະໝີການເບີ່ງເຫັນ =
                     </div>
                     <div class="col-sm-2">
-                        <b><?php echo $radius;?></b>
+                        <b style="color: black;"><?php echo $radius;?></b>
                     </div>
                     <div class="col-sm-12">
                         ***ແປຜົນສະມັດຕະພາບການເບີ່ງເຫັນ
                     </div>
                     <div class="col-sm-12">
-                        ຜົນກວດສາຍຕາ (Vision Test): <b> <?php echo nl2br($vision_conclusion);?> </b>
+                        ຜົນກວດສາຍຕາ (Vision Test): <b style="color: black;"> <?php echo nl2br($vision_conclusion);?> </b>
                     </div>
                     <hr>
                     <br>
@@ -1955,27 +1956,27 @@ else {
                         </tr>
                         <tr>
                             <td>Right Ear(ຫູຂວາ)</td>
-                            <td style="text-align:center;"><b><?php echo $r_500;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_1000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_2000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_3000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_l_avg;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_4000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_6000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_8000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $r_h_avg;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_500;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_1000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_2000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_3000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_l_avg;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_4000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_6000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_8000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_h_avg;?></b></td>
                         </tr>
                         <tr>
                             <td>Left Ear(ຫູຊ້າຍ)</td>
-                            <td style="text-align:center;"><b><?php echo $l_500;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_1000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_2000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_3000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_l_avg;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_4000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_6000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_8000;?></b></td>
-                            <td style="text-align:center;"><b><?php echo $l_h_avg;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_500;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_1000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_2000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_3000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_l_avg;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_4000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_6000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_8000;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $l_h_avg;?></b></td>
                         </tr>
                     </table>
                     <div class="col-sm-12">
@@ -1983,7 +1984,7 @@ else {
                         ***ແປຜົນການກວດສະມັດຕະພາບການໄດ້ຍິນ (Audiogram Interpretation)
                     </div>
                     <div class="col-sm-12">
-                        <b><?php echo nl2br($audio_conclusion);?></b>
+                        <b style="color: black;"><?php echo nl2br($audio_conclusion);?></b>
 
                     </div>
                     <br>
@@ -1995,10 +1996,10 @@ else {
                         *ການກວດທົດສອບສະມັດຕະພາບກ້າມ ຊີ້ນມື/ແຂນ/ຂາແລະຫຼັງ (Muscle)
                     </div>
                     <div class="col-sm-12">
-                        <b><?php echo $muscle_name;?></b>
+                        <b style="color: black;"><?php echo $muscle_name;?></b>
                     </div>
                     <div class="col-sm-12">
-                        <b><?php echo $muscle_conclusion;?></b>
+                        <b style="color: black;"><?php echo $muscle_conclusion;?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 277mm;top: 831mm;">
@@ -2030,121 +2031,121 @@ else {
                             </tr>
                             <tr>
                                 <td>Ether</td>
-                                <td style="text-align:center"><b><?php echo $ether;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ether2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ether3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ether;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ether2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ether3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td>Ethyl Ethanoate</td>
-                                <td style="text-align:center"><b><?php echo $ethy;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ethy2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $ethy3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ethy;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ethy2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ethy3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td>Nickle in Blood</td>
-                                <td style="text-align:center"><b><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
                                 <td style="text-align:center">(&lt;0.5ug/L)</td>
                             </tr>
                             <tr>
                                 <td>Manganese in Blood</td>
-                                <td style="text-align:center"><b><?php echo $manganese;?></b></td>
-                                <td style="text-align:center"><b><?php echo $manganese2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $manganese3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese3;?></b></td>
                                 <td style="text-align:center">(&lt;1.0ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Tin in Blood</td>
-                                <td style="text-align:center"><b><?php echo $tim;?></b></td>
-                                <td style="text-align:center"><b><?php echo $tim2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $tim3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $tim;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $tim2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $tim3;?></b></td>
                                 <td style="text-align:center">(&lt;14ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Mercury in Blood (ກ່ອນເຂົ້າວຽກ)</td>
-                                <td style="text-align:center"><b><?php echo $blood;?></b></td>
-                                <td style="text-align:center"><b><?php echo $blood2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $blood3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood3;?></b></td>
                                 <td style="text-align:center">(&lt;2ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Mercury in Urine (ຫຼັງເລິກວຽກ)</td>
-                                <td style="text-align:center"><b><?php echo $m_i_urine;?></b></td>
-                                <td style="text-align:center"><b><?php echo $m_i_urine2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $m_i_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;20ug/L)</td>
                             </tr>
                             <tr>
                                 <td> Butoxyacetic Acid in Urine</td>
-                                <td style="text-align:center"><b><?php echo $b_a_u;?></b></td>
-                                <td style="text-align:center"><b><?php echo $b_a_u2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $b_a_u3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $b_a_u;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $b_a_u2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $b_a_u3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td> Chromiun in Urine (ຫຼັງເລິກວຽກ)</td>
-                                <td style="text-align:center"><b><?php echo $c_u;?></b></td>
-                                <td style="text-align:center"><b><?php echo $c_u2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $c_u3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $c_u;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $c_u2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $c_u3;?></b></td>
                                 <td style="text-align:center">(&lt;5ug/gCr)</td>
                             </tr>
                             <tr>
                                 <td> Iso Propyl Alcohol</td>
-                                <td style="text-align:center"><b><?php echo $alcoho;?></b></td>
-                                <td style="text-align:center"><b><?php echo $alcoho2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $alcoho3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $alcoho;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $alcoho2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $alcoho3;?></b></td>
                                 <td style="text-align:center">(&lt;40mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Silica</td>
-                                <td style="text-align:center"><b><?php echo $silica;?></b></td>
-                                <td style="text-align:center"><b><?php echo $silica2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $silica3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $silica;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $silica2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $silica3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                             <tr>
                                 <td>Methy hippuric acid in Urine</td>
-                                <td style="text-align:center"><b><?php echo $methy;?></b></td>
-                                <td style="text-align:center"><b><?php echo $meth2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $methy3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $meth2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy3;?></b></td>
                                 <td style="text-align:center">(&lt;50mg/L)</td>
                             </tr>
                             <tr>
                                 <td>Acetone in Urine</td>
-                                <td style="text-align:center"><b><?php echo $a_i_urine;?></b></td>
-                                <td style="text-align:center"><b><?php echo $a_i_urine2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $a_i_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;50mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Toluene in Urine</td>
-                                <td style="text-align:center"><b><?php echo $t_i_urine;?></b></td>
-                                <td style="text-align:center"><b><?php echo $t_i_urine2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $t_i_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;2.5g/gcr</td>
                             </tr>
                             <tr>
                                 <td> Methyl Isobutyl Ketone in Urine</td>
-                                <td style="text-align:center"><b><?php echo $methy_urine;?></b></td>
-                                <td style="text-align:center"><b><?php echo $methy_urine2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $methy_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;1.0mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Methanol in Urine</td>
-                                <td style="text-align:center"><b><?php echo $methanoi_urine;?></b></td>
-                                <td style="text-align:center"><b><?php echo $methanoi_urine2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $methanoi_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;15mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Phenolic Resin</td>
-                                <td style="text-align:center"><b><?php echo $phenolic_resin;?></b></td>
-                                <td style="text-align:center"><b><?php echo $phenolic_resin2;?></b></td>
-                                <td style="text-align:center"><b><?php echo $phenolic_resin3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                         </table>
@@ -2167,7 +2168,7 @@ else {
                     <div class="col-sm-2">
                         ID.No.:
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="color: black;">
                         <?php echo $barcode;?>
                     </div>
                     <div class="col-sm-12" style="">
@@ -2181,79 +2182,79 @@ else {
                             </tr>
                             <tr>
                                 <td>Color :</td>
-                                <td style="text-align:center"><b><?php echo $color?></b></td>
-                                <td style="text-align:center"><b><?php echo $color2?></b></td>
-                                <td style="text-align:center"><b><?php echo $color3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $color?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $color2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $color3?></b></td>
                                 <td style="text-align:center">ເຫຼືອງ(Yellow)</td>
                             </tr>
                             <tr>
                                 <td>Appearance :</td>
-                                <td style="text-align:center"><b><?php echo $appearance?></b></td>
-                                <td style="text-align:center"><b><?php echo $appearance2?></b></td>
-                                <td style="text-align:center"><b><?php echo $appearance3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance3?></b></td>
                                 <td style="text-align:center">ໃສ(clear)</td>
                             </tr>
                             <tr>
                                 <td>pH :</td>
-                                <td style="text-align:center"><b><?php echo $ph?></b></td>
-                                <td style="text-align:center"><b><?php echo $ph2?></b></td>
-                                <td style="text-align:center"><b><?php echo $ph3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ph?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ph2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ph3?></b></td>
                                 <td style="text-align:center">5-8 (ປົກກະຕິ)</td>
                             </tr>
                             <tr>
                                 <td>Specific Gravity :</td>
-                                <td style="text-align:center"><b><?php echo $specifics?></b></td>
-                                <td style="text-align:center"><b><?php echo $specifics2?></b></td>
-                                <td style="text-align:center"><b><?php echo $specifics3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $specifics?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $specifics2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $specifics3?></b></td>
                                 <td style="text-align:center">1.005-1.035</td>
                             </tr>
                             <tr>
                                 <td>Protein :</td>
-                                <td style="text-align:center"><b><?php echo $protein?></b></td>
-                                <td style="text-align:center"><b><?php echo $protein2?></b></td>
-                                <td style="text-align:center"><b><?php echo $protein3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $protein?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $protein2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $protein3?></b></td>
                                 <td style="text-align:center">ປົກກະຕິ(Neg)</td>
                             </tr>
                             <tr>
                                 <td>Sugar :</td>
-                                <td style="text-align:center"><b><?php echo $sugar?></b></td>
-                                <td style="text-align:center"><b><?php echo $sugar2?></b></td>
-                                <td style="text-align:center"><b><?php echo $sugar3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sugar?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sugar2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $sugar3?></b></td>
                                 <td style="text-align:center">ປົກກະຕິ(Neg)</td>
                             </tr>
                             <tr>
                                 <td>Ketone :</td>
-                                <td style="text-align:center"><b><?php echo $ketone?></b></td>
-                                <td style="text-align:center"><b><?php echo $ketone2?></b></td>
-                                <td style="text-align:center"><b><?php echo $ketone3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ketone?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ketone2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ketone3?></b></td>
                                 <td style="text-align:center">ປົກກະຕິ(Neg)</td>
                             </tr>
                             <tr>
                                 <td>Blood :</td>
-                                <td style="text-align:center"><b><?php echo $blood_urine?></b></td>
-                                <td style="text-align:center"><b><?php echo $blood_urine2?></b></td>
-                                <td style="text-align:center"><b><?php echo $blood_urine3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine3?></b></td>
                                 <td style="text-align:center">ປົກກະຕິ(Neg)</td>
                             </tr>
                             <tr>
                                 <td>WBC/Hpf :</td>
-                                <td style="text-align:center"><b><?php echo $wbc_urine?></b></td>
-                                <td style="text-align:center"><b><?php echo $wbc_urine2?></b></td>
-                                <td style="text-align:center"><b><?php echo $wbc_urine3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $wbc_urine?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $wbc_urine2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $wbc_urine3?></b></td>
                                 <td style="text-align:center">0-5cell/HPF</td>
                             </tr>
                             <tr>
                                 <td>RBC/Hpf :</td>
-                                <td style="text-align:center"><b><?php echo $rbc?></b></td>
-                                <td style="text-align:center"><b><?php echo $rbc2?></b></b></td>
-                                <td style="text-align:center"><b><?php echo $rbc3?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc2?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc3?></b></b></td>
                                 <td style="text-align:center">0-3cell/HPF</td>
                             </tr>
                             <tr>
                                 <td>Epithelium/Hpf :</td>
-                                <td style="text-align:center"><b><?php echo $epit?></b></b></td>
-                                <td style="text-align:center"><b><?php echo $epit2?></b></b></td>
-                                <td style="text-align:center"><b><?php echo $epit3?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $epit?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $epit2?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $epit3?></b></b></td>
                                 <td style="text-align:center">0-5cell/HPF</td>
                             </tr>
                         </table>
@@ -2262,7 +2263,7 @@ else {
                     <div class="co-sm-12">
                         ***ສະຫຼູບຜົນການກວດປັດສະວະ (Urinalysis Interpretation)
                     </div>
-                    <div class="co-sm-12">
+                    <div class="co-sm-12" style="color: black;">
                         <b><?php echo nl2br($urine_conclusion);?></b>
                     </div>
                     <br>
@@ -2285,9 +2286,9 @@ else {
                             </tr>
                             <tr>
                                 <td>Methamphetamine :</td>
-                                <td><b><?php echo $meth ?></b></td>
-                                <td><b><?php echo $meth2 ?></b></td>
-                                <td><b><?php echo $meth3 ?></b></td>
+                                <td><b style="color: black;"><?php echo $meth ?></b></td>
+                                <td><b style="color: black;"><?php echo $meth2 ?></b></td>
+                                <td><b style="color: black;"><?php echo $meth3 ?></b></td>
                             </tr>
                         </table>
                     </div>
@@ -2314,7 +2315,7 @@ else {
                     <div class="col-sm-2">
                         ID.No.:
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="color: black;">
                         <?php echo $barcode;?>
                     </div>
                     <div class="col-sm-12">
@@ -2326,31 +2327,31 @@ else {
                             </tr>
                             <tr>
                                 <td>FREE T3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td><b><?php echo $free_t3;?></b></td>
+                                <td><b style="color: black;"><?php echo $free_t3;?></b></td>
                                 <td>pg/ml</td>
                                 <td>2.0-4.4 pg/ml</td>
                             </tr>
                             <tr>
                                 <td>FREE T4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td><b><?php echo $free_t4;?></b></td>
+                                <td><b style="color: black;"><?php echo $free_t4;?></b></td>
                                 <td>ng/dl</td>
                                 <td>0.93-1.7 ng/dl</td>
                             </tr>
                             <tr>
                                 <td>TSH &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td><b><?php echo $tsh;?></b></td>
+                                <td><b style="color: black;"><?php echo $tsh;?></b></td>
                                 <td>ulU/ml</td>
                                 <td>0.27-4.20 ulU/ml</td>
                             </tr>
                             <tr>
                                 <td>T3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=</td>
-                                <td><b><?php echo $t3;?></b></td>
+                                <td><b style="color: black;"><?php echo $t3;?></b></td>
                                 <td>ng/dl</td>
                                 <td>80-200 ng/dl</td>
                             </tr>
                             <tr>
                                 <td>T4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= </td>
-                                <td><b><?php echo $t4;?></b></td>
+                                <td><b style="color: black;"><?php echo $t4;?></b></td>
                                 <td>ng/dl</td>
                                 <td>5.1-14.1 ng/dl</td>
                             </tr>
@@ -2361,7 +2362,7 @@ else {
                         ***ສະຫຼຸບຜົນການກວດຮໍໂມນຕອມຄໍ (Thryroid Interpretation)
                     </div>
                     <div class="col-sm-12">
-                        <b><?php echo nl2br($thyroid_conclusion);?></b>
+                        <b style="color: black;"><?php echo nl2br($thyroid_conclusion);?></b>
 
                     </div>
                     <br>
@@ -2377,19 +2378,19 @@ else {
                     <div class="col-sm-6">
                         Stool Color =
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $color;?></b>
                     </div>
                     <div class="col-sm-6">
                         Appearance
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $stool_ap;?></b>
                     </div>
                     <div class="col-sm-6">
                         Parasite
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $parasite;?></b>
                     </div>
                     <br>
@@ -2398,33 +2399,33 @@ else {
                     <div class="col-sm-6">
                         Samonella Spp =
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $samonella;?></b>
                     </div>
                     <div class="col-sm-6">
                         Shigella Spp =
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $shigella;?></b>
                     </div>
                     <div class="col-sm-6">
                         Vibrio Spp =
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $vivrio;?></b>
                     </div>
                     <div class="col-sm-6">
                         Vibrio Cholera 01 =
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="color: black;">
                         <b><?php echo $vibrio?></b>
                     </div>
                     <div class="col-sm-12">
                         <br>
                         <br>
                         ***ສະຫຼຸບກວດອາຈົມ (Stool Interpretation)
-                    </div>
-                    <div class="col-sm-12">
+                    </div> 
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($stool_conclusion);?></b>
 
                     </div>
@@ -2446,7 +2447,7 @@ else {
                     <div class="col-sm-2">
                         ID.No.:
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="color: black;">
                         <?php echo $barcode?>
                     </div>
                     <div class="col-sm-12" style="">
@@ -2460,44 +2461,44 @@ else {
                             </tr>
                             <tr>
                                 <td>Alpha-Fetoprotein (AFP)</td>
-                                <td style="text-align:center"><b><?php echo $afp?></b></td>
-                                <td style="text-align:center"><b><?php echo $afp2?></b></td>
-                                <td style="text-align:center"><b><?php echo $afp3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $afp?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $afp2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $afp3?></b></td>
                                 <td style="text-align:center">0 - 7 ng/ml</td>
                             </tr>
                             <tr>
                                 <td>Carcino Embrionic Antigen (CEA)</td>
-                                <td style="text-align:center"><b><?php echo $cea?></b></td>
-                                <td style="text-align:center"><b><?php echo $cea2?></b></td>
-                                <td style="text-align:center"><b><?php echo $cea3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $cea?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $cea2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $cea3?></b></td>
                                 <td style="text-align:center">0 - 5 ng/ml</td>
                             </tr>
                             <tr>
                                 <td>Prostate-Specific Antigen (PSA)</td>
-                                <td style="text-align:center"><b><?php echo $psa?></b></td>
-                                <td style="text-align:center"><b><?php echo $psa2?></b></td>
-                                <td style="text-align:center"><b><?php echo $psa3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $psa?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $psa2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $psa3?></b></td>
                                 <td style="text-align:center">0 - 5 ng/ml</td>
                             </tr>
                             <tr>
                                 <td>CA 19-9</td>
-                                <td style="text-align:center"><b><?php echo $ca_19?></b></td>
-                                <td style="text-align:center"><b><?php echo $ca_192?></b></td>
-                                <td style="text-align:center"><b><?php echo $ca_193?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_19?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_192?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_193?></b></td>
                                 <td style="text-align:center">0 - 37 ng/ml</td>
                             </tr>
                             <tr>
                                 <td>CA 15-3</td>
-                                <td style="text-align:center"><b><?php echo $ca_15?></b></td>
-                                <td style="text-align:center"><b><?php echo $ca_152?></b></td>
-                                <td style="text-align:center"><b><?php echo $ca_153?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_15?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_152?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_153?></b></td>
                                 <td style="text-align:center">0 - 35 ng/ml</td>
                             </tr>
                             <tr>
                                 <td>CA 125</td>
-                                <td style="text-align:center"><b><?php echo $ca_125?></b></td>
-                                <td style="text-align:center"><b><?php echo $ca_1252?></b></td>
-                                <td style="text-align:center"><b><?php echo $ca_1253?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_125?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_1252?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ca_1253?></b></td>
                                 <td style="text-align:center">0 - 35 ng/ml</td>
                             </tr>
                         </table>
@@ -2505,7 +2506,7 @@ else {
                     <div class="col-sm-12">
                         ***ແປຜົນກວດຕົວບົ່ງຊີ້ມະເຮັງ (Tumor Marker Interpretation)
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($tumor_conclusion);?></b>
 
                     </div>
@@ -2519,7 +2520,7 @@ else {
     <!-- end paper 6-7 -->
 
         <div class="paper" style="page-break-after:always;">
-            <img src="../../image/cover.jpeg" alt="" style="width: 300mm;height: 212mm;">
+            <img src="../../image/bookcover.jpeg" alt="" style="width: 300mm;height: 212mm;">
         </div>
 
 

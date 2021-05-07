@@ -35,6 +35,10 @@ RewriteRule ^User/Certificate/Lao?$ User/Certificate/lao.php
 RewriteRule ^User/Certificate/PrintEnglish?$ User/Certificate/printeng.php
 RewriteRule ^User/Certificate/PrintLao?$ User/Certificate/printlao.php
 
+RewriteRule ^User/book/Book?$ User/book/booktest.php
+RewriteRule ^User/book/PrintBook?$ User/book/printtest.php
+
+
 
 RewriteRule ^404/404?$ 404/404.php
 

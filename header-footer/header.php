@@ -331,6 +331,15 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Book/Book" class="nav-link">
+                            <i class="nav-icon fas fa-print"></i>
+                            <p>
+                            ພິມປຶ້ມກວດສຸຂະພາບ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                             <i class="nav-icon fas fa-power-off"></i>
@@ -350,7 +359,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="<?php echo $links ?>Username/Usernanme" class="nav-link">
+                        <a href="<?php echo $links ?>Username/Username" class="nav-link">
                             <i class="nav-icon fas fa-user"></i><i class="fad fa-user-hard-hat"></i>
                             <p>
                                 ຂໍ້ມູນຜູ້ໃຊ້ລະບົບ
