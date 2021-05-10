@@ -54,7 +54,7 @@ if(isset($_POST["print_barcode2"])){
             '.$row["pack_id"].'
         </div>
         <div align="center">
-            <img src="../Employee/barcode/'.$row["barcode"].'.jpg" style="width: 87%;height: 20px;" alt="">
+            <img src="../Employee/barcode/'.$row["barcode"].'.jpg" style="width: 67%;height: 20px;" alt="">
         </div>
         <div align="center">
             '.$row["barcode"].'

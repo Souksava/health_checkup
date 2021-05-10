@@ -57,7 +57,7 @@ if(isset($_POST["btnPrint"])){
             '.$sticker.'
         </div>
         <div align="center">
-            <img src="../Employee/barcode/'.$row["barcode"].'.jpg" style="width: 87%;height: 20px;" alt="">
+            <img src="../Employee/barcode/'.$row["barcode"].'.jpg" style="width: 67%;height: 20px;" alt="">
         </div>
         <div align="center">
             '.$row["barcode"].'
