@@ -20,8 +20,6 @@ if(isset($_GET["register"])){
     ]);
     $content = '<style>
 
-
-    
         .paper{
             width: 100%;
             float: left;

@@ -97,10 +97,10 @@ $no_ += 1;
         <td>'.$row["mch"].'</td>
         <td>'.$row["mchc"].'</td>
         <td>'.$row["red_blood"].'</td>
-        <td>'.$row["conclusion"].'</td>
-        <td>'.$row["remark"].'</td>
-        <td>'.$row["conclusion_en"].'</td>
-        <td>'.$row["remark_en"].'</td>
+        <td>'.nl2br($row["conclusion"]).'</td>
+        <td>'.nl2br($row["remark"]).'</td>
+        <td>'.nl2br($row["conclusion_en"]).'</td>
+        <td>'.nl2br($row["remark_en"]).'</td>
         <td>'.$row["user_name"].'</td>
 
     </tr>

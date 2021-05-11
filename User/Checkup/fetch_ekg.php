@@ -64,10 +64,10 @@ $no_ += 1;
     <td>'.$row["company"].'</td>
     <td>'.$row["year"].'</td>
     <td>'.$row["ekg_name"].'</td>
-    <td>'.$row["conclusion"].'</td>
-    <td>'.$row["remark"].'</td>
+    <td>'.nl2br($row["conclusion"]).'</td>
+    <td>'.nl2br($row["remark"]).'</td>
     <td>'.$row["ekg_en"].'</td>
-    <td>'.$row["conclusion_en"].'</td>
+    <td>'.nl2br($row["conclusion_en"]).'</td>
     <td>'.$row["user_name"].'</td>
     </tr>
   ';
