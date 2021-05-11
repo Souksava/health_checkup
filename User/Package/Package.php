@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-6" align="right">
-        <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> ເພີ່ມຂໍ້ມູນ</button>
+        <!-- <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> ເພີ່ມຂໍ້ມູນ</button> -->
         <button data-toggle="modal" data-target="#exampleModalimpPackage" class="btn btn-success"><i
                 class="fas fa-paperclip"></i> ນຳເຂົ້າຂໍ້ມູນ</button>
     </div>
