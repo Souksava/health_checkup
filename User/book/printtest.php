@@ -864,6 +864,8 @@ if(mysqli_num_rows($stool)==0)
 {
     $color = "";
     $stool_ap = "";
+    $stoolwbc = "";
+    $stoolrbc = "";
     $parasite = "";
     $samonella = "";
     $shigella = "";
@@ -875,6 +877,8 @@ if(mysqli_num_rows($stool)==0)
 else {
     $color = $fetch_stool["color"];
     $stool_ap = $fetch_stool["stool_ap"];
+    $stoolwbc = $fetch_stool["wbc"];
+    $stoolrbc = $fetch_stool["rbc"];
     $parasite = $fetch_stool["parasite"];
     $samonella = $fetch_stool["samonella"];
     $shigella = $fetch_stool["shigella"];
@@ -2027,7 +2031,7 @@ else {
                                 <th><?php echo $year;?> <br> Results</th>
                                 <th><?php echo $year2;?> <br> Results</th>
                                 <th><?php echo $year3;?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Ether</td>
@@ -2382,20 +2386,29 @@ else {
                         <b><?php echo $color;?></b>
                     </div>
                     <div class="col-sm-6">
-                        Appearance
+                        Appearance =
                     </div>
                     <div class="col-sm-6" style="color: black;">
                         <b><?php echo $stool_ap;?></b>
                     </div>
                     <div class="col-sm-6">
-                        Parasite
+                        StoolWBC =
+                    </div>
+                    <div class="col-sm-6" style="color: black;">
+                        <b><?php echo $stoolwbc;?></b>
+                    </div>
+                    <div class="col-sm-6">
+                        StoolRBC =
+                    </div>
+                    <div class="col-sm-6" style="color: black;">
+                        <b><?php echo $stoolrbc;?></b>
+                    </div>
+                    <div class="col-sm-6">
+                        Parasite =
                     </div>
                     <div class="col-sm-6" style="color: black;">
                         <b><?php echo $parasite;?></b>
                     </div>
-                    <br>
-                    <br>
-                    <br>
                     <div class="col-sm-6">
                         Samonella Spp =
                     </div>

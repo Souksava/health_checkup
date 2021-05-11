@@ -19,6 +19,9 @@ if(isset($_GET["register"])){
         'default_font' => 'saysettha_ot'
     ]);
     $content = '<style>
+
+
+    
         .paper{
             width: 100%;
             float: left;
