@@ -134,8 +134,8 @@ $no_ += 1;
         <td>'.$row["als"].'</td>
         <td>'.$row["other"].'</td>
         <td>'.$row["breat"].'</td>
-        <td>'.$row["conclusion"].'</td>
-        <td>'.$row["remark"].'</td>
+        <td>'.nl2br($row["conclusion"]).'</td>
+        <td>'.nl2br($row["remark"]).'</td>
 
 
         <td>'.$row["hpi_en"].'</td>
@@ -154,8 +154,8 @@ $no_ += 1;
         <td>'.$row["lung_en"].'</td>
         <td>'.$row["als_en"].'</td>
         <td>'.$row["other_en"].'</td>
-        <td>'.$row["conclusion_en"].'</td>
-        <td>'.$row["remark_en"].'</td>
+        <td>'.nl2br($row["conclusion_en"]).'</td>
+        <td>'.nl2br($row["remark_en"]).'</td>
         <td>'.$row["user_name"].'</td>
     </tr>
   ';

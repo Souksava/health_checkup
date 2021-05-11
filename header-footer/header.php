@@ -86,7 +86,7 @@
     </div>
     <aside class="main-sidebar sidebar-dark-primary elevation-4 font14">
         <!-- Brand Logo -->
-        <a href="../Main.php" class="brand-link">
+        <a href="<?php echo $links;?>Main" class="brand-link">
             <img src="<?php echo $path ?>image/health.jpeg" alt="AdminLTE Logo"
                 class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Health Checkup</span>

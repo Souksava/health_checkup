@@ -106,10 +106,10 @@ $no_ += 1;
         <td>'.$row["l_6000"].'</td>
         <td>'.$row["l_8000"].'</td>
         <td>'.$row["l_h_avg"].'</td>
-        <td>'.$row["conclusion"].'</td>
-        <td>'.$row["remark"].'</td>
-        <td>'.$row["conclusion_en"].'</td>
-        <td>'.$row["remark_en"].'</td>
+        <td>'.nl2br($row["conclusion"]).'</td>
+        <td>'.nl2br($row["remark"]).'</td>
+        <td>'.nl2br($row["conclusion_en"]).'</td>
+        <td>'.nl2br($row["remark_en"]).'</td>
         <td>'.$row["user_name"].'</td>
     </tr>
   ';
