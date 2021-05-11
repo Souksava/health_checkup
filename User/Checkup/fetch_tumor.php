@@ -81,10 +81,10 @@ $no_ += 1;
         <td>'.$row["ca_19"].'</td>
         <td>'.$row["ca_15"].'</td>
         <td>'.$row["ca_125"].'</td>
-        <td>'.$row["conclusion"].'</td>
-        <td>'.$row["remark"].'</td>
-        <td>'.$row["conclusion_en"].'</td>
-        <td>'.$row["remark_en"].'</td>
+        <td>'.nl2br($row["conclusion"]).'</td>
+        <td>'.nl2br($row["remark"]).'</td>
+        <td>'.nl2br($row["conclusion_en"]).'</td>
+        <td>'.nl2br($row["remark_en"]).'</td>
         <td>'.$row["user_name"].'</td>
     </tr>
   ';
