@@ -708,7 +708,7 @@ $urine = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' A
 $fetch_urine = mysqli_fetch_array($urine,MYSQLI_ASSOC);
 if(mysqli_num_rows($urine)==0)
 {
-    $color = "";
+    $coloru = "";
     $appearance = "";
     $ph = "";
     $specifics = "";
@@ -720,7 +720,7 @@ if(mysqli_num_rows($urine)==0)
     $epit = "";
 }
 else {
-    $color = $fetch_urine["color"];
+    $coloru = $fetch_urine["color"];
     $appearance = $fetch_urine["appearance"];
     $ph = $fetch_urine["ph"];
     $specifics = $fetch_urine["specifics"];
@@ -735,7 +735,7 @@ $urine2 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' 
 $fetch_urine2 = mysqli_fetch_array($urine2,MYSQLI_ASSOC);
 if(mysqli_num_rows($urine2)==0)
 {
-    $color2 = "";
+    $coloru2 = "";
     $appearance2 = "";
     $ph2 = "";
     $specifics2 = "";
@@ -747,7 +747,7 @@ if(mysqli_num_rows($urine2)==0)
     $epit2 = "";
 }
 else {
-    $color2 = $fetch_urine2["color"];
+    $coloru2 = $fetch_urine2["color"];
     $appearance2 = $fetch_urine2["appearance"];
     $ph2 = $fetch_urine2["ph"];
     $specifics2 = $fetch_urine2["specifics"];
@@ -762,7 +762,7 @@ $urine3 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' 
 $fetch_urine3 = mysqli_fetch_array($urine3,MYSQLI_ASSOC);
 if(mysqli_num_rows($urine3)==0)
 {
-    $color3 = "";
+    $coloru3 = "";
     $appearance3 = "";
     $ph3 = "";
     $specifics3 = "";
@@ -774,7 +774,7 @@ if(mysqli_num_rows($urine3)==0)
     $epit3 = "";
 }
 else {
-    $color3 = $fetch_urine3["color"];
+    $coloru3 = $fetch_urine3["color"];
     $appearance3 = $fetch_urine3["appearance"];
     $ph3 = $fetch_urine3["ph"];
     $specifics3 = $fetch_urine3["specifics"];
@@ -1127,7 +1127,7 @@ else {
                 <div class="signature">
                     ລາຍເຊັນທ່ານໝໍ/Physician
                 </div>
-                <div class="pagination" style="left: 128mm;top: 195mm;">
+                <div class="pagination" style="left: 140mm;top: 195mm;">
                     12
                 </div>
             </div>
@@ -1266,7 +1266,7 @@ else {
                     </div>
 
                 </div>
-                <div class="pagination" style="left: 277mm;top: 195mm;">
+                <div class="pagination" style="left: 290mm;top: 195mm;">
                     1
                 </div>
             </div>
@@ -1433,7 +1433,7 @@ else {
                     </div>
 
                 </div>
-                <div class="pagination" style="left: 128mm;top: 407mm;">
+                <div class="pagination" style="left: 140mm;top: 407mm;">
                     2
                 </div>
             </div>
@@ -1507,7 +1507,7 @@ else {
                         </div>
                     </div>
                 </div>
-                <div class="pagination" style="left: 277mm;top: 407mm;">
+                <div class="pagination" style="left: 290mm;top: 407mm;">
                     11
                 </div>
             </div>
@@ -1604,7 +1604,7 @@ else {
                         <b><?php echo $ekg_conclusion;?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 128mm;top: 619mm;">
+                <div class="pagination" style="left: 140mm;top: 619mm;">
                     10
                 </div>
             </div>
@@ -1733,7 +1733,7 @@ else {
                         <b><?php echo nl2br($cbc_conclusion); ?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 277mm;top: 619mm;">
+                <div class="pagination" style="left: 290mm;top: 619mm;">
                     3
                 </div>
             </div>
@@ -1879,7 +1879,7 @@ else {
 
                     </div>
                 </div>
-                <div class="pagination" style="left: 128mm;top: 831mm;">
+                <div class="pagination" style="left: 140mm;top: 831mm;">
                     4
                 </div>
             </div>
@@ -2006,7 +2006,7 @@ else {
                         <b style="color: black;"><?php echo $muscle_conclusion;?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 277mm;top: 831mm;">
+                <div class="pagination" style="left: 290mm;top: 831mm;">
                     9
                 </div>
             </div>
@@ -2157,7 +2157,7 @@ else {
                     <br>
                     <br>
                 </div>
-                <div class="pagination" style="left: 128mm;top: 1043mm;">
+                <div class="pagination" style="left: 140mm;top: 1043mm;">
                     8
                 </div>
             </div>
@@ -2186,9 +2186,9 @@ else {
                             </tr>
                             <tr>
                                 <td>Color :</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $color?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $color2?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $color3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $coloru?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $coloru2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $coloru3?></b></td>
                                 <td style="text-align:center">ເຫຼືອງ(Yellow)</td>
                             </tr>
                             <tr>
@@ -2298,7 +2298,7 @@ else {
                     </div>
 
                 </div>
-                <div class="pagination" style="left: 277mm;top: 1043mm;">
+                <div class="pagination" style="left: 290mm;top: 1043mm;">
                     5
                 </div>
             </div>
@@ -2443,7 +2443,7 @@ else {
 
                     </div>
                 </div>
-                <div class="pagination" style="left: 128mm;top: 1255mm;">
+                <div class="pagination" style="left: 140mm;top: 1255mm;">
                     6
                 </div>
             </div>
@@ -2524,7 +2524,7 @@ else {
 
                     </div>
                 </div>
-                <div class="pagination" style="left: 277mm;top: 1255mm;">
+                <div class="pagination" style="left: 290mm;top: 1255mm;">
                     7
                 </div>
             </div>
