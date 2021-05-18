@@ -425,7 +425,7 @@ else{
         </div>
         <div class="info2">
         Name and Surname: '.$fetch_pe["emp_name_en"].' '.$fetch_pe["surname_en"].' Age: '.$fetch_pe["age"].' Years, Nationality: '.$fetch_pe["national_en"].', <br>
-        Religion: '.$fetch_pe["religion_en"].', Employment ID: '.$fetch_pe["emp_id"].', Occupation: '.$fetch_pe["occupation_en"].', <br>
+        Religion: '.$fetch_pe["religion_en"].', Employment ID: '.$fetch_pe["emp_id"].', No: '.$fetch_pe["emp_id"].', Occupation: '.$fetch_pe["occupation_en"].', <br>
         Current address: Village: '.$fetch_pe["village_en"].', District: '.$fetch_pe["district_en"].', Province: '.$fetch_pe["province_en"].'.
         </div>
         <br>

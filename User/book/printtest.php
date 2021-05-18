@@ -24,10 +24,11 @@ $year3 = $_POST["year3"];
 $yearconclusion = $_POST["year4"];
 
 
-$emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
+$emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,time,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
 $fetch_emp = mysqli_fetch_array($emp,MYSQLI_ASSOC);
 if(mysqli_num_rows($emp)==0)
 {
+
     $date = "";
     $emp_name = "";
     $surname = "";
@@ -50,6 +51,7 @@ if(mysqli_num_rows($emp)==0)
 }
 else
 {
+
     $date = $fetch_emp["date"];
     $emp_name = $fetch_emp["emp_name"];
     $surname = $fetch_emp["surname"];
@@ -1417,6 +1419,12 @@ else {
                         <b><?php echo $lung;?></b>
                     </div>
                     <div class="col-sm-5">
+                    ທ້ອງ/ຕັບ/ປ້າງ (Abdomen/Liver/Spleen) :
+                    </div>
+                    <div class="col-sm-5" style="color: black;">
+                        <b><?php echo $als;?></b>
+                    </div>
+                    <div class="col-sm-5">
                         ອື່ນໆ/Other :
                     </div>
                     <div class="col-sm-5" style="color: black;">
@@ -1676,9 +1684,9 @@ else {
                             </tr>
                             <tr>
                                 <td> Basophil (Baso)</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $eo; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $eo2; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $eo3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $baso; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $baso2; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $baso3; ?></b></td>
                                 <td style="text-align:center">0-2 (%)</td>
                             </tr>
                             <tr>
@@ -2249,9 +2257,9 @@ else {
                             </tr>
                             <tr>
                                 <td>RBC/Hpf :</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc2?></b></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc3?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbchpf?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbchpf2?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbchpf3?></b></b></td>
                                 <td style="text-align:center">0-3cell/HPF</td>
                             </tr>
                             <tr>
@@ -2532,9 +2540,6 @@ else {
     </div>
     <!-- end paper 6-7 -->
 
-        <div class="paper" style="page-break-after:always;">
-            <img src="../../image/bookcover.jpeg" alt="" style="width: 300mm;height: 212mm;">
-        </div>
 
 
 

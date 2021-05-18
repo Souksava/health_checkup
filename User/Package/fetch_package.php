@@ -52,7 +52,7 @@ $no2_ += 1;
         </td>
         <td>'.$no2_.'</td>
         <td>'.$row["pack_id"].'</td>
-        <td>'.$row["pack_name"].'</td>
+        <td>'.nl2br($row["pack_name"]).'</td>
     </tr>
   ';
  }
