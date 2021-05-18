@@ -298,7 +298,7 @@ else{
 
 <body>
 
-<?php
+    <?php
 // if(isset($_POST["btnPrint"])){
     require_once '../../vendor/autoload.php';
 
@@ -341,12 +341,25 @@ else{
             margin-right: 1.27cm;
         }
         .left{
-            width:48%;
+            width:40%;
             float:left;
 
         }
+        .center{
+            width:12%;
+            float:left;
+            text-align:right;
+
+        }
         .right{
-            width:40%;
+            width:38%;
+            float:left;
+            text-align:right;
+         
+            
+        }
+        .right1{
+            width:51%;
             float:left;
             text-align:right;
 
@@ -407,7 +420,7 @@ else{
         ໂຮງໝໍມະໂຫສົດ
         </div>
         <div class="right">
-        ເລກທີ. 1
+        ເລກທີ....
         </div>
         <br>
 
@@ -415,15 +428,13 @@ else{
         ຫ້ອງກວດສຸຂະພາບແຮງງານ ພາຍໃນ ແລະ ຕ່າງປະເທດ
         Occupational Health Check up Bureau
         </div>
-        <div class="right">
-        &nbsp;
+        <div class="right1">
+        &nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ......................
         </div>
         <div class="left">
-        Tel: 021-253 833,
+        Tel: 021-253 833
         </div>
-        <div class="right">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ......................
-        </div>
+        <br>
         <div class="left">
         020 555 024 14
         </div>
@@ -466,6 +477,9 @@ else{
         III.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ຄຳເຫັນຂອງແພດຜູ້ກວດສຸຂະພາບ:<br>
         </div>
         <div class="three2">
+        <div>
+        &nbsp;ຜູ້ກ່ຽວມີສຸຂະພາບທາງດ້ານຈິດ ແລະ ຮ່່າງກາຍປົກກະຕິ ສາມາດປະກອບສ່ວນເຂົ້າໃນການເຮັດວຽກງານໄດ້ປົກກະຕິ
+        </div>
             <div style="width: 5%;float:left;">
             -
             </div>
@@ -480,6 +494,9 @@ else{
         <div class="left">
             ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ
         </div>
+        <div class="center">
+        ແພດກວດຢັ້ງຢືນ
+    </div>
         <div class="right">
             ແພດກວດຢັ້ງຢືນ
         </div>
