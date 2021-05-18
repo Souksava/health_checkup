@@ -310,7 +310,7 @@ else{
         'margin_left' => 10,
         'margin_right' => 10,
         'margin_bottom' => 10,
-        'default_font' => 'saysettha_ot',
+        'default_font' => 'Phetsarath OT',
     ]);
     
     $content = '
@@ -407,7 +407,7 @@ else{
         ໂຮງໝໍມະໂຫສົດ
         </div>
         <div class="right">
-        ເລກທີ. 1
+        ເລກທີ..........................
         </div>
         <br>
 
@@ -422,7 +422,7 @@ else{
         Tel: 021-253 833,
         </div>
         <div class="right">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ......................
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ..........................
         </div>
         <div class="left">
         020 555 024 14
@@ -438,8 +438,8 @@ else{
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ຜ່ານການກວດກາຕົວຈິງຂອງແພດ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
         </div>
         <div class="info2">
-        ຊື່ ແລະ ນາມສະກຸນ ທ້າວ/ນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].',ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].' , ສາດສະໜາ: '.$fetch_pe["religion"].' ,
-        ນ້ຳເບີບັດພ/ງ: '.$fetch_pe["emp_id"].' , ອາຊີບ: '.$fetch_pe["job"].', <br> ພະແນກ: '.$fetch_pe["department"].' , ບໍລີສັດ/ໂຮງງານ: '.$fetch_pe["company"].',
+        ຊື່ ແລະ ນາມສະກຸນ ທ້າວ/ນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].', ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].', ສາດສະໜາ: '.$fetch_pe["religion"].',
+        ນ້ຳເບີບັດພ/ງ: '.$fetch_pe["emp_id"].', ເລກທີ: '.$fetch_pe["emp_id"].', ອາຊີບ: '.$fetch_pe["job"].', <br> ພະແນກ: '.$fetch_pe["department"].', ບໍລີສັດ/ໂຮງງານ: '.$fetch_pe["company"].',
         ທີ່ຢູ່ປະຈຸບັນ ບ້ານ: '.$fetch_pe["village"].', ເມືອງ: '.$fetch_pe["district"].', ແຂວງ: '.$fetch_pe["province"].'
         </div>
         <br>
