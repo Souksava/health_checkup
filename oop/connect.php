@@ -1,3 +1,3 @@
 <?php
-$conn = mysqli_connect("Localhost", "root", "12345678", "health_barcode");
+$conn = mysqli_connect("Localhost", "root", "", "health_barcode");
 ?>

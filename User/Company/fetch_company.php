@@ -44,6 +44,7 @@ if(mysqli_num_rows($result_company_limit) > 0)
  while($row = mysqli_fetch_array($result_company_limit))
  {
 $no_ += 1;
+//ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 1: ສ້າງຊື່ການຄິກໄວ້ table
   $output .= '
     <tr>
         <td>
@@ -189,6 +190,7 @@ $('.btnDelete_com').on('click', function() {
 
       $('#id').val(data[2]);
 });
+//ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 2: ສ້າງ event click ຂຶ້ນ Modal ໄວ້ບ່ອນ Fetch table
 $('.btnAddpackage').on('click', function() {
     $('#exampleModalAddPackage').modal('show');
       $tr = $(this).closest('tr');

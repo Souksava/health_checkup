@@ -74,6 +74,7 @@
                         <div class="col-xs-12 col-sm-6">
                             <form action="Company" method="POST" id="Form_Add_Package">
                                 <input type="hidden" name="company_id_add" id="company_id_add">
+                                <!-- ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 3: ສ້າງ Modal ກັບ id ຂຶ້ນເພື່ອສົ່ງໄປ Fetch ເອົາຂໍ້ມູນມາສະແດງ -->
                                 <div id="result_package_add">
                                     <?php
                                     include ($path."header-footer/loading.php");
@@ -429,7 +430,7 @@ $(document).ready(function() {
 
 
     load_data_add("");
-
+//ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 4: ສ້າງ ajax ເພື່ອສົ່ງຂໍ້ມູນໄປໃຫ້ອີກ file ໜຶ່ງເພື່ອນຳໄປປະມວນຜົນມາສະແດງ
     function load_data_add(query) {
         $.ajax({
             url: "fetch_company_package.php",
@@ -460,7 +461,7 @@ $(document).ready(function() {
             }
         });
     };
-
+    //ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 5: ສ້າງ event click ອີກຮອບເພື່ອກຳນົດຂໍ້ມູນສົ່ງໄປ
     $(document).on("click", ".btnAddpackage", function() {
         var company_id_add = $("#company_id_add").val();
         if (company_id_add != "") {
