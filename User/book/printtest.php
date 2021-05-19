@@ -72,7 +72,7 @@ else
     $province = $fetch_emp["province"];
     $tel = $fetch_emp["tel"];
 }
-$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$yearconclusion';");
+$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$yearconclusion';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 if(mysqli_num_rows($pe)==0)
 {
@@ -98,8 +98,8 @@ if(mysqli_num_rows($pe)==0)
     $lung = "";
     $als = "";
     $other = "";
-    $breat = "";
     $pe_conclusion = "";
+    $pe_remark = "";
 }
 else 
 {
@@ -125,8 +125,8 @@ else
     $lung = $fetch_pe["lung"];
     $als = $fetch_pe["als"];
     $other = $fetch_pe["other"];
-    $breat = $fetch_pe["breat"];
-    $pe_conclusion = $fetch_pe["conclusion"];
+    $pe_conclusion = "ການກວດຮ່າງກາຍທົ່ວໄປ : " . $fetch_pe["conclusion"];
+    $pe_remark = $fetch_pe["remark"];
 }
 
 $imm = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year';");
@@ -196,10 +196,12 @@ $fetch_imm4 = mysqli_fetch_array($imm4,MYSQLI_ASSOC);
 if(mysqli_num_rows($imm4)==0)
 {
     $imm_conclusion = "";
+    $imm_remark = "";
 }
 else 
 {
-    $imm_conclusion = $fetch_imm4["conclusion"];
+    $imm_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_imm4["conclusion"];
+    $imm_remark = $fetch_imm4["remark"];
 }
 
 $spiro = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' AND year='$yearconclusion';");
@@ -214,6 +216,7 @@ if(mysqli_num_rows($spiro)==0)
     $fvc_predicts = "";
     $fevi_predicts = "";
     $spiro_conclusion = "";
+    $spiro_remark = "";
 }
 else 
 {
@@ -224,7 +227,8 @@ else
     $fevi_predict = $fetch_spiro["fevi_predict"];
     $fvc_predicts = $fetch_spiro["fvc_predicts"];
     $fevi_predicts = $fetch_spiro["fevi_predicts"];
-    $spiro_conclusion = $fetch_spiro["conclusion"];
+    $spiro_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_spiro["conclusion"];
+    $spiro_conclusion = $fetch_spiro["remark"];
 }
 
 $cbc = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year';");
@@ -341,11 +345,13 @@ if(mysqli_num_rows($cbc4)==0)
 {
     $redblood = "";
     $cbc_conclusion = "";
+    $cbc_remark = "";
 }
 else 
 {
     $redblood = $fetch_cbc4["red_blood"];
-    $cbc_conclusion = $fetch_cbc4["conclusion"];
+    $cbc_conclusion = "ການກວດເລືອດລວມ : ".$fetch_cbc4["conclusion"];
+    $cbc_remark = $fetch_cbc4["remark"];
 }
 
 $cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$yearconclusion';");
@@ -354,11 +360,13 @@ if(mysqli_num_rows($cxr)==0)
 {
     $x_ray = "";
     $cxr_conclusion = "";
+    $cxr_remark = "";
 }
 else 
 {
     $x_ray = $fetch_cxr["x_ray"];
     $cxr_conclusion = $fetch_cxr["conclusion"];
+    $cxr_remark = $fetch_cxr["remark"];
 }
 
 $ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='$yearconclusion';");
@@ -367,11 +375,13 @@ if(mysqli_num_rows($ekg)==0)
 {
     $ekg_name = "";
     $ekg_conclusion = "";
+    $ekg_remark = "";
 }
 else 
 {
     $ekg_name = $fetch_ekg["ekg_name"];
     $ekg_conclusion = $fetch_ekg["conclusion"];
+    $ekg_remark = $fetch_ekg["remark"];
 }
 
 $bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year';");
@@ -481,10 +491,12 @@ $fetch_bio4 = mysqli_fetch_array($bio4,MYSQLI_ASSOC);
 if(mysqli_num_rows($bio4)==0)
 {
     $bio_conclusion = "";
+    $bio_remark = "";
 }
 else 
 {
-    $bio_conclusion = $fetch_bio4["conclusion"];
+    $bio_conclusion =  "ກວດເລືອດຊີວະເຄມີ : ".$fetch_bio4["conclusion"];
+    $bio_remark = $fetch_bio4["remark"];
 }
 
 
@@ -499,6 +511,7 @@ if(mysqli_num_rows($vision)==0)
     $look_up = "";
     $radius = "";
     $vision_conclusion = "";
+    $vision_remark = "";
 }
 else 
 {
@@ -508,7 +521,8 @@ else
     $check_color = $fetch_vision["check_color"];
     $look_up = $fetch_vision["look_up"];
     $radius = $fetch_vision["radius"];
-    $vision_conclusion = $fetch_vision["conclusion"];
+    $vision_conclusion ="ກວດສະມັດຕະພາບການເບີ່ງເຫັນ : " .$fetch_vision["conclusion"];
+    $vision_remark = $fetch_vision["remark"];
 }
 
 $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AND year='$yearconclusion';");
@@ -534,6 +548,7 @@ if(mysqli_num_rows($audio)==0)
     $l_8000 = "";
     $l_h_avg = "";
     $audio_conclusion = "";
+    $audio_remark = "";
 }
 else 
 {
@@ -556,6 +571,7 @@ else
     $l_8000 = $fetch_audio["l_8000"];
     $l_h_avg = $fetch_audio["l_h_avg"];
     $audio_conclusion = $fetch_audio["conclusion"];
+    $audio_remark = $fetch_audio["remark"];
 }
 
 $muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$yearconclusion';");
@@ -564,11 +580,13 @@ if(mysqli_num_rows($muscle)==0)
 {
     $muscle_name = "";
     $muscle_conclusion = "";
+    $muscle_remark = "";
 }
 else 
 {
     $muscle_name = $fetch_muscle["muscle_name"];
-    $muscle_conclusion = $fetch_muscle["conclusion"];
+    $muscle_conclusion = "ການກວດທົດສອບສະມັດຕະພາບກ້າມ : " .$fetch_muscle["conclusion"];
+    $muscle_remark = $fetch_muscle["remark"];
 }
 
 
@@ -700,10 +718,12 @@ $fetch_metal4 = mysqli_fetch_array($metal4,MYSQLI_ASSOC);
 if(mysqli_num_rows($metal4)==0)
 {
     $metal_conclusion = "";
+    $metal_remark = "";
 }
 else 
 {
-    $metal_conclusion = $fetch_metal4["conclusion"];
+    $metal_conclusion = "ກວດວິເຄາະຫາທາດໂລຫະໜັກ : " .$fetch_metal4["conclusion"];
+    $metal_remark = $fetch_metal4["remark"];
 }
 
 $urine = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year';");
@@ -719,6 +739,7 @@ if(mysqli_num_rows($urine)==0)
     $ketone = "";
     $blood_urine = "";
     $wbc_urine = "";
+    $rbc_urine = "";
     $epit = "";
 }
 else {
@@ -731,6 +752,7 @@ else {
     $ketone = $fetch_urine["ketone"];
     $blood_urine = $fetch_urine["blood"];
     $wbc_urine = $fetch_urine["wbc"];
+    $rbc_urine = $fetch_urine["rbc"];
     $epit = $fetch_urine["epit"];
 }
 $urine2 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year2';");
@@ -746,6 +768,7 @@ if(mysqli_num_rows($urine2)==0)
     $ketone2 = "";
     $blood_urine2 = "";
     $wbc_urine2 = "";
+    $rbc_urine2 = "";
     $epit2 = "";
 }
 else {
@@ -758,6 +781,7 @@ else {
     $ketone2 = $fetch_urine2["ketone"];
     $blood_urine2 = $fetch_urine2["blood"];
     $wbc_urine2 = $fetch_urine2["wbc"];
+    $rbc_urine2 = $fetch_urine2["rbc"];
     $epit2 = $fetch_urine2["epit"];
 }
 $urine3 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year3';");
@@ -773,6 +797,7 @@ if(mysqli_num_rows($urine3)==0)
     $ketone3 = "";
     $blood_urine3 = "";
     $wbc_urine3 = "";
+    $rbc_urine3 = "";
     $epit3 = "";
 }
 else {
@@ -785,6 +810,7 @@ else {
     $ketone3 = $fetch_urine3["ketone"];
     $blood_urine3 = $fetch_urine3["blood"];
     $wbc_urine3 = $fetch_urine3["wbc"];
+    $rbc_urine3 = $fetch_urine3["rbc"];
     $epit3 = $fetch_urine3["epit"];
 }
 $urine4 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$yearconclusion';");
@@ -792,10 +818,12 @@ $fetch_urine4 = mysqli_fetch_array($urine4,MYSQLI_ASSOC);
 if(mysqli_num_rows($urine4)==0)
 {
     $urine_conclusion = "";
+    $urine_remark = "";
 }
 else 
 {
-    $urine_conclusion = $fetch_urine4["conclusion"];
+    $urine_conclusion = "ກວດປັດສະວະ : ". $fetch_urine4["conclusion"];
+    $urine_remark = $fetch_urine4["remark"];
 }
 
 $methamphetamine = mysqli_query($conn,"SELECT * FROM methamphetamine where barcode='$barcode' AND year='$year';");
@@ -833,9 +861,11 @@ $fetch_methamphetamine4 = mysqli_fetch_array($methamphetamine4,MYSQLI_ASSOC);
 if(mysqli_num_rows($methamphetamine4)==0)
 {
     $meth_conclusion = "";
+    $meth_remark = "";
 }
 else {
-    $meth_conclusion = $fetch_methamphetamine4["conclusion"];
+    $meth_conclusion = "ການກວດຫາສານເສບຕິດ : ".$fetch_methamphetamine4["conclusion"];
+    $meth_remark = $fetch_methamphetamine4["remark"];
 }
 
 
@@ -849,7 +879,7 @@ if(mysqli_num_rows($thyroid)==0)
     $t3 = "";
     $t4 = "";
     $thyroid_conclusion = "";
-
+    $thyroid_remark = "";
 }
 else {
     $free_t3 = $fetch_thyroid["free_t3"];
@@ -857,7 +887,8 @@ else {
     $tsh = $fetch_thyroid["tsh"];
     $t3 = $fetch_thyroid["t3"];
     $t4 = $fetch_thyroid["t4"];
-    $thyroid_conclusion = $fetch_thyroid["conclusion"];
+    $thyroid_conclusion ="ກວດຮໍໂມນຕ່ອມຄໍ : " .$fetch_thyroid["conclusion"];
+    $thyroid_remark = $fetch_thyroid["remark"];
 }
 
 $stool = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' AND year='$year';");
@@ -874,7 +905,7 @@ if(mysqli_num_rows($stool)==0)
     $vivrio = "";
     $vibrio = "";
     $stool_conclusion = "";
-
+    $stool_remark = "";
 }
 else {
     $color = $fetch_stool["color"];
@@ -886,7 +917,8 @@ else {
     $shigella = $fetch_stool["shigella"];
     $vivrio = $fetch_stool["vivrio"];
     $vibrio = $fetch_stool["vibrio"];
-    $stool_conclusion = $fetch_stool["conclusion"];
+    $stool_conclusion ="ກວດອາຈົມ : " .$fetch_stool["conclusion"];
+    $stool_remark = $fetch_stool["remark"];
 }
 
 $tumor = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year';");
@@ -954,9 +986,11 @@ $fetch_tumor4 = mysqli_fetch_array($tumor4,MYSQLI_ASSOC);
 if(mysqli_num_rows($tumor4)==0)
 {
     $tumor_conclusion = "";
+    $tumor_remark = "";
 }
 else {
-    $tumor_conclusion = $fetch_tumor4["conclusion"];
+    $tumor_conclusion ="ກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
+    $tumor_remark = $fetch_tumor4["remark"];
 }
 
 ?>
@@ -982,7 +1016,7 @@ else {
         height: 210mm;
         line-height: 1.8;
         background-color: white;
-        color : #333BFF;
+        color: #333BFF;
 
     }
 
@@ -1075,54 +1109,103 @@ else {
                             <?php echo nl2br($pe_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($pe_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cbc_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($cbc_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($bio_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($bio_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($urine_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($urine_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($meth_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($meth_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($thyroid_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($thyroid_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($stool_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($stool_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($tumor_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($tumor_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($metal_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($metal_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($vision_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($vision_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($audio_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($audio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($muscle_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($spiro_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($spiro_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($cxr_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($ekg_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($imm_conclusion);?>
                         </div>
-
-
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($imm_remark);?>
+                        </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($stool_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($stool_remark);?>
                         </div>
                     </div>
                 </div>
@@ -1137,64 +1220,65 @@ else {
                 <div class="title">
                     ປື້ມລາຍງານຜົນກວດສຸຂະພາບປະຈຳປີ (Health Check up Report)
                 </div>
-                <div class="date" >
-                    ວັນທີເຂົາຮັບການກວດ/Examination Date: <b style="color: black;"><?php echo date("d/m/Y ", strtotime($date));?></b>
+                <div class="date">
+                    ວັນທີເຂົາຮັບການກວດ/Examination Date: <b
+                        style="color: black;"><?php echo date("d/m/Y ", strtotime($date));?></b>
                 </div>
                 <div class="info">
-                <br>
+                    <br>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <div style="">
                                 ຊື່ແລະນາມສະກຸນ: &nbsp;&nbsp;
                                 <b style="color: black;"><?php  echo $emp_name; echo"&nbsp;"; echo $surname;?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div style="text-align:right;margin-right:35px;">
-                                ລຳດັບ: &nbsp;&nbsp; <b style="color: black;"><?php echo $queue;?></b>
-                            </div>
-                        </div>
                         <div class="col-sm-5">
                             <div style="">
-                                ລະຫັດພະນັກງານ: &nbsp;&nbsp; <b style="color: black;"><?php echo $emp_id;?></b>
+                                ລຳດັບ: &nbsp;&nbsp; <b style="color: black;"><?php echo $queue;?></b>
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div style="">
+                                ລະຫັດພະນັກງານ: &nbsp;&nbsp; <b style="color: black;"><?php echo $emp_id;?></b>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div style="">
                                 ພະແນກ: &nbsp;&nbsp; <b style="color: black;"><?php echo $department;?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <div style="">
                                 ບໍລິສັດ: &nbsp;&nbsp; <b style="color: black;"><?php echo $company;?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div style="text-align:right;margin-right:30px;">
+                        <div class="col-sm-5">
+                            <div style="">
                                 ເລກປະຈຳຕົວ: &nbsp;&nbsp; <b style="color: black;"><?php echo $barcode;?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6" style="margin-top:20px">
+                        <div class="col-sm-7" style="margin-top:20px">
                             <div style="">
                                 ເພດ/Gender: <span style="margin-left:120px;color:black;"> <b><?php echo $gender;?></b>
                                 </span>
                             </div>
                         </div>
-                        <div class="col-sm-6" style="margin-top:20px">
-                            <div style="margin-right:30px;">
-                                ວັນ,ເດືອນ,ປີເກີດ: <span style="margin-left:30px">
+                        <div class="col-sm-5" style="margin-top:20px">
+                            <div style="">
+                                ວັນ,ເດືອນ,ປີເກີດ: <span style="margin-left:10px">
                                     <b style="color: black;"><?php echo date("d/m/Y ", strtotime($dob));?></b> </span>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <div style="">
                                 ອາຍຸ/Age: <span style="margin-left:140px;color:black;"> <b><?php echo $age;?></b>
                                 </span>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div style="margin-right:30px;">
-                                ສະຖານະຄອບຄົວ: <span style="margin-left:30px">
+                        <div class="col-sm-5">
+                            <div style="">
+                                ສະຖານະຄອບຄົວ: <span style="margin-left:10px">
                                     <b style="color: black;"><?php echo $family_stt;?></b> </span>
                             </div>
                         </div>
@@ -1206,22 +1290,21 @@ else {
                 <br>
                 <br>
                 <br>
-                <br>
-                <div class="info2">
+                <div class="info">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <div>
                                 ສັນຊາດ/Nationality: &nbsp;&nbsp; <b style="color: black;"><?php echo $nation;?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div style="text-align:right;margin-right:30px;">
+                        <div class="col-sm-5">
+                            <div style="">
                                 ຊົນເຜົ່າ/Ethnic: &nbsp;&nbsp; <b style="color: black;"><?php echo $ethnic;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ສາດສະໜາ/Religion: &nbsp;&nbsp <b style="color: black;"><?php echo $religion;?></b>
+                                ສາດສະໜາ/Religion: &nbsp;&nbsp; <b style="color: black;"><?php echo $religion;?></b>
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -1229,23 +1312,24 @@ else {
                                 ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b style="color: black;"><?php echo ""?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <div>
-                                ເຮືອນເລກທີ/ໜ່ວຍ/House No/Unit: <span
-                                    style="margin-left:30px;"><b style="color: black;"><?php echo $house_no;?></b></span>
+                                ເຮືອນເລກທີ/ໜ່ວຍ/House No/Unit:
+                                <span style="margin-left:30px;"><b
+                                        style="color: black;"><?php echo $house_no;?></b></span>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <div>
                                 ຖະໜົນ/Road: &nbsp;&nbsp; <b style="color: black;"><?php echo "";?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <div>
                                 ບ້ານ/Village: &nbsp;&nbsp; <b style="color: black;"><?php echo $village;?></b>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <div>
                                 ເມືອງ/District: &nbsp;&nbsp; <b style="color: black;"><?php echo $district;?></b>
                             </div>
@@ -1280,7 +1364,7 @@ else {
         <div class="row">
             <div class="col-md-6 paper-left">
                 <div class="title">
-                    ການຮ່າງກາຍທົ່ວໄປ (Physical Examination)
+                    ການກວດຮ່າງກາຍທົ່ວໄປ (Physical Examination)
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
@@ -1296,21 +1380,23 @@ else {
                         <?php echo $hpi;?>
                     </div>
                     <div class="col-sm-12">
-                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <b style="color: black;"><?php echo $pmhi;?></b> 
+                        ປະຫວັດພະຍາດຜ່ານມາ/Past Medical History illness : <b
+                            style="color: black;"><?php echo $pmhi;?></b>
                     </div>
                     <div class="col-sm-12">
-                        ສ່ວນຕົວ/Personal : <b style="color: black;"> <?php echo $personal;?></b> 
+                        ສ່ວນຕົວ/Personal : <b style="color: black;"> <?php echo $personal;?></b>
                     </div>
-                    <div class="col-sm-12" >
-                        ຄອບຄົວ/Family : <b style="color: black;"> <?php echo $family;?></b> 
+                    <div class="col-sm-12">
+                        ຄອບຄົວ/Family : <b style="color: black;"> <?php echo $family;?></b>
                     </div>
-                    <div class="col-sm-12" >
-                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <b style="color: black;"><?php echo $asi;?></b>
+                    <div class="col-sm-12">
+                        ປະວັດການດື່ມສີ່ງມຶນເມົາແລະສູບຢາ/Alcohol,Smoking illness : <b
+                            style="color: black;"><?php echo $asi;?></b>
                     </div>
                     <div class="col-sm-4">
                         ລວງສູງ/Height:
                     </div>
-                    <div class="col-sm-1" >
+                    <div class="col-sm-1">
                         <b style="color: black;"><?php echo $height;?></b>
                     </div>
                     <div class="col-sm-1">
@@ -1322,7 +1408,7 @@ else {
                     <div class="col-sm-3" style="text-align:left">
                         ນ້ຳໜັກ(Weight):
                     </div>
-                    <div class="col-sm-2" >
+                    <div class="col-sm-2">
                         <b style="color: black;"><?php echo $weight;?></b>&nbsp;&nbsp; Kgs.
                     </div>
                     <div class="col-sm-5">
@@ -1389,7 +1475,7 @@ else {
                         <b><?php echo $lymph;?></b>
                     </div>
                     <div class="col-sm-5">
-                    ຕ່ອມໄທລອຍ (Thyroid Gland) :
+                        ຕ່ອມໄທລອຍ (Thyroid Gland) :
                     </div>
                     <div class="col-sm-5" style="color: black;">
                         <b><?php echo $thyroidpe;?></b>
@@ -1419,7 +1505,7 @@ else {
                         <b><?php echo $lung;?></b>
                     </div>
                     <div class="col-sm-5">
-                    ທ້ອງ/ຕັບ/ປ້າງ (Abdomen/Liver/Spleen) :
+                        ທ້ອງ/ຕັບ/ປ້າງ (Abdomen/Liver/Spleen) :
                     </div>
                     <div class="col-sm-5" style="color: black;">
                         <b><?php echo $als;?></b>
@@ -1437,7 +1523,9 @@ else {
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($pe_conclusion);?></b>
-
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($pe_remark);?></b>
                     </div>
 
                 </div>
@@ -1513,6 +1601,9 @@ else {
                         <div class="col-sm-12" style="color: black;">
                             <b><?php echo nl2br($imm_conclusion);?></b>
                         </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <b><?php echo nl2br($imm_remark);?></b>
+                        </div>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 407mm;">
@@ -1544,7 +1635,8 @@ else {
                             <td> Mears.ຄ່າທີ່ແທກໄດ້</td>
                             <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
                             <td style="text-align:center"><b style="color: black;"><?php echo $fevi_means;?></b></td>
-                            <td rowspan="3" style="text-align:center;"><b style="color: black;"><?php echo $fevi_fvc;?></b></td>
+                            <td rowspan="3" style="text-align:center;"><b
+                                    style="color: black;"><?php echo $fevi_fvc;?></b></td>
                         </tr>
                         <tr>
                             <td> Pred.ຄ່າທີ່ເຮັດການກວດສອບໄດ້</td>
@@ -1567,6 +1659,9 @@ else {
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($spiro_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($spiro_remark);?></b>
                     </div>
                     <br>
                     <br>
@@ -1594,7 +1689,10 @@ else {
                         <b><?php echo $x_ray;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo $cxr_conclusion;?></b>
+                        <b><?php echo nl2br($cxr_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($cxr_remark);?></b>
                     </div>
                 </div>
                 <br>
@@ -1609,7 +1707,10 @@ else {
                         <b><?php echo $ekg_name;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo $ekg_conclusion;?></b>
+                        <b><?php echo nl2br($ekg_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($ekg_remark);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 140mm;top: 619mm;">
@@ -1671,8 +1772,10 @@ else {
                             <tr>
                                 <td>Monocyte(Mo)</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $monocyte; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte2; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte2; ?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $monocyte3; ?></b>
+                                </td>
                                 <td style="text-align:center">0-9 (%)</td>
                             </tr>
                             <tr>
@@ -1691,9 +1794,12 @@ else {
                             </tr>
                             <tr>
                                 <td>Platelets Count</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets2; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets; ?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets2; ?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $platelets3; ?></b>
+                                </td>
                                 <td style="text-align:center">140-400 x^3</td>
                             </tr>
                             <tr>
@@ -1740,6 +1846,9 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cbc_conclusion); ?></b>
                     </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($cbc_remark);?></b>
+                    </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 619mm;">
                     3
@@ -1781,7 +1890,7 @@ else {
                                 <td style="text-align:center"><b style="color: black;"><?php echo $fbs; ?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $fbs2; ?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $fbs3; ?></b></td>
-                                <td style="text-align:center">70-115 mg/dl</td>
+                                <td style="text-align:center">70-110 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Cholesterol(CHO)</td>
@@ -1832,9 +1941,12 @@ else {
                             </tr>
                             <tr>
                                 <td> Creatinine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine2; ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine3; ?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine; ?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine2; ?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $creatinine3; ?></b>
+                                </td>
                                 <td style="text-align:center">0.5-1.5 mg/dl</td>
                             </tr>
                             <tr>
@@ -1884,7 +1996,9 @@ else {
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($bio_conclusion); ?></b>
-
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo $bio_conclusion;?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 140mm;top: 831mm;">
@@ -1939,7 +2053,11 @@ else {
                         ***ແປຜົນສະມັດຕະພາບການເບີ່ງເຫັນ
                     </div>
                     <div class="col-sm-12">
-                        ຜົນກວດສາຍຕາ (Vision Test): <b style="color: black;"> <?php echo nl2br($vision_conclusion);?> </b>
+                        ຜົນກວດສາຍຕາ (Vision Test): <b style="color: black;"> <?php echo nl2br($vision_conclusion);?>
+                        </b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($vision_remark);?></b>
                     </div>
                     <hr>
                     <br>
@@ -1997,7 +2115,9 @@ else {
                     </div>
                     <div class="col-sm-12">
                         <b style="color: black;"><?php echo nl2br($audio_conclusion);?></b>
-
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($audio_remark);?></b>
                     </div>
                     <br>
                     <br>
@@ -2011,7 +2131,10 @@ else {
                         <b style="color: black;"><?php echo $muscle_name;?></b>
                     </div>
                     <div class="col-sm-12">
-                        <b style="color: black;"><?php echo $muscle_conclusion;?></b>
+                        <b style="color: black;"><?php echo nl2br($muscle_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($muscle_remark);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 831mm;">
@@ -2065,8 +2188,10 @@ else {
                             <tr>
                                 <td>Manganese in Blood</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $manganese;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $manganese3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;1.0ug/L)</td>
                             </tr>
                             <tr>
@@ -2086,8 +2211,10 @@ else {
                             <tr>
                                 <td> Mercury in Urine (ຫຼັງເລິກວຽກ)</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $m_i_urine3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;20ug/L)</td>
                             </tr>
                             <tr>
@@ -2128,39 +2255,62 @@ else {
                             <tr>
                                 <td>Acetone in Urine</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $a_i_urine3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;50mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Toluene in Urine</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;2.5g/gcr</td>
                             </tr>
                             <tr>
                                 <td> Methyl Isobutyl Ketone in Urine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methy_urine3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;1.0mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Methanol in Urine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methanoi_urine;?></b>
+                                </td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $methanoi_urine2;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $methanoi_urine3;?></b></td>
                                 <td style="text-align:center">(&lt;15mg/L)</td>
                             </tr>
                             <tr>
                                 <td> Phenolic Resin</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $phenolic_resin;?></b>
+                                </td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $phenolic_resin2;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $phenolic_resin3;?></b></td>
                                 <td style="text-align:center">(Normal)</td>
                             </tr>
                         </table>
+                        <br>
+                        <div class="co-sm-12">
+                            ***ສະຫຼູບຜົນການກວດຫາສານເສບຕິດ
+                        </div>
+                        <div class="co-sm-12" style="color: black;">
+                            <b><?php echo nl2br($metal_conclusion);?></b>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <b><?php echo nl2br($metal_remark);?></b>
+                        </div>
                     </div>
                     <br>
                     <br>
@@ -2202,8 +2352,10 @@ else {
                             <tr>
                                 <td>Appearance :</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $appearance?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance2?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance2?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $appearance3?></b>
+                                </td>
                                 <td style="text-align:center">ໃສ(clear)</td>
                             </tr>
                             <tr>
@@ -2243,9 +2395,12 @@ else {
                             </tr>
                             <tr>
                                 <td>Blood :</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine2?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine2?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $blood_urine3?></b>
+                                </td>
                                 <td style="text-align:center">ປົກກະຕິ(Neg)</td>
                             </tr>
                             <tr>
@@ -2257,9 +2412,11 @@ else {
                             </tr>
                             <tr>
                                 <td>RBC/Hpf :</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $rbchpf?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $rbchpf2?></b></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $rbchpf3?></b></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc_urine?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc_urine2?></b></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $rbc_urine3?></b></b>
+                                </td>
                                 <td style="text-align:center">0-3cell/HPF</td>
                             </tr>
                             <tr>
@@ -2277,6 +2434,9 @@ else {
                     </div>
                     <div class="co-sm-12" style="color: black;">
                         <b><?php echo nl2br($urine_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($urine_remark);?></b>
                     </div>
                     <br>
                     <br>
@@ -2303,8 +2463,18 @@ else {
                                 <td><b style="color: black;"><?php echo $meth3 ?></b></td>
                             </tr>
                         </table>
+                        <br>
                     </div>
 
+                    <div class="co-sm-12">
+                        ***ສະຫຼູບຜົນການກວດຫາສານເສບຕິດ
+                    </div>
+                    <div class="co-sm-12" style="color: black;">
+                        <b><?php echo nl2br($meth_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($meth_remark);?></b>
+                    </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 1043mm;">
                     5
@@ -2375,7 +2545,9 @@ else {
                     </div>
                     <div class="col-sm-12">
                         <b style="color: black;"><?php echo nl2br($thyroid_conclusion);?></b>
-
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($meth_remark);?></b>
                     </div>
                     <br>
                     <br>
@@ -2383,7 +2555,7 @@ else {
                     <br>
                     <table style="border-top:1px solid grey;">
                         <tr>
-                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ກວດອາຈົມ
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;*ກວດອາຈົມ
                                 (Stool Examination)</th>
                         </tr>
                     </table>
@@ -2445,10 +2617,12 @@ else {
                         <br>
                         <br>
                         ***ສະຫຼຸບກວດອາຈົມ (Stool Interpretation)
-                    </div> 
+                    </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($stool_conclusion);?></b>
-
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($stool_remark);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 140mm;top: 1255mm;">
@@ -2513,7 +2687,7 @@ else {
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ca_15?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ca_152?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ca_153?></b></td>
-                                <td style="text-align:center">0 - 35 ng/ml</td>
+                                <td style="text-align:center">0 - 37 ng/ml</td>
                             </tr>
                             <tr>
                                 <td>CA 125</td>
@@ -2529,7 +2703,9 @@ else {
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($tumor_conclusion);?></b>
-
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($tumor_remark);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 1255mm;">

@@ -4,7 +4,7 @@
 $barcode = $_POST["barcode"];
 $year = $_POST["year"];
 
-$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,ears,conclusion FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$year';");
+$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,ears,conclusion,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 
 $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' and year='$year';");
@@ -310,7 +310,7 @@ else{
         'margin_left' => 10,
         'margin_right' => 10,
         'margin_bottom' => 10,
-        'default_font' => 'Phetsarath OT',
+        'default_font' => 'phetsarath_ot',
     ]);
     
     $content = '
@@ -420,30 +420,19 @@ else{
         ໂຮງໝໍມະໂຫສົດ
         </div>
         <div class="right">
-<<<<<<< HEAD
-        ເລກທີ....
-=======
-        ເລກທີ..........................
->>>>>>> eed1b861ccda1095ff78d8171ab0c9b9df9c4eb2
+        ເລກທີ..............
         </div>
         <br>
 
         <div class="left">
-        ຫ້ອງກວດສຸຂະພາບແຮງງານ ພາຍໃນ ແລະ ຕ່າງປະເທດ
-        Occupational Health Check up Bureau
+        ສູນກວດສຸຂະພາບແຮງງານ ພາຍໃນ ແລະ ຕ່າງປະເທດ
+        Occupational Health Check up Center
         </div>
         <div class="right1">
         &nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ......................
         </div>
         <div class="left">
-<<<<<<< HEAD
-        Tel: 021-253 833
-=======
         Tel: 021-253 833,
-        </div>
-        <div class="right">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ..........................
->>>>>>> eed1b861ccda1095ff78d8171ab0c9b9df9c4eb2
         </div>
         <br>
         <div class="left">
@@ -451,31 +440,31 @@ else{
         </div>
 
     </div>
-        <div class="title">
+        <div class="title" style="'."Phetsarath OT".'">
         ໃບຢັ້ງຢືນສຸຂະພາບ
         </div>
 
 
         <div class="info">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ຜ່ານການກວດກາຕົວຈິງຂອງແພດ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ຜ່ານການກວດກາຕົວຈິງຂອງທ່ານໜໍ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
         </div>
         <div class="info2">
-        ຊື່ ແລະ ນາມສະກຸນ ທ້າວ/ນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].', ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].', ສາດສະໜາ: '.$fetch_pe["religion"].',
-        ນ້ຳເບີບັດພ/ງ: '.$fetch_pe["emp_id"].', ເລກທີ: '.$fetch_pe["emp_id"].', ອາຊີບ: '.$fetch_pe["job"].', <br> ພະແນກ: '.$fetch_pe["department"].', ບໍລີສັດ/ໂຮງງານ: '.$fetch_pe["company"].',
+        ຊື່ ແລະ ນາມສະກຸນ ທ່ານນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ວັນ ເດືອນ ປີເກີດ: '.date("d/m/Y",strtotime($fetch_pe["date"])).', ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].', ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].', ສາດສະໜາ: '.$fetch_pe["religion"].',
+        ນ້ຳເບີບັດພ/ງ: '.$fetch_pe["emp_id"].', ລຳດັບ: '.$fetch_pe["queue"].', ອາຊີບ: '.$fetch_pe["job"].', <br> ພະແນກ: '.$fetch_pe["department"].', ບໍລີສັດ/ໂຮງງານ: '.$fetch_pe["company"].',
         ທີ່ຢູ່ປະຈຸບັນ ບ້ານ: '.$fetch_pe["village"].', ເມືອງ: '.$fetch_pe["district"].', ແຂວງ: '.$fetch_pe["province"].'
         </div>
         <br>
  
 
-        <div class="one">
-        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ການກວດກາຂອງແພດ: <br>
+        <div class="one" style="'."Phetsarath OT".'">
+        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ການກວດກາຂອງທ່ານໜໍ: <br>
         ສະພາບທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ, <br>
         ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ: '.$fetch_pe["ears"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].'
         </div>
 <br>
 
         <div class="two">
-        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນຽ: <br>
+        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນໆ: <br>
         </div>
         <div class="two2">
         '.$audio_conclusion.''.$cbc_conclusion.''.$ekg_c.''.$heavy_metal_conclusion.''.$immunity_conclusion.''.$methamphetamine_conclusion.'
@@ -489,7 +478,7 @@ else{
         </div>
         <div class="three2">
         <div>
-        &nbsp;ຜູ້ກ່ຽວມີສຸຂະພາບທາງດ້ານຈິດ ແລະ ຮ່່າງກາຍປົກກະຕິ ສາມາດປະກອບສ່ວນເຂົ້າໃນການເຮັດວຽກງານໄດ້ປົກກະຕິ
+        &nbsp;&nbsp;ຜູ້ກ່ຽວມີສຸຂະພາບທາງດ້ານຈິດ ແລະ ຮ່່າງກາຍປົກກະຕິ ສາມາດປະກອບສ່ວນເຂົ້າໃນການເຮັດວຽກງານໄດ້ປົກກະຕິ
         </div>
             <div style="width: 5%;float:left;">
             -
@@ -506,10 +495,10 @@ else{
             ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ
         </div>
         <div class="center">
-        ແພດກວດຢັ້ງຢືນ
+       ທ່ານໜໍຢັ້ງຢືນ
     </div>
         <div class="right">
-            ແພດກວດຢັ້ງຢືນ
+            ທ່ານໜໍກວດກາ
         </div>
 </div>
 
