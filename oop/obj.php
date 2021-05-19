@@ -558,7 +558,7 @@ class obj{
         }
         
     }
-    public static function insert_company($company,$company_en){
+    public static function insert_company($company,$company_en,$sticker){
         global $conn;
         $check = mysqli_query($conn,"select * from company where company='$company'");
         if(mysqli_num_rows($check) > 0){
@@ -567,7 +567,7 @@ class obj{
             echo"</script>";
         }
         else{
-            $result = mysqli_query($conn,"call insert_company('$company','$company_en');"); 
+            $result = mysqli_query($conn,"call insert_company('$company','$company_en','$sticker');"); 
             if(!$result){
                 echo"<script>";
                 echo"window.location.href='Company?save=fail;'";
@@ -580,9 +580,9 @@ class obj{
             }
         }
     }
-    public static function update_company($com_id,$company,$company_en){
+    public static function update_company($com_id,$company,$company_en,$sticker){
         global $conn;
-        $result = mysqli_query($conn,"call update_company('$com_id','$company','$company_en');"); 
+        $result = mysqli_query($conn,"call update_company('$com_id','$company','$company_en','$sticker');"); 
         if(!$result){
             echo"<script>";
             echo"window.location.href='Company?update=fail;'";

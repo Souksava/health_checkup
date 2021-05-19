@@ -36,6 +36,7 @@ if(mysqli_num_rows($result_company_limit) > 0)
             <th>ລຳດັບ</th>
             <th>ລະຫັດບໍລິສັດ</th>
             <th>ຊື່ພາສາລາວ</th>
+            <th>ຊື່ສະຕິກເກີ້</th>
             <th>ຊື່ພາສາອັງກິດ</th>
 
         </tr>
@@ -58,6 +59,7 @@ $no_ += 1;
         <td>'.$no_.'</td>
         <td>'.$row["com_id"].'</td>
         <td>'.$row["company"].'</td>
+        <td>'.$row["sticker"].'</td>
         <td>'.$row["company_en"].'</td>
     </tr>
   ';
@@ -177,7 +179,8 @@ $('.btnUpdate_com').on('click', function() {
 
       $('#com_id').val(data[2]);
       $('#company2').val(data[3]);
-      $('#company_en2').val(data[4]);
+      $('#sticker2').val(data[4]);
+      $('#company_en2').val(data[5]);
 });
 $('.btnDelete_com').on('click', function() {
     $('#exampleModalDeleteCom').modal('show');
