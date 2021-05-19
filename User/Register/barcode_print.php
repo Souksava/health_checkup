@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST["btnPrint"])){
+if(isset($_POST["print_barcode"])){
     $path = "../../";
     include ('../../oop/obj.php');
     $border = 5;//กำหนดความหน้าของเส้น Barcode
