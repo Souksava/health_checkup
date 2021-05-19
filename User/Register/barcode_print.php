@@ -53,18 +53,18 @@ if(isset($_POST["btnPrint"])){
         &nbsp;&nbsp;'.$row["emp_name"].' '.$row["surname"].'
         </div>
         <div class="col3-50" align="right">
-            No.'.$row["queue"].' &nbsp; <br>
-            '.$sticker.'
+            No.'.$row["queue"].' &nbsp; 
         </div>
-        <div align="center">
+        <div align="center"> 
             <img src="../Employee/barcode/'.$row["barcode"].'.jpg" style="width: 67%;height: 20px;" alt="">
         </div>
         <div align="center">
-            '.$row["barcode"].'
+            '.$row["barcode"].'<br>
         </div>
-        <div align="left">
-        &nbsp;&nbsp;'.$row["company"].'<br>
+        <div align="left" class="col3-45">
+        &nbsp;&nbsp;'.$row["company"].' <br>
         &nbsp;&nbsp;'.date("d/m/Y",strtotime($row["date"])).'
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$sticker.'
         </div>
     </div>
                 ';

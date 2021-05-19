@@ -36,6 +36,7 @@ if(mysqli_num_rows($result_company_limit) > 0)
             <th>ລຳດັບ</th>
             <th>ລະຫັດບໍລິສັດ</th>
             <th>ຊື່ພາສາລາວ</th>
+            <th>ຊື່ສະຕິກເກີ້</th>
             <th>ຊື່ພາສາອັງກິດ</th>
 
         </tr>
@@ -44,6 +45,7 @@ if(mysqli_num_rows($result_company_limit) > 0)
  while($row = mysqli_fetch_array($result_company_limit))
  {
 $no_ += 1;
+//ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 1: ສ້າງຊື່ການຄິກໄວ້ table
   $output .= '
     <tr>
         <td>
@@ -57,6 +59,7 @@ $no_ += 1;
         <td>'.$no_.'</td>
         <td>'.$row["com_id"].'</td>
         <td>'.$row["company"].'</td>
+        <td>'.$row["sticker"].'</td>
         <td>'.$row["company_en"].'</td>
     </tr>
   ';
@@ -176,7 +179,8 @@ $('.btnUpdate_com').on('click', function() {
 
       $('#com_id').val(data[2]);
       $('#company2').val(data[3]);
-      $('#company_en2').val(data[4]);
+      $('#sticker2').val(data[4]);
+      $('#company_en2').val(data[5]);
 });
 $('.btnDelete_com').on('click', function() {
     $('#exampleModalDeleteCom').modal('show');
@@ -189,6 +193,7 @@ $('.btnDelete_com').on('click', function() {
 
       $('#id').val(data[2]);
 });
+//ການ fetch table ຂຶ້ນ Modal ແມ່ນ step 2: ສ້າງ event click ຂຶ້ນ Modal ໄວ້ບ່ອນ Fetch table
 $('.btnAddpackage').on('click', function() {
     $('#exampleModalAddPackage').modal('show');
       $tr = $(this).closest('tr');

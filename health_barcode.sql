@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 04:06 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: May 19, 2021 at 06:11 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -202,9 +202,9 @@ INSERT INTO cbc(barcode,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,rbc,mvc,mch
 VALUES(barcodes,hbs,hcts,wbcs,nes,lyms,monocytes,eos,basos,plateletss,rbcs,mvcs,mchs,mchcs,red_bloods,conclusions,remarks,years,conclusion_ens,remark_ens,user_ids);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_company` (IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_company` (IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100), IN `stickers` VARCHAR(50))  NO SQL
 BEGIN
-INSERT INTO company(company,company_en) VALUES(companys,company_ens);
+INSERT INTO company(company,company_en,sticker) VALUES(companys,company_ens,stickers);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_ekg` (IN `barcodes` VARCHAR(30), IN `years` YEAR(4), IN `ekgs` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `ekg_ens` VARCHAR(50), IN `conclusion_ens` TEXT, IN `user_ids` INT(11))  NO SQL
@@ -330,38 +330,38 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `select_audio` (IN `companys` VARCHA
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,audi_id,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
 l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark,conclusion_en,remark_en,user_name
-FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_audio_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,audi_id,r_500,r_1000,r_2000,r_3000,r_l_avg,r_4000,r_6000,r_8000,r_h_avg,l_500,l_1000,
 l_2000,l_3000,l_l_avg,l_4000,l_6000,l_8000,l_h_avg,conclusion,remark,conclusion_en,remark_en,user_name
-FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+FROM audiogram p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,hbac,conclusion,remark,conclusion_en,remark_en,user_name FROM biochemistry p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_biochemistry_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,bio_id,fbs,cho,hdl,ldl,trig,ua,bun,creatinine,sgot,sgpt,alk,ggt,hbac,conclusion,remark,conclusion_en,remark_en,user_name FROM biochemistry p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,cbc_id,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
-rbc,mvc,mch,mchc,red_blood,conclusion,remark,conclusion_en,remark_en,user_name FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+rbc,mvc,mch,mchc,red_blood,conclusion,remark,conclusion_en,remark_en,user_name FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_cbc_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,cbc_id,hb,hct,wbc,ne,lym,monocyte,eo,baso,platelets,
-rbc,mvc,mch,mchc,red_blood,conclusion,remark,conclusion_en,remark_en,user_name FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+rbc,mvc,mch,mchc,red_blood,conclusion,remark,conclusion_en,remark_en,user_name FROM cbc p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_checkup_status` (IN `companys` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
@@ -376,58 +376,58 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_company` (IN `companys` VARCHAR(100))  NO SQL
 BEGIN
-SELECT * FROM company WHERE company LIKE companys or company_en LIKE companys ORDER BY company ASC;
+SELECT * FROM company WHERE company LIKE companys or company_en LIKE companys OR sticker LIKE companys ORDER BY company ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_company_limit` (IN `companys` VARCHAR(100), IN `page` INT(11))  NO SQL
 BEGIN
-SELECT * FROM company WHERE company LIKE companys or company_en LIKE companys ORDER BY company ASC LIMIT page,15;
+SELECT * FROM company WHERE company LIKE companys or company_en LIKE companys OR sticker LIKE companys ORDER BY company ASC LIMIT page,15;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_ekg` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark,ekg_en,conclusion_en,user_name FROM ekg p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_ekg_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(100), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,ekg_id,ekg_name,conclusion,remark,ekg_en,conclusion_en,user_name FROM ekg p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_employee` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50))  NO SQL
 BEGIN
-select barcode,emp_id,emp_name,surname,dob,age,gender,c.company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,emp_name_en,surname_en,village_en,district_en,province_en,national_en,religion_en,occupation_en from employee e LEFT JOIN company c on e.com_id=c.com_id where company LIKE companys and (emp_id LIKE name or emp_name or surname like name or age like name or gender like name or department like name) ORDER BY emp_name asc;
+select barcode,emp_id,emp_name,surname,dob,age,gender,c.company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,emp_name_en,surname_en,village_en,district_en,province_en,national_en,religion_en,occupation_en from employee e LEFT JOIN company c on e.com_id=c.com_id where company LIKE companys and (emp_id LIKE name or emp_name or surname like name or age like name or gender like name or department like name or barcode like name or sticker like name) ORDER BY emp_name asc;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_employee_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `page` INT)  NO SQL
 BEGIN
-select barcode,emp_id,emp_name,surname,dob,age,gender,c.company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,emp_name_en,surname_en,village_en,district_en,province_en,e.com_id,emp_name_en,surname_en,village_en,district_en,province_en,national_en,religion_en,occupation_en from employee e LEFT JOIN company c on e.com_id=c.com_id where c.company LIKE companys and (emp_id LIKE name or emp_name like name or surname LIKE name or age like name or gender like name or department like name) ORDER BY emp_name asc limit page,100;
+select barcode,emp_id,emp_name,surname,dob,age,gender,c.company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,emp_name_en,surname_en,village_en,district_en,province_en,e.com_id,emp_name_en,surname_en,village_en,district_en,province_en,national_en,religion_en,occupation_en from employee e LEFT JOIN company c on e.com_id=c.com_id where c.company LIKE companys and (emp_id LIKE name or emp_name like name or surname LIKE name or age like name or gender like name or department like name or barcode like name or sticker like name) ORDER BY emp_name asc limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_heavy_metal` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hea_id,ether,ethy,nickle,manganese,tim,blood,m_i_urine,
 b_a_u,c_u,alcoho,silica,methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark,conclusion_en,remark_en,user_name
-FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_heavy_metal_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hea_id,ether,ethy,nickle,manganese,tim,blood,m_i_urine,
 b_a_u,c_u,alcoho,silica,methy,a_i_urine,t_i_urine,methy_urine,methanoi_urine,phenolic_resin,conclusion,remark,conclusion_en,remark_en,user_name
-FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+FROM heavy_metal p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_immunity` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark,conclusion_en,remark_en,user_name FROM immunity p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_immunity_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,im_id,anti_hav,ab,ag,hcv,vdrl,hiv,conclusion,remark,conclusion_en,remark_en,user_name FROM immunity p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,50;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,50;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_mac` ()  NO SQL
@@ -438,39 +438,39 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark,conclusion_en,remark_en,user_name
-FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_metham_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,meth_id,methamphetamine,conclusion,remark,conclusion_en,remark_en,user_name
-FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+FROM methamphetamine p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_muscle` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark,muscle_en,conclusion_en,user_name FROM muscle p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_muscle_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(100), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,muscle_id,muscle_name,conclusion,remark,muscle_en,conclusion_en,user_name FROM muscle p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_oc_vision` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,oc_id,look_far,
 look_near,look_up,check_eye,check_color,radius,conclusion,remark,conclusion_en,remark_en,user_name
- FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+ FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_oc_vision_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,oc_id,look_far,
 look_near,look_up,check_eye,check_color,radius,conclusion,remark,conclusion_en,remark_en,user_name
- FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+ FROM oc_vision p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_package` (IN `s` VARCHAR(50))  NO SQL
@@ -487,19 +487,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe` (IN `companys` VARCHAR(1
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,
 abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,breat,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
-asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_name FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_name FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys and p.year LIKE years and (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_pe_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,pe_id,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,
 abo,eye,teeth,ears,lymph,thyroid,extremities,hear,lung,als,other,breat,skin,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,
-asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_name FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_name FROM pe p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
 BEGIN
-select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC;
+select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name or r.barcode like name or sticker like name) and date like dates ORDER BY date DESC, queue DESC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_registerdetail` (IN `s` VARCHAR(11))  NO SQL
@@ -509,31 +509,31 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register_limit` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50), IN `page` INT(5))  NO SQL
 BEGIN
-select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,c.company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname like name or age LIKE name) and date like dates ORDER BY date DESC, queue DESC LIMIT page,50;
+select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,c.company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname like name or age LIKE name or r.barcode like name or sticker like name) and date like dates ORDER BY date DESC, queue DESC LIMIT page,50;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_se` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,stool_ap,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark,conclusion_en,remark_en,user_name
- FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+ FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_se_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,se_id,color,stool_ap,wbc,rbc,parasite,samonella,shigella,vivrio,vibrio,conclusion,remark,conclusion_en,remark_en,user_name
- FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+ FROM se p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_spiro` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predict,fvc_predicts,fevi_means,
-fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,conclusion_en,remark_en,user_name FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,conclusion_en,remark_en,user_name FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_spiro_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,spir_id,fvc_means,fvc_predict,fvc_predicts,fevi_means,
-fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,conclusion_en,remark_en,user_name FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+fevi_predict,fevi_predicts,fevi_fvc,conclusion,remark,conclusion_en,remark_en,user_name FROM spirometry p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_test` (IN `test` VARCHAR(100))  BEGIN
@@ -546,37 +546,37 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_thryroid` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark,conclusion_en,remark_en,user_name
-FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_thryroid_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,th_id,free_t3,free_t4,tsh,t3,t4,conclusion,remark,conclusion_en,remark_en,user_name
-FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+FROM thryroid p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_tumor_marker` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,tum_id,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark,conclusion_en,remark_en,user_name
-FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_tumor_marker_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,tum_id,afp,cea,psa,ca_19,ca_15,ca_125,conclusion,remark,conclusion_en,remark_en,user_name
-FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+FROM tumor_marker p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,conclusion_en,remark_en,user_name
-FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_urine_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,urin_id,color,appearance,ph,specifics,protein,sugar,ketone,blood,wbc,rbc,epit,conclusion,remark,conclusion_en,remark_en,user_name
-FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC LIMIT page,100;
+FROM urinalvsis p LEFT JOIN employee e on p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_username` (IN `search` VARCHAR(100))  NO SQL
@@ -591,12 +591,12 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_x_ray` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark,x_ray_en,conclusion_en,user_name FROM x_ray p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_x_ray_limit` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10), IN `page` INT(5))  BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,x_id,x_ray,conclusion,remark,x_ray_en,conclusion_en,user_name FROM x_ray p LEFT JOIN employee e ON
-p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name) ORDER BY emp_name ASC limit page,100;
+p.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id LEFT JOIN username z ON p.user_id=z.user_id WHERE company LIKE companys AND p.year LIKE years AND (emp_id LIKE name OR emp_name LIKE name OR surname LIKE name OR p.barcode LIKE name or sticker like name) ORDER BY emp_name ASC limit page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `test_` ()  NO SQL
@@ -605,9 +605,9 @@ SELECT emp_name from employee WHERE barcode='108042100264';
 SELECT reg_id from register where reg_id='1';
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_company` (IN `com_ids` VARCHAR(11), IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_company` (IN `com_ids` VARCHAR(11), IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100), IN `stickers` VARCHAR(50))  NO SQL
 BEGIN
-UPDATE company SET company=companys,company_en=company_ens WHERE com_id=com_ids;
+UPDATE company SET company=companys,company_en=company_ens,sticker=stickers WHERE com_id=com_ids;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `update_employee` (IN `barcodes` VARCHAR(30), IN `emp_ids` VARCHAR(20), IN `emp_names` VARCHAR(50), IN `surnames` VARCHAR(50), IN `dobs` DATE, IN `ages` VARCHAR(3), IN `genders` VARCHAR(10), IN `companys` VARCHAR(80), IN `branchs` VARCHAR(50), IN `departments` VARCHAR(50), IN `tels` VARCHAR(30), IN `family_stts` VARCHAR(50), IN `nations` VARCHAR(50), IN `ethnics` VARCHAR(50), IN `religions` VARCHAR(50), IN `jobs` VARCHAR(50), IN `house_nos` VARCHAR(10), IN `villages` VARCHAR(50), IN `districts` VARCHAR(50), IN `provinces` VARCHAR(50), IN `emp_name_ens` VARCHAR(50), IN `surname_ens` VARCHAR(50), IN `village_ens` VARCHAR(50), IN `district_ens` VARCHAR(50), IN `province_ens` VARCHAR(50), IN `national_ens` VARCHAR(50), IN `religion_ens` VARCHAR(50), IN `occupation_ens` VARCHAR(50))  NO SQL
@@ -770,8 +770,16 @@ CREATE TABLE `checkup_status` (
 CREATE TABLE `company` (
   `com_id` int(11) NOT NULL,
   `company` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `company_en` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `company_en` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sticker` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`com_id`, `company`, `company_en`, `sticker`) VALUES
+(18, 'ລາວໂທລະຄົມ Group 1', 'Lao telecom', 'ລາວໂທລະຄົມ');
 
 -- --------------------------------------------------------
 
@@ -913,7 +921,7 @@ CREATE TABLE `machine` (
 --
 
 INSERT INTO `machine` (`machine_id`, `expire`) VALUES
-('01184701013D29010185FD01', '2021-05-31');
+('01184701013D400101636101', '2021-05-31');
 
 -- --------------------------------------------------------
 
@@ -984,6 +992,22 @@ CREATE TABLE `package` (
   `pack_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `pack_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `package`
+--
+
+INSERT INTO `package` (`pack_id`, `pack_name`) VALUES
+('AUDIO', 'ກວດການໄດ້ຍິນ ( Audio Screenin ) '),
+('CBC', 'ກວດຫາຄວາມຜິດປົກກະຕິຂອງເມັດເລືອດ( CBC)'),
+('CLOT', 'ການກວດຫາໄຊມັນໃນເລືອດ (Cholesterol)'),
+('EKG', 'ຄື້ນໄຟຟ້າຫົວໃຈ (EKG)'),
+('NAFA', 'ການກວດລະດັບນໍ້າຕານໃນເລືອດ (FBS)'),
+('PE', 'ກວດສຸຂະພາບຮ່າງກາຍໂດຍທ່ານໝໍ(PE)'),
+('Urine', 'ການກວດປັດສະວະທົ່ວໄປ(Urine)'),
+('X-Ray', 'ການກວດເອັກສະເລປອດ ແລະ ຫົວໃຈ(Chest X-ray)'),
+('ຕາອາຊີບ', 'ກວດສາຍຕາອາຊີບ (Occupational Health Vision test)'),
+('ສາຍຕາ', 'ກວດລະບົບສາຍຕາ ແລະ ຕາບອດສີ ( Eye Exam, color Blind ');
 
 -- --------------------------------------------------------
 
@@ -1487,13 +1511,13 @@ ALTER TABLE `checkup_status`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `company_package`
 --
 ALTER TABLE `company_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `ekg`
