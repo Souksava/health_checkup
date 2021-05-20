@@ -5,7 +5,7 @@
   $session_path = "../../";
   include ("../../header-footer/header.php");
 ?>
-<form action="register" method="POST" target="">
+<form action="register" method="POST" target="" id="form_add_package_more">
     <div class="modal fade" id="exampleModalAddmorepackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -36,7 +36,7 @@
         </div>
     </div>
 </form>
-<form action="printbarcode" method="POST" target="">
+<form action="printbarcode" method="POST" target="" id="form_register_print">
     <div class="modal fade" id="exampleModalPrint" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -156,7 +156,7 @@
     ?>
 </div>
 <?php
-    if(isset($_POST["btnUpdate_register"])){
+    if(isset($_POST["reg_id"])){
         if(empty($_POST["morepackage"])){
             echo"<script>";
             echo"window.location.href='register?morepack=null';";
@@ -358,7 +358,15 @@ $(document).ready(function() {
             load_data_morepackage("");
         }
     });
-
-
+    $(document).keypress(function(e) {
+        if ($("#exampleModalPrint").hasClass('in') && (e.keycode == 13 || e.which == 13)) {
+            document.getElementById("form_register_print").submit();
+        }
+    });
+    $(document).keypress(function(e) {
+        if ($("#exampleModalAddmorepackage").hasClass('in') && (e.keycode == 13 || e.which == 13)) {
+            document.getElementById("form_add_package_more").submit();
+        }
+    });
 });
 </script>

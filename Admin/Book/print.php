@@ -228,7 +228,7 @@ else
     $fvc_predicts = $fetch_spiro["fvc_predicts"];
     $fevi_predicts = $fetch_spiro["fevi_predicts"];
     $spiro_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_spiro["conclusion"];
-    $spiro_conclusion = $fetch_spiro["remark"];
+    $spiro_remark = $fetch_spiro["remark"];
 }
 
 $cbc = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year';");
