@@ -365,7 +365,7 @@ if(mysqli_num_rows($cxr)==0)
 else 
 {
     $x_ray = $fetch_cxr["x_ray"];
-    $cxr_conclusion = $fetch_cxr["conclusion"];
+    $cxr_conclusion = "ການກວດສ່ອງໄຟຟ້າຜົ້ງເອີກ : ".$fetch_cxr["conclusion"];
     $cxr_remark = $fetch_cxr["remark"];
 }
 
@@ -380,7 +380,7 @@ if(mysqli_num_rows($ekg)==0)
 else 
 {
     $ekg_name = $fetch_ekg["ekg_name"];
-    $ekg_conclusion = $fetch_ekg["conclusion"];
+    $ekg_conclusion = "ການກວດແທກຄື້ນໄຟຟ້າຫົວໃຈ : ".$fetch_ekg["conclusion"];
     $ekg_remark = $fetch_ekg["remark"];
 }
 
@@ -495,7 +495,7 @@ if(mysqli_num_rows($bio4)==0)
 }
 else 
 {
-    $bio_conclusion =  "ກວດເລືອດຊີວະເຄມີ : ".$fetch_bio4["conclusion"];
+    $bio_conclusion =  "ການກວດເລືອດຊີວະເຄມີ : ".$fetch_bio4["conclusion"];
     $bio_remark = $fetch_bio4["remark"];
 }
 
@@ -521,7 +521,7 @@ else
     $check_color = $fetch_vision["check_color"];
     $look_up = $fetch_vision["look_up"];
     $radius = $fetch_vision["radius"];
-    $vision_conclusion ="ກວດສະມັດຕະພາບການເບີ່ງເຫັນ : " .$fetch_vision["conclusion"];
+    $vision_conclusion ="ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ : " .$fetch_vision["conclusion"];
     $vision_remark = $fetch_vision["remark"];
 }
 
@@ -570,7 +570,7 @@ else
     $l_6000 = $fetch_audio["l_6000"];
     $l_8000 = $fetch_audio["l_8000"];
     $l_h_avg = $fetch_audio["l_h_avg"];
-    $audio_conclusion = $fetch_audio["conclusion"];
+    $audio_conclusion = "ການກວດສະມັດຕະພາບການໄດ້ຍິນ : ".$fetch_audio["conclusion"];
     $audio_remark = $fetch_audio["remark"];
 }
 
@@ -722,7 +722,7 @@ if(mysqli_num_rows($metal4)==0)
 }
 else 
 {
-    $metal_conclusion = "ກວດວິເຄາະຫາທາດໂລຫະໜັກ : " .$fetch_metal4["conclusion"];
+    $metal_conclusion = "ການກວດວິເຄາະຫາທາດໂລຫະໜັກ : " .$fetch_metal4["conclusion"];
     $metal_remark = $fetch_metal4["remark"];
 }
 
@@ -822,7 +822,7 @@ if(mysqli_num_rows($urine4)==0)
 }
 else 
 {
-    $urine_conclusion = "ກວດປັດສະວະ : ". $fetch_urine4["conclusion"];
+    $urine_conclusion = "ການກວດປັດສະວະ : ". $fetch_urine4["conclusion"];
     $urine_remark = $fetch_urine4["remark"];
 }
 
@@ -887,7 +887,7 @@ else {
     $tsh = $fetch_thyroid["tsh"];
     $t3 = $fetch_thyroid["t3"];
     $t4 = $fetch_thyroid["t4"];
-    $thyroid_conclusion ="ກວດຮໍໂມນຕ່ອມຄໍ : " .$fetch_thyroid["conclusion"];
+    $thyroid_conclusion ="ການກວດຮໍໂມນຕ່ອມຄໍ : " .$fetch_thyroid["conclusion"];
     $thyroid_remark = $fetch_thyroid["remark"];
 }
 
@@ -917,7 +917,7 @@ else {
     $shigella = $fetch_stool["shigella"];
     $vivrio = $fetch_stool["vivrio"];
     $vibrio = $fetch_stool["vibrio"];
-    $stool_conclusion ="ກວດອາຈົມ : " .$fetch_stool["conclusion"];
+    $stool_conclusion ="ການກວດອາຈົມ : " .$fetch_stool["conclusion"];
     $stool_remark = $fetch_stool["remark"];
 }
 
@@ -989,7 +989,7 @@ if(mysqli_num_rows($tumor4)==0)
     $tumor_remark = "";
 }
 else {
-    $tumor_conclusion ="ກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
+    $tumor_conclusion ="ການກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
     $tumor_remark = $fetch_tumor4["remark"];
 }
 
@@ -1504,7 +1504,7 @@ else {
                     <div class="col-sm-5" style="color: black;">
                         <b><?php echo $lung;?></b>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         ທ້ອງ/ຕັບ/ປ້າງ (Abdomen/Liver/Spleen) :
                     </div>
                     <div class="col-sm-5" style="color: black;">
@@ -1836,7 +1836,7 @@ else {
                         Red blood cell morphology
                     </div>
                     <div class="col-sm-8" style="color: black;">
-                        <?php echo $redblood; ?>
+                        <b><?php echo $redblood; ?></b>
                     </div>
                     <br>
                     <br>
@@ -1998,7 +1998,7 @@ else {
                         <b><?php echo nl2br($bio_conclusion); ?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo $bio_conclusion;?></b>
+                        <b><?php echo $bio_remark;?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 140mm;top: 831mm;">
@@ -2697,6 +2697,7 @@ else {
                                 <td style="text-align:center">0 - 35 ng/ml</td>
                             </tr>
                         </table>
+                        <br>
                     </div>
                     <div class="col-sm-12">
                         ***ແປຜົນກວດຕົວບົ່ງຊີ້ມະເຮັງ (Tumor Marker Interpretation)
