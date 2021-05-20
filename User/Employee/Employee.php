@@ -1092,5 +1092,11 @@ $(document).ready(function() {
             load_data_package_info("");
         }
     });
+
+    $(document).keypress(function(e) {
+        if ($("#exampleModalRegisterEmp").hasClass('in') && (e.keycode == 13 || e.which == 13)) {
+            document.getElementById("form_register").submit();
+        }
+    });
 });
 </script>

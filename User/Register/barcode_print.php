@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST["btnPrint"])){
+if(isset($_POST["print_barcode"])){
     $path = "../../";
     include ('../../oop/obj.php');
     $border = 5;//กำหนดความหน้าของเส้น Barcode
@@ -49,11 +49,13 @@ if(isset($_POST["btnPrint"])){
     $content .='    
     <div class="col-50">
         <div class="col2-50">
-        &nbsp;&nbsp;Reg: '.$row["barcode"].' <br>
-        &nbsp;&nbsp;'.$row["emp_name"].' '.$row["surname"].'
+        &nbsp;&nbsp;Reg: '.$row["barcode"].'
         </div>
         <div class="col3-50" align="right">
             No.'.$row["queue"].' &nbsp; 
+        </div>
+        <div>
+            &nbsp;&nbsp;'.$row["emp_name"].' '.$row["surname"].'
         </div>
         <div align="center"> 
             <img src="../Employee/barcode/'.$row["barcode"].'.jpg" style="width: 67%;height: 20px;" alt="">
@@ -61,10 +63,12 @@ if(isset($_POST["btnPrint"])){
         <div align="center">
             '.$row["barcode"].'<br>
         </div>
-        <div align="left" class="col3-45">
-        &nbsp;&nbsp;'.$row["company"].' <br>
-        &nbsp;&nbsp;'.date("d/m/Y",strtotime($row["date"])).'
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$sticker.'
+        <div class="col2-50">
+            &nbsp;&nbsp;'.$row["sticker"].'<br>
+            &nbsp;&nbsp;'.date("d/m/Y",strtotime($row["date"])).'
+        </div>
+        <div class="col3-50" align="right">
+            <br>'.$sticker.'
         </div>
     </div>
                 ';
