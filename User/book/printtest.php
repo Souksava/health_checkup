@@ -1504,8 +1504,8 @@ else {
                     <div class="col-sm-5" style="color: black;">
                         <b><?php echo $lung;?></b>
                     </div>
-                    <div class="col-sm-6">
-                        ທ້ອງ/ຕັບ/ປ້າງ (Abdomen/Liver/Spleen) :
+                    <div class="col-sm-5">
+                        ທ້ອງ/ຕັບ/ປ້າງ (Abdomen/Liver/Spleen):
                     </div>
                     <div class="col-sm-5" style="color: black;">
                         <b><?php echo $als;?></b>
@@ -1597,7 +1597,6 @@ else {
                         <div class="col-sm-12">
                             ***ສະຫຼຸບຜົນກວດເລືອດເຄມີ (Biochemical Interpretation) :
                         </div>
-                        <br>
                         <div class="col-sm-12" style="color: black;">
                             <b><?php echo nl2br($imm_conclusion);?></b>
                         </div>
