@@ -214,6 +214,10 @@ class FontVariables
 					'BI' => "Garuda-BoldOblique.ttf",
 					'useOTL' => 0xFF,
 				],
+				"phetsarath_ot" => [/* Thai */
+					'R' => "phetsarath_ot.ttf",
+					'useOTL' => 0xFF,
+				],
 				"khmeros" => [/* Khmer */
 					'R' => "KhmerOS.ttf",
 					'useOTL' => 0xFF,
@@ -309,7 +313,7 @@ class FontVariables
 				'arial', 'helvetica', 'verdana', 'geneva', 'lucida', 'arialnarrow', 'arialblack',
 				'franklin', 'franklingothicbook', 'tahoma', 'garuda', 'calibri', 'trebuchet', 'lucidagrande', 'microsoftsansserif',
 				'trebuchetms', 'lucidasansunicode', 'franklingothicmedium', 'albertusmedium', 'xbriyaz', 'albasuper', 'quillscript',
-				'humanist777', 'humanist777black', 'humanist777light', 'futura', 'hobo', 'segoeprint'
+				'humanist777', 'humanist777black', 'humanist777light', 'futura', 'hobo', 'segoeprint','phetsarath_ot'
 			],
 
 			'serif_fonts' => ['dejavuserifcondensed', 'serif', 'dejavuserif', 'freeserif', 'liberationserif',
