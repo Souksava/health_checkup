@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../image/icon_health.ico">
+    <title>Document</title>
+</head>
+<body>
 <?php
 if(isset($_GET["register"])){
     $path = "../../";
@@ -80,3 +90,6 @@ if(isset($_GET["register"])){
 }
 ?>
     
+
+</body>
+</html>

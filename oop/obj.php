@@ -404,6 +404,7 @@ class obj{
                         echo"<script>";
                         echo"window.location.href='Barcodes?register=$reg_id&&barcode=$barcode';";
                         echo"</script>";
+              
                     }
                     else{
                         foreach($packmore as $packmores){

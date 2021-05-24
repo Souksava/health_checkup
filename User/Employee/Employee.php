@@ -633,7 +633,10 @@
             echo"</script>";
         }
         else{
-            $obj->new_register($_POST["reg_id"],$_POST["queue"],$_POST["register_barcode"],$_POST["pack_id"],$_POST["packmore"],$user_id);
+            if(empty($_POST["packmore"])){
+                $_POST["packmore"] = "";
+            }
+            $obj->new_register(trim($_POST["reg_id"]),$_POST["queue"],$_POST["register_barcode"],$_POST["pack_id"],$_POST["packmore"],$user_id);
         }
     }
     if(isset($_GET["package"]) || isset($_GET["sticker"])=="fail"){
