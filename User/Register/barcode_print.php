@@ -20,7 +20,7 @@ if(isset($_POST["print_barcode"])){
     // $result = mysqli_query($conn,"SELECT emp_name,surname,queue,company,r.barcode,date FROM register r LEFT JOIN employee e on r.barcode=e.barcode WHERE reg_id='$reg_id';");
     $row = mysqli_fetch_array($result_sticker,MYSQLI_ASSOC);
     $generatorSVG = new Picqer\Barcode\BarcodeGeneratorJPG();
-    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODE_128_B,$border,$height));
+    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODABAR,$border,$height));
     require_once '../../vendor/autoload.php';
     //158
     $mpdf = new \Mpdf\Mpdf([

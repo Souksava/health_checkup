@@ -16,7 +16,8 @@ if(isset($_POST["print_barcode2"])){
     $height = 80;//กำหนดความสูงของ Barcode
     $barcode = $_POST["barcode_id2"];
     $generatorSVG = new Picqer\Barcode\BarcodeGeneratorJPG();
-    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODE_128_B,$border,$height));
+    //TYPE_CODABAR
+    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODABAR,$border,$height));
     require_once '../../vendor/autoload.php';
     //158
     $mpdf = new \Mpdf\Mpdf([
