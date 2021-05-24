@@ -1361,8 +1361,8 @@ public static function import_thry($file_path,$year,$user_id){
     public static function import_cbc($file_path,$year,$user_id){
         global $conn;
         $objPHPExcel = PHPExcel_IOFactory::load($file_path);
-        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
-            $highestRow = $worksheet->getHighestRow();
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){ 
+            $highestRow = $worksheet->getHighestRow(0);
             for($row=2; $row<=$highestRow;$row++){
                     $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
                     $hb = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
