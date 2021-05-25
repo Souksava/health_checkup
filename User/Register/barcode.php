@@ -76,7 +76,7 @@ if(isset($_POST["print_barcode2"])){
             &nbsp;&nbsp;'.date("d/m/Y",strtotime($row["date"])).'
         </div>
         <div class="col3-50" align="right">
-            <br>'.$row["pack_id"].'
+            <br>'.$row["pack_id"].'&nbsp;&nbsp;
         </div>
     </div>
                 ';
