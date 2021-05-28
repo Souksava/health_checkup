@@ -408,9 +408,8 @@ body {
     <div class="star star5"></div>
 
     <div class="error" style="font-family: 'Noto Sans Lao'!important;">
-        <div class="error__title">ສະບາຍດີ</div>
-        <div class="error__subtitle">ໃນຂະນະນີ້ທ່ານກຳລັງລະເມີດສິດ</div>
-        <div class="error__description">ຄອມພິວເຕີຂອງທ່ານບໍ່ໄດ້ຮັບການອະນຸຍາດໃຫ້ນຳໃຊ້ລະບົບ<br> ກະລຸນາຕິດຕໍ່ຜູ້ພັດທະນາ ຂໍຂອບໃຈ</div>
+        <div class="error__title">404 Not Found</div>
+        <div class="error__subtitle">ຂໍອະໄພ URL ທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ</div>
     </div>
 
     <div class="astronaut">
