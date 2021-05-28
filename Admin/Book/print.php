@@ -1982,7 +1982,7 @@ else {
                                 <td style="text-align:center">15-128 U/L</td>
                             </tr>
                             <tr>
-                                <td>GHbA1c</td>
+                                <td>HbA1c</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hbac; ?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hbac2; ?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hbac3; ?></b></td>
