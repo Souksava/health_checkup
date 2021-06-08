@@ -595,6 +595,7 @@
         </div>
     </div>
 </form>
+<!-- <input id="myinput" type="text"> -->
 <div id="result_data_emp" class="result_data_emp">
     <?php
         include ($path."header-footer/loading.php");
@@ -1029,6 +1030,13 @@ $(document).ready(function() {
             load_data_emp(search_company, "%%", page);
         }
     });
+    // $("#emp_search").on('keyup', function(evt) {
+    //     if (evt.which != 110 && evt.which != 190) {
+    //         var n = parseFloat($(this).val().replace(/\,/g, ''), 10);
+    //         $(this).val(n.toLocaleString());
+           
+    //     }
+    // });
     $(document).on("click", ".page-links_emp", function() {
         var page_emp = this.id;
         console.log(page_emp);
@@ -1046,7 +1054,7 @@ $(document).ready(function() {
 
 
 
-    
+
     load_data_add("");
 
     function load_data_add(query) {
@@ -1102,4 +1110,21 @@ $(document).ready(function() {
         }
     });
 });
+</script>
+<script>
+// var myinput = document.getElementById('myinput');
+
+// myinput.addEventListener('keyup', function() {
+//   var val = this.value;
+//   val = val.replace(/[^0-9\.]/g,'');
+  
+//   if(val != "") {
+//     valArr = val.split('.');
+//     valArr[0] = (parseInt(valArr[0],10)).toLocaleString();
+//     val = valArr.join('.');
+//   }
+  
+//   this.value = val;
+// });
+
 </script>
