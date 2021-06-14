@@ -1664,7 +1664,7 @@ else {
                     <div class="col-sm-12">
                         *ການກວດສອບສະມັດຕະພາບປອດ (Spirometry)
                     </div>
-                    <table class="border" style="width:100%;border: 1px solid black!important;">
+                    <table class="border" style="width:100%;border: 1px solid red!important;">
                         <tr style="text-align:center;">
                             <th><i>Spirometry</i></th>
                             <th style="width: 15%"><i>FVC</i></th>
@@ -2063,63 +2063,71 @@ else {
             </div>
             <div class="col-md-6 paper-right">
                 <div class="title">
-                    ການກວດສຸຂະພາບທາງດ້ານອາຊີບ (Occupational Health)
+                    ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Vision test )
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        *ກວດສະມັດຕະພາບການເບີ່ງເຫັນ ( OC Vision )
+                        *ກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Vision test )
                     </div>
-                    <div class="col-sm-4">
-                        ການເບີ່ງເຫັນໄລຍະໄກ =
-                    </div>
-                    <div class="col-sm-2">
-                        <b style="color: black;"><?php echo $look_far;?></b>
-                    </div>
-                    <div class="col-sm-4">
-                        ການເບີ່ງແນວນອນ =
-                    </div>
-                    <div class="col-sm-2">
-                        <b style="color: black;"><?php echo $check_eye;?></b>
-                    </div>
-                    <div class="col-sm-4">
-                        ການເບີ່ງເຫັນໄລຍະໃກ້ =
-                    </div>
-                    <div class="col-sm-2">
-                        <b style="color: black;"><?php echo $look_near;?></b>
-                    </div>
-                    <div class="col-sm-4">
-                        ກວດສອບການແຍກສີ =
-                    </div>
-                    <div class="col-sm-2">
-                        <b style="color: black;"><?php echo $check_color;?></b>
-                    </div>
-                    <div class="col-sm-4">
-                        ການເບີ່ງແນວຕັ້ງ =
-                    </div>
-                    <div class="col-sm-2">
-                        <b style="color: black;"><?php echo $look_up;?></b>
-                    </div>
-                    <div class="col-sm-4">
-                        ກວດລັດສະໝີການເບີ່ງເຫັນ =
-                    </div>
-                    <div class="col-sm-2">
-                        <b style="color: black;"><?php echo $radius;?></b>
+                    <table class="border" style="width:100%;border: 1px solid red!important;">
+                        <tr style="text-align:center;">
+                            <th>ກວດຕາ</th>
+                            <th style="width: 15%">ສາຍຕາສັ້ນ</th>
+                            <th style="width: 15%">ສາຍຕາຍາວ</th>
+                            <th style="width: 15%">ສາຍຕາອຽງ</th>
+                            <th style="width: 15%">ຕາບອດສີ</th>
+                            <th style="width: 15%">ສະຫຸຼບຜົນກວດ</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%">ກວດຕາ</th>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                        </tr>
+                        <tr>
+                            <td>ຕາຂວາ</td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_predict;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_predict;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                        </tr>
+                        <tr>
+                            <td>ຕາຊ້າຍ</td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_predicts;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_predicts;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                        </tr>
+                    </table>
+                    <div class="col-sm-12">
+                    <br>
+                        ***ແປຜົນກວດສາຍຕາ
                     </div>
                     <div class="col-sm-12">
-                        ***ແປຜົນສະມັດຕະພາບການເບີ່ງເຫັນ
-                    </div>
-                    <div class="col-sm-12">
-                        ຜົນກວດສາຍຕາ (Vision Test): <b style="color: black;"> <?php echo nl2br($vision_conclusion);?>
-                        </b>
+                        <b style="color: black;"> <?php echo nl2br($vision_conclusion);?>test</b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($vision_remark);?></b>
+                        <b><?php echo nl2br($vision_remark);?>test</b>
                     </div>
-                    <hr>
+                    <div class="col-sm-12">
+                    <br>
+                    *** ແປຜົນການເບ່ິງເຫັນ ( Oc vision )
+                    </div>
+                    <div class="col-sm-12">
+                        <b style="color: black;"> <?php echo nl2br($vision_conclusion);?>test</b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($vision_remark);?>test</b>
+                    </div>
+
                     <br>
                     <br>
 
-                    <table class="border">
+                    <table class="border" style="width:100%;border: 1px solid red!important;">
                         <tr>
                             <th colspan="10">ການກວດສະມັດຕະພາບການໄດ້ຍິນ (Audiogram)</th>
                         </tr>
@@ -2178,7 +2186,7 @@ else {
                     <br>
                     <br>
                     <br>
-                    <hr>
+                    <hr style="color:black;">
                     <div class="col-sm-12">
                         <br>
                         *ການກວດທົດສອບສະມັດຕະພາບກ້າມ ຊີ້ນມື/ແຂນ/ຂາແລະຫຼັງ (Muscle)
