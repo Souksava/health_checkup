@@ -360,6 +360,27 @@
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
                         </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ບ້ານຢູ່ປັດຈຸບັນ</label>
+                            <input type="text" name="current_address" id="current_address" placeholder="ບ້ານຢູ່ປັດຈຸບັນ">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ຖະໜົນ</label>
+                            <input type="text" name="road" id="road" placeholder="ຖະໜົນ">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ອີເມວ</label>
+                            <input type="text" name="email" id="email" placeholder="ອີເມວ">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
                     </div>
 
                 </div>
@@ -619,7 +640,7 @@
         $obj->insert_employee($barcode,$_POST["emp_id"],$_POST["emp_name"],$_POST["surname"],$_POST["dob"],$_POST["age"],$_POST["gender"],$_POST["company"],$_POST["branch"],$_POST["department"],$_POST["tel"],$_POST["family_stt"],$_POST["nation"],$_POST["ethnnic"],$_POST["religion"],$_POST["job"],$_POST["house_no"],$_POST["village"],$_POST["district"],$_POST["province"]);
     }
     if(isset($_POST['barcode2'])){
-        $obj->update_employee($_POST["barcode2"],$_POST["emp_id2"],$_POST["emp_name2"],$_POST["surname2"],$_POST["dob2"],$_POST["age2"],$_POST["gender2"],$_POST["company2"],$_POST["branch2"],$_POST["department2"],$_POST["tel2"],$_POST["family_stt2"],$_POST["nation2"],$_POST["ethnic2"],$_POST["religion2"],$_POST["job2"],$_POST["home_no2"],$_POST["village2"],$_POST["district2"],$_POST["province2"],$_POST["emp_name_en"],$_POST["surname_en"],$_POST["village_en"],$_POST["district_en"],$_POST["province_en"],$_POST["national_en"],$_POST["religion_en"],$_POST["occupation_en"]);
+        $obj->update_employee($_POST["barcode2"],$_POST["emp_id2"],$_POST["emp_name2"],$_POST["surname2"],$_POST["dob2"],$_POST["age2"],$_POST["gender2"],$_POST["company2"],$_POST["branch2"],$_POST["department2"],$_POST["tel2"],$_POST["family_stt2"],$_POST["nation2"],$_POST["ethnic2"],$_POST["religion2"],$_POST["job2"],$_POST["home_no2"],$_POST["village2"],$_POST["district2"],$_POST["province2"],$_POST["emp_name_en"],$_POST["surname_en"],$_POST["village_en"],$_POST["district_en"],$_POST["province_en"],$_POST["national_en"],$_POST["religion_en"],$_POST["occupation_en"],$_POST["current_address"],$_POST["road"],$_POST["email"]);
     }
     if(isset($_POST["upload_emp_id"])){
         $obj->import_emp($_FILES["emp_file"]["tmp_name"],$_POST["companyID"]);

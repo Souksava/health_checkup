@@ -15,7 +15,7 @@
                         $obj->dropdown_company();
                         foreach($result_dropdown as $com_search){
                     ?>
-                    <option value="<?php echo $com_search["company"] ?>"><?php echo $com_search["company"] ?></option>
+                    <option value="<?php echo $com_search['company'] ?>"><?php echo $com_search["company"] ?></option>
                     <?php
                         }
                         mysqli_free_result($result_dropdown);  

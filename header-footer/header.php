@@ -242,6 +242,14 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="<?php echo $links ?>Checkup/Tumor-Gttgk" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ກວດບົງຊີ້ຕ໋ອງມະເຮັງ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
                                 <a href="<?php echo $links ?>Checkup/Vision" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ກວດສະມັດຕະພາບການເບິ່ງເຫັນ</p>
@@ -293,6 +301,22 @@
                                 <a href="<?php echo $links ?>Checkup/Muscle" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
                                     <p>ການກວດສະມັດຕະພາບທາງກ້າມ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Checkup/Ultrasound" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ການກວດເອໂກ້ທ້ອງ</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?php echo $links ?>Checkup/Test-Vision" class="nav-link">
+                                    <i class="far fa fa-stethoscope nav-icon"></i>
+                                    <p>ການກວດທົດສອບສາຍຕາ</p>
                                 </a>
                             </li>
                         </ul>

@@ -21,6 +21,10 @@
                 <th style="width: 250px;">Anti-HCV</th>
                 <th style="width: 287px;">VDRL</th>
                 <th style="width: 250px;">HIV</th>
+                <th style="width: 187px;">Hpylori</th>
+                <th style="width: 150px;">PAP Smear</th>
+                <th style="width: 187px;">Calcium</th>
+                <th style="width: 150px;">Phosphorus</th>
                 <th style="width: 450px;">Conclusion</th>
                 <th style="width: 150px;">Remark</th>
                 <th style="width: 487px;">Conclusion EN</th>
@@ -49,6 +53,10 @@
                 <td>'.$row["hcv"].'</td>
                 <td>'.$row["vdrl"].'</td>
                 <td>'.$row["hiv"].'</td>
+                <td>'.$row["hpylori"].'</td>
+                <td>'.$row["pap"].'</td>
+                <td>'.$row["calcium"].'</td>
+                <td>'.$row["phosphorus"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
                 <td>'.$row["conclusion_en"].'</td>

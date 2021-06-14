@@ -69,6 +69,9 @@ if(mysqli_num_rows($result_emp) > 0)
         <th style="width: 200px;">ບ້ານພາສາອັງກິດ</th>
         <th style="width: 200px;">ເມືອງພາສາອັງກິດ</th>
         <th style="width: 200px;">ແຂວງພາສາອັງກິດ</th>
+        <th style="width: 200px;">ບ້ານຢູ່ປັດຈຸບັນ</th>
+        <th style="width: 200px;">ຖະໜົນ</th>
+        <th style="width: 200px;">ອີເມວ</th>
     </tr>
  ';
  $no_ =  $rank;
@@ -116,6 +119,9 @@ $no_ += 1;
         <td>'.$row["village_en"].'</td>
         <td>'.$row["district_en"].'</td>
         <td>'.$row["province_en"].'</td>
+        <td>'.$row["current_address"].'</td>
+        <td>'.$row["road"].'</td>
+        <td>'.$row["email"].'</td>
     </tr>
   ';
  }
@@ -282,5 +288,8 @@ $('.btnDel_Emp').on('click', function() {
         $('#village_en').val(data[29]);
         $('#district_en').val(data[30]);
         $('#province_en').val(data[31]);
+        $('#current_address').val(data[32]);
+        $('#road').val(data[33]);
+        $('#email').val(data[34]);
     });
 </script>

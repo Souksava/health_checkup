@@ -26,6 +26,9 @@
                 <th style="width: 180px;">ບ້ານຢູ່ປັດຈຸບັນ</th>
                 <th style="width: 180px;">ເມືອງ</th>
                 <th style="width: 180px;">ແຂວງ</th>
+                <th style="width: 200px;">ບ້ານຢູ່ປັດຈຸບັນ</th>
+                <th style="width: 200px;">ຖະໜົນ</th>
+                <th style="width: 200px;">ອີເມວ</th>
                 <th style="width: 100px;">ລຳດັບຄິວ</th>
                 <th style="width: 100px;">ປີ</th>
                 <th style="width: 100px;">ວັນທີ</th>
@@ -59,6 +62,9 @@
                 <td>'.$row["village"].'</td>
                 <td>'.$row["district"].'</td>
                 <td>'.$row["province"].'</td>
+                <td>'.$row["current_address"].'</td>
+                <td>'.$row["road"].'</td>
+                <td>'.$row["email"].'</td>
                 <td>'.$row["queue"].'</td>
                 <td>'.$row["year"].'</td>
             ';

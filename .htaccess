@@ -49,6 +49,9 @@ RewriteRule ^User/Checkup/x-ray?$ User/Checkup/x_ray.php
 RewriteRule ^User/Checkup/Immunity?$ User/Checkup/cxr.php
 RewriteRule ^User/Checkup/Ekg?$ User/Checkup/ekg.php
 RewriteRule ^User/Checkup/Muscle?$ User/Checkup/muscle.php
+RewriteRule ^User/Checkup/Test-Vision?$ User/Checkup/test_vision.php
+RewriteRule ^User/Checkup/Ultrasound?$ User/Checkup/ultrasound.php
+RewriteRule ^User/Checkup/Tumor-Gttgk?$ User/Checkup/tumor_gttgk.php
 
 RewriteRule ^User/Certificate/English?$ User/Certificate/eng.php
 RewriteRule ^User/Certificate/Lao?$ User/Certificate/lao.php

@@ -54,6 +54,10 @@ if(mysqli_num_rows($result_immunity_limit) > 0)
          <th style="width: 150px;">Anti-HCV</th>
          <th style="width: 187px;">VDRL</th>
          <th style="width: 150px;">HIV</th>
+         <th style="width: 187px;">Hpylori</th>
+         <th style="width: 150px;">PAP Smear</th>
+         <th style="width: 187px;">Calcium</th>
+         <th style="width: 150px;">Phosphorus</th>
          <th style="width: 387px;">Conclusion</th>
          <th style="width: 350px;">Remark</th>
          <th style="width: 387px;">Conclusion EN</th>
@@ -81,6 +85,10 @@ $no_ += 1;
         <td>'.$row["hcv"].'</td>
         <td>'.$row["vdrl"].'</td>
         <td>'.$row["hiv"].'</td>
+        <td>'.$row["hpylori"].'</td>
+        <td>'.$row["pap"].'</td>
+        <td>'.$row["calcium"].'</td>
+        <td>'.$row["phosphorus"].'</td>
         <td>'.nl2br($row["conclusion"]).'</td>
         <td>'.nl2br($row["remark"]).'</td>
         <td>'.nl2br($row["conclusion_en"]).'</td>
