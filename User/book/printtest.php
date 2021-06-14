@@ -1367,9 +1367,9 @@ else {
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_conclusion);?>
                         </div>
-                        <div class="col-sm-12" style="color: black;">
+                        <!-- <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_remark);?>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($spiro_conclusion);?>
                         </div>
@@ -1379,15 +1379,21 @@ else {
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_conclusion);?>
                         </div>
-                        <div class="col-sm-12" style="color: black;">
+                        <!-- <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_remark);?>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_conclusion);?>
                         </div>
-                        <div class="col-sm-12" style="color: black;">
+                        <!-- <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_remark);?>
+                        </div> -->
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($ultra_conclusion);?>
                         </div>
+                        <!-- <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($ultra_remark);?>
+                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($imm_conclusion);?>
                         </div>
@@ -1399,6 +1405,12 @@ else {
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($stool_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($gttgk_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($gttgk_remark);?>
                         </div>
                     </div>
                 </div>
@@ -1922,9 +1934,9 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cxr_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cxr_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
                 <br>
@@ -1939,9 +1951,9 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ekg_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ekg_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
                 <br>
@@ -1956,9 +1968,9 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ultra_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ultra_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="pagination" style="left: 140mm;top: 619mm;">
                     10
@@ -2380,9 +2392,9 @@ else {
                     <div class="col-sm-12">
                         <b style="color: black;"><?php echo nl2br($muscle_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($muscle_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="pagination" style="left: 290mm;top: 831mm;">
                     9
