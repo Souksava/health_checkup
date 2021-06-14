@@ -9,7 +9,7 @@
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
             <th style="width: 87px;">N0.</th>
-            <th style="width: 150px;">Barcode</th>
+            <th style="width: 150px;">ບຣາໂຄດ</th>
             <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 350px;">ຊື່</th>
             <th style="width: 150px;">ນາມສະກຸນ</th>
@@ -40,11 +40,11 @@
             <th style="width: 250px;">Phenolic Resin</th>
             <th style="width: 550px;">Xylene in Urine</th>
             <th style="width: 287px;">Methyl ethyl ketone in Urine</th>
-            <th style="width: 387px;">Conclusion</th>
-            <th style="width: 350px;">Remark</th>
-            <th style="width: 387px;">Conclusion EN</th>
-            <th style="width: 350px;">Remark EN</th>
-            <th style="width: 150px;">Username</th>
+            <th style="width: 387px;">ສະຫຼຸບ</th>
+            <th style="width: 350px;">ຄຳແນະນຳ</th>
+            <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
+            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງກິດ</th>
+            <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_heavy_metal('$company','$name','$year')");

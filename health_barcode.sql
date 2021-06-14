@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
+-- Generation Time: Jun 14, 2021 at 07:29 AM
+=======
 -- Generation Time: Jun 14, 2021 at 05:22 AM
+>>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -425,12 +429,12 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_checkup_status` (IN `companys` VARCHAR(100), IN `years` VARCHAR(10))  NO SQL
 BEGIN
-SELECT s.barcode,emp_name,surname,company,s.year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt FROM checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and s.year LIKE years ORDER BY emp_name;
+SELECT s.barcode,emp_name,surname,company,s.year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt,ekg,muscle,ultra,tumor_gttgk,test_vision FROM checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and s.year LIKE years ORDER BY emp_name;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_checkup_status_limit` (IN `companys` VARCHAR(100), IN `years` VARCHAR(10), IN `page` INT(5))  NO SQL
 BEGIN
-SELECT s.barcode,emp_name,surname,company,s.year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt,ekg,muscle FROM checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and s.year LIKE years ORDER BY emp_name LIMIT page,100;
+SELECT s.barcode,emp_name,surname,company,s.year,physic,cbc,bio,urine,meth,thry,stool,metal,tumor,vision,audio,spiro,cxr,intt,ekg,muscle,ultra,tumor_gttgk,test_vision FROM checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id WHERE company LIKE companys and s.year LIKE years ORDER BY emp_name LIMIT page,100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_company` (IN `companys` VARCHAR(100))  NO SQL
@@ -866,8 +870,13 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`) VALUES
+<<<<<<< HEAD
+(128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, 1, 1),
+(129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL),
+=======
 (128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
 (129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL),
+>>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 (130, '209062101269', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 1, 1, NULL);
 
 -- --------------------------------------------------------
@@ -3888,6 +3897,13 @@ CREATE TABLE `test_vision` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `test_vision`
+--
+
+INSERT INTO `test_vision` (`test_id`, `barcode`, `year`, `r_short`, `r_long`, `r_tited`, `r_color`, `r_conclusion`, `l_short`, `l_long`, `l_tited`, `l_color`, `l_conclusion`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(48, '209062101293', 2021, 'R_Short', 'R_Long', 'R_Tited', 'R_Color', 'R_Conclusion', 'L_Short', 'L_Long', 'L_Tited', 'L_Color', 'L_Conclusion', 'Conclusion', 'Remark', 'Conclusion_en', 'Remark_en', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -4405,7 +4421,7 @@ ALTER TABLE `spirometry`
 -- AUTO_INCREMENT for table `test_vision`
 --
 ALTER TABLE `test_vision`
-  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `thryroid`
@@ -4417,7 +4433,11 @@ ALTER TABLE `thryroid`
 -- AUTO_INCREMENT for table `tumor_gttgk`
 --
 ALTER TABLE `tumor_gttgk`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 
 --
 -- AUTO_INCREMENT for table `tumor_marker`

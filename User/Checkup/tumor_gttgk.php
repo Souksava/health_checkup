@@ -256,8 +256,8 @@ const myform_form_upload = document.getElementById("form_upload");
 const file_upload = document.getElementById("file_upload");
 const datepicker2 = document.getElementById("datepicker2");
 const checkup_file = document.getElementById("checkup_file");
-// const load_import_emp = document.getElementById("load_import_emp");
-// const btnload_import_emp = document.getElementById("btnload_import_emp");
+const load_import_emp = document.getElementById("load_import_emp");
+const btnload_import_emp = document.getElementById("btnload_import_emp");
 myform_form_upload.addEventListener('submit', (e) => {
     e.preventDefault();
     checkInputs_form_upload();
@@ -277,7 +277,7 @@ function checkInputs_form_upload() {
         setSuccessFor(checkup_file);
     }
     if (datepicker2Value !== "" && checkup_fileValue !== "") {
-        // setloading(load_import_emp, btnload_import_emp);
+        setloading(load_import_emp, btnload_import_emp);
         document.getElementById("form_upload").action = "Tumor-Gttgk";
         document.getElementById("form_upload").submit();
     }

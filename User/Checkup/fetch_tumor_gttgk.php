@@ -40,25 +40,24 @@ if(mysqli_num_rows($result_tumor_gttgk_limit) > 0)
  <div class="table-responsive">
     <table class="table-bordered" style="width: 6000px;text-align: center;">
         <tr style="font-size: 18px;">
-            <th style="width: 150px;">ເຄື່ອງມື</th>
+            <th style="width: 150px;"><input type="checkbox" id="check_all" value=""></th>
             <th style="width: 80px;">N0.</th>
-            <th style="width: 150px;">Barcode</th>
+            <th style="width: 150px;">ບຣາໂຄດ</th>
             <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 450px;">ຊື່</th>
             <th style="width: 350px;">ນາມສະກຸນ</th>
             <th style="width: 450px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 350px;">Alpha-Fetoprotein(AFP)</th>
-            <th style="width: 300px;">Carcino Embrionic Antigen(CEA)</th>
-            <th style="width: 300px;">Prostate-Specific Antigen(PSA)</th>
-            <th style="width: 150px;">CA 19-9</th>
-            <th style="width: 187px;">CA 15-3</th>
-            <th style="width: 150px;">CA 125</th>
-            <th style="width: 387px;">Conclusion</th>
-            <th style="width: 350px;">Remark</th>
-            <th style="width: 387px;">Conclusion EN</th>
-            <th style="width: 350px;">Remark EN</th>
-            <th style="width: 350px;">Username</th>
+            <th style="width: 350px;">Total Billrubin</th>
+            <th style="width: 300px;">Drect Billrubin</th>
+            <th style="width: 300px;">Total Protein</th>
+            <th style="width: 150px;">Ambumin</th>
+            <th style="width: 187px;">Globulin</th>
+            <th style="width: 387px;">ສະຫຼຸບ</th>
+            <th style="width: 350px;">ຄຳແນະນຳ</th>
+            <th style="width: 387px;">ສະຫຼຸບພາສາອັງອິດ</th>
+            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງອິດ</th>
+            <th style="width: 350px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
         </tr>
  ';
  $no_ = $rank;
@@ -67,7 +66,7 @@ if(mysqli_num_rows($result_tumor_gttgk_limit) > 0)
 $no_ += 1;
   $output .= '
     <tr>
-         <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["tum_id"].'"></td>
+         <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["id"].'"></td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>
@@ -75,12 +74,11 @@ $no_ += 1;
         <td>'.$row["surname"].'</td>
         <td>'.$row["company"].'</td>
         <td>'.$row["year"].'</td>
-        <td>'.$row["afp"].'</td>
-        <td>'.$row["cea"].'</td>
-        <td>'.$row["psa"].'</td>
-        <td>'.$row["ca_19"].'</td>
-        <td>'.$row["ca_15"].'</td>
-        <td>'.$row["ca_125"].'</td>
+        <td>'.$row["total_bill"].'</td>
+        <td>'.$row["drect_bill"].'</td>
+        <td>'.$row["protein"].'</td>
+        <td>'.$row["ambumin"].'</td>
+        <td>'.$row["globulin"].'</td>
         <td>'.nl2br($row["conclusion"]).'</td>
         <td>'.nl2br($row["remark"]).'</td>
         <td>'.nl2br($row["conclusion_en"]).'</td>
@@ -195,4 +193,7 @@ var highlight2 = "<?php echo $_POST['querys']; ?>";
 var highlight3 = "<?php echo $_POST['year']; ?>";
 $('.result').highlight([highlight]);
 $('.result').highlight([highlight2]);
+$("#check_all").click(function () {
+     $('input:checkbox').not(this).prop('checked', this.checked);
+ });
 </script>

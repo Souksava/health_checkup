@@ -40,27 +40,30 @@ if(mysqli_num_rows($result_checkup_status_limit) > 0)
   <table class="table-bordered" style="width: 4700px;text-align: center;">
     <tr style="font-size: 18px;">
         <th style="width: 60px;">N0.</th>
-        <th style="width: 120px;">ບຣາໂຄດ</th>
+        <th style="width: 150px;">ບຣາໂຄດ</th>
         <th style="width: 350px;">ຊື່</th>
         <th style="width: 150px;">ນາມສະກຸນ</th>
         <th style="width: 350px;">ບໍລິສັດ</th>
         <th style="width: 120px;">ປີເຂົ້າກວດ</th>
-        <th style="width: 150px;">PE</th>
-        <th style="width: 150px;">CBC</th>
-        <th style="width: 150px;">Biochemistry</th>
-        <th style="width: 150px;">Urine</th>
-        <th style="width: 150px;">Methamphetamine</th>
-        <th style="width: 150px;">Thryroid</th>
-        <th style="width: 150px;">Stool Exam</th>
-        <th style="width: 150px;">Heavy Metal</th>
-        <th style="width: 150px;">Tumor Marker</th>
-        <th style="width: 150px;">Oc Vision</th>
-        <th style="width: 150px;">Audio</th>
-        <th style="width: 150px;">Spiro</th>
-        <th style="width: 150px;">X-Ray</th>
+        <th style="width: 150px;">ກວດຮ່າງກາຍທົ່ວໄປ</th>
+        <th style="width: 150px;">ກວດເລືອດລວມ</th>
+        <th style="width: 150px;">ກວດເລືອດຊີວະເຄມີ</th>
+        <th style="width: 150px;">ກວດປັດສະວະ</th>
+        <th style="width: 150px;">ກວດສານເສບຕິດ</th>
+        <th style="width: 150px;">ກວດຕ໋ອມຄໍ</th>
+        <th style="width: 150px;">ກວດອາຈົມ</th>
+        <th style="width: 250px;">ກວດໂລຫະໜັກ, ສານພິດ</th>
+        <th style="width: 150px;">ກວດຕ໋ອມມະເຮັງ</th>
+        <th style="width: 150px;">ກວດການເບິ່ງເຫັນ</th>
+        <th style="width: 250px;">ກວດສະມັດຕະພາບການໄດ້ຍິນ</th>
+        <th style="width: 350px;">ກວດສອບສະມັດຕະພາບທາງປອດ</th>
+        <th style="width: 150px;">ສ່ອງໄຟຟ້າຜົ້າເອິກ</th>
         <th style="width: 150px;">ພູມຄຸ້ມກັນວິທະຍາ</th>
-        <th style="width: 150px;">EKG</th>
-        <th style="width: 150px;">Muscle</th>
+        <th style="width: 250px;">ການແທກຄື້ນໄຟຟ້າຫົວໃຈ</th>
+        <th style="width: 250px;">ກວດທົດສອບສະມັດຕະພາບກ້າມ</th>
+        <th style="width: 150px;">ກວດເອໂກ້ທ້ອງ</th>
+        <th style="width: 150px;">ກວດບົ່ງຊີ້ຕ໋ອມມະເຮັງ</th>
+        <th style="width: 150px;">ທົດສອບສາຍຕາ</th>
     </tr>
  ';
  $no_ =  $rank;
@@ -172,6 +175,24 @@ $no_ += 1;
          else{
             $row["muscle"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
          }
+         if($row["ultra"] == 1){
+            $row["ultra"] = "<i class='fa fa-calendar-check' style='color: green;'></i>";
+         }
+         else{
+            $row["ultra"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
+         }
+         if($row["tumor_gttgk"] == 1){
+            $row["tumor_gttgk"] = "<i class='fa fa-calendar-check' style='color: green;'></i>";
+         }
+         else{
+            $row["tumor_gttgk"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
+         }
+         if($row["test_vision"] == 1){
+            $row["test_vision"] = "<i class='fa fa-calendar-check' style='color: green;'></i>";
+         }
+         else{
+            $row["test_vision"] = "<i class='fa fa-exclamation-circle' style='color: red;'></i>";
+         }
         $output .='
         <td>'.$row["physic"].'</td>
         <td>'.$row["cbc"].'</td>
@@ -189,6 +210,9 @@ $no_ += 1;
         <td>'.$row["intt"].'</td>
         <td>'.$row["ekg"].'</td>
         <td>'.$row["muscle"].'</td>
+        <td>'.$row["ultra"].'</td>
+        <td>'.$row["tumor_gttgk"].'</td>
+        <td>'.$row["test_vision"].'</td>
     </tr>
   ';
  }

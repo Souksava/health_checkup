@@ -9,18 +9,18 @@
         <table class="table" border="1" style="width: 1500px;font-size: 18px;font-family: '."Phetsarath OT".';">
             <tr style="font-size: 18px;">
                 <th style="width: 80px;">N0.</th>
-                <th style="width: 150px;">Barcode</th>
+                <th style="width: 150px;">ບຣາໂຄດ</th>
                 <th style="width: 200px;">ລະຫັດພະນັກງານ</th>
                 <th style="width: 450px;">ຊື່</th>
                 <th style="width: 350px;">ນາມສະກຸນ</th>
                 <th style="width: 450px;">ບໍລິສັດ</th>
                 <th style="width: 150px;">ປີເຂົ້າກວດ</th>
                 <th style="width: 250px;">Muscle</th>
-                <th style="width: 250px;">Conclusion</th>
-                <th style="width: 450px;">Remark</th>
-                <th style="width: 250px;">Muscle EN</th>
-                <th style="width: 387px;">Conclusion EN</th>
-                <th style="width: 250px;">Username</th>
+                <th style="width: 387px;">ສະຫຼຸບ</th>
+                <th style="width: 350px;">ຄຳແນະນຳ</th>
+                <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
+                <th style="width: 350px;">ຄຳແນະນຳພາສາອັງກິດ</th>
+                <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
             </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_muscle('$company','$name','$year')");
