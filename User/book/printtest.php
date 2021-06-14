@@ -24,7 +24,7 @@ $year3 = $_POST["year3"];
 $yearconclusion = $_POST["year4"];
 
 
-$emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,time,family_stt,tel,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
+$emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,time,family_stt,tel,queue,current_address,road,email FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
 $fetch_emp = mysqli_fetch_array($emp,MYSQLI_ASSOC);
 if(mysqli_num_rows($emp)==0)
 {
@@ -48,6 +48,9 @@ if(mysqli_num_rows($emp)==0)
     $district = "";
     $province = "";
     $tel = "";
+    $current_address = "";
+    $road = "";
+    $email = "";
 }
 else
 {
@@ -71,6 +74,9 @@ else
     $district = $fetch_emp["district"];
     $province = $fetch_emp["province"];
     $tel = $fetch_emp["tel"];
+    $current_address = $fetch_emp["current_address"];
+    $road = $fetch_emp["road"];
+    $email = $fetch_emp["email"];
 }
 $pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$yearconclusion';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
@@ -1317,7 +1323,7 @@ else {
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b style="color: black;"><?php echo ""?></b>
+                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b style="color: black;"><?php echo $current_address?></b>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -1329,7 +1335,7 @@ else {
                         </div>
                         <div class="col-sm-5">
                             <div>
-                                ຖະໜົນ/Road: &nbsp;&nbsp; <b style="color: black;"><?php echo "";?></b>
+                                ຖະໜົນ/Road: &nbsp;&nbsp; <b style="color: black;"><?php echo $road;?></b>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -1354,7 +1360,7 @@ else {
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <b style="color: black;"><?php echo "";?></b>
+                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <b style="color: black;"><?php echo $email;?></b>
                             </div>
                         </div>
                     </div>

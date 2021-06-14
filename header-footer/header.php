@@ -161,6 +161,15 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
+                        <a href="<?php echo $links ?>Import/Import" class="nav-link">
+                            <i class="nav-icon fas fa-file-import"></i>
+                            <p>
+                                ນຳເຂົ້າຂໍ້ມູນ
+                                <i class="fas"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-md"></i>
                             <p>
