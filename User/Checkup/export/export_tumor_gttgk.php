@@ -8,20 +8,18 @@
         $output = ' 
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
-            <th style="width: 50px;">N0.</th>
+            <th style="width: 90px;">No.</th>
             <th style="width: 150px;">ບຣາໂຄດ</th>
-            <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 450px;">ຊື່</th>
             <th style="width: 250px;">ນາມສະກຸນ</th>
-            <th style="width: 350px;">ບໍລິສັດ</th>
+            <th style="width: 450px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 287px;">FVC(MEANS)</th>
-            <th style="width: 250px;">FVC(PREDICT)</th>
-            <th style="width: 287px;">FVC(%PREDICTS)</th>
-            <th style="width: 250px;">FEV1(MEANS)</th>
-            <th style="width: 287px;">FEV1(PREDICT)</th>
-            <th style="width: 250px;">FEV1(%PREDICT)</th>
-            <th style="width: 250px;">FEC1/FVC%</th>
+            <th style="width: 350px;">Total Billrubin</th>
+            <th style="width: 300px;">Drect Billrubin</th>
+            <th style="width: 300px;">Total Protein</th>
+            <th style="width: 150px;">Ambumin</th>
+            <th style="width: 187px;">Globulin</th>
             <th style="width: 387px;">ສະຫຼຸບ</th>
             <th style="width: 350px;">ຄຳແນະນຳ</th>
             <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
@@ -29,7 +27,7 @@
             <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
         </tr> 
         ';
-       $resultexport = mysqli_query($conn,"call select_spiro('$company','$name','$year')");
+       $resultexport = mysqli_query($conn,"call select_tumor_gttgk('$company','$name','$year')");
         $no_ = 0;
         foreach($resultexport as $row){
             $no_ += 1;
@@ -42,13 +40,11 @@
                 <td>'.$row["surname"].'</td>
                 <td>'.$row["company"].'</td>
                 <td>'.$row["year"].'</td>
-                <td>'.$row["fvc_means"].'</td>
-                <td>'.$row["fvc_predict"].'</td>
-                <td>'.$row["fvc_predicts"].'</td>
-                <td>'.$row["fevi_means"].'</td>
-                <td>'.$row["fevi_predict"].'</td>
-                <td>'.$row["fevi_predicts"].'</td>
-                <td>'.$row["fevi_fvc"].'</td>
+                <td>'.$row["total_bill"].'</td>
+                <td>'.$row["drect_bill"].'</td>
+                <td>'.$row["protein"].'</td>
+                <td>'.$row["ambumin"].'</td>
+                <td>'.$row["globulin"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
                 <td>'.$row["conclusion_en"].'</td>
@@ -59,7 +55,7 @@
         }
         $output .= '</table>';
         header("Content-Type: application/xls");
-        header("Content-Disposition:attachment; filename=export_Spiro.xls");
+        header("Content-Disposition:attachment; filename=export_Tumor_marker_gttgk.xls");
         echo $output;
     }
 

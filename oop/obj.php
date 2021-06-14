@@ -896,6 +896,17 @@ class obj{
         global $result_tumor_gttgk_limit;
         $result_tumor_gttgk_limit = mysqli_query($conn,"call select_tumor_gttgk_limit('$company','$name','$year','$page');");
     }
+    public static function select_test_vision($company,$name,$year){
+        global $conn;
+        global $result_test_vision;
+        $result_test_vision = mysqli_query($conn,"call select_test_vision('$company','$name','$year');");
+    }
+
+    public static function select_test_vision_limit($company,$name,$year,$page){
+        global $conn;
+        global $result_test_vision_limit;
+        $result_test_vision_limit = mysqli_query($conn,"call select_test_vision_limit('$company','$name','$year','$page');");
+    }
 
 
     public static function import_pe($file_path,$year,$user_id){
@@ -956,14 +967,45 @@ class obj{
                     $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
                     $conclusion_en = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
                     $remark_en = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
-                    $result = mysqli_query($conn,"call insert_pe('$barcode','$year','$hpis','$pmhis','$personals','$familys','$asis','$heights','$weights','$bmis','$bps','$pulses','$abos','$eyes','$teeths','$ears','$lymphs','$thyroids','$extremitiess','$skin','$hears','$lungs','$alss','$others','$breat','$conclusions','$remarks','$user_id')");
+                    $result = mysqli_query($conn,"call insert_tumor_gttgk('$barcode','$year','$total_bill','$drect_bill','$total_protein','$ambumin','$globulin','$conclusion','$remark','$conclusion_en','$remark_en','$user_id')");
                     mysqli_free_result($result);  
                     mysqli_next_result($conn);
-                    mysqli_query($conn,"update checkup_status set physic='1' where barcode='$barcode' and year='$year'");
+                    mysqli_query($conn,"update checkup_status set tumor_gttgk='1' where barcode='$barcode' and year='$year'");
             }
         }
         echo"<script>";
-        echo"window.location.href='Physical?import=success';";
+        echo"window.location.href='Tumor-Gttgk?import=success';";
+        echo"</script>";
+    }
+    public static function import_test_vision($file_path,$year,$user_id){
+        global $conn;
+        $objPHPExcel = PHPExcel_IOFactory::load($file_path);
+        foreach($objPHPExcel->getWorksheetIterator() as $worksheet){
+            $highestRow = $worksheet->getHighestRow();
+            for($row=2; $row<=$highestRow;$row++){
+                    $barcode = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                    $r_short = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                    $r_long = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                    $r_tited = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                    $r_color = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                    $r_conclusion = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                    $l_short = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                    $l_long = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                    $l_tited = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                    $l_color = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                    $l_conclusion = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                    $conclusion = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
+                    $remark = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
+                    $conclusion_en = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
+                    $remark_en = mysqli_real_escape_string($conn, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                    $result = mysqli_query($conn,"call insert_test_vision('$barcode','$year','$r_short','$r_long','$r_tited','$r_color','$r_conclusion','$l_short','$l_long','$l_tited','$l_color','$l_conclusion','$conclusion','$remark','$conclusion_en','$remark_en','$user_id')");
+                    mysqli_free_result($result);  
+                    mysqli_next_result($conn);
+                    mysqli_query($conn,"update checkup_status set test_vision='1' where barcode='$barcode' and year='$year'");
+            }
+        }
+        echo"<script>";
+        echo"window.location.href='Test-Vision?import=success';";
         echo"</script>";
     }
     public static function update_pe($file_path,$year){

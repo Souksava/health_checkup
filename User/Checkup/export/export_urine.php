@@ -9,7 +9,7 @@
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
             <th style="width: 87px;">No.</th>
-            <th style="width: 150px;">Barcode</th>
+            <th style="width: 150px;">ບຣາໂຄດ</th>
             <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 350px;">ຊື່</th>
             <th style="width: 150px;">ນາມສະກຸນ</th>
@@ -26,11 +26,11 @@
             <th style="width: 187px;">WBC/Hpf</th>
             <th style="width: 150px;">RBC/Hpf</th>
             <th style="width: 287px;">Epithelium/Hpf</th>
-            <th style="width: 450px;">Conclusion</th>
-            <th style="width: 487px;">Remark</th>
-            <th style="width: 487px;">Conclusion EN</th>
-            <th style="width: 450px;">Remark EN</th>
-            <th style="width: 250px;">Username</th>
+            <th style="width: 387px;">ສະຫຼຸບ</th>
+            <th style="width: 350px;">ຄຳແນະນຳ</th>
+            <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
+            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງກິດ</th>
+            <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_urine('$company','$name','$year')");

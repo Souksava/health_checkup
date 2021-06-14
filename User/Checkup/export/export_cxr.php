@@ -9,7 +9,7 @@
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
             <tr style="font-size: 18px;">
                 <th style="width: 90px;">N0.</th>
-                <th style="width: 180px;">Barcode</th>
+                <th style="width: 180px;">ບຣາໂຄດ</th>
                 <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
                 <th style="width: 400px;">ຊື່</th>
                 <th style="width: 250px;">ນາມສະກຸນ</th>
@@ -25,11 +25,11 @@
                 <th style="width: 150px;">PAP Smear</th>
                 <th style="width: 187px;">Calcium</th>
                 <th style="width: 150px;">Phosphorus</th>
-                <th style="width: 450px;">Conclusion</th>
-                <th style="width: 150px;">Remark</th>
-                <th style="width: 487px;">Conclusion EN</th>
-                <th style="width: 450px;">Remark EN</th>
-                <th style="width: 450px;">Username</th>
+                <th style="width: 387px;">ສະຫຼຸບ</th>
+                <th style="width: 350px;">ຄຳແນະນຳ</th>
+                <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
+                <th style="width: 350px;">ຄຳແນະນຳພາສາອັງກິດ</th>
+                <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
             
             </tr> 
         ';

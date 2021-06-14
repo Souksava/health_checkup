@@ -40,9 +40,9 @@ if(mysqli_num_rows($result_se_limit) > 0)
  <div class="table-responsive">
     <table class="table-bordered" style="width: 8000px;text-align: center;">
         <tr style="font-size: 18px;">
-            <th style="width: 87px;">ເຄື່ອງມື</th>
+            <th style="width: 150px;"><input type="checkbox" id="check_all" value=""></th>
             <th style="width: 80px;">N0.</th>
-            <th style="width: 150px;">Barcode</th>
+            <th style="width: 150px;">ບຣາໂຄດ</th>
             <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 350px;">ຊື່</th>
             <th style="width: 250px;">ນາມສະກຸນ</th>
@@ -57,11 +57,11 @@ if(mysqli_num_rows($result_se_limit) > 0)
             <th style="width: 250px;">Shigella Spp</th>
             <th style="width: 287px;">Vivrio Spp</th>
             <th style="width: 350px;">Vibrio Cholera 01</th>
-            <th style="width: 287px;">Conclusion</th>
-            <th style="width: 250px;">Remark</th>
-            <th style="width: 287px;">Conclusion EN</th>
-            <th style="width: 250px;">Remark EN</th>
-            <th style="width: 250px;">Username</th>
+            <th style="width: 387px;">ສະຫຼຸບ</th>
+            <th style="width: 350px;">ຄຳແນະນຳ</th>
+            <th style="width: 387px;">ສະຫຼຸບພາສາອັງອິດ</th>
+            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງອິດ</th>
+            <th style="width: 350px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
         </tr>
  ';
  $no_ = $rank;
@@ -202,44 +202,7 @@ var highlight3 = "<?php echo $_POST['year']; ?>";
 $('.result').highlight([highlight]);
 $('.result').highlight([highlight2]);
 $('.result').highlight([highlight3]);
-// $('.double_barcode').on('dblclick', function() {
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-
-//         console.log(data);
-//         $('#print_barcode2').val(data[0]);
-//         $('#barcode_id2').val(data[3]);
-//         document.getElementById("formBarcode").action = "barcode";
-//         document.getElementById("formBarcode").submit();
-// });
-
-//    $('.btnDelete_register').on('click', function() {
-//         $('#exampleModalDeleteRegiter').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#delete_register').val(data[0]);
-//     });
-//     $('.btnPrint').on('click', function() {
-//         $('#exampleModalPrint').modal('show');
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#print_barcode').val(data[0]);
-//         $('#barcode_id').val(data[3]);
-//     });
-//     $('.btnAddmorepackage').on('click', function() {
-//         $tr = $(this).closest('tr');
-//         var data = $tr.children("td").map(function() {
-//             return $(this).text();
-//         }).get();
-//         console.log(data);
-//         $('#reg_id').val(data[0]);
-//     });
+$("#check_all").click(function () {
+     $('input:checkbox').not(this).prop('checked', this.checked);
+ });
 </script>

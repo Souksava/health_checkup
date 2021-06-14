@@ -15,19 +15,24 @@
             <th style="width: 250px;">ນາມສະກຸນ</th>
             <th style="width: 450px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 350px;">Alpha-Fetoprotein(AFP)</th>
-            <th style="width: 500px;">Carcino Embrionic Antigen(CEA)</th>
-            <th style="width: 500px;">Prostate-Specific Antigen(PSA)</th>
-            <th style="width: 150px;">CA 19-9</th>
-            <th style="width: 187px;">CA 15-3</th>
-            <th style="width: 150px;">CA 125</th>
+            <th style="width: 350px;">ຕາຂວາ ສາຍຕາສັ້ນ</th>
+            <th style="width: 300px;">ຕາຂວາ ສາຍຕາຍາວ</th>
+            <th style="width: 300px;">ຕາຂວາ ສາຍຕາອຽງ</th>
+            <th style="width: 150px;">ຕາຂວາ ຕາບອດສີ</th>
+            <th style="width: 187px;">ສະຫຼູບຕາຂວາ</th>
+            <th style="width: 350px;">ຕາຊ້າຍ ສາຍຕາສັ້ນ</th>
+            <th style="width: 300px;">ຕາຊ້າຍ ສາຍຕາຍາວ</th>
+            <th style="width: 300px;">ຕາຊ້າຍ ສາຍຕາອຽງ</th>
+            <th style="width: 150px;">ຕາຊ້າຍ ຕາບອດສີ</th>
+            <th style="width: 187px;">ສະຫຼູບຕາຊ້າຍ</th>
             <th style="width: 387px;">ສະຫຼຸບ</th>
             <th style="width: 350px;">ຄຳແນະນຳ</th>
-            <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
-            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງກິດ</th>
-            <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
+            <th style="width: 387px;">ສະຫຼຸບພາສາອັງອິດ</th>
+            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງອິດ</th>
+            <th style="width: 350px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
+        </tr> 
         ';
-       $resultexport = mysqli_query($conn,"call select_tumor_marker('$company','$name','$year')");
+       $resultexport = mysqli_query($conn,"call select_test_vision('$company','$name','$year')");
         $no_ = 0;
         foreach($resultexport as $row){
             $no_ += 1;
@@ -40,12 +45,16 @@
                 <td>'.$row["surname"].'</td>
                 <td>'.$row["company"].'</td>
                 <td>'.$row["year"].'</td>
-                <td>'.$row["afp"].'</td>
-                <td>'.$row["cea"].'</td>
-                <td>'.$row["psa"].'</td>
-                <td>'.$row["ca_19"].'</td>
-                <td>'.$row["ca_15"].'</td>
-                <td>'.$row["ca_125"].'</td>
+                <td>'.$row["r_short"].'</td>
+                <td>'.$row["r_long"].'</td>
+                <td>'.$row["r_tited"].'</td>
+                <td>'.$row["r_color"].'</td>
+                <td>'.$row["r_conclusion"].'</td>
+                <td>'.$row["l_short"].'</td>
+                <td>'.$row["l_long"].'</td>
+                <td>'.$row["r_tited"].'</td>
+                <td>'.$row["l_color"].'</td>
+                <td>'.$row["l_conclusion"].'</td>
                 <td>'.$row["conclusion"].'</td>
                 <td>'.$row["remark"].'</td>
                 <td>'.$row["conclusion_en"].'</td>
@@ -56,7 +65,7 @@
         }
         $output .= '</table>';
         header("Content-Type: application/xls");
-        header("Content-Disposition:attachment; filename=export_Tumor.xls");
+        header("Content-Disposition:attachment; filename=export_test_vision.xls");
         echo $output;
     }
 

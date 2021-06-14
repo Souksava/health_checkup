@@ -9,7 +9,7 @@
         <table class="table" border="1" style="width: 80000px;font-size: 18px;font-family: '."Phetsarath OT".';">
         <tr style="font-size: 18px;">
             <th style="width: 90px;">N0.</th>
-            <th style="width: 250px;">Barcode</th>
+            <th style="width: 250px;">ບຣາໂຄດ</th>
             <th style="width: 250px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 450px;">ຊື່</th>
             <th style="width: 250px;">ນາມສະກຸນ</th>
@@ -21,11 +21,11 @@
             <th style="width: 450px;">ກວດສອບສົມດຸນຂອງກ້າາມຊີ້ນຕາ</th>
             <th style="width: 487px;">ກວດສອບຄວາມສາມາດແຍກສີ</th>
             <th style="width: 250px;">ການກວລັດສະໝີ</th>
-            <th style="width: 487px;">ສະຫຼຸບ</th>
-            <th style="width: 450px;">ໝາຍເຫດ</th>
-            <th style="width: 487px;">Conclusion EN</th>
-            <th style="width: 450px;">Remark EN</th>
-            <th style="width: 450px;">Username</th>
+            <th style="width: 387px;">ສະຫຼຸບ</th>
+            <th style="width: 350px;">ຄຳແນະນຳ</th>
+            <th style="width: 387px;">ສະຫຼຸບພາສາອັງກິດ</th>
+            <th style="width: 350px;">ຄຳແນະນຳພາສາອັງກິດ</th>
+            <th style="width: 150px;">ຜູ້ນຳເຂົ້າຂໍ້ມູນ</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_oc_vision('$company','$name','$year')");

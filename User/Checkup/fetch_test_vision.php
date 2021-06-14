@@ -21,11 +21,11 @@
    $highlight = $_POST["query"];
    $highlight2 = $_POST["querys"];
    $highlight3 = $_POST["year"];
-   $obj->select_metham_limit("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%",$page);
+   $obj->select_test_vision_limit("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%",$page);
 }
 else
 {
-   $obj->select_metham_limit("%%", "%%", "%%", $page);
+   $obj->select_test_vision_limit("%%", "%%", "%%", $page);
 }
 // $output .= '
 // <style>
@@ -34,21 +34,30 @@ else
 //    }
 // </style>
 // ';
-if(mysqli_num_rows($result_metham_limit) > 0)
+if(mysqli_num_rows($result_test_vision_limit) > 0)
 {
  $output .= '
  <div class="table-responsive">
-    <table class="table-bordered" style="width: 4000px;text-align: center;">
+    <table class="table-bordered" style="width: 6000px;text-align: center;">
         <tr style="font-size: 18px;">
             <th style="width: 150px;"><input type="checkbox" id="check_all" value=""></th>
-            <th style="width: 90px;">N0.</th>
+            <th style="width: 80px;">N0.</th>
             <th style="width: 150px;">ບຣາໂຄດ</th>
-            <th style="width: 250px;">ລະຫັດພະນັກງນ</th>
-            <th style="width: 350px;">ຊື່</th>
-            <th style="width: 150px;">ນາມສະກຸນ</th>
-            <th style="width: 350px;">ບໍລິສັດ</th>
+            <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 450px;">ຊື່</th>
+            <th style="width: 350px;">ນາມສະກຸນ</th>
+            <th style="width: 450px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
-            <th style="width: 287px;">Methaphetamine</th>
+            <th style="width: 350px;">ຕາຂວາ ສາຍຕາສັ້ນ</th>
+            <th style="width: 300px;">ຕາຂວາ ສາຍຕາຍາວ</th>
+            <th style="width: 300px;">ຕາຂວາ ສາຍຕາອຽງ</th>
+            <th style="width: 150px;">ຕາຂວາ ຕາບອດສີ</th>
+            <th style="width: 187px;">ສະຫຼູບຕາຂວາ</th>
+            <th style="width: 350px;">ຕາຊ້າຍ ສາຍຕາສັ້ນ</th>
+            <th style="width: 300px;">ຕາຊ້າຍ ສາຍຕາຍາວ</th>
+            <th style="width: 300px;">ຕາຊ້າຍ ສາຍຕາອຽງ</th>
+            <th style="width: 150px;">ຕາຊ້າຍ ຕາບອດສີ</th>
+            <th style="width: 187px;">ສະຫຼູບຕາຊ້າຍ</th>
             <th style="width: 387px;">ສະຫຼຸບ</th>
             <th style="width: 350px;">ຄຳແນະນຳ</th>
             <th style="width: 387px;">ສະຫຼຸບພາສາອັງອິດ</th>
@@ -57,12 +66,12 @@ if(mysqli_num_rows($result_metham_limit) > 0)
         </tr>
  ';
  $no_ = $rank;
- while($row = mysqli_fetch_array($result_metham_limit))
+ while($row = mysqli_fetch_array($result_test_vision_limit))
  {
 $no_ += 1;
   $output .= '
     <tr>
-    <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["meth_id"].'"></td>
+         <td><input type="checkbox" id="" name="id_delete[]" value="'.$row["test_id"].'"></td>
         <td>'.$no_.'</td>
         <td>'.$row["barcode"].'</td>
         <td>'.$row["emp_id"].'</td>
@@ -70,7 +79,16 @@ $no_ += 1;
         <td>'.$row["surname"].'</td>
         <td>'.$row["company"].'</td>
         <td>'.$row["year"].'</td>
-        <td>'.$row["methamphetamine"].'</td>
+        <td>'.$row["r_short"].'</td>
+        <td>'.$row["r_long"].'</td>
+        <td>'.$row["r_tited"].'</td>
+        <td>'.$row["r_color"].'</td>
+        <td>'.$row["r_conclusion"].'</td>
+        <td>'.$row["l_short"].'</td>
+        <td>'.$row["l_long"].'</td>
+        <td>'.$row["r_tited"].'</td>
+        <td>'.$row["l_color"].'</td>
+        <td>'.$row["l_conclusion"].'</td>
         <td>'.nl2br($row["conclusion"]).'</td>
         <td>'.nl2br($row["remark"]).'</td>
         <td>'.nl2br($row["conclusion_en"]).'</td>
@@ -79,7 +97,7 @@ $no_ += 1;
     </tr>
   ';
  }
- mysqli_free_result($result_metham_limit);  
+ mysqli_free_result($result_test_vision_limit);  
  mysqli_next_result($conn);
  $output .='
    </table>
@@ -88,14 +106,14 @@ $no_ += 1;
  echo $output;
  if(isset($_POST["query"]) || isset($_POST["querys"]) || isset($_POST["year"]))
 {
-   $obj->select_metham("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%");
+   $obj->select_test_vision("%".trim($_POST['query'])."%","%".trim($_POST['querys'])."%", "%".trim($_POST['year'])."%");
 }
 else
 {
-   $obj->select_metham("%%", "%%", "%%");
+   $obj->select_test_vision("%%", "%%", "%%");
 }
- $count = mysqli_num_rows($result_metham);
- mysqli_free_result($result_metham);  
+ $count = mysqli_num_rows($result_test_vision);
+ mysqli_free_result($result_test_vision);  
  mysqli_next_result($conn);
  $a = ceil($count/100);
  if(isset($_POST['page'])){
@@ -185,7 +203,6 @@ var highlight2 = "<?php echo $_POST['querys']; ?>";
 var highlight3 = "<?php echo $_POST['year']; ?>";
 $('.result').highlight([highlight]);
 $('.result').highlight([highlight2]);
-$('.result').highlight([highlight3]);
 $("#check_all").click(function () {
      $('input:checkbox').not(this).prop('checked', this.checked);
  });
