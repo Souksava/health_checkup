@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jun 14, 2021 at 07:29 AM
+=======
+-- Generation Time: Jun 14, 2021 at 05:22 AM
+>>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -866,8 +870,13 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`) VALUES
+<<<<<<< HEAD
 (128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, 1, 1),
 (129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL),
+=======
+(128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
+(129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL),
+>>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 (130, '209062101269', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 1, 1, NULL);
 
 -- --------------------------------------------------------
@@ -3939,6 +3948,13 @@ CREATE TABLE `tumor_gttgk` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `tumor_gttgk`
+--
+
+INSERT INTO `tumor_gttgk` (`id`, `barcode`, `year`, `total_bill`, `drect_bill`, `protein`, `ambumin`, `globulin`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(3, '209062101293', 2021, 'safs', 'saf', 'safsda', 'safd', 'sadf', 'sf', 'sf', 'saf', 'sadf', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -4417,7 +4433,11 @@ ALTER TABLE `thryroid`
 -- AUTO_INCREMENT for table `tumor_gttgk`
 --
 ALTER TABLE `tumor_gttgk`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 
 --
 -- AUTO_INCREMENT for table `tumor_marker`
