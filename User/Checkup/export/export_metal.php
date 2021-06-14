@@ -10,11 +10,13 @@
         <tr style="font-size: 18px;">
             <th style="width: 87px;">N0.</th>
             <th style="width: 150px;">Barcode</th>
-            <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
+            <th style="width: 220px;">ລະຫັດພະນັກງານ</th>
             <th style="width: 350px;">ຊື່</th>
-            <th style="width: 250px;">ນາມສະກຸນ</th>
+            <th style="width: 150px;">ນາມສະກຸນ</th>
             <th style="width: 350px;">ບໍລິສັດ</th>
             <th style="width: 150px;">ປີເຂົ້າກວດ</th>
+            <th style="width: 187px;">Lead in blood</th>
+            <th style="width: 387px;">Chromlum in Blood</th>
             <th style="width: 187px;">Ether</th>
             <th style="width: 387px;">Ethyl Ethanoate</th>
             <th style="width: 387px;">Nickle in Blood</th>
@@ -22,21 +24,27 @@
             <th style="width: 387px;">Tin in Blood</th>
             <th style="width: 387px;">Mercury in Blood</th>
             <th style="width: 350px;">Mercury in Urine</th>
-            <th style="width: 487px;">Butoxyacetic Acid in Urine</th>
+            <th style="width: 587px;">Butoxyacetic Acid in Urine</th>
             <th style="width: 350px;">Chromiun in Urine</th>
+            <th style="width: 350px;">Copper in Blood</th>
+            <th style="width: 587px;">Aluminlum in Blood</th>
+            <th style="width: 350px;">Zine in Blood</th>
             <th style="width: 387px;">Iso Propyl Alcoho</th>
-            <th style="width: 350px;">Silica</th>
+            <th style="width: 150px;">Silica</th>
             <th style="width: 550px;">Methy Hippuric acid in Urine</th>
-            <th style="width: 250px;">Acetone in Urine</th>
+            <th style="width: 550px;">Arsenic in Blood</th>
+            <th style="width: 350px;">Acetone in Urine</th>
             <th style="width: 287px;">Toluene in Urine</th>
             <th style="width: 550px;">Methyl lsobutyl Ketone in Urine</th>
             <th style="width: 287px;">Methanoi in Urine</th>
-            <th style="width: 350px;">Phenolic Resin</th>
-            <th style="width: 487px;">Conclusion</th>
-            <th style="width: 450px;">Remark</th>
-            <th style="width: 487px;">Conclusion EN</th>
-            <th style="width: 450px;">Remark EN</th>
-            <th style="width: 250px;">Username</th>
+            <th style="width: 250px;">Phenolic Resin</th>
+            <th style="width: 550px;">Xylene in Urine</th>
+            <th style="width: 287px;">Methyl ethyl ketone in Urine</th>
+            <th style="width: 387px;">Conclusion</th>
+            <th style="width: 350px;">Remark</th>
+            <th style="width: 387px;">Conclusion EN</th>
+            <th style="width: 350px;">Remark EN</th>
+            <th style="width: 150px;">Username</th>
         </tr> 
         ';
        $resultexport = mysqli_query($conn,"call select_heavy_metal('$company','$name','$year')");
@@ -52,6 +60,8 @@
                 <td>'.$row["surname"].'</td>
                 <td>'.$row["company"].'</td>
                 <td>'.$row["year"].'</td>
+                <td>'.$row["lead"].'</td>
+                <td>'.$row["chromlum"].'</td>
                 <td>'.$row["ether"].'</td>
                 <td>'.$row["ethy"].'</td>
                 <td>'.$row["nickle"].'</td>
@@ -61,18 +71,24 @@
                 <td>'.$row["m_i_urine"].'</td>
                 <td>'.$row["b_a_u"].'</td>
                 <td>'.$row["c_u"].'</td>
+                <td>'.$row["copper"].'</td>
+                <td>'.$row["alum"].'</td>
+                <td>'.$row["zine"].'</td>
                 <td>'.$row["alcoho"].'</td>
                 <td>'.$row["silica"].'</td>
                 <td>'.$row["methy"].'</td>
+                <td>'.$row["arsenic"].'</td>
                 <td>'.$row["a_i_urine"].'</td>
                 <td>'.$row["t_i_urine"].'</td>
                 <td>'.$row["methy_urine"].'</td>
                 <td>'.$row["methanoi_urine"].'</td>
                 <td>'.$row["phenolic_resin"].'</td>
-                <td>'.$row["conclusion"].'</td>
-                <td>'.$row["remark"].'</td>
-                <td>'.$row["conclusion_en"].'</td>
-                <td>'.$row["remark_en"].'</td>
+                <td>'.$row["xylene"].'</td>
+                <td>'.$row["m_e_k_i_urine"].'</td>
+                <td>'.nl2br($row["conclusion"]).'</td>
+                <td>'.nl2br($row["remark"]).'</td>
+                <td>'.nl2br($row["conclusion_en"]).'</td>
+                <td>'.nl2br($row["remark_en"]).'</td>
                 <td>'.$row["user_name"].'</td>
             </tr>  
         ';
