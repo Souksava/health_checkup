@@ -8,8 +8,6 @@
 ?>
 
 <style>
-
-
 .file-upload {
     background-color: #ffffff;
     width: 600px;
@@ -123,27 +121,58 @@
 }
 </style>
 
-<form action="" method="POST" id="" target="_blank" style="padding-bottom:150px;margin-top:50px;">
+<form action="Import" method="POST" id="form_import_all" style="padding-bottom:150px;margin-top:50px;" enctype="multipart/form-data">
     <div class="file-upload">
         <input type="text" name="year" id="datepicker" class="form-control datepicker" maxlength="4"
             placeholder="ເລືອກປີ 20xx" aria-describedby="button-addon2" autocomplete="off" style="border">
 
 
         <div class="image-upload-wrap">
-            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <input class="file-upload-input" type='file' name="file_all" onchange="readURL(this);" accept="image/*" />
             <div class="drag-text">
                 <h3>ນຳເຂົ້າຂໍ້ມູນ</h3>
             </div>
         </div>
         <div class="file-upload-content">
-            <img class="file-upload-image" src="#" alt=""/>
+            <img class="file-upload-image" src="#" alt="" />
             <div class="image-title-wrap">
                 <button type="button" onclick="removeUpload()" class="remove-image">ລົບ <span
                         class="image-title">Uploaded Image</span></button>
             </div>
         </div>
         <br>
-        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">ນຳເຂົ້າຂໍ້ມູນ</button>
+        <button class="file-upload-btn" type="button"
+            onclick="$('.file-upload-input').trigger( 'click' )">ນຳເຂົ້າຂໍ້ມູນ</button><br><br>
+        <button type="button" class="btn btn-outline-success" style="width: 100%;" data-toggle="modal"
+            data-target="#exampleModalimpEmp" onclick="">
+            ອັບໂຫຼດ
+        </button>
+    </div>
+
+
+
+    <div class="modal fade" id="exampleModalimpEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ນຳເຂົ້າຂໍ້ມູນ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <p>ທ່ານຕ້ອງການອັບໂຫຼດຟາຍຂໍ້ມູນ ຫຼື ບໍ່ ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
+                    <button type="submit" name="btnImport" id="btnImport" class="btn btn-outline-primary" onclick="">
+                        ອັບໂຫຼດ
+                        <span class="" id="load_import"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </form>
 
@@ -153,6 +182,24 @@
 
 
 <?php
+    if(isset($_POST["year"])){
+        $obj->import_all_file($_FILES["file_all"]["tmp_name"],trim($_POST["year"]),$user_id);
+    }
+    if(isset($_GET["import"])=="success"){
+        echo'<script type="text/javascript">
+        swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
+        </script>';
+      } 
+      if(isset($_GET["year"])=="null"){
+        echo'<script type="text/javascript">
+        swal("", "ກະລຸນາປ້ອນປີກວດ !", "info");
+        </script>';
+      } 
+      if(isset($_GET["file"])=="null"){
+        echo'<script type="text/javascript">
+        swal("", "ກະລຸນາເລືອກຟາຍອັບໂຫຼດ !", "info");
+        </script>';
+      } 
   include ("../../header-footer/footer.php");
 ?>
 
@@ -198,4 +245,19 @@ $('.image-upload-wrap').bind('dragover', function() {
 $('.image-upload-wrap').bind('dragleave', function() {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
+</script>
+<script>
+const myform_import = document.getElementById("form_import_all");
+const load_import = document.getElementById("load_import");
+const btnImport = document.getElementById("btnImport");
+myform_import.addEventListener('submit', (e) => {
+    e.preventDefault();
+    checkInputs_import();
+});
+
+function checkInputs_import() {
+    setloading(load_import, btnImport);
+    document.getElementById("form_import_all").action = "Import";
+    document.getElementById("form_import_all").submit();
+}
 </script>

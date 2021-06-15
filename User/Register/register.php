@@ -116,7 +116,7 @@
         </div>
     </div>
 </div>
-<form action="export_excel.php" method="POST" id="formexport" target="_blank">
+<form action="ExportRegister" method="POST" id="formexport" target="_blank">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="input-group mb-3">

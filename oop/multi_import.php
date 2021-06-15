@@ -1,4 +1,5 @@
 <?php
+class obj{
 public static function import_cbc($file_path,$year,$user_id){
     global $conn;
     // $objPHPExcel = PHPExcel_IOFactory::load($file_path);
@@ -6,7 +7,8 @@ public static function import_cbc($file_path,$year,$user_id){
     //     $highestRow = $worksheet->getHighestRow(0);
     $objReader = PHPExcel_IOFactory::createReader(PHPExcel_IOFactory::identify($file_path));
     $objReader->setReadDataOnly(true);
-    $objPHPExcel = $objReader->load($file_path);    
+    $objPHPExcel = $objReader->load($file_path);  
+
     $sheet = $objPHPExcel->getSheet(0); 
     $highestRow = $sheet->getHighestRow();
         for($row=2; $row<=$highestRow;$row++){
@@ -69,4 +71,6 @@ public static function import_cbc($file_path,$year,$user_id){
     echo"<script>";
     echo"window.location.href='Cbc?import=success';";
     echo"</script>";
+}
+}
 ?>
