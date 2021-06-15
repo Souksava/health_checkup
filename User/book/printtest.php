@@ -158,10 +158,10 @@ else
     $hcv = $fetch_imm["hcv"];
     $vdrl = $fetch_imm["vdrl"];
     $hiv = $fetch_imm["hiv"];
-    $hpylori = $fetch_imm[""];
-    $papSmear = $fetch_imm[""];
-    $immCalcium = $fetch_imm[""];
-    $immPhosphorus = $fetch_imm[""];
+    $hpylori = $fetch_imm["hpylori"];
+    $papSmear = $fetch_imm["pap"];
+    $immCalcium = $fetch_imm["calcium"];
+    $immPhosphorus = $fetch_imm["phosphorus"];
 }
 $imm2 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year2';");
 $fetch_imm2 = mysqli_fetch_array($imm2,MYSQLI_ASSOC);
@@ -173,6 +173,10 @@ if(mysqli_num_rows($imm2)==0)
     $hcv2 = "";
     $vdrl2 = "";
     $hiv2 = "";
+    $hpylori2 = "";
+    $papSmear2 = "";
+    $immCalcium2 = "";
+    $immPhosphorus2 = "";
 }
 else 
 {
@@ -182,6 +186,10 @@ else
     $hcv2 = $fetch_imm2["hcv"];
     $vdrl2 = $fetch_imm2["vdrl"];
     $hiv2 = $fetch_imm2["hiv"];
+    $hpylori2 = $fetch_imm2["hpylori"];
+    $papSmear2 = $fetch_imm2["pap"];
+    $immCalcium2 = $fetch_imm2["calcium"];
+    $immPhosphorus2 = $fetch_imm2["phosphorus"];
 }
 
 
@@ -195,6 +203,10 @@ if(mysqli_num_rows($imm3)==0)
     $hcv3 = "";
     $vdrl3 = "";
     $hiv3 = "";
+    $hpylori3 = "";
+    $papSmear3 = "";
+    $immCalcium3 = "";
+    $immPhosphorus3 = "";
 }
 else 
 {
@@ -204,6 +216,11 @@ else
     $hcv3 = $fetch_imm3["hcv"];
     $vdrl3 = $fetch_imm3["vdrl"];
     $hiv3 = $fetch_imm3["hiv"];
+    $hpylori3 = $fetch_imm2["hpylori"];
+    $papSmear3 = $fetch_imm2["pap"];
+    $immCalcium3 = $fetch_imm2["calcium"];
+    $immPhosphorus3 = $fetch_imm2["phosphorus"];
+
 }
 $imm4 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_imm4 = mysqli_fetch_array($imm4,MYSQLI_ASSOC);
@@ -398,6 +415,21 @@ else
     $ekg_remark = $fetch_ekg["remark"];
 }
 
+$ultrasound = mysqli_query($conn,"SELECT * FROM ultrasound where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_ultrasound = mysqli_fetch_array($ultrasound,MYSQLI_ASSOC);
+if(mysqli_num_rows($ekg)==0)
+{
+    $ultra_name = "";
+    $ultra_conclusion = "";
+    $ultra_remark = "";
+}
+else 
+{
+    $ultra_name = $fetch_ultrasound["ultra_name"];
+    $ultra_conclusion = "ການກວດເອໂກ້ທ້ອງ  : ".$fetch_ultrasound["conclusion"];
+    $ultra_remark = $fetch_ultrasound["remark"];
+}
+
 $bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year';");
 $fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
 if(mysqli_num_rows($bio)==0)
@@ -513,6 +545,38 @@ else
     $bio_remark = $fetch_bio4["remark"];
 }
 
+$test_vision = mysqli_query($conn,"SELECT * FROM test_vision where barcode='$barcode' AND year='$yearconclusion';");
+$fetch_test_vision = mysqli_fetch_array($test_vision,MYSQLI_ASSOC);
+if(mysqli_num_rows($test_vision)==0)
+{
+    $r_short = "";
+    $r_long = "";
+    $r_tited = "";
+    $r_color = "";
+    $r_conclusion = "";
+    $l_short = "";
+    $l_long = "";
+    $l_tited = "";
+    $l_color = "";
+    $l_conclusion = "";
+    $test_vision_conclusion = "";
+    $test_vision_remark = "";
+}
+else 
+{
+    $r_short = $fetch_test_vision["r_short"];
+    $r_long = $fetch_test_vision["r_long"];
+    $r_tited = $fetch_test_vision["r_tited"];
+    $r_color = $fetch_test_vision["r_color"];
+    $r_conclusion = $fetch_test_vision["r_conclusion"];
+    $l_short = $fetch_test_vision["l_short"];
+    $l_long = $fetch_test_vision["l_long"];
+    $l_tited = $fetch_test_vision["l_tited"];
+    $l_color = $fetch_test_vision["l_color"];
+    $l_conclusion = $fetch_test_vision["l_conclusion"];
+    $test_vision_conclusion ="ການກວດສາຍຕາ : " .$fetch_test_vision["conclusion"];
+    $test_vision_remark = $fetch_test_vision["remark"];
+}
 
 $vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_vision = mysqli_fetch_array($vision,MYSQLI_ASSOC);
@@ -625,6 +689,14 @@ if(mysqli_num_rows($metal)==0)
     $methy_urine = "";
     $methanoi_urine = "";
     $phenolic_resin = "";
+    $leadInBlood = "";
+    $chromiumInBlood = "";
+    $copperInBlood = "";
+    $aluminiumInBlood = "";
+    $zineInBlood = "";
+    $arsenicInBlood = "";
+    $xyleneInBlood = "";
+    $methylEthylKetoneInUrine = "";
 }
 else {
     $ether = $fetch_metal["ether"];
@@ -644,6 +716,14 @@ else {
     $methy_urine = $fetch_metal["methy_urine"];
     $methanoi_urine = $fetch_metal["methanoi_urine"];
     $phenolic_resin = $fetch_metal["phenolic_resin"];
+    $leadInBlood = $fetch_metal["lead"];
+    $chromiumInBlood = $fetch_metal["chromlum"];
+    $copperInBlood = $fetch_metal["copper"];
+    $aluminiumInBlood = $fetch_metal["alum"];
+    $zineInBlood = $fetch_metal["zine"];
+    $arsenicInBlood = $fetch_metal["arsenic"];
+    $xyleneInBlood = $fetch_metal["xylene"];
+    $methylEthylKetoneInUrine = $fetch_metal["m_e_k_i_urine"];
 }
 $metal2 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year2';");
 $fetch_metal2 = mysqli_fetch_array($metal2,MYSQLI_ASSOC);
@@ -666,6 +746,14 @@ if(mysqli_num_rows($metal2)==0)
     $methy_urine2 = "";
     $methanoi_urine2 = "";
     $phenolic_resin2 = "";
+    $leadInBlood2 = "";
+    $chromiumInBlood2 = "";
+    $copperInBlood2 = "";
+    $aluminiumInBlood2 = "";
+    $zineInBlood2 = "";
+    $arsenicInBlood2 = "";
+    $xyleneInBlood2 = "";
+    $methylEthylKetoneInUrine2 = "";
 }
 else {
     $ether2 = $fetch_metal2["ether"];
@@ -685,6 +773,14 @@ else {
     $methy_urine2 = $fetch_metal2["methy_urine"];
     $methanoi_urine2 = $fetch_metal2["methanoi_urine"];
     $phenolic_resin2 = $fetch_metal2["phenolic_resin"];
+    $leadInBlood2 = $fetch_metal2["lead"];
+    $chromiumInBlood2 = $fetch_metal2["chromlum"];
+    $copperInBlood2 = $fetch_metal2["copper"];
+    $aluminiumInBlood2 = $fetch_metal2["alum"];
+    $zineInBlood2 = $fetch_metal2["zine"];
+    $arsenicInBlood2 = $fetch_metal2["arsenic"];
+    $xyleneInBlood2 = $fetch_metal2["xylene"];
+    $methylEthylKetoneInUrine2 = $fetch_metal2["m_e_k_i_urine"];
 }
 $metal3 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year3';");
 $fetch_metal3 = mysqli_fetch_array($metal3,MYSQLI_ASSOC);
@@ -707,6 +803,14 @@ if(mysqli_num_rows($metal3)==0)
     $methy_urine3 = "";
     $methanoi_urine3 = "";
     $phenolic_resin3 = "";
+    $leadInBlood3 = "";
+    $chromiumInBlood3 = "";
+    $copperInBlood3 = "";
+    $aluminiumInBlood3 = "";
+    $zineInBlood3 = "";
+    $arsenicInBlood3 = "";
+    $xyleneInBlood3 = "";
+    $methylEthylKetoneInUrine3 = "";
 }
 else {
     $ether3 = $fetch_metal3["ether"];
@@ -726,6 +830,14 @@ else {
     $methy_urine3 = $fetch_metal3["methy_urine"];
     $methanoi_urine3 = $fetch_metal3["methanoi_urine"];
     $phenolic_resin3 = $fetch_metal3["phenolic_resin"];
+    $leadInBlood3 = $fetch_metal3["lead"];
+    $chromiumInBlood3 = $fetch_metal3["chromlum"];
+    $copperInBlood3 = $fetch_metal3["copper"];
+    $aluminiumInBlood3 = $fetch_metal3["alum"];
+    $zineInBlood3 = $fetch_metal3["zine"];
+    $arsenicInBlood3 = $fetch_metal3["arsenic"];
+    $xyleneInBlood3 = $fetch_metal3["xylene"];
+    $methylEthylKetoneInUrine3 = $fetch_metal3["m_e_k_i_urine"];
 }
 $metal4= mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_metal4 = mysqli_fetch_array($metal4,MYSQLI_ASSOC);
@@ -1007,7 +1119,74 @@ else {
     $tumor_remark = $fetch_tumor4["remark"];
 }
 
+
+
+
+$gttgk = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year';");
+$fetch_gttgk = mysqli_fetch_array($gttgk,MYSQLI_ASSOC);
+if(mysqli_num_rows($gttgk)==0)
+{
+    $total_bill = "";
+    $drect_bill = "";
+    $gttgk_protein = "";
+    $ambumin = "";
+    $globulin = "";
+}
+else {
+    $total_bill = $fetch_gttgk["total_bill"];
+    $drect_bill = $fetch_gttgk["drect_bill"];
+    $gttgk_protein = $fetch_gttgk["protein"];
+    $ambumin = $fetch_gttgk["ambumin"];
+    $globulin = $fetch_gttgk["globulin"];
+}
+$gttgk2 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year2';");
+$fetch_gttgk2 = mysqli_fetch_array($gttgk2,MYSQLI_ASSOC);
+if(mysqli_num_rows($gttgk2)==0)
+{
+    $total_bill2 = "";
+    $drect_bill2 = "";
+    $gttgk_protein2 = "";
+    $ambumin2 = "";
+    $globulin2 = "";
+}
+else {
+    $total_bill2 = $fetch_gttgk2["total_bill"];
+    $drect_bill2 = $fetch_gttgk2["drect_bill"];
+    $gttgk_protein2 = $fetch_gttgk2["protein"];
+    $ambumin2 = $fetch_gttgk2["ambumin"];
+    $globulin2 = $fetch_gttgk2["globulin"];
+}
+$gttgk3 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year3';");
+$fetch_gttgk3 = mysqli_fetch_array($gttgk3,MYSQLI_ASSOC);
+if(mysqli_num_rows($gttgk3)==0)
+{
+    $total_bill3 = "";
+    $drect_bill3 = "";
+    $gttgk_protein3 = "";
+    $ambumin3 = "";
+    $globulin3 = "";
+}
+else {
+    $total_bill3 = $fetch_gttgk3["total_bill"];
+    $drect_bill3 = $fetch_gttgk3["drect_bill"];
+    $gttgk_protein3 = $fetch_gttgk3["protein"];
+    $ambumin3 = $fetch_gttgk3["ambumin"];
+    $globulin3 = $fetch_gttgk3["globulin"];
+}
+$gttgk4 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year4';");
+$fetch_gttgk4 = mysqli_fetch_array($gttgk4,MYSQLI_ASSOC);
+if(mysqli_num_rows($gttgk4)==0)
+{
+    $gttgk_conclusion = "";
+    $gttgk_remark = "";
+}
+else {
+    $gttgk_conclusion = $fetch_gttgk4["conclusion"];
+    $gttgk_remark = $fetch_gttgk4["remark"];
+}
+
 ?>
+
 
 <body>
 
@@ -1188,9 +1367,9 @@ else {
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_conclusion);?>
                         </div>
-                        <div class="col-sm-12" style="color: black;">
+                        <!-- <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_remark);?>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($spiro_conclusion);?>
                         </div>
@@ -1200,15 +1379,21 @@ else {
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_conclusion);?>
                         </div>
-                        <div class="col-sm-12" style="color: black;">
+                        <!-- <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_remark);?>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_conclusion);?>
                         </div>
-                        <div class="col-sm-12" style="color: black;">
+                        <!-- <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_remark);?>
+                        </div> -->
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($ultra_conclusion);?>
                         </div>
+                        <!-- <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($ultra_remark);?>
+                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($imm_conclusion);?>
                         </div>
@@ -1220,6 +1405,12 @@ else {
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($stool_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($gttgk_conclusion);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($gttgk_remark);?>
                         </div>
                     </div>
                 </div>
@@ -1533,7 +1724,7 @@ else {
                     <br>
                     <br>
                     <div class="col-sm-12">
-                        ສະຫຼູບແລະຄຳເຫັນຂອງແພດກວດກາ/Conclusion and Recommendation
+                        ***ສະຫຼູບແລະຄຳເຫັນຂອງແພດກວດກາ/Conclusion and Recommendation
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($pe_conclusion);?></b>
@@ -1560,83 +1751,89 @@ else {
                             <tr style="text-align:center">
                                 <th>ລາຍການ (Items)</th>
                                 <th> </th>
-                                <!-- <th> <?php echo $year; ?> <br> Results </th> -->
+                                <th> <?php echo $year; ?> <br> Results </th>
                                 <th><?php echo $year2; ?> <br> Results</th>
-                                <th><?php echo $year3; ?> <br> Results</th>
+                                <!-- <th><?php echo $year3; ?> <br> Results</th> -->
                                 <th>ຄ່າປົກກະຕຶ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Anti HAV-IgM</td>
+                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hav;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hav2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hav3;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hav3;?></b></td> -->
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HBsAg</td>
                                 <th>ກວດຫາເຊື້ອໄວຣັສບີ</th>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $ag;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ag;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ag2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $ag3;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $ag3;?></b></td> -->
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HBsAb</td>
                                 <th>ກວດຫາພູມໄວຣັສບີ</th>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $ab;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ab;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ab2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $ab3;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $ab3;?></b></td> -->
                                 <td style="text-align:center">Positive</td>
                             </tr>
                             <tr>
                                 <td>Anti-HCV</td>
                                 <th>ກວດຫາເຊື້ອໄວຣັສຊີ</th>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hcv;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hcv;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hcv2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hcv3;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hcv3;?></b></td> -->
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>VDRL</td>
                                 <th>ກວດຫາເຊື້ອຊີຟີຮິດ</th>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $vdrl;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $vdrl;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $vdrl2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $vdrl3;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $vdrl3;?></b></td> -->
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HIV</td>
+                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td> -->
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HPylori</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
+                                <td></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hpylori;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hpylori2;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hpylori3;?></b></td> -->
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>PAP Smear</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
+                                <td></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $papSmear;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $papSmear2;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $papSmear3;?></b></td> -->
                                 <td style="text-align:center">Normal</td>
                             </tr>
                             <tr>
                                 <td>Calcium</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
+                                <td></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium2;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium3;?></b></td> -->
                                 <td style="text-align:center">( 8.0-10.0 mg/dl )</td>
                             </tr>
                             <tr>
                                 <td>Phosphorus</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
+                                <td></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus2;?></b></td>
+                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus3;?></b></td> -->
                                 <td style="text-align:center">( 3.5-5.5 mg/dl )</td>
                             </tr>
                         </table>
@@ -1737,9 +1934,9 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cxr_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cxr_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
                 <br>
@@ -1754,9 +1951,9 @@ else {
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ekg_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ekg_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
                 <br>
@@ -1766,14 +1963,14 @@ else {
                         *** ຜົນການກວດ ເອໂກ້ທ້ອງ ( Ultrasound )
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo $ultrasound_name;?></b>
+                        <b><?php echo $ultra_name;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($ultrasound_conclusion);?></b>
+                        <b><?php echo nl2br($ultra_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($ultrasound_remark);?></b>
-                    </div>
+                    <!-- <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($ultra_remark);?></b>
+                    </div> -->
                 </div>
                 <div class="pagination" style="left: 140mm;top: 619mm;">
                     10
@@ -2073,7 +2270,7 @@ else {
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        *ກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Vision test )
+                        *ກວດສະມັດຕະພາບການເບີ່ງເຫັນ ( Vision test )
                     </div>
                     <table class="border" style="width:100%;border: 1px solid red!important;">
                         <tr style="text-align:center;">
@@ -2084,29 +2281,21 @@ else {
                             <th style="width: 15%">ຕາບອດສີ</th>
                             <th style="width: 15%">ສະຫຸຼບຜົນກວດ</th>
                         </tr>
-                        <tr>
-                            <th style="width: 15%">ກວດຕາ</th>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                        </tr>
-                        <tr>
+                        <tr style="text-align:center;">
                             <td>ຕາຂວາ</td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_predict;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_predict;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $r_short;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $r_long;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $r_tited;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $r_color;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $r_conclusion;?></b></td>
                         </tr>
-                        <tr>
+                        <tr style="text-align:center;">
                             <td>ຕາຊ້າຍ</td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_predicts;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fevi_predicts;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
-                            <td style="text-align:center"><b style="color: black;"><?php echo $fvc_means;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $l_short;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $l_long;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $l_tited;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $l_color;?></b></td>
+                            <td style="text-align:center"><b style="color: black;"><?php echo $l_conclusion;?></b></td>
                         </tr>
                     </table>
                     <div class="col-sm-12">
@@ -2114,10 +2303,10 @@ else {
                         ***ແປຜົນກວດສາຍຕາ
                     </div>
                     <div class="col-sm-12">
-                        <b style="color: black;"> <?php echo nl2br($vision_conclusion);?>test</b>
+                        <b style="color: black;"> <?php echo nl2br($test_vision_conclusion);?>test</b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($vision_remark);?>test</b>
+                        <b><?php echo nl2br($test_vision_remark);?>test</b>
                     </div>
                     <div class="col-sm-12">
                     <br>
@@ -2203,9 +2392,9 @@ else {
                     <div class="col-sm-12">
                         <b style="color: black;"><?php echo nl2br($muscle_conclusion);?></b>
                     </div>
-                    <div class="col-sm-12" style="color: black;">
+                    <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($muscle_remark);?></b>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="pagination" style="left: 290mm;top: 831mm;">
                     9
@@ -2250,16 +2439,16 @@ else {
                             </tr> -->
                             <tr>
                                 <td>Lead in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;60 ug/dL)</td>
                             </tr>
                             <tr>
                                 <td>Chromium in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $chromiumInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $chromiumInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $chromiumInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;5 ug/L)</td>
                             </tr>
                             <tr>
@@ -2294,23 +2483,23 @@ else {
                             </tr>
                             <tr>
                                 <td>Copper in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;140 ug/dL)</td>
                             </tr>
                             <tr>
                                 <td>Aluminium in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $aluminiumInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $aluminiumInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $aluminiumInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;1 ug/dL)</td>
                             </tr>
                             <tr>
                                 <td>Zine in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;170 ug/dL)</td>
                             </tr>
                             <!-- <tr>
@@ -2345,9 +2534,9 @@ else {
                             </tr>
                             <tr>
                                 <td>Arsenic in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;2 ug/L)</td>
                             </tr>
                             <!-- <tr>
@@ -2404,16 +2593,16 @@ else {
                             </tr>
                             <tr>
                                 <td>Xylene in Urine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;1.5 g/gCr)</td>
                             </tr>
                             <tr>
                                 <td>Methyl ethyl ketone in Urine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $nickle3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methylEthylKetoneInUrine;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methylEthylKetoneInUrine2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $methylEthylKetoneInUrine3;?></b></td>
                                 <td style="text-align:center">(&lt;2 mg/L)</td>
                             </tr>
                             <!-- <tr>
@@ -2830,6 +3019,12 @@ else {
                     <div class="col-sm-12">
                         ***ແປຜົນກວດຕົວບົ່ງຊີ້ມະເຮັງ (Tumor Marker Interpretation)
                     </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($tumor_conclusion);?></b>
+                    </div>
+                    <div class="col-sm-12" style="color: black;">
+                        <b><?php echo nl2br($tumor_remark);?></b>
+                    </div>
                 </div>
                 <br>
                 <br>
@@ -2857,37 +3052,37 @@ else {
                             </tr>
                             <tr>
                                 <td>Total Billirubin </td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo "" ?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill3?></b></td>
                                 <td style="text-align:center">0.5 - 1.5 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Drect Billirubin</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill3?></b></td>
                                 <td style="text-align:center">0.1 - 0.5 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Total protein</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein3?></b></td>
                                 <td style="text-align:center">5.5 - 8.0 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Ambumin</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ambumin?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ambumin2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ambumin3?></b></td>
                                 <td style="text-align:center">3.0 - 5.3 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Globulin</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo ""?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $globulin?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $globulin2?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $globulin3?></b></td>
                                 <td style="text-align:center">2.0 - 3.5 mg/dl</td>
                             </tr>
                         </table>
@@ -2898,10 +3093,10 @@ else {
                         <!-- ***ແປຜົນກວດຕົວບົ່ງຊີ້ມະເຮັງ (Tumor Marker Interpretation) -->
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($tumor_conclusion);?></b>
+                        <b><?php echo nl2br($gttgk_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($tumor_remark);?></b>
+                        <b><?php echo nl2br($gttgk_remark);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 1255mm;">
