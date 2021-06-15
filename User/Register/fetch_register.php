@@ -60,7 +60,7 @@ if(mysqli_num_rows($result_register_limit) > 0)
  {
 $no_ += 1;
   $output .= '
-    <tr>
+    <tr class="result_register">
         <td style="display: none;">'.$row["reg_id"].'</td>
         <td>
         <a href="#" data-toggle="modal" data-target="#exampleModalPrint"

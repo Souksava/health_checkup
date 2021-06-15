@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Jun 14, 2021 at 07:29 AM
-=======
--- Generation Time: Jun 14, 2021 at 05:22 AM
->>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
+-- Generation Time: Jun 15, 2021 at 09:11 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -469,6 +465,16 @@ BEGIN
 select barcode,emp_id,emp_name,surname,dob,age,gender,c.company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,emp_name_en,surname_en,village_en,district_en,province_en,e.com_id,emp_name_en,surname_en,village_en,district_en,province_en,national_en,religion_en,occupation_en,current_address,road,email from employee e LEFT JOIN company c on e.com_id=c.com_id where c.company LIKE companys and (emp_id LIKE name or emp_name like name or surname LIKE name or age like name or gender like name or department like name or barcode like name or sticker like name) ORDER BY emp_name asc limit page,100;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_employee_package_sheet` (IN `id` VARCHAR(30), IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
+BEGIN
+select r.reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,pack_id,year,date,time,user_name from register r LEFT JOIN registerdetail d ON r.reg_id=d.reg_id left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where pack_id=id and r.date like dates and c.company like companys and (e.emp_id like name or emp_name like name or surname like name or age LIKE name or r.barcode like name or sticker like name) ORDER BY pack_id ASC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `select_export_sheet_register` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
+BEGIN
+select d.pack_id from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id LEFT JOIN registerdetail d ON r.reg_id=d.reg_id  where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name or r.barcode like name or sticker like name) and r.date like dates GROUP BY d.pack_id ORDER BY d.pack_id ASC;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_heavy_metal` (IN `companys` VARCHAR(100), IN `name` VARCHAR(50), IN `years` VARCHAR(10))  NO SQL
 BEGIN
 SELECT p.barcode,emp_id,emp_name,surname,company,p.year,hea_id,ether,ethy,nickle,manganese,tim,blood,m_i_urine,
@@ -564,7 +570,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
 BEGIN
-select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name or r.barcode like name or sticker like name) and date like dates ORDER BY date DESC, queue DESC;
+select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name or r.barcode like name or sticker like name) and date like dates ORDER BY date DESC, queue ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_registerdetail` (IN `s` VARCHAR(11))  NO SQL
@@ -870,14 +876,10 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`) VALUES
-<<<<<<< HEAD
 (128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, 1, 1),
 (129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL),
-=======
-(128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL),
-(129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL),
->>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
-(130, '209062101269', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 1, 1, NULL);
+(130, '209062101269', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 1, 1, NULL),
+(131, '209062101556', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -922,7 +924,9 @@ INSERT INTO `company_package` (`id`, `com_id`, `pack_id`) VALUES
 (96, 20, 'EKG'),
 (97, 20, 'NAFA'),
 (98, 20, 'PE'),
-(99, 20, 'Urine');
+(99, 20, 'Urine'),
+(100, 20, 'X-Ray'),
+(101, 20, 'ຕາອາຊີບ');
 
 -- --------------------------------------------------------
 
@@ -3779,7 +3783,8 @@ CREATE TABLE `register` (
 INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`, `user_id`) VALUES
 (1, '209062101293', '14:16:01', 1, 2021, '2021-06-09', 2),
 (2, '209062101075', '14:16:20', 2, 2021, '2021-06-09', 2),
-(3, '209062101269', '14:35:34', 1, 2021, '2021-06-10', 2);
+(3, '209062101269', '14:35:34', 1, 2021, '2021-06-10', 2),
+(4, '209062101556', '09:20:36', 1, 2021, '2021-06-15', 2);
 
 -- --------------------------------------------------------
 
@@ -3818,7 +3823,16 @@ INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`) VALUES
 (613, 3, 'EKG'),
 (614, 3, 'NAFA'),
 (615, 3, 'PE'),
-(616, 3, 'Urine');
+(616, 3, 'Urine'),
+(617, 4, 'AUDIO'),
+(618, 4, 'CBC'),
+(619, 4, 'CLOT'),
+(620, 4, 'EKG'),
+(621, 4, 'NAFA'),
+(622, 4, 'PE'),
+(623, 4, 'Urine'),
+(624, 4, 'X-Ray'),
+(625, 4, 'ຕາອາຊີບ');
 
 -- --------------------------------------------------------
 
@@ -3947,13 +3961,6 @@ CREATE TABLE `tumor_gttgk` (
   `remark_en` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `tumor_gttgk`
---
-
-INSERT INTO `tumor_gttgk` (`id`, `barcode`, `year`, `total_bill`, `drect_bill`, `protein`, `ambumin`, `globulin`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`) VALUES
-(3, '209062101293', 2021, 'safs', 'saf', 'safsda', 'safd', 'sadf', 'sf', 'sf', 'saf', 'sadf', 2);
 
 -- --------------------------------------------------------
 
@@ -4343,7 +4350,7 @@ ALTER TABLE `cbc`
 -- AUTO_INCREMENT for table `checkup_status`
 --
 ALTER TABLE `checkup_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -4355,7 +4362,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `company_package`
 --
 ALTER TABLE `company_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `ekg`
@@ -4403,7 +4410,7 @@ ALTER TABLE `pe`
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=617;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=626;
 
 --
 -- AUTO_INCREMENT for table `se`
@@ -4433,11 +4440,7 @@ ALTER TABLE `thryroid`
 -- AUTO_INCREMENT for table `tumor_gttgk`
 --
 ALTER TABLE `tumor_gttgk`
-<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
->>>>>>> 30183d8acd540ef38b8d629ef793e983e65cecd8
 
 --
 -- AUTO_INCREMENT for table `tumor_marker`

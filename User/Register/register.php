@@ -6,8 +6,8 @@
   include ("../../header-footer/header.php");
 ?>
 <form action="register" method="POST" target="" id="form_add_package_more">
-    <div class="modal fade" id="exampleModalAddmorepackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModalAddmorepackage" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -28,7 +28,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
-                    <button type="submit" name="btnUpdate_register" id="btnPrint" class="btn btn-outline-primary" onclick="">
+                    <button type="submit" name="btnUpdate_register" id="btnPrint" class="btn btn-outline-primary"
+                        onclick="">
                         ເພີ່ມ
                     </button>
                 </div>
@@ -115,7 +116,7 @@
         </div>
     </div>
 </div>
-<form action="export_excel.php" method="POST" id="formexport">
+<form action="export_excel.php" method="POST" id="formexport" target="_blank">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="input-group mb-3">
@@ -132,25 +133,47 @@
                         mysqli_next_result($conn);
                     ?>
                 </select>
-                <input type="text" class="form-control"  name="register_search" id="register_search" placeholder="ລະຫັດ ພ/ງ, ຊື່, ອາຍຸ, ບໍລິສັດ"
-                    aria-label="Recipient's username" aria-describedby="button-addon2">
-                <input type="date" class="form-control" name="register_date" id="register_date" aria-label="Recipient's username"
+                <input type="text" class="form-control" name="register_search" id="register_search"
+                    placeholder="ລະຫັດ ພ/ງ, ຊື່, ອາຍຸ, ບໍລິສັດ" aria-label="Recipient's username"
                     aria-describedby="button-addon2">
+                <input type="date" class="form-control" name="register_date" id="register_date"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalUpdateEmp"
-                    type="button" id="button-addon2">
+                    type="submit" id="button-addon2">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6" align="right">
-            <button class="btn btn-success" name="export_employee" data-toggle="modal" data-target="#exampleModalUpdateEmp" type="submit"
-                id="button-addon2"><i class="fas fa-file-export"></i>
+            <button class="btn btn-success" name="export_employee" id="button-addon2"><i class="fas fa-file-export"></i>
                 Export
             </button>
         </div>
     </div>
 </form>
-<div id="result_register" class="result_register">
+<!-- Data Export -->
+<div id="result" style="display: none;"></div>
+<!-- End Data Export -->
+
+
+<div id="result_register" >
+
+
+
+    <?php 
+    $arr_package = array();
+    $table_package = array();
+    $getpackage = mysqli_query($conn,"select pack_id from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id LEFT JOIN registerdetail d ON r.reg_id=d.reg_id GROUP BY pack_id ORDER BY pack_id ASC");
+    foreach($getpackage as $row){
+        
+        $pack_id = $row['pack_id'];
+        $regis = mysqli_query($conn,"select r.reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,pack_id,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id LEFT JOIN registerdetail d ON r.reg_id=d.reg_id where pack_id='$pack_id'");
+        $arr_package[] = "'".$pack_id."'"; 
+        $table_package[] = "'"."tbl".$pack_id."'"; 
+    }
+    $arr_package = implode(",", $arr_package); 
+    $table_package = implode(",", $table_package); 
+   ?>
     <?php
         include ($path."header-footer/loading.php");
     ?>
@@ -234,6 +257,27 @@ $(document).ready(function() {
             }
         });
     }
+
+    //export
+    load_export("%%", "%%", "%%");
+
+    function load_export(ex1, ex2, ex_date) {
+        $.ajax({
+            url: "fetch_export.php",
+            method: "POST",
+            data: {
+                ex1: ex1,
+                ex2: ex2,
+                ex_date: ex_date
+            },
+            success: function(data) {
+                $('#result').html(data);
+            }
+        });
+    }
+    //end export
+
+
     $('#register_company').click(function() {
         var page = "0";
         var register_company = $(this).val();
@@ -247,8 +291,11 @@ $(document).ready(function() {
         console.log(register_date);
         if (register_company != '') {
             load_data_register(register_company, register_search, register_date, page);
+            load_export(register_company, register_search, register_date);
         } else {
             load_data_register("%%", register_search, register_date, page);
+
+            load_export("%%", register_search, register_date);
         }
     });
     $('#register_search').keyup(function() {
@@ -264,8 +311,10 @@ $(document).ready(function() {
         console.log(register_date);
         if (register_search != "") {
             load_data_register(register_company, register_search, register_date, page);
+            load_export(register_company, register_search, register_date);
         } else {
             load_data_register(register_company, "%%", register_date, page);
+            load_export(register_company, "%%", register_date);
         }
     });
     $('#register_date').change(function() {
@@ -281,8 +330,10 @@ $(document).ready(function() {
         var register_search = $('#register_search').val();
         if (register_date != "") {
             load_data_register(register_company, register_search, register_date, page);
+            load_export(register_company, register_search, register_date);
         } else {
             load_data_register(register_company, register_search, "%%", page);
+            load_export(register_company, register_search, "%%");
         }
 
     });
@@ -335,7 +386,7 @@ $(document).ready(function() {
 
 
 
-    
+
     load_data_morepackage("");
 
     function load_data_morepackage(query) {
