@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 09:11 AM
+-- Generation Time: Jun 16, 2021 at 04:08 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -279,6 +279,13 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_muscle` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(4), IN `muscles` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `muscle_ens` VARCHAR(50), IN `conclusion_ens` TEXT, IN `user_ids` INT(11))  NO SQL
 BEGIN
 INSERT INTO muscle(barcode,year,muscle_name,conclusion,remark,muscle_en,conclusion_en,user_id) VALUES(barcodes,years,muscles,conclusions,remarks,muscle_ens,conclusion_ens,user_ids);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_new_pe` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `hpis` VARCHAR(50), IN `pmhis` VARCHAR(50), IN `personals` VARCHAR(50), IN `familys` VARCHAR(50), IN `asis` VARCHAR(50), IN `heights` VARCHAR(50), IN `weights` VARCHAR(50), IN `bmis` VARCHAR(50), IN `bps` VARCHAR(50), IN `pulses` VARCHAR(50), IN `abos` VARCHAR(50), IN `eyes` VARCHAR(50), IN `teeths` VARCHAR(50), IN `earss` VARCHAR(50), IN `lymphs` VARCHAR(50), IN `thyroids` VARCHAR(50), IN `extremitiess` VARCHAR(50), IN `skins` VARCHAR(50), IN `hears` VARCHAR(50), IN `lungs` VARCHAR(50), IN `alss` VARCHAR(50), IN `others` VARCHAR(50), IN `breats` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `hpi_ens` VARCHAR(50), IN `pmhi_ens` VARCHAR(50), IN `personal_ens` VARCHAR(50), IN `family_ens` VARCHAR(50), IN `asi_ens` VARCHAR(50), IN `eye_ens` VARCHAR(50), IN `teeth_ens` VARCHAR(50), IN `ears_ens` VARCHAR(50), IN `lymph_ens` VARCHAR(50), IN `thryroid_ens` VARCHAR(50), IN `extremities_ens` VARCHAR(50), IN `skin_ens` VARCHAR(50), IN `hear_ens` VARCHAR(50), IN `lung_ens` VARCHAR(50), IN `als_ens` VARCHAR(50), IN `other_ens` VARCHAR(50), IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
+BEGIN
+INSERT INTO pe(barcode,year,hpi,pmhi,personal,family,asi,height,weight,bmi,bp,pulse,abo,eye,teeth,ears,lymph,
+thyroid,extremities,skin,hear,lung,als,other,breat,conclusion,remark,hpi_en,pmhi_en,personal_en,family_en,asi_en,eye_en,teeth_en,ears_en,lymph_en,thryroid_en,extremities_en,skin_en,hear_en,lung_en,als_en,other_en,conclusion_en,remark_en,user_id) VALUES(barcodes,years,hpis,pmhis,personals,familys,asis,heights,weights,bmis,bps,pulses,abos,eyes,
+teeths,earss,lymphs,thyroids,extremitiess,skins,hears,lungs,alss,others,breats,conclusions,remarks,hpi_ens,pmhi_ens,personal_ens,family_ens,asi_ens,eye_ens,teeth_ens,ears_ens,lymph_ens,thryroid_ens,extremities_ens,skin_ens,hear_ens,lung_ens,als_ens,other_ens,conclusion_ens,remark_ens,user_ids);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_oc_vision` (IN `barcodes` VARCHAR(30), IN `years` VARCHAR(10), IN `look_fars` VARCHAR(50), IN `look_nears` VARCHAR(50), IN `look_ups` VARCHAR(50), IN `check_eyes` VARCHAR(50), IN `check_colors` VARCHAR(50), IN `radiuss` VARCHAR(50), IN `conclusions` TEXT, IN `remarks` TEXT, IN `conclusion_ens` TEXT, IN `remark_ens` TEXT, IN `user_ids` INT(11))  NO SQL
@@ -779,6 +786,14 @@ CREATE TABLE `audiogram` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `audiogram`
+--
+
+INSERT INTO `audiogram` (`audi_id`, `barcode`, `r_500`, `r_1000`, `r_2000`, `r_3000`, `r_l_avg`, `r_4000`, `r_6000`, `r_8000`, `r_h_avg`, `l_500`, `l_1000`, `l_2000`, `l_3000`, `l_l_avg`, `l_4000`, `l_6000`, `l_8000`, `l_h_avg`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(12, '209062101556', '25', '25', '25', '20', '23.75', '20', '20', '20', '20', '25', '25', '25', '25', '25', '25', '20', '20', '21.7', 'ຫູຂວາ ແລະ ຫູຊ້າຍລະດັບການໄດ້ຍິນຢູ່ໃນເກນປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(13, '209062101269', '25', '25', '25', '20', '23.76', '20', '20', '20', '20', '25', '25', '25', '25', '25', '25', '20', '20', '21.8', 'ຫູຂວາ ແລະ ຫູຊ້າຍລະດັບການໄດ້ຍິນຢູ່ໃນເກນປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -808,6 +823,14 @@ CREATE TABLE `biochemistry` (
   `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `biochemistry`
+--
+
+INSERT INTO `biochemistry` (`bio_id`, `barcode`, `fbs`, `cho`, `hdl`, `ldl`, `trig`, `ua`, `bun`, `creatinine`, `sgot`, `sgpt`, `alk`, `ggt`, `hbac`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(20, '209062101556', '90', '217', '58', '126', '163', '5', '15', '1', '44', '39', '82', '0', '0', 'ຜິດປົກະຕິ', 'ລົດອາຫານທາດມັນ', 2021, 'Normal', 'Normal', 2),
+(21, '209062101269', '90', '217', '58', '126', '163', '5', '15', '1', '44', '39', '82', '0', '0', 'ຜິດປົກະຕິ', 'ລົດອາຫານທາດມັນ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -839,6 +862,14 @@ CREATE TABLE `cbc` (
   `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `cbc`
+--
+
+INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocyte`, `eo`, `baso`, `platelets`, `rbc`, `mvc`, `mch`, `mchc`, `red_blood`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(93, '209062101556', '15.1', '47', '6900', '45.6', '44.4', '3.5', '5.9', '0.6', '369000', '5.4', '87.2', '28.9', '32.1', 'Normochromia,normocytosis', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(94, '209062101269', '15.2', '47', '6900', '45.7', '44.5', '3.6', '5.10', '0.7', '369001', '5.5', '87.3', '28.10', '32.2', 'Normochromia,normocytosis', '', '', 2021, '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -878,8 +909,8 @@ CREATE TABLE `checkup_status` (
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`) VALUES
 (128, '209062101293', 2021, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, 1, 1),
 (129, '209062101075', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL),
-(130, '209062101269', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 1, 1, NULL),
-(131, '209062101556', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL);
+(130, '209062101269', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(131, '209062101556', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -945,6 +976,14 @@ CREATE TABLE `ekg` (
   `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ekg`
+--
+
+INSERT INTO `ekg` (`ekg_id`, `barcode`, `year`, `ekg_name`, `conclusion`, `remark`, `ekg_en`, `conclusion_en`, `user_id`) VALUES
+(28, '209062101556', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(29, '209062101269', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3571,6 +3610,14 @@ CREATE TABLE `heavy_metal` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `heavy_metal`
+--
+
+INSERT INTO `heavy_metal` (`hea_id`, `barcode`, `lead`, `chromlum`, `ether`, `ethy`, `nickle`, `manganese`, `tim`, `blood`, `m_i_urine`, `b_a_u`, `c_u`, `copper`, `alum`, `zine`, `alcoho`, `silica`, `methy`, `arsenic`, `a_i_urine`, `t_i_urine`, `methy_urine`, `methanoi_urine`, `phenolic_resin`, `xylene`, `m_e_k_i_urine`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(11, '209062101556', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(12, '209062101269', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -3597,6 +3644,14 @@ CREATE TABLE `immunity` (
   `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `immunity`
+--
+
+INSERT INTO `immunity` (`im_id`, `barcode`, `anti_hav`, `ab`, `ag`, `hcv`, `vdrl`, `hiv`, `hpylori`, `pap`, `calcium`, `phosphorus`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(14, '209062101556', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'ກວດບໍ່ພົບການຕິດເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ\nກວດພົບພູມຄຸ້ມກັນຕໍ່ເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(15, '209062101269', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'ກວດບໍ່ພົບການຕິດເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ\nກວດພົບພູມຄຸ້ມກັນຕໍ່ເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3636,6 +3691,14 @@ CREATE TABLE `methamphetamine` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `methamphetamine`
+--
+
+INSERT INTO `methamphetamine` (`meth_id`, `barcode`, `methamphetamine`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(15, '209062101556', '11.2', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(16, '209062101269', '11.2', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -3653,6 +3716,14 @@ CREATE TABLE `muscle` (
   `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `muscle`
+--
+
+INSERT INTO `muscle` (`muscle_id`, `barcode`, `year`, `muscle_name`, `conclusion`, `remark`, `muscle_en`, `conclusion_en`, `user_id`) VALUES
+(12, '209062101556', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(13, '209062101269', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3676,6 +3747,14 @@ CREATE TABLE `oc_vision` (
   `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `oc_vision`
+--
+
+INSERT INTO `oc_vision` (`oc_id`, `barcode`, `look_far`, `look_near`, `look_up`, `check_eye`, `check_color`, `radius`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(10, '209062101556', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(11, '209062101269', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3760,6 +3839,14 @@ CREATE TABLE `pe` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `pe`
+--
+
+INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `pulse`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `skin`, `hear`, `lung`, `als`, `other`, `breat`, `conclusion`, `remark`, `hpi_en`, `pmhi_en`, `personal_en`, `family_en`, `asi_en`, `eye_en`, `teeth_en`, `ears_en`, `lymph_en`, `thryroid_en`, `extremities_en`, `skin_en`, `hear_en`, `lung_en`, `als_en`, `other_en`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(44, '209062101556', 2021, ' ລາວລຸ່ມ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ເຄີຍ', '157', '56', '22.72', '124/80', '70', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ນ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ', '', 'Never', 'Never', 'Never', 'Never', 'Never', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Other', 'Conclusion', 'Remark', 2),
+(45, '209062101269', 2021, ' ລາວລຸ່ມ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ເຄີຍ', '168', '80', '22.72', '124/81', '60', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ຄວາມດັນເລືອດຢູ່ໃນເກນປົກກະຕິ', '', 'Never', 'Never', 'Never', 'Never', 'Never', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Other', 'Conclusion', 'Remark', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -3832,7 +3919,8 @@ INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`) VALUES
 (622, 4, 'PE'),
 (623, 4, 'Urine'),
 (624, 4, 'X-Ray'),
-(625, 4, 'ຕາອາຊີບ');
+(625, 4, 'ຕາອາຊີບ'),
+(626, 4, 'ສາຍຕາ');
 
 -- --------------------------------------------------------
 
@@ -3860,6 +3948,14 @@ CREATE TABLE `se` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `se`
+--
+
+INSERT INTO `se` (`se_id`, `barcode`, `color`, `stool_ap`, `wbc`, `rbc`, `parasite`, `samonella`, `shigella`, `vivrio`, `vibrio`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(16, '209062101556', 'Brown', 'Soft', 'WBC', 'RBC', 'Not Found', 'Spp', 'Spp', 'Spp', '10', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(17, '209062101269', 'Brown', 'Soft', 'WBC', 'RBC', 'Not Found', 'Spp', 'Spp', 'Spp', '11', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -3883,6 +3979,14 @@ CREATE TABLE `spirometry` (
   `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `spirometry`
+--
+
+INSERT INTO `spirometry` (`spir_id`, `barcode`, `fvc_means`, `fvc_predict`, `fvc_predicts`, `fevi_means`, `fevi_predict`, `fevi_predicts`, `fevi_fvc`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(17, '209062101556', '02', '03', '04', '05', '06', '07', '08', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(18, '209062101269', '02', '03', '04', '05', '06', '07', '08', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3916,7 +4020,9 @@ CREATE TABLE `test_vision` (
 --
 
 INSERT INTO `test_vision` (`test_id`, `barcode`, `year`, `r_short`, `r_long`, `r_tited`, `r_color`, `r_conclusion`, `l_short`, `l_long`, `l_tited`, `l_color`, `l_conclusion`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`) VALUES
-(48, '209062101293', 2021, 'R_Short', 'R_Long', 'R_Tited', 'R_Color', 'R_Conclusion', 'L_Short', 'L_Long', 'L_Tited', 'L_Color', 'L_Conclusion', 'Conclusion', 'Remark', 'Conclusion_en', 'Remark_en', 2);
+(48, '209062101293', 2021, 'R_Short', 'R_Long', 'R_Tited', 'R_Color', 'R_Conclusion', 'L_Short', 'L_Long', 'L_Tited', 'L_Color', 'L_Conclusion', 'Conclusion', 'Remark', 'Conclusion_en', 'Remark_en', 2),
+(49, '209062101556', 2021, '02', '03', '04', '05', 'ປົກກະຕິ', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(50, '209062101269', 2021, '02', '03', '04', '05', 'ປົກກະຕິ', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3940,6 +4046,14 @@ CREATE TABLE `thryroid` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `thryroid`
+--
+
+INSERT INTO `thryroid` (`th_id`, `barcode`, `free_t3`, `free_t4`, `tsh`, `t3`, `t4`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(11, '209062101556', '11', '12', '13', '14', '15', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(12, '209062101269', '11', '12', '13', '14', '15', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -3961,6 +4075,14 @@ CREATE TABLE `tumor_gttgk` (
   `remark_en` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tumor_gttgk`
+--
+
+INSERT INTO `tumor_gttgk` (`id`, `barcode`, `year`, `total_bill`, `drect_bill`, `protein`, `ambumin`, `globulin`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(8, '209062101556', 2021, '05', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(9, '209062101269', 2021, '05', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -3985,6 +4107,14 @@ CREATE TABLE `tumor_marker` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `tumor_marker`
+--
+
+INSERT INTO `tumor_marker` (`tum_id`, `barcode`, `afp`, `cea`, `psa`, `ca_19`, `ca_15`, `ca_125`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(10, '209062101556', '01', '02', '03', '04', '05', '06', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(11, '209062101269', '01', '02', '03', '04', '05', '06', '', '', 2021, '', '', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -4008,7 +4138,9 @@ CREATE TABLE `ultrasound` (
 --
 
 INSERT INTO `ultrasound` (`ul_id`, `barcode`, `year`, `ultra_name`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`) VALUES
-(7, '209062101269', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2);
+(7, '209062101269', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(8, '209062101556', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2),
+(9, '209062101269', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -4037,6 +4169,14 @@ CREATE TABLE `urinalvsis` (
   `remark_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `urinalvsis`
+--
+
+INSERT INTO `urinalvsis` (`urin_id`, `barcode`, `color`, `appearance`, `ph`, `specifics`, `protein`, `sugar`, `ketone`, `blood`, `wbc`, `rbc`, `epit`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`) VALUES
+(18, '209062101556', 'Yellow', 'Clear', '6', '1.02', 'Negative', 'Negative', 'Negative', 'Negative', '0-1', '0-1', '1-2', 'ຜິດປົກກະຕິ', 'ຫຼູດຜ່ອນທາດເຄັມ', 2021, 'Normal', 'Normal', 2),
+(19, '209062101269', 'Yellow', 'Clear', '7', '1.03', 'Negative', 'Negative', 'Negative', 'Negative', '0-1', '0-1', '1-3', 'ຜິດປົກກະຕິ', 'ຫຼູດຜ່ອນທາດເຄັມ', 2021, 'Normal', 'Normal', 2);
 
 -- --------------------------------------------------------
 
@@ -4098,6 +4238,14 @@ CREATE TABLE `x_ray` (
   `conclusion_en` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `x_ray`
+--
+
+INSERT INTO `x_ray` (`x_id`, `barcode`, `x_ray`, `conclusion`, `remark`, `year`, `x_ray_en`, `conclusion_en`, `user_id`) VALUES
+(17, '209062101556', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2),
+(18, '209062101269', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2);
 
 --
 -- Indexes for dumped tables
@@ -4332,19 +4480,19 @@ ALTER TABLE `x_ray`
 -- AUTO_INCREMENT for table `audiogram`
 --
 ALTER TABLE `audiogram`
-  MODIFY `audi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `audi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `biochemistry`
 --
 ALTER TABLE `biochemistry`
-  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `cbc`
 --
 ALTER TABLE `cbc`
-  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `checkup_status`
@@ -4368,97 +4516,97 @@ ALTER TABLE `company_package`
 -- AUTO_INCREMENT for table `ekg`
 --
 ALTER TABLE `ekg`
-  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `heavy_metal`
 --
 ALTER TABLE `heavy_metal`
-  MODIFY `hea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `hea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `immunity`
 --
 ALTER TABLE `immunity`
-  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `methamphetamine`
 --
 ALTER TABLE `methamphetamine`
-  MODIFY `meth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `meth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `muscle`
 --
 ALTER TABLE `muscle`
-  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `oc_vision`
 --
 ALTER TABLE `oc_vision`
-  MODIFY `oc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `oc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pe`
 --
 ALTER TABLE `pe`
-  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=626;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=627;
 
 --
 -- AUTO_INCREMENT for table `se`
 --
 ALTER TABLE `se`
-  MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `spirometry`
 --
 ALTER TABLE `spirometry`
-  MODIFY `spir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `spir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `test_vision`
 --
 ALTER TABLE `test_vision`
-  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `thryroid`
 --
 ALTER TABLE `thryroid`
-  MODIFY `th_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `th_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tumor_gttgk`
 --
 ALTER TABLE `tumor_gttgk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tumor_marker`
 --
 ALTER TABLE `tumor_marker`
-  MODIFY `tum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `tum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ultrasound`
 --
 ALTER TABLE `ultrasound`
-  MODIFY `ul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `urinalvsis`
 --
 ALTER TABLE `urinalvsis`
-  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `username`
@@ -4476,7 +4624,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `x_ray`
 --
 ALTER TABLE `x_ray`
-  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
