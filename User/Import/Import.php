@@ -128,7 +128,7 @@
 
 
         <div class="image-upload-wrap">
-            <input class="file-upload-input" type='file' name="file_all" onchange="readURL(this);" accept="image/*" />
+            <input class="file-upload-input" type='file' name="file_all" onchange="readURL(this);"/>
             <div class="drag-text">
                 <h3>ນຳເຂົ້າຂໍ້ມູນ</h3>
             </div>
