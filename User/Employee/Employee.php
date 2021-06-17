@@ -561,6 +561,27 @@
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
                         </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ທີ່ຢູ່ປັດຈຸບັນ</label>
+                            <input type="text" name="currentaaddress" id="currentaaddress" placeholder="ທີ່ຢູ່ປັດຈຸບັນ">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ຖະໜົນ</label>
+                            <input type="text" name="roadd" id="roadd" placeholder="ຖະໜົນ">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
+                        <div class="col-md-12 col-sm-6 form-control2">
+                            <label>ອິເມວ</label>
+                            <input type="text" name="emaill" id="emaill" placeholder="ອິເມວ">
+                            <i class="fas fa-check-circle "></i>
+                            <i class="fas fa-exclamation-circle "></i>
+                            <small class="">Error message</small>
+                        </div>
                     </div>
 
                 </div>
@@ -637,7 +658,7 @@
         }
         mysqli_free_result($get_barcode);  
         mysqli_next_result($conn);
-        $obj->insert_employee($barcode,$_POST["emp_id"],$_POST["emp_name"],$_POST["surname"],$_POST["dob"],$_POST["age"],$_POST["gender"],$_POST["company"],$_POST["branch"],$_POST["department"],$_POST["tel"],$_POST["family_stt"],$_POST["nation"],$_POST["ethnnic"],$_POST["religion"],$_POST["job"],$_POST["house_no"],$_POST["village"],$_POST["district"],$_POST["province"]);
+        $obj->insert_employee($barcode,$_POST["emp_id"],$_POST["emp_name"],$_POST["surname"],$_POST["dob"],$_POST["age"],$_POST["gender"],$_POST["company"],$_POST["branch"],$_POST["department"],$_POST["tel"],$_POST["family_stt"],$_POST["nation"],$_POST["ethnnic"],$_POST["religion"],$_POST["job"],$_POST["house_no"],$_POST["village"],$_POST["district"],$_POST["province"],$_POST["currentaaddress"],$_POST["roadd"],$_POST["emaill"]);
     }
     if(isset($_POST['barcode2'])){
         $obj->update_employee($_POST["barcode2"],$_POST["emp_id2"],$_POST["emp_name2"],$_POST["surname2"],$_POST["dob2"],$_POST["age2"],$_POST["gender2"],$_POST["company2"],$_POST["branch2"],$_POST["department2"],$_POST["tel2"],$_POST["family_stt2"],$_POST["nation2"],$_POST["ethnic2"],$_POST["religion2"],$_POST["job2"],$_POST["home_no2"],$_POST["village2"],$_POST["district2"],$_POST["province2"],$_POST["emp_name_en"],$_POST["surname_en"],$_POST["village_en"],$_POST["district_en"],$_POST["province_en"],$_POST["national_en"],$_POST["religion_en"],$_POST["occupation_en"],$_POST["current_address"],$_POST["road"],$_POST["email"]);
@@ -797,6 +818,9 @@ const house_no = document.getElementById("house_no");
 const village = document.getElementById("village");
 const district = document.getElementById("district");
 const province = document.getElementById("province");
+const currentaaddress = document.getElementById("currentaaddress");
+const roadd = document.getElementById("roadd");
+const emaill = document.getElementById("emaill");
 const load_save_emp = document.getElementById("load_save_emp");
 const btn_loadSave = document.getElementById("btn_loadSave");
 myform_formSaveEmp.addEventListener('submit', (e) => {
@@ -824,6 +848,9 @@ function checkInputs_formSaveEmp() {
     const villageValue = village.value.trim();
     const districtValue = district.value.trim();
     const provinceValue = province.value.trim();
+    const currentaaddressValue = currentaaddress.value.trim();
+    const roaddValue = roadd.value.trim();
+    const emaillValue = emaill.value.trim();
 
     if (emp_nameValue === "") {
         setErrorFor(emp_name, 'ກະລຸນາປ້ອນຊື່ພະນັກງານ');
