@@ -1173,7 +1173,7 @@ else {
     $ambumin3 = $fetch_gttgk3["ambumin"];
     $globulin3 = $fetch_gttgk3["globulin"];
 }
-$gttgk4 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year4';");
+$gttgk4 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_gttgk4 = mysqli_fetch_array($gttgk4,MYSQLI_ASSOC);
 if(mysqli_num_rows($gttgk4)==0)
 {
@@ -1909,9 +1909,6 @@ else {
                     <br>
                     <br>
                     <br>
-                    <br>
-                    <br>
-                    <br>
                 </div>
                 <hr>
                 <div class="title">
@@ -1940,7 +1937,6 @@ else {
                 </div>
                 <br>
                 <br>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
                         *ຜົນການແທກຄື້ນໄຟຟ້າຫົວໃຈ (EKG)
@@ -1955,7 +1951,6 @@ else {
                         <b><?php echo nl2br($ekg_remark);?></b>
                     </div> -->
                 </div>
-                <br>
                 <br>
                 <br>
                 <div class="row">
