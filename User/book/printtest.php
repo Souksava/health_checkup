@@ -1299,118 +1299,61 @@ else {
                 <div class="content">
                     <div class="row">
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($pe_conclusion);?>
+                            <?php echo nl2br($pe_conclusion);?> : <?php echo nl2br($pe_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($pe_remark);?>
+                            <?php echo nl2br($cbc_conclusion);?> : <?php echo nl2br($cbc_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cbc_conclusion);?>
+                            <?php echo nl2br($bio_conclusion);?> : <?php echo nl2br($bio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cbc_remark);?>
+                            <?php echo nl2br($urine_conclusion);?> : <?php echo nl2br($urine_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($bio_conclusion);?>
+                            <?php echo nl2br($meth_conclusion);?> : <?php echo nl2br($meth_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($bio_remark);?>
+                            <?php echo nl2br($thyroid_conclusion);?> : <?php echo nl2br($thyroid_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($urine_conclusion);?>
+                            <?php echo nl2br($stool_conclusion);?> : <?php echo nl2br($stool_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($urine_remark);?>
+                            <?php echo nl2br($tumor_conclusion);?> : <?php echo nl2br($tumor_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($meth_conclusion);?>
+                            <?php echo nl2br($metal_conclusion);?> : <?php echo nl2br($metal_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($meth_remark);?>
+                            <?php echo nl2br($vision_conclusion);?> : <?php echo nl2br($vision_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($thyroid_conclusion);?>
+                            <?php echo nl2br($audio_conclusion);?> : <?php echo nl2br($audio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($thyroid_remark);?>
+                            <?php echo nl2br($muscle_conclusion);?> 
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($stool_conclusion);?>
+                            <?php echo nl2br($spiro_conclusion);?> : <?php echo nl2br($spiro_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($stool_remark);?>
+                            <?php echo nl2br($cxr_conclusion);?> 
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($tumor_conclusion);?>
+                            <?php echo nl2br($ekg_conclusion);?> 
                         </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($tumor_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($metal_conclusion);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($metal_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($vision_conclusion);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($vision_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($audio_conclusion);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($audio_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($muscle_conclusion);?>
-                        </div>
-                        <!-- <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($muscle_remark);?>
-                        </div> -->
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($spiro_conclusion);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($spiro_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cxr_conclusion);?>
-                        </div>
-                        <!-- <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cxr_remark);?>
-                        </div> -->
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($ekg_conclusion);?>
-                        </div>
-                        <!-- <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($ekg_remark);?>
-                        </div> -->
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ultra_conclusion);?>
                         </div>
-                        <!-- <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($ultra_remark);?>
-                        </div> -->
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($imm_conclusion);?>
+                            <?php echo nl2br($imm_conclusion);?> : <?php echo nl2br($imm_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($imm_remark);?>
+                            <?php echo nl2br($stool_conclusion);?> : <?php echo nl2br($stool_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($stool_conclusion);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($stool_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($gttgk_conclusion);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($gttgk_remark);?>
+                            <?php echo nl2br($gttgk_conclusion);?> : <?php echo nl2br($gttgk_remark);?>
                         </div>
                     </div>
                 </div>
