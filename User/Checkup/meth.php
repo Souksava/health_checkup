@@ -1,6 +1,6 @@
-<!-- methamphetamine ການກວດຫາສາານເສບຕິດ(ຢາບ້າ)(Meth)-->
+<!-- methamphetamine ການກວດຫາສານເສບຕິດ(ຢາບ້າ)(Meth)-->
 <?php
-  $title = "ການກວດຫາສາານເສບຕິດ";
+  $title = "ການກວດຫາສານເສບຕິດ";
   $path = "../../";
   $links = "../";
   $session_path = "../../";
@@ -12,7 +12,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ນຳເຂົ້າຂໍ້ມູນການກວດຫາສາານເສບຕິດ</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">ນຳເຂົ້າຂໍ້ມູນການກວດຫາສານເສບຕິດ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
