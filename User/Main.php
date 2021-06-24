@@ -25,9 +25,16 @@
             ລົງທະບຽນ
         </div>
     </a>
+
+    <a href="<?php echo $links ?>Import/Import" class="m-a">
+        <div class="btn btn-light mainlink">
+            ນຳເຂົ້າຂໍ້ມູນ
+        </div>
+    </a>
+
     <a href="<?php echo $links ?>Status/status" class="m-a">
         <div class="btn btn-light mainlink">
-            ສະຖານະການກວດ
+            ສະຖານະກວດສຸຂະພາບ
         </div>
     </a>
     <a href="<?php echo $links ?>Checkup/Physical" class="m-a">
@@ -82,6 +89,11 @@
             ກວດກັ່ນຕອງມະເຮັງ
         </div>
     </a>
+    <a href="<?php echo $links ?>Checkup/Tumor-Gttgk" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດບົງຊີ້ຕ່ອມມະເຮັງ
+        </div>
+    </a>
     <a href="<?php echo $links ?>Checkup/Vision" class="m-a">
         <div class="btn btn-light mainlink">
             ກວດສະມັດຕະພາບການເບິ່ງເຫັນ
@@ -118,6 +130,18 @@
         </div>
     </a>
 
+    <a href="<?php echo $links ?>Checkup/Ultrasound" class="m-a">
+        <div class="btn btn-light mainlink">
+            ກວດເອໂກ້ທ້ອງ
+        </div>
+    </a>
+
+    <a href="<?php echo $links ?>Checkup/Test-Vision" class="m-a">
+        <div class="btn btn-light mainlink">
+            ການທົດສອບສາຍຕາ
+        </div>
+    </a>
+
     <a href="<?php echo $links ?>Certificate/Lao" class="m-a">
         <div class="btn btn-light mainlink">
             ໃບຢັ້ງຢືນພາສາລາວ
@@ -126,7 +150,7 @@
 
     <a href="<?php echo $links ?>Certificate/English" class="m-a">
         <div class="btn btn-light mainlink">
-        ໃບຢັ້ງຢືນພາສາອັງກິດ
+            ໃບຢັ້ງຢືນພາສາອັງກິດ
         </div>
     </a>
 
@@ -135,6 +159,11 @@
             ພິມປຶ້ມກວດສຸຂະພາບ
         </div>
     </a>
+
+
+
+
+
 
 </div>
 <?php 

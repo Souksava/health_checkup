@@ -97,19 +97,20 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                <?php
+                    <?php
                     if($profile == ""){
                 ?>
                     <img src="<?php echo $path ?>image/image.jpeg" class="img-circle elevation-2" alt="User Image">
-                <?php
+                    <?php
                     }
                     else{
                     ?>
-                      <img src="<?php echo $path ?>image/<?php echo $profile; ?>" class="img-circle elevation-2" alt="User Image">
-                <?php
+                    <img src="<?php echo $path ?>image/<?php echo $profile; ?>" class="img-circle elevation-2"
+                        alt="User Image">
+                    <?php
                     }
                 ?>
-                
+
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">User</a>
@@ -245,7 +246,7 @@
                             <li class="nav-item">
                                 <a href="<?php echo $links ?>Checkup/Tumor" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
-                                    <p>ກວດຕ໋ອມມະເຮັງ</p>
+                                    <p>ກວດກັ່ນຕອງມະເຮັງ</p>
                                 </a>
                             </li>
                         </ul>
@@ -253,7 +254,7 @@
                             <li class="nav-item">
                                 <a href="<?php echo $links ?>Checkup/Tumor-Gttgk" class="nav-link">
                                     <i class="far fa fa-stethoscope nav-icon"></i>
-                                    <p>ກວດບົງຊີ້ຕ໋ອງມະເຮັງ</p>
+                                    <p>ກວດບົງຊີ້ຕ່ອມມະເຮັງ</p>
                                 </a>
                             </li>
                         </ul>
@@ -368,7 +369,7 @@
                         <a href="<?php echo $links ?>Book/Book" class="nav-link">
                             <i class="nav-icon fas fa-print"></i>
                             <p>
-                            ພິມປຶ້ມກວດສຸຂະພາບ
+                                ພິມປຶ້ມກວດສຸຂະພາບ
                                 <i class="fas"></i>
                             </p>
                         </a>
@@ -404,7 +405,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
-                            ພິມໃບຢັ້ງຢືນສຸຂະພາບ
+                                ພິມໃບຢັ້ງຢືນສຸຂະພາບ
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -418,7 +419,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="<?php echo $links ?>Certificate/English" class="nav-link">
+                                <a href="<?php echo $links ?>Certificate/English" class="nav-link">
                                     <i class="far fa fa-check nav-icon"></i>
                                     <p>ພາສາອັງກິດ</p>
                                 </a>
@@ -429,7 +430,7 @@
                         <a href="<?php echo $links ?>Book/Book" class="nav-link">
                             <i class="nav-icon fas fa-print"></i>
                             <p>
-                            ພິມປຶ້ມກວດສຸຂະພາບ
+                                ພິມປຶ້ມກວດສຸຂະພາບ
                                 <i class="fas"></i>
                             </p>
                         </a>
