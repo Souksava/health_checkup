@@ -35,9 +35,11 @@ $Year = date("Y",$datenow);
                 echo"<meta http-equiv-'refress' content='1;URL=/'>";
             }
             else{
-               
+                // $get_log = mysqli_query($resultck,MYSQLI_ASSOC);
+                // $id = $get_log["user_id"];
                 while($user = mysqli_fetch_array($resultck))
                 {
+                    $id = $user['user_id'];
                     if($user['stt_id'] == 1)
                     {
                         $_SESSION['health_ses_id'] = session_id();
@@ -66,7 +68,6 @@ $Year = date("Y",$datenow);
                         unset($_SESSION['user_id']);
                         unset($_SESSION['email']);
                         unset($_SESSION['user_name']);
-                        unset($_SESSION['emp_id']);
                         unset($_SESSION['profile_path']);
                         unset($_SESSION['health_ses_status_id']);
                         session_destroy();
@@ -76,18 +77,24 @@ $Year = date("Y",$datenow);
                     }
 
                 }
+                mysqli_free_result($resultck);  
+                mysqli_next_result($conn);
+                $insert_login = mysqli_query($conn,"insert into login_log(emp_id,status_log) values('$id','ເຂົ້າສູ່ລະບົບ');");
             }
         }  
     }
     public static function logout(){
         session_start();
+        global $conn;
+        $id = $_SESSION['user_id'];
         unset($_SESSION['health_ses_id']);
         unset($_SESSION['email']);
         unset($_SESSION['user_name']);
-        unset($_SESSION['emp_id']);
+        unset($_SESSION['user_id']);
         unset($_SESSION['health_ses_status_id']);
         session_destroy();
         global $session_path;
+        $insert_logout = mysqli_query($conn,"insert into login_log(emp_id,status_log) values('$id','ອອກຈາກລະບົບ');");
         echo"<script>";
         echo"window.location.href='$session_path';";
         echo"</script>";

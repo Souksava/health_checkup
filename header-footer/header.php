@@ -12,7 +12,9 @@
         $stt = 2;
    }
      if($_SESSION['health_ses_id'] == ''){
-        $obj_log->logout();
+        echo"<script>";
+        echo"window.location.href='$session_path';";
+        echo"</script>";
     }
     else if($_SESSION['health_ses_status_id'] != $stt){
         $obj_log->logout();
