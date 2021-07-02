@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +8,7 @@
     <link rel="icon" href="../../image/health.jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <title>Health CheckUp</title>
@@ -17,11 +17,11 @@
 <?php
 $path = "../../";
 include ('../../oop/obj.php');
-$barcode = $_POST["barcode"];
-$year = $_POST["year"];
-$year2 = $_POST["year2"];
-$year3 = $_POST["year3"];
-$yearconclusion = $_POST["year4"];
+$barcode = $_POST["barcode2"];
+$year = $_POST["yearr"] - 2 ;
+$year2 = $_POST["yearr"] - 1;
+$year3 = $_POST["yearr"];
+$yearconclusion = $_POST["yearr"];
 
 
 $emp = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,house_no,department,company,village,district,province,date,time,family_stt,tel,queue,current_address,road,email FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN register r on e.barcode=r.barcode where e.barcode='$barcode' and r.year='$yearconclusion';");
@@ -216,10 +216,10 @@ else
     $hcv3 = $fetch_imm3["hcv"];
     $vdrl3 = $fetch_imm3["vdrl"];
     $hiv3 = $fetch_imm3["hiv"];
-    $hpylori3 = $fetch_imm2["hpylori"];
-    $papSmear3 = $fetch_imm2["pap"];
-    $immCalcium3 = $fetch_imm2["calcium"];
-    $immPhosphorus3 = $fetch_imm2["phosphorus"];
+    $hpylori3 = $fetch_imm3["hpylori"];
+    $papSmear3 = $fetch_imm3["pap"];
+    $immCalcium3 = $fetch_imm3["calcium"];
+    $immPhosphorus3 = $fetch_imm3["phosphorus"];
 
 }
 $imm4 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$yearconclusion';");
@@ -2241,20 +2241,20 @@ else {
                         ***ແປຜົນກວດສາຍຕາ
                     </div>
                     <div class="col-sm-12">
-                        <b style="color: black;"> <?php echo nl2br($test_vision_conclusion);?>test</b>
+                        <b style="color: black;"> <?php echo nl2br($test_vision_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($test_vision_remark);?>test</b>
+                        <b><?php echo nl2br($test_vision_remark);?></b>
                     </div>
                     <div class="col-sm-12">
                     <br>
                     *** ແປຜົນການເບ່ິງເຫັນ ( Oc vision )
                     </div>
                     <div class="col-sm-12">
-                        <b style="color: black;"> <?php echo nl2br($vision_conclusion);?>test</b>
+                        <b style="color: black;"> <?php echo nl2br($vision_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($vision_remark);?>test</b>
+                        <b><?php echo nl2br($vision_remark);?></b>
                     </div>
 
                     <br>
@@ -3048,7 +3048,7 @@ else {
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    <script src="../../dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
 </body>

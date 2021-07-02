@@ -679,6 +679,18 @@ class obj{
         }
         
     }
+    public static function select_book_limit($company,$names,$year,$page){
+        global $conn;
+        global $result_book_limit;
+        $result_book_limit = mysqli_query($conn,"call select_book_limit('$company','$year','$names','$page');");
+        
+    }
+    public static function select_book($company,$names,$year){
+        global $conn;
+        global $result_book;
+        $result_book = mysqli_query($conn,"call select_book('$company','$year','$names');");
+        
+    }
     public static function dropdown_company(){
         global $conn;
         global $result_dropdown;

@@ -1,8 +1,8 @@
 <?php 
     $path = "../../";
     include ('../../oop/obj.php');
-$barcode = $_POST["barcode"];
-$year = $_POST["year"];
+$barcode = $_POST["barcode2"];
+$year = $_POST["yearr"];
 
 $pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,ears,conclusion,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
