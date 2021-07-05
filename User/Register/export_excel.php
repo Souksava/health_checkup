@@ -42,7 +42,7 @@
         foreach($getpackage as $row){
         
             $pack_id = $row['pack_id'];
-            $regis2 = mysqli_query($conn,"select r.reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,pack_id,year,date,time,user_name from register r LEFT JOIN registerdetail d ON r.reg_id=d.reg_id left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where d.pack_id='$pack_id' and r.date like '$register_date' and c.company like '$register_company' and (e.emp_id like '$register_search' or emp_name like '$register_search' or surname like '$register_search' or age LIKE '$register_search' or r.barcode like '$register_search' or sticker like '$register_search') ORDER BY pack_id ASC;");
+            $regis2 = mysqli_query($conn,"select r.reg_id,r.barcode,e.emp_id,emp_name,surname,queue,dob,age,company,branch,department,tel,family_stt,nation,ethnic,job,house_no,village,district,province,current_address,road,email,pack_id,year,date,time,user_name from register r LEFT JOIN registerdetail d ON r.reg_id=d.reg_id left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where d.pack_id='$pack_id' and r.date like '$register_date' and c.company like '$register_company' and (e.emp_id like '$register_search' or emp_name like '$register_search' or surname like '$register_search' or age LIKE '$register_search' or r.barcode like '$register_search' or sticker like '$register_search') ORDER BY pack_id ASC;");
             $arr_package[] = "'".$pack_id."'"; 
             $table_package[] = "'"."tbl".$pack_id."'"; 
             ?>
@@ -55,6 +55,7 @@
                     <th>ນາມສະກຸນ</th>
                     <th>ອາຍຸ</th>
                     <th>ບໍລິສັດ</th>
+                    replace with excel
                     <th>ລຳດັບຄິວ</th>
                     <th>ປີເຂົ້າກວດ</th>
                     <th>ວັນທີລົງທະບຽນ</th>
@@ -116,6 +117,7 @@
                     <th style="width: 150px;">ນາມສະກຸນ</th>
                     <th style="width: 80px;">ອາຍຸ</th>
                     <th style="width: 300px;">ບໍລິສັດ</th>
+
                     <th style="width: 80px;">ລຳດັບຄິວ</th>
                     <th style="width: 100px;">ປີເຂົ້າກວດ</th>
                     <th style="width: 160px;">ວັນທີລົງທະບຽນ</th>
