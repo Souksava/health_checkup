@@ -2350,7 +2350,7 @@ public static function import_thry($file_path,$year,$user_id){
         global $conn;
         
         $clear_checkup = mysqli_query($conn, "call clear_checkup('$year','$company')");
-        if(!$clear_checkup && !$update_status){
+        if(!$clear_checkup){
             echo"<script>";
             echo"window.location.href='Import?del=fail';";
             echo"</script>";
