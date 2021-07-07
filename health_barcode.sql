@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2021 at 07:09 AM
+-- Generation Time: Jul 07, 2021 at 09:42 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `health_barcode`
+-- Database: `popol`
 --
 
 DELIMITER $$
@@ -35,26 +35,27 @@ BEGIN
 SELECT * FROM registerdetail where pack_id=id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_checkup` ()  BEGIN
-DELETE FROM audiogram;
-DELETE FROM biochemistry;
-DELETE FROM cbc;
-DELETE FROM ekg;
-DELETE FROM heavy_metal;
-DELETE FROM immunity;
-DELETE FROM methamphetamine;
-DELETE FROM muscle;
-DELETE FROM oc_vision;
-DELETE FROM pe;
-DELETE FROM spirometry;
-DELETE FROM thryroid;
-DELETE FROM tumor_marker;
-DELETE FROM tumor_gttgk;
-DELETE FROM urinalvsis;
-DELETE FROM x_ray;
-DELETE FROM test_vision;
-DELETE FROM ultrasound;
-DELETE FROM se;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_checkup` (IN `years` YEAR(4), IN `com_ids` INT(11))  BEGIN
+UPDATE checkup_status LEFT JOIN employee e ON checkup_status.barcode=e.barcode SET physic=0,cbc=0,bio=0,urine=0,meth=0,thry=0,stool=0,metal=0,tumor=0,vision=0,audio=0,spiro=0,cxr=0,intt=0,ekg=0,muscle=0,ultra=0,tumor_gttgk=0,test_vision=0,audio=0,spiro=0,cxr=0,intt=0,ekg=0,muscle=0,ultra=0,tumor_gttgk=0,test_vision=0 WHERE year=years AND e.com_id=com_ids;
+DELETE audiogram FROM audiogram LEFT JOIN employee e ON audiogram.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE biochemistry FROM biochemistry LEFT JOIN employee e ON biochemistry.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE cbc FROM cbc LEFT JOIN employee e ON cbc.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE ekg FROM ekg LEFT JOIN employee e ON ekg.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE heavy_metal FROM heavy_metal LEFT JOIN employee e ON heavy_metal.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE immunity FROM immunity LEFT JOIN employee e ON immunity.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE methamphetamine FROM methamphetamine LEFT JOIN employee e ON methamphetamine.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE muscle FROM muscle LEFT JOIN employee e ON muscle.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE oc_vision FROM oc_vision LEFT JOIN employee e ON oc_vision.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE pe FROM pe LEFT JOIN employee e ON pe.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE spirometry FROM spirometry LEFT JOIN employee e ON spirometry.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE thryroid FROM thryroid LEFT JOIN employee e ON thryroid.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE tumor_marker FROM tumor_marker LEFT JOIN employee e ON tumor_marker.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE tumor_gttgk FROM tumor_gttgk LEFT JOIN employee e ON tumor_gttgk.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE urinalvsis FROM urinalvsis LEFT JOIN employee e ON urinalvsis.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE x_ray FROM x_ray LEFT JOIN employee e ON x_ray.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE test_vision FROM test_vision LEFT JOIN employee e ON test_vision.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE ultrasound FROM ultrasound LEFT JOIN employee e ON ultrasound.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
+DELETE se FROM se LEFT JOIN employee e ON se.barcode=e.barcode WHERE year=years AND e.com_id=com_ids; 
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_company_package` (IN `com_ids` VARCHAR(11))  NO SQL
