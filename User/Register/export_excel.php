@@ -42,37 +42,76 @@
         foreach($getpackage as $row){
         
             $pack_id = $row['pack_id'];
-            $regis2 = mysqli_query($conn,"select r.reg_id,r.barcode,e.emp_id,emp_name,surname,queue,dob,age,company,branch,department,tel,family_stt,nation,ethnic,job,house_no,village,district,province,current_address,road,email,pack_id,year,date,time,user_name from register r LEFT JOIN registerdetail d ON r.reg_id=d.reg_id left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where d.pack_id='$pack_id' and r.date like '$register_date' and c.company like '$register_company' and (e.emp_id like '$register_search' or emp_name like '$register_search' or surname like '$register_search' or age LIKE '$register_search' or r.barcode like '$register_search' or sticker like '$register_search') ORDER BY pack_id ASC;");
+            $regis2 = mysqli_query($conn,"select r.reg_id,r.barcode,e.emp_id,emp_name,surname,queue,dob,age,gender,company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,current_address,road,e.email,pack_id,year,date,time,user_name from register r LEFT JOIN registerdetail d ON r.reg_id=d.reg_id left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where d.pack_id='$pack_id' and r.date like '$register_date' and c.company like '$register_company' and (e.emp_id like '$register_search' or emp_name like '$register_search' or surname like '$register_search' or age LIKE '$register_search' or r.barcode like '$register_search' or sticker like '$register_search') ORDER BY pack_id ASC;");
             $arr_package[] = "'".$pack_id."'"; 
             $table_package[] = "'"."tbl".$pack_id."'"; 
             ?>
         <h3>table <?php echo $pack_id ?></h3>
         <table class="table table-bordered" id="tbl<?php echo $pack_id ?>">
-                <tr>
-                    <th>ບຣາໂຄດ</th>
-                    <th>ລະຫັດພະນັກງານ</th>
-                    <th>ຊື່ພະນັກງານ</th>
-                    <th>ນາມສະກຸນ</th>
-                    <th>ອາຍຸ</th>
-                    <th>ບໍລິສັດ</th>
-                    replace with excel
-                    <th>ລຳດັບຄິວ</th>
-                    <th>ປີເຂົ້າກວດ</th>
-                    <th>ວັນທີລົງທະບຽນ</th>
-                    <th>package</th>
-                </tr>
+            <tr>
+                <th>ລຳດັບ</th>
+                <th>ບຣາໂຄດ</th>
+                <th>ລະຫັດພະນັກງານ</th>
+                <th>ຊື່ພະນັກງານ</th>
+                <th>ນາມສະກຸນ</th>
+                <th>ວັນເດືອນປີເກີດ</th>
+                <th>ອາຍຸ</th>
+                <th>ເພດ</th>
+                <th>ບໍລິສັດ</th>
+                <th>ສາຂາ</th>
+                <th>ພະແນກ</th>
+                <th>ເບີໂທລະສັບ</th>
+                <th>ສະຖານະຄອບຄົວ</th>
+                <th>ສັນຊາດ</th>
+                <th>ຊົນເຜົ່າ</th>
+                <th>ສາສະໜາ</th>
+                <th>ອາຊີບ</th>
+                <th>ເຮືອກເລກທີ</th>
+                <th>ບ້ານ</th>
+                <th>ເມືອງ</th>
+                <th>ແຂວງ</th>
+                <th>ບ້ານຢູ່ປັດຈຸບັນ</th>
+                <th>ຖະໜົນ</th>
+                <th>ອີເມວ</th>
+                <th>ຜູ້ລົງທະບຽນ</th>
+                <th>ລຳດັບຄິວ</th>
+                <th>ປີເຂົ້າກວດ</th>
+                <th>ວັນທີລົງທະບຽນ</th>
+                <th>ເວລາ</th>
+                <th>package</th>
+            </tr>
+            <?php $no2_ = 0; ?>
             <?php
             foreach($regis2 as $rowregis2){
             ?>
-                <tr>
-                    <td><?php echo $rowregis2['barcode'] ?></td>
-                    <td><?php echo $rowregis2['emp_id'] ?></td>
-                    <td><?php echo $rowregis2['emp_name'] ?></td>
-                    <td><?php echo $rowregis2['surname'] ?></td>
-                    <td><?php echo $rowregis2['age'] ?></td>
-                    <td><?php echo $rowregis2['company'] ?></td>
-                    <td><?php echo $rowregis2['queue'] ?></td>
-                    <?php
+            <tr>
+            <td><?php echo $no2_ += 1; ?></td>
+                <td><?php echo $rowregis2['barcode'] ?></td>
+                <td><?php echo $rowregis2['emp_id'] ?></td>
+                <td><?php echo $rowregis2['emp_name'] ?></td>
+                <td><?php echo $rowregis2['surname'] ?></td>
+                <td><?php echo $rowregis2['dob'] ?></td>
+                <td><?php echo $rowregis2['age'] ?></td>
+                <td><?php echo $rowregis2['gender'] ?></td>
+                <td><?php echo $rowregis2['company'] ?></td>
+                <td><?php echo $rowregis2['branch'] ?></td>
+                <td><?php echo $rowregis2['department'] ?></td>
+                <td><?php echo $rowregis2['tel'] ?></td>
+                <td><?php echo $rowregis2['family_stt'] ?></td>
+                <td><?php echo $rowregis2['nation'] ?></td>
+                <td><?php echo $rowregis2['ethnic'] ?></td>
+                <td><?php echo $rowregis2['religion'] ?></td>
+                <td><?php echo $rowregis2['job'] ?></td>
+                <td><?php echo $rowregis2['house_no'] ?></td>
+                <td><?php echo $rowregis2['village'] ?></td>
+                <td><?php echo $rowregis2['district'] ?></td>
+                <td><?php echo $rowregis2['province'] ?></td>
+                <td><?php echo $rowregis2['current_address'] ?></td>
+                <td><?php echo $rowregis2['road'] ?></td>
+                <td><?php echo $rowregis2['email'] ?></td>
+                <td><?php echo $rowregis2['user_name'] ?></td>
+                <td><?php echo $rowregis2['queue'] ?></td>
+                <?php
                         if($rowregis2["date"] != null){
                             $rowregis2["date"] = date("d/m/Y",strtotime($rowregis2["date"]));
                         }
@@ -80,10 +119,11 @@
                             $rowregis2["date"] = "";
                         }
                     ?>
-                    <td><?php echo $rowregis2['year'] ?></td>
-                    <td><?php echo $rowregis2['date'] ?></td>
-                    <td><?php echo $rowregis2['pack_id'] ?></td>
-                </tr>
+                <td><?php echo $rowregis2['year'] ?></td>
+                <td><?php echo $rowregis2['date'] ?></td>
+                <td><?php echo $rowregis2['time'] ?></td>
+                <td><?php echo $rowregis2['pack_id'] ?></td>
+            </tr>
             <?php
             }
             ?>
@@ -115,9 +155,25 @@
                     <th style="width: 150px;">ລະຫັດພະນັກງານ</th>
                     <th style="width: 250px;">ຊື່</th>
                     <th style="width: 150px;">ນາມສະກຸນ</th>
+                    <th style="width: 80px;">ວັນເດືອນປີເກີດ</th>
                     <th style="width: 80px;">ອາຍຸ</th>
+                    <th style="width: 80px;">ເພດ</th>
                     <th style="width: 300px;">ບໍລິສັດ</th>
-
+                    <th style="width: 100px;">ສາຂາ</th>
+                    <th style="width: 100px;">ພະແນກ</th>
+                    <th style="width: 100px;">ເບີໂທລະສັບ</th>
+                    <th style="width: 80px;">ສະຖານະຄອບຄົວ</th>
+                    <th style="width: 80px;">ສັນຊາດ</th>
+                    <th style="width: 80px;">ຊົນເຜົ່າ</th>
+                    <th style="width: 80px;">ສາສະໜາ</th>
+                    <th style="width: 100px;">ອາຊີບ</th>
+                    <th style="width: 80px;">ເຮືອກເລກທີ</th>
+                    <th style="width: 100px;">ບ້ານ</th>
+                    <th style="width: 100px;">ເມືອງ</th>
+                    <th style="width: 100px;">ແຂວງ</th>
+                    <th style="width: 180px;">ບ້ານຢູ່ປັດຈຸບັນ</th>
+                    <th style="width: 100px;">ຖະໜົນ</th>
+                    <th style="width: 160px;">ອີເມວ</th>
                     <th style="width: 80px;">ລຳດັບຄິວ</th>
                     <th style="width: 100px;">ປີເຂົ້າກວດ</th>
                     <th style="width: 160px;">ວັນທີລົງທະບຽນ</th>
@@ -133,8 +189,25 @@
                     <td><?php echo $rowemp['emp_id'] ?></td>
                     <td><?php echo $rowemp['emp_name'] ?></td>
                     <td><?php echo $rowemp['surname'] ?></td>
+                    <td><?php echo $rowemp['dob'] ?></td>
                     <td><?php echo $rowemp['age'] ?></td>
+                    <td><?php echo $rowemp['gender'] ?></td>
                     <td><?php echo $rowemp['company'] ?></td>
+                    <td><?php echo $rowemp['branch'] ?></td>
+                    <td><?php echo $rowemp['department'] ?></td>
+                    <td><?php echo $rowemp['tel'] ?></td>
+                    <td><?php echo $rowemp['family_stt'] ?></td>
+                    <td><?php echo $rowemp['nation'] ?></td>
+                    <td><?php echo $rowemp['ethnic'] ?></td>
+                    <td><?php echo $rowemp['religion'] ?></td>
+                    <td><?php echo $rowemp['job'] ?></td>
+                    <td><?php echo $rowemp['house_no'] ?></td>
+                    <td><?php echo $rowemp['village'] ?></td>
+                    <td><?php echo $rowemp['district'] ?></td>
+                    <td><?php echo $rowemp['province'] ?></td>
+                    <td><?php echo $rowemp['current_address'] ?></td>
+                    <td><?php echo $rowemp['road'] ?></td>
+                    <td><?php echo $rowemp['email'] ?></td>
                     <td><?php echo $rowemp['queue'] ?></td>
                     <td><?php echo $rowemp['year'] ?></td>
                     <?php

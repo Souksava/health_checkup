@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2021 at 05:43 AM
+-- Generation Time: Jul 07, 2021 at 06:41 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -610,7 +610,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_register` (IN `companys` VARCHAR(50), IN `name` VARCHAR(50), IN `dates` VARCHAR(50))  NO SQL
 BEGIN
-select reg_id,r.barcode,e.emp_id,emp_name,surname,queue,age,company,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name or r.barcode like name or sticker like name) and date like dates ORDER BY date DESC, queue ASC;
+select reg_id,r.barcode,e.emp_id,emp_name,surname,dob,queue,age,gender,company,branch,department,tel,family_stt,nation,ethnic,religion,job,house_no,village,district,province,current_address,road,e.email,year,date,time,user_name from register r left join employee e on r.barcode=e.barcode LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN username z ON r.user_id=z.user_id where c.company like companys and (e.emp_id like name or emp_name like name or surname LIKE name or age LIKE name or r.barcode like name or sticker like name) and date like dates ORDER BY date DESC, queue ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `select_registerdetail` (IN `s` VARCHAR(11))  NO SQL
@@ -920,7 +920,8 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`, `checkup_status_log`) VALUES
-(143, '204072101293', 2021, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 1, '2021-07-04 13:37:03');
+(143, '204072101293', 2021, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 1, '2021-07-04 13:37:03'),
+(144, '204072100161', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '2021-07-07 04:30:28');
 
 -- --------------------------------------------------------
 
@@ -3676,7 +3677,10 @@ INSERT INTO `login_log` (`log_id`, `emp_id`, `status_log`, `time_stamp`) VALUES
 (40, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-02 02:26:39'),
 (41, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-04 09:42:39'),
 (42, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-04 13:25:26'),
-(43, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 03:41:49');
+(43, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 03:41:49'),
+(44, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 05:54:38'),
+(45, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 07:42:40'),
+(46, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-07 03:23:33');
 
 -- --------------------------------------------------------
 
@@ -3867,7 +3871,7 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`, `user_id`, `register_log`) VALUES
-(1, '204072101293', '20:36:48', 1, 2021, '2021-07-04', 2, '2021-07-04 13:36:48');
+(1, '204072100161', '11:30:28', 1, 2021, '2021-07-07', 2, '2021-07-07 04:30:28');
 
 -- --------------------------------------------------------
 
@@ -3887,16 +3891,16 @@ CREATE TABLE `registerdetail` (
 --
 
 INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`, `registerdetail_log`) VALUES
-(690, 1, 'AUDIO', '2021-07-04 13:36:48'),
-(691, 1, 'CBC', '2021-07-04 13:36:48'),
-(692, 1, 'CLOT', '2021-07-04 13:36:48'),
-(693, 1, 'EKG', '2021-07-04 13:36:48'),
-(694, 1, 'NAFA', '2021-07-04 13:36:48'),
-(695, 1, 'PE', '2021-07-04 13:36:48'),
-(696, 1, 'Urine', '2021-07-04 13:36:48'),
-(697, 1, 'X-Ray', '2021-07-04 13:36:48'),
-(698, 1, 'ຕາອາຊີບ', '2021-07-04 13:36:48'),
-(699, 1, 'ສາຍຕາ', '2021-07-04 13:36:48');
+(700, 1, 'AUDIO', '2021-07-07 04:30:28'),
+(701, 1, 'CBC', '2021-07-07 04:30:28'),
+(702, 1, 'CLOT', '2021-07-07 04:30:28'),
+(703, 1, 'EKG', '2021-07-07 04:30:28'),
+(704, 1, 'NAFA', '2021-07-07 04:30:28'),
+(705, 1, 'PE', '2021-07-07 04:30:28'),
+(706, 1, 'Urine', '2021-07-07 04:30:28'),
+(707, 1, 'X-Ray', '2021-07-07 04:30:28'),
+(708, 1, 'ຕາອາຊີບ', '2021-07-07 04:30:28'),
+(709, 1, 'ສາຍຕາ', '2021-07-07 04:30:28');
 
 -- --------------------------------------------------------
 
@@ -4417,7 +4421,7 @@ ALTER TABLE `cbc`
 -- AUTO_INCREMENT for table `checkup_status`
 --
 ALTER TABLE `checkup_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -4453,7 +4457,7 @@ ALTER TABLE `immunity`
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `methamphetamine`
@@ -4483,7 +4487,7 @@ ALTER TABLE `pe`
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=700;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=710;
 
 --
 -- AUTO_INCREMENT for table `se`
