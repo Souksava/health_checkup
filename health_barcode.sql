@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2021 at 05:43 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Jul 07, 2021 at 05:19 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,26 +35,38 @@ BEGIN
 SELECT * FROM registerdetail where pack_id=id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_checkup` ()  BEGIN
-DELETE FROM audiogram;
-DELETE FROM biochemistry;
-DELETE FROM cbc;
-DELETE FROM ekg;
-DELETE FROM heavy_metal;
-DELETE FROM immunity;
-DELETE FROM methamphetamine;
-DELETE FROM muscle;
-DELETE FROM oc_vision;
-DELETE FROM pe;
-DELETE FROM spirometry;
-DELETE FROM thryroid;
-DELETE FROM tumor_marker;
-DELETE FROM tumor_gttgk;
-DELETE FROM urinalvsis;
-DELETE FROM x_ray;
-DELETE FROM test_vision;
-DELETE FROM ultrasound;
-DELETE FROM se;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_checkup` (IN `years` YEAR(4), IN `com_ids` INT)  BEGIN
+UPDATE checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id SET physic=0,cbc=0,bio=0,urine=0,meth=0,thry=0,stool=0,metal=0,tumor=0,vision=0,audio=0,spiro=0,cxr=0,intt=0,ekg=0,muscle=0,ultra=0,tumor_gttgk=0,test_vision=0
+WHERE year=years AND e.com_id=com_ids;
+DELETE audiogram FROM audiogram LEFT JOIN employee e ON audiogram.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE biochemistry FROM biochemistry LEFT JOIN employee e ON biochemistry.barcode=e.barcode WHERE year=years
+AND e.com_id=com_ids;
+DELETE cbc FROM cbc LEFT JOIN employee e ON cbc.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE ekg FROM ekg LEFT JOIN employee e ON ekg.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE heavy_metal FROM heavy_metal LEFT JOIN employee e ON heavy_metal.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE immunity FROM immunity LEFT JOIN employee e ON immunity.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE methamphetamine FROM methamphetamine LEFT JOIN employee e ON methamphetamine.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE muscle FROM muscle LEFT JOIN employee e ON muscle.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE oc_vision FROM oc_vision LEFT JOIN employee e ON oc_vision.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE pe FROM pe LEFT JOIN employee e ON pe.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE spirometry FROM spirometry LEFT JOIN employee e ON spirometry.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE thryroid FROM thryroid LEFT JOIN employee e ON thryroid.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE tumor_marker FROM tumor_marker LEFT JOIN employee e ON tumor_marker.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE tumor_gttgk FROM tumor_gttgk LEFT JOIN employee e ON tumor_gttgk.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE urinalvsis FROM urinalvsis LEFT JOIN employee e ON urinalvsis.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE x_ray FROM x_ray LEFT JOIN employee e ON x_ray.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
+DELETE test_vision FROM test_vision LEFT JOIN employee e ON test_vision.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE ultrasound FROM ultrasound LEFT JOIN employee e ON ultrasound.barcode=e.barcode WHERE year=years AND
+e.com_id=com_ids;
+DELETE se FROM se LEFT JOIN employee e ON se.barcode=e.barcode WHERE year=years AND e.com_id=com_ids;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `clear_company_package` (IN `com_ids` VARCHAR(11))  NO SQL
@@ -752,6 +764,12 @@ SELECT emp_name from employee WHERE barcode='108042100264';
 SELECT reg_id from register where reg_id='1';
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_checkup_status` (IN `years` YEAR(4), IN `com_ids` INT)  NO SQL
+BEGIN
+UPDATE checkup_status s LEFT JOIN employee e ON s.barcode=e.barcode LEFT JOIN company c ON e.com_id=c.com_id SET physic=0,cbc=0,bio=0,urine=0,meth=0,thry=0,stool=0,metal=0,tumor=0,vision=0,audio=0,spiro=0,cxr=0,intt=0,ekg=0,muscle=0,ultra=0,tumor_gttgk=0,test_vision=0
+WHERE year=years AND e.com_id=com_ids;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `update_company` (IN `com_ids` VARCHAR(11), IN `companys` VARCHAR(100), IN `company_ens` VARCHAR(100), IN `stickers` VARCHAR(50))  NO SQL
 BEGIN
 UPDATE company SET company=companys,company_en=company_ens,sticker=stickers WHERE com_id=com_ids;
@@ -820,6 +838,14 @@ CREATE TABLE `audiogram` (
   `audiogram_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `audiogram`
+--
+
+INSERT INTO `audiogram` (`audi_id`, `barcode`, `r_500`, `r_1000`, `r_2000`, `r_3000`, `r_l_avg`, `r_4000`, `r_6000`, `r_8000`, `r_h_avg`, `l_500`, `l_1000`, `l_2000`, `l_3000`, `l_l_avg`, `l_4000`, `l_6000`, `l_8000`, `l_h_avg`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `audiogram_log`) VALUES
+(54, '204072102181', '25', '25', '25', '20', '23.75', '20', '20', '20', '20', '25', '25', '25', '25', '25', '25', '20', '20', '21.7', 'ຫູຂວາ ແລະ ຫູຊ້າຍລະດັບການໄດ້ຍິນຢູ່ໃນເກນປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(55, '204072101293', '25', '25', '25', '20', '23.76', '20', '20', '20', '20', '25', '25', '25', '25', '25', '25', '20', '20', '21.8', 'ຫູຂວາ ແລະ ຫູຊ້າຍລະດັບການໄດ້ຍິນຢູ່ໃນເກນປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
+
 -- --------------------------------------------------------
 
 --
@@ -850,6 +876,14 @@ CREATE TABLE `biochemistry` (
   `user_id` int(11) DEFAULT NULL,
   `biochemistry_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `biochemistry`
+--
+
+INSERT INTO `biochemistry` (`bio_id`, `barcode`, `fbs`, `cho`, `hdl`, `ldl`, `trig`, `ua`, `bun`, `creatinine`, `sgot`, `sgpt`, `alk`, `ggt`, `hbac`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `biochemistry_log`) VALUES
+(62, '204072102181', '90', '217', '58', '126', '163', '5', '15', '1', '44', '39', '82', '0', '0', 'ຜິດປົກະຕິ', 'ລົດອາຫານທາດມັນ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(63, '204072101293', '90', '217', '58', '126', '163', '5', '15', '1', '44', '39', '82', '0', '0', 'ຜິດປົກະຕິ', 'ລົດອາຫານທາດມັນ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
 
 -- --------------------------------------------------------
 
@@ -882,6 +916,14 @@ CREATE TABLE `cbc` (
   `user_id` int(11) DEFAULT NULL,
   `cbc_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `cbc`
+--
+
+INSERT INTO `cbc` (`cbc_id`, `barcode`, `hb`, `hct`, `wbc`, `ne`, `lym`, `monocyte`, `eo`, `baso`, `platelets`, `rbc`, `mvc`, `mch`, `mchc`, `red_blood`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `cbc_log`) VALUES
+(135, '204072102181', '15.1', '47', '6900', '45.6', '44.4', '3.5', '5.9', '0.6', '369000', '5.4', '87.2', '28.9', '32.1', 'Normochromia,normocytosis', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(136, '204072101293', '15.2', '47', '6900', '45.7', '44.5', '3.6', '5.10', '0.7', '369001', '5.5', '87.3', '28.10', '32.2', 'Normochromia,normocytosis', '', '', 2021, '', '', 2, '2021-07-07 03:18:31');
 
 -- --------------------------------------------------------
 
@@ -920,7 +962,8 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`, `checkup_status_log`) VALUES
-(143, '204072101293', 2021, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 1, '2021-07-04 13:37:03');
+(147, '204072102181', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2021-07-07 03:18:32'),
+(148, '204072101293', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2021-07-07 03:18:32');
 
 -- --------------------------------------------------------
 
@@ -990,6 +1033,14 @@ CREATE TABLE `ekg` (
   `user_id` int(11) DEFAULT NULL,
   `ekg_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ekg`
+--
+
+INSERT INTO `ekg` (`ekg_id`, `barcode`, `year`, `ekg_name`, `conclusion`, `remark`, `ekg_en`, `conclusion_en`, `user_id`, `ekg_log`) VALUES
+(96, '204072102181', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32'),
+(97, '204072101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32');
 
 -- --------------------------------------------------------
 
@@ -3618,6 +3669,14 @@ CREATE TABLE `heavy_metal` (
   `heavy_metal_log` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `heavy_metal`
+--
+
+INSERT INTO `heavy_metal` (`hea_id`, `barcode`, `lead`, `chromlum`, `ether`, `ethy`, `nickle`, `manganese`, `tim`, `blood`, `m_i_urine`, `b_a_u`, `c_u`, `copper`, `alum`, `zine`, `alcoho`, `silica`, `methy`, `arsenic`, `a_i_urine`, `t_i_urine`, `methy_urine`, `methanoi_urine`, `phenolic_resin`, `xylene`, `m_e_k_i_urine`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `heavy_metal_log`) VALUES
+(53, '204072102181', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, 0),
+(54, '204072101293', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -3645,6 +3704,14 @@ CREATE TABLE `immunity` (
   `user_id` int(11) DEFAULT NULL,
   `immunity_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `immunity`
+--
+
+INSERT INTO `immunity` (`im_id`, `barcode`, `anti_hav`, `ab`, `ag`, `hcv`, `vdrl`, `hiv`, `hpylori`, `pap`, `calcium`, `phosphorus`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `immunity_log`) VALUES
+(56, '204072102181', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'ກວດບໍ່ພົບການຕິດເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ\nກວດພົບພູມຄຸ້ມກັນຕໍ່ເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:32'),
+(57, '204072101293', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'ກວດບໍ່ພົບການຕິດເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ\nກວດພົບພູມຄຸ້ມກັນຕໍ່ເຊື້ອໄວຣັດຕັບອັກເສບຊະນິດ ບີ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:32');
 
 -- --------------------------------------------------------
 
@@ -3676,7 +3743,11 @@ INSERT INTO `login_log` (`log_id`, `emp_id`, `status_log`, `time_stamp`) VALUES
 (40, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-02 02:26:39'),
 (41, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-04 09:42:39'),
 (42, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-04 13:25:26'),
-(43, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 03:41:49');
+(43, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 03:41:49'),
+(44, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 04:00:32'),
+(45, 1, 'ອອກຈາກລະບົບ', '2021-07-05 10:42:43'),
+(46, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 10:42:48'),
+(47, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-07 02:25:41');
 
 -- --------------------------------------------------------
 
@@ -3696,7 +3767,7 @@ CREATE TABLE `machine` (
 INSERT INTO `machine` (`machine_id`, `expire`) VALUES
 ('01184701013D29010185FD01', '2022-11-30'),
 ('01184701013D400101636101', '2023-01-01'),
-('014CEB0101BD2501017FC501', '2022-09-01');
+('01907801014131010174D801', '2022-09-01');
 
 -- --------------------------------------------------------
 
@@ -3717,6 +3788,14 @@ CREATE TABLE `methamphetamine` (
   `methamphetamine_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `methamphetamine`
+--
+
+INSERT INTO `methamphetamine` (`meth_id`, `barcode`, `methamphetamine`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `methamphetamine_log`) VALUES
+(57, '204072102181', '11.2', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(58, '204072101293', '11.2', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
+
 -- --------------------------------------------------------
 
 --
@@ -3735,6 +3814,14 @@ CREATE TABLE `muscle` (
   `user_id` int(11) DEFAULT NULL,
   `muscle_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `muscle`
+--
+
+INSERT INTO `muscle` (`muscle_id`, `barcode`, `year`, `muscle_name`, `conclusion`, `remark`, `muscle_en`, `conclusion_en`, `user_id`, `muscle_log`) VALUES
+(154, '204072102181', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32'),
+(155, '204072101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32');
 
 -- --------------------------------------------------------
 
@@ -3759,6 +3846,14 @@ CREATE TABLE `oc_vision` (
   `user_id` int(11) DEFAULT NULL,
   `oc_vision_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `oc_vision`
+--
+
+INSERT INTO `oc_vision` (`oc_id`, `barcode`, `look_far`, `look_near`, `look_up`, `check_eye`, `check_color`, `radius`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `oc_vision_log`) VALUES
+(52, '204072102181', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(53, '204072101293', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
 
 -- --------------------------------------------------------
 
@@ -3845,6 +3940,14 @@ CREATE TABLE `pe` (
   `pe_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `pe`
+--
+
+INSERT INTO `pe` (`pe_id`, `barcode`, `year`, `hpi`, `pmhi`, `personal`, `family`, `asi`, `height`, `weight`, `bmi`, `bp`, `pulse`, `abo`, `eye`, `teeth`, `ears`, `lymph`, `thyroid`, `extremities`, `skin`, `hear`, `lung`, `als`, `other`, `breat`, `conclusion`, `remark`, `hpi_en`, `pmhi_en`, `personal_en`, `family_en`, `asi_en`, `eye_en`, `teeth_en`, `ears_en`, `lymph_en`, `thryroid_en`, `extremities_en`, `skin_en`, `hear_en`, `lung_en`, `als_en`, `other_en`, `conclusion_en`, `remark_en`, `user_id`, `pe_log`) VALUES
+(126, '204072102181', 2021, ' ລາວລຸ່ມ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ເຄີຍ', '157', '56', '22.72', '124/80', '70', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ນ້ຳໜັກຢູ່ໃນເກນມາດຕະຖານ', '', 'Never', 'Never', 'Never', 'Never', 'Never', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Other', 'Conclusion', 'Remark', 2, '2021-07-07 03:18:31'),
+(127, '204072101293', 2021, ' ລາວລຸ່ມ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ມີ', 'ບໍ່ເຄີຍ', '168', '80', '22.72', '124/81', '60', '', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Skin', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ຄວາມດັນເລືອດຢູ່ໃນເກນປົກກະຕິ', '', 'Never', 'Never', 'Never', 'Never', 'Never', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Other', 'Conclusion', 'Remark', 2, '2021-07-07 03:18:31');
+
 -- --------------------------------------------------------
 
 --
@@ -3867,7 +3970,8 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`, `user_id`, `register_log`) VALUES
-(1, '204072101293', '20:36:48', 1, 2021, '2021-07-04', 2, '2021-07-04 13:36:48');
+(1, '204072102181', '10:17:09', 1, 2021, '2021-07-07', 2, '2021-07-07 03:17:09'),
+(2, '204072101293', '10:17:24', 2, 2021, '2021-07-07', 2, '2021-07-07 03:17:25');
 
 -- --------------------------------------------------------
 
@@ -3887,16 +3991,26 @@ CREATE TABLE `registerdetail` (
 --
 
 INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`, `registerdetail_log`) VALUES
-(690, 1, 'AUDIO', '2021-07-04 13:36:48'),
-(691, 1, 'CBC', '2021-07-04 13:36:48'),
-(692, 1, 'CLOT', '2021-07-04 13:36:48'),
-(693, 1, 'EKG', '2021-07-04 13:36:48'),
-(694, 1, 'NAFA', '2021-07-04 13:36:48'),
-(695, 1, 'PE', '2021-07-04 13:36:48'),
-(696, 1, 'Urine', '2021-07-04 13:36:48'),
-(697, 1, 'X-Ray', '2021-07-04 13:36:48'),
-(698, 1, 'ຕາອາຊີບ', '2021-07-04 13:36:48'),
-(699, 1, 'ສາຍຕາ', '2021-07-04 13:36:48');
+(730, 1, 'AUDIO', '2021-07-07 03:17:09'),
+(731, 1, 'CBC', '2021-07-07 03:17:09'),
+(732, 1, 'CLOT', '2021-07-07 03:17:09'),
+(733, 1, 'EKG', '2021-07-07 03:17:09'),
+(734, 1, 'NAFA', '2021-07-07 03:17:09'),
+(735, 1, 'PE', '2021-07-07 03:17:09'),
+(736, 1, 'Urine', '2021-07-07 03:17:09'),
+(737, 1, 'X-Ray', '2021-07-07 03:17:09'),
+(738, 1, 'ຕາອາຊີບ', '2021-07-07 03:17:09'),
+(739, 1, 'ສາຍຕາ', '2021-07-07 03:17:09'),
+(740, 2, 'AUDIO', '2021-07-07 03:17:25'),
+(741, 2, 'CBC', '2021-07-07 03:17:25'),
+(742, 2, 'CLOT', '2021-07-07 03:17:25'),
+(743, 2, 'EKG', '2021-07-07 03:17:25'),
+(744, 2, 'NAFA', '2021-07-07 03:17:25'),
+(745, 2, 'PE', '2021-07-07 03:17:25'),
+(746, 2, 'Urine', '2021-07-07 03:17:25'),
+(747, 2, 'X-Ray', '2021-07-07 03:17:25'),
+(748, 2, 'ຕາອາຊີບ', '2021-07-07 03:17:25'),
+(749, 2, 'ສາຍຕາ', '2021-07-07 03:17:25');
 
 -- --------------------------------------------------------
 
@@ -3925,6 +4039,14 @@ CREATE TABLE `se` (
   `se_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `se`
+--
+
+INSERT INTO `se` (`se_id`, `barcode`, `color`, `stool_ap`, `wbc`, `rbc`, `parasite`, `samonella`, `shigella`, `vivrio`, `vibrio`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `se_log`) VALUES
+(58, '204072102181', 'Brown', 'Soft', 'WBC', 'RBC', 'Not Found', 'Spp', 'Spp', 'Spp', '10', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(59, '204072101293', 'Brown', 'Soft', 'WBC', 'RBC', 'Not Found', 'Spp', 'Spp', 'Spp', '11', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
+
 -- --------------------------------------------------------
 
 --
@@ -3949,6 +4071,14 @@ CREATE TABLE `spirometry` (
   `user_id` int(11) DEFAULT NULL,
   `spirometry_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `spirometry`
+--
+
+INSERT INTO `spirometry` (`spir_id`, `barcode`, `fvc_means`, `fvc_predict`, `fvc_predicts`, `fevi_means`, `fevi_predict`, `fevi_predicts`, `fevi_fvc`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `spirometry_log`) VALUES
+(59, '204072102181', '02', '03', '04', '05', '06', '07', '08', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(60, '204072101293', '02', '03', '04', '05', '06', '07', '08', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
 
 -- --------------------------------------------------------
 
@@ -3978,6 +4108,14 @@ CREATE TABLE `test_vision` (
   `test_vision_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `test_vision`
+--
+
+INSERT INTO `test_vision` (`test_id`, `barcode`, `year`, `r_short`, `r_long`, `r_tited`, `r_color`, `r_conclusion`, `l_short`, `l_long`, `l_tited`, `l_color`, `l_conclusion`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`, `test_vision_log`) VALUES
+(91, '204072102181', 2021, '02', '03', '04', '05', 'ປົກກະຕິ', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32'),
+(92, '204072101293', 2021, '02', '03', '04', '05', 'ປົກກະຕິ', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32');
+
 -- --------------------------------------------------------
 
 --
@@ -4001,6 +4139,14 @@ CREATE TABLE `thryroid` (
   `thryoid_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `thryroid`
+--
+
+INSERT INTO `thryroid` (`th_id`, `barcode`, `free_t3`, `free_t4`, `tsh`, `t3`, `t4`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `thryoid_log`) VALUES
+(53, '204072102181', '11', '12', '13', '14', '15', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(54, '204072101293', '11', '12', '13', '14', '15', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
+
 -- --------------------------------------------------------
 
 --
@@ -4023,6 +4169,14 @@ CREATE TABLE `tumor_gttgk` (
   `user_id` int(11) NOT NULL,
   `tumor_gttgk_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tumor_gttgk`
+--
+
+INSERT INTO `tumor_gttgk` (`id`, `barcode`, `year`, `total_bill`, `drect_bill`, `protein`, `ambumin`, `globulin`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`, `tumor_gttgk_log`) VALUES
+(42, '204072102181', 2021, '05', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(43, '204072101293', 2021, '05', '06', '07', '08', '09', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
 
 -- --------------------------------------------------------
 
@@ -4048,6 +4202,14 @@ CREATE TABLE `tumor_marker` (
   `tumor_marker_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `tumor_marker`
+--
+
+INSERT INTO `tumor_marker` (`tum_id`, `barcode`, `afp`, `cea`, `psa`, `ca_19`, `ca_15`, `ca_125`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `tumor_marker_log`) VALUES
+(52, '204072102181', '01', '02', '03', '04', '05', '06', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(53, '204072101293', '01', '02', '03', '04', '05', '06', '', '', 2021, '', '', 2, '2021-07-07 03:18:31');
+
 -- --------------------------------------------------------
 
 --
@@ -4066,6 +4228,14 @@ CREATE TABLE `ultrasound` (
   `user_id` int(11) DEFAULT NULL,
   `ultrasound_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ultrasound`
+--
+
+INSERT INTO `ultrasound` (`ul_id`, `barcode`, `year`, `ultra_name`, `conclusion`, `remark`, `conclusion_en`, `remark_en`, `user_id`, `ultrasound_log`) VALUES
+(50, '204072102181', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32'),
+(51, '204072101293', 2021, 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 'Normal', 'Normal', 2, '2021-07-07 03:18:32');
 
 -- --------------------------------------------------------
 
@@ -4095,6 +4265,14 @@ CREATE TABLE `urinalvsis` (
   `user_id` int(11) DEFAULT NULL,
   `urinalvsis_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `urinalvsis`
+--
+
+INSERT INTO `urinalvsis` (`urin_id`, `barcode`, `color`, `appearance`, `ph`, `specifics`, `protein`, `sugar`, `ketone`, `blood`, `wbc`, `rbc`, `epit`, `conclusion`, `remark`, `year`, `conclusion_en`, `remark_en`, `user_id`, `urinalvsis_log`) VALUES
+(60, '204072102181', 'Yellow', 'Clear', '6', '1.02', 'Negative', 'Negative', 'Negative', 'Negative', '0-1', '0-1', '1-2', 'ຜິດປົກກະຕິ', 'ຫຼູດຜ່ອນທາດເຄັມ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(61, '204072101293', 'Yellow', 'Clear', '7', '1.03', 'Negative', 'Negative', 'Negative', 'Negative', '0-1', '0-1', '1-3', 'ຜິດປົກກະຕິ', 'ຫຼູດຜ່ອນທາດເຄັມ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
 
 -- --------------------------------------------------------
 
@@ -4159,6 +4337,14 @@ CREATE TABLE `x_ray` (
   `user_id` int(11) DEFAULT NULL,
   `x_ray_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `x_ray`
+--
+
+INSERT INTO `x_ray` (`x_id`, `barcode`, `x_ray`, `conclusion`, `remark`, `year`, `x_ray_en`, `conclusion_en`, `user_id`, `x_ray_log`) VALUES
+(59, '204072102181', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31'),
+(60, '204072101293', 'ປົກກະຕິ', 'ປົກກະຕິ', 'ປົກກະຕິ', 2021, 'Normal', 'Normal', 2, '2021-07-07 03:18:31');
 
 --
 -- Indexes for dumped tables
@@ -4399,25 +4585,25 @@ ALTER TABLE `x_ray`
 -- AUTO_INCREMENT for table `audiogram`
 --
 ALTER TABLE `audiogram`
-  MODIFY `audi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `audi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `biochemistry`
 --
 ALTER TABLE `biochemistry`
-  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `bio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `cbc`
 --
 ALTER TABLE `cbc`
-  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `cbc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `checkup_status`
 --
 ALTER TABLE `checkup_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -4435,103 +4621,103 @@ ALTER TABLE `company_package`
 -- AUTO_INCREMENT for table `ekg`
 --
 ALTER TABLE `ekg`
-  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `ekg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `heavy_metal`
 --
 ALTER TABLE `heavy_metal`
-  MODIFY `hea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `hea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `immunity`
 --
 ALTER TABLE `immunity`
-  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `im_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `methamphetamine`
 --
 ALTER TABLE `methamphetamine`
-  MODIFY `meth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `meth_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `muscle`
 --
 ALTER TABLE `muscle`
-  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `muscle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `oc_vision`
 --
 ALTER TABLE `oc_vision`
-  MODIFY `oc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `oc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `pe`
 --
 ALTER TABLE `pe`
-  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `pe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=700;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750;
 
 --
 -- AUTO_INCREMENT for table `se`
 --
 ALTER TABLE `se`
-  MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `spirometry`
 --
 ALTER TABLE `spirometry`
-  MODIFY `spir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `spir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `test_vision`
 --
 ALTER TABLE `test_vision`
-  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `thryroid`
 --
 ALTER TABLE `thryroid`
-  MODIFY `th_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `th_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `tumor_gttgk`
 --
 ALTER TABLE `tumor_gttgk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tumor_marker`
 --
 ALTER TABLE `tumor_marker`
-  MODIFY `tum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `tum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `ultrasound`
 --
 ALTER TABLE `ultrasound`
-  MODIFY `ul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `urinalvsis`
 --
 ALTER TABLE `urinalvsis`
-  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `urin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `username`
@@ -4549,7 +4735,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `x_ray`
 --
 ALTER TABLE `x_ray`
-  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `x_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Constraints for dumped tables

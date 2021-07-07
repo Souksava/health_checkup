@@ -89,10 +89,10 @@ class obj{
                         $max = mysqli_fetch_array($get_barcode,MYSQLI_ASSOC);
                         $no_ = (int)$max['barcode']+1;
                         $new_max = sprintf("%05s",$no_);
-                        $barcode = "2".$Date_barcode.$new_max; 
+                        $barcode = "1".$Date_barcode.$new_max; 
                     }
                     else{
-                        $barcode = "2".$Date_barcode."00001"; 
+                        $barcode = "1".$Date_barcode."00001"; 
                     }
                     mysqli_free_result($get_barcode);  
                     mysqli_next_result($conn);
@@ -2342,6 +2342,21 @@ public static function import_thry($file_path,$year,$user_id){
             
             echo"<script>";
             echo"window.location.href='Import?import=success';";
+            echo"</script>";
+        }
+    }
+
+    public static function clear_database($year,$company){
+        global $conn;
+        
+        $clear_checkup = mysqli_query($conn, "call clear_checkup('$year','$company')");
+        if(!$clear_checkup && !$update_status){
+            echo"<script>";
+            echo"window.location.href='Import?del=fail';";
+            echo"</script>";
+        }else{
+            echo"<script>";
+            echo"window.location.href='Import?del2=success';";
             echo"</script>";
         }
     }
