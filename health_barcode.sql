@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Jul 07, 2021 at 06:41 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
-=======
 -- Generation Time: Jul 07, 2021 at 05:19 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -968,19 +962,9 @@ CREATE TABLE `checkup_status` (
 --
 
 INSERT INTO `checkup_status` (`id`, `barcode`, `year`, `physic`, `cbc`, `bio`, `urine`, `meth`, `thry`, `stool`, `metal`, `tumor`, `vision`, `audio`, `spiro`, `cxr`, `intt`, `ekg`, `muscle`, `ultra`, `tumor_gttgk`, `test_vision`, `checkup_status_log`) VALUES
-<<<<<<< HEAD
-(143, '204072101293', 2021, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 1, '2021-07-04 13:37:03'),
-(144, '204072100161', 2021, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '2021-07-07 04:30:28');
-=======
 (147, '204072102181', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2021-07-07 03:18:32'),
 (148, '204072101293', 2021, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2021-07-07 03:18:32');
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `company`
---
 
 CREATE TABLE `company` (
   `com_id` int(11) NOT NULL,
@@ -3755,16 +3739,10 @@ INSERT INTO `login_log` (`log_id`, `emp_id`, `status_log`, `time_stamp`) VALUES
 (41, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-04 09:42:39'),
 (42, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-04 13:25:26'),
 (43, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 03:41:49'),
-<<<<<<< HEAD
-(44, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 05:54:38'),
-(45, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 07:42:40'),
-(46, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-07 03:23:33');
-=======
 (44, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 04:00:32'),
 (45, 1, 'ອອກຈາກລະບົບ', '2021-07-05 10:42:43'),
 (46, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-05 10:42:48'),
 (47, 2, 'ເຂົ້າສູ່ລະບົບ', '2021-07-07 02:25:41');
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
 
 -- --------------------------------------------------------
 
@@ -3987,12 +3965,8 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`reg_id`, `barcode`, `time`, `queue`, `year`, `date`, `user_id`, `register_log`) VALUES
-<<<<<<< HEAD
-(1, '204072100161', '11:30:28', 1, 2021, '2021-07-07', 2, '2021-07-07 04:30:28');
-=======
 (1, '204072102181', '10:17:09', 1, 2021, '2021-07-07', 2, '2021-07-07 03:17:09'),
 (2, '204072101293', '10:17:24', 2, 2021, '2021-07-07', 2, '2021-07-07 03:17:25');
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
 
 -- --------------------------------------------------------
 
@@ -4012,30 +3986,6 @@ CREATE TABLE `registerdetail` (
 --
 
 INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`, `registerdetail_log`) VALUES
-<<<<<<< HEAD
-(700, 1, 'AUDIO', '2021-07-07 04:30:28'),
-(701, 1, 'CBC', '2021-07-07 04:30:28'),
-(702, 1, 'CLOT', '2021-07-07 04:30:28'),
-(703, 1, 'EKG', '2021-07-07 04:30:28'),
-(704, 1, 'NAFA', '2021-07-07 04:30:28'),
-(705, 1, 'PE', '2021-07-07 04:30:28'),
-(706, 1, 'Urine', '2021-07-07 04:30:28'),
-(707, 1, 'X-Ray', '2021-07-07 04:30:28'),
-(708, 1, 'ຕາອາຊີບ', '2021-07-07 04:30:28'),
-(709, 1, 'ສາຍຕາ', '2021-07-07 04:30:28');
-=======
-(730, 1, 'AUDIO', '2021-07-07 03:17:09'),
-(731, 1, 'CBC', '2021-07-07 03:17:09'),
-(732, 1, 'CLOT', '2021-07-07 03:17:09'),
-(733, 1, 'EKG', '2021-07-07 03:17:09'),
-(734, 1, 'NAFA', '2021-07-07 03:17:09'),
-(735, 1, 'PE', '2021-07-07 03:17:09'),
-(736, 1, 'Urine', '2021-07-07 03:17:09'),
-(737, 1, 'X-Ray', '2021-07-07 03:17:09'),
-(738, 1, 'ຕາອາຊີບ', '2021-07-07 03:17:09'),
-(739, 1, 'ສາຍຕາ', '2021-07-07 03:17:09'),
-(740, 2, 'AUDIO', '2021-07-07 03:17:25'),
-(741, 2, 'CBC', '2021-07-07 03:17:25'),
 (742, 2, 'CLOT', '2021-07-07 03:17:25'),
 (743, 2, 'EKG', '2021-07-07 03:17:25'),
 (744, 2, 'NAFA', '2021-07-07 03:17:25'),
@@ -4048,7 +3998,6 @@ INSERT INTO `registerdetail` (`id`, `reg_id`, `pack_id`, `registerdetail_log`) V
 
 -- --------------------------------------------------------
 
---
 -- Table structure for table `se`
 --
 
@@ -4057,7 +4006,6 @@ CREATE TABLE `se` (
   `barcode` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `color` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `stool_ap` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `wbc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rbc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parasite` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `samonella` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -4637,11 +4585,7 @@ ALTER TABLE `cbc`
 -- AUTO_INCREMENT for table `checkup_status`
 --
 ALTER TABLE `checkup_status`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -4677,11 +4621,7 @@ ALTER TABLE `immunity`
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-<<<<<<< HEAD
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-=======
   MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
 
 --
 -- AUTO_INCREMENT for table `methamphetamine`
@@ -4711,15 +4651,8 @@ ALTER TABLE `pe`
 -- AUTO_INCREMENT for table `registerdetail`
 --
 ALTER TABLE `registerdetail`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=710;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750;
->>>>>>> cde57342d6d21e680145d3c3a4f1f81171fbcfbf
-
---
 -- AUTO_INCREMENT for table `se`
---
 ALTER TABLE `se`
   MODIFY `se_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
