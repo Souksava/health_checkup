@@ -651,10 +651,10 @@
             $max = mysqli_fetch_array($get_barcode,MYSQLI_ASSOC);
             $no_ = (int)$max['barcode']+1;
             $new_max = sprintf("%05s",$no_);
-            $barcode = "2".$Date_barcode.$new_max; 
+            $barcode = "1".$Date_barcode.$new_max; 
         }
         else{
-            $barcode = "2".$Date_barcode."00001"; 
+            $barcode = "1".$Date_barcode."00001"; 
         }
         mysqli_free_result($get_barcode);  
         mysqli_next_result($conn);
