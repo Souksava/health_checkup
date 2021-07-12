@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,9 +77,48 @@ else
     $road = $fetch_emp["road"];
     $email = $fetch_emp["email"];
 }
+
+$pe_conclusion = "";
+    $pe_remark = "";
 $pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,pulse,bp,lung,hear,eye,teeth,ears,lymph,thyroid,extremities,skin,hear,lung,als,other,conclusion,remark,personal,family,pmhi,asi,bmi,abo FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$yearconclusion';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
-if(mysqli_num_rows($pe)==0)
+if(mysqli_num_rows($pe) > 0)
+{
+    $hpi = $fetch_pe["hpi"];
+    $pmhi = $fetch_pe["pmhi"];
+    $personal = $fetch_pe["personal"];
+    $family = $fetch_pe["family"];
+    $asi = $fetch_pe["asi"];
+    $height = $fetch_pe["height"];
+    $weight = $fetch_pe["weight"];
+    $bmi = $fetch_pe["bmi"];
+    $bp = $fetch_pe["bp"];
+    $pulse = $fetch_pe["pulse"];
+    $abo = $fetch_pe["abo"];
+    $eye = $fetch_pe["eye"];
+    $teeth = $fetch_pe["teeth"];
+    $ears = $fetch_pe["ears"];
+    $lymph = $fetch_pe["lymph"];
+    $thyroidpe = $fetch_pe["thyroid"];
+    $extremities = $fetch_pe["extremities"];
+    $skin = $fetch_pe["skin"];
+    $hear = $fetch_pe["hear"];
+    $lung = $fetch_pe["lung"];
+    $als = $fetch_pe["als"];
+    $other = $fetch_pe["other"];
+
+    if ($fetch_pe["conclusion"] == "") {
+        echo "";
+    }else{
+        $pe_conclusion = "ການກວດຮ່າງກາຍທົ່ວໄປ : " . $fetch_pe["conclusion"];
+    }
+    if ($fetch_pe["remark"] == "") {
+        echo "";
+    }else{
+        $pe_remark = ": " . $fetch_pe["remark"];
+    }
+}
+else 
 {
     $hpi = "<br>";
     $pmhi = "";
@@ -106,33 +144,6 @@ if(mysqli_num_rows($pe)==0)
     $other = "";
     $pe_conclusion = "";
     $pe_remark = "";
-}
-else 
-{
-    $hpi = $fetch_pe["hpi"];
-    $pmhi = $fetch_pe["pmhi"];
-    $personal = $fetch_pe["personal"];
-    $family = $fetch_pe["family"];
-    $asi = $fetch_pe["asi"];
-    $height = $fetch_pe["height"];
-    $weight = $fetch_pe["weight"];
-    $bmi = $fetch_pe["bmi"];
-    $bp = $fetch_pe["bp"];
-    $pulse = $fetch_pe["pulse"];
-    $abo = $fetch_pe["abo"];
-    $eye = $fetch_pe["eye"];
-    $teeth = $fetch_pe["teeth"];
-    $ears = $fetch_pe["ears"];
-    $lymph = $fetch_pe["lymph"];
-    $thyroidpe = $fetch_pe["thyroid"];
-    $extremities = $fetch_pe["extremities"];
-    $skin = $fetch_pe["skin"];
-    $hear = $fetch_pe["hear"];
-    $lung = $fetch_pe["lung"];
-    $als = $fetch_pe["als"];
-    $other = $fetch_pe["other"];
-    $pe_conclusion = "ການກວດຮ່າງກາຍທົ່ວໄປ : " . $fetch_pe["conclusion"];
-    $pe_remark = ": " . $fetch_pe["remark"];
 }
 
 $imm = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year';");
@@ -222,17 +233,29 @@ else
     $immPhosphorus3 = $fetch_imm3["phosphorus"];
 
 }
+
+$imm_conclusion = "";
+    $imm_remark = "";
 $imm4 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_imm4 = mysqli_fetch_array($imm4,MYSQLI_ASSOC);
-if(mysqli_num_rows($imm4)==0)
+if(mysqli_num_rows($imm4) > 0)
 {
-    $imm_conclusion = "";
-    $imm_remark = "";
+    if ($fetch_imm4["conclusion"] == "") {
+        echo "";
+    }else{
+        $imm_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_imm4["conclusion"];
+    }
+
+    if ($fetch_imm4["remark"] == "") {
+        echo "";
+    }else{
+        $imm_remark = ": " .$fetch_imm4["remark"];
+    }
 }
 else 
 {
-    $imm_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_imm4["conclusion"];
-    $imm_remark = ": " .$fetch_imm4["remark"];
+    $imm_conclusion = "";
+    $imm_remark = "";
 }
 
 $spiro = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' AND year='$yearconclusion';");
@@ -370,64 +393,113 @@ else
     $mchc3 = $fetch_cbc3["mchc"];
     $red_blood3 = $fetch_cbc3["red_blood"];
 }
+$redblood = "";
+$cbc_conclusion = "";
+$cbc_remark = "";
 $cbc4 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_cbc4 = mysqli_fetch_array($cbc4,MYSQLI_ASSOC);
-if(mysqli_num_rows($cbc4)==0)
+if(mysqli_num_rows($cbc4) > 0)
+{
+    $redblood = $fetch_cbc4["red_blood"];
+    if($fetch_cbc4["conclusion"] == ""){
+        echo"";
+    }
+    else{
+        $cbc_conclusion = "ການກວດເລືອດລວມ : ".$fetch_cbc4["conclusion"];
+    }
+    if($fetch_cbc4["remark"] == ""){
+        echo"";
+    }
+    else{
+        $cbc_remark = "ການກວດເລືອດລວມ : ".$fetch_cbc4["remark"];
+    }
+    
+    // $cbc_remark = ": " .$fetch_cbc4["remark"];
+}
+else 
 {
     $redblood = "";
     $cbc_conclusion = "";
     $cbc_remark = "";
 }
-else 
-{
-    $redblood = $fetch_cbc4["red_blood"];
-    $cbc_conclusion = "ການກວດເລືອດລວມ : ".$fetch_cbc4["conclusion"];
-    $cbc_remark = ": " .$fetch_cbc4["remark"];
-}
 
+$x_ray = "";
+$cxr_conclusion = "";
+$cxr_remark = "";
 $cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_cxr = mysqli_fetch_array($cxr,MYSQLI_ASSOC);
-if(mysqli_num_rows($cxr)==0)
+if(mysqli_num_rows($cxr) > 0)
+{
+    $x_ray = $fetch_cxr["x_ray"];
+    if($fetch_cxr["conclusion"] == ""){
+        echo "";
+    }else{
+        $cxr_conclusion = "ການກວດສ່ອງໄຟຟ້າຜົ້ງເອີກ : ".$fetch_cxr["conclusion"];
+    }
+    if($fetch_cxr["remark"] == ""){
+        echo "";
+    }else{
+        $cxr_remark = $fetch_cxr["remark"];
+    }
+}
+else 
 {
     $x_ray = "";
     $cxr_conclusion = "";
     $cxr_remark = "";
 }
-else 
-{
-    $x_ray = $fetch_cxr["x_ray"];
-    $cxr_conclusion = "ການກວດສ່ອງໄຟຟ້າຜົ້ງເອີກ : ".$fetch_cxr["conclusion"];
-    $cxr_remark = $fetch_cxr["remark"];
-}
 
+$ekg_name = "";
+$ekg_conclusion = "";
+$ekg_remark = "";
 $ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
-if(mysqli_num_rows($ekg)==0)
+if(mysqli_num_rows($ekg) > 0)
+{
+    $ekg_name = $fetch_ekg["ekg_name"];
+
+    if($fetch_ekg["conclusion"] == ""){
+        echo "";
+    }else{
+        $ekg_conclusion = "ການກວດແທກຄື້ນໄຟຟ້າຫົວໃຈ : ".$fetch_ekg["conclusion"];
+    }
+    if($fetch_ekg["remark"] == ""){
+        echo "";
+    }else{
+        $ekg_remark = $fetch_ekg["remark"];
+    }
+}
+else 
 {
     $ekg_name = "";
     $ekg_conclusion = "";
     $ekg_remark = "";
 }
-else 
-{
-    $ekg_name = $fetch_ekg["ekg_name"];
-    $ekg_conclusion = "ການກວດແທກຄື້ນໄຟຟ້າຫົວໃຈ : ".$fetch_ekg["conclusion"];
-    $ekg_remark = $fetch_ekg["remark"];
-}
 
+$ultra_name = "";
+$ultra_conclusion = "";
+$ultra_remark = "";
 $ultrasound = mysqli_query($conn,"SELECT * FROM ultrasound where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_ultrasound = mysqli_fetch_array($ultrasound,MYSQLI_ASSOC);
-if(mysqli_num_rows($ekg)==0)
+if(mysqli_num_rows($ekg) > 0)
+{
+    $ultra_name = $fetch_ultrasound["ultra_name"];
+    if($fetch_ultrasound["conclusion"] == ""){
+        echo "";
+    }else{
+        $ultra_conclusion = "ການກວດເອໂກ້ທ້ອງ  : ".$fetch_ultrasound["conclusion"];
+    }
+    if($fetch_ultrasound["remark"] == ""){
+        echo "";
+    }else{
+        $ultra_remark = $fetch_ultrasound["remark"];
+    }
+}
+else 
 {
     $ultra_name = "";
     $ultra_conclusion = "";
     $ultra_remark = "";
-}
-else 
-{
-    $ultra_name = $fetch_ultrasound["ultra_name"];
-    $ultra_conclusion = "ການກວດເອໂກ້ທ້ອງ  : ".$fetch_ultrasound["conclusion"];
-    $ultra_remark = $fetch_ultrasound["remark"];
 }
 
 $bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year';");
@@ -532,22 +604,61 @@ else {
     $ggt3 = $fetch_bio3["ggt"];
     $hbac3 = $fetch_bio3["hbac"];
 }
+
+$bio_conclusion = "";
+$bio_remark = "";
 $bio4 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_bio4 = mysqli_fetch_array($bio4,MYSQLI_ASSOC);
-if(mysqli_num_rows($bio4)==0)
+if(mysqli_num_rows($bio4) > 0)
+{
+    if ($fetch_bio4["conclusion"] == "") {
+        echo "";
+    }else{
+        $bio_conclusion =  "ການກວດເລືອດຊີວະເຄມີ : ".$fetch_bio4["conclusion"];
+    }
+
+    if ($fetch_bio4["remark"] == "") {
+        echo "";
+    }else{
+        $bio_remark = ": " .$fetch_bio4["remark"];
+    }
+}
+else 
 {
     $bio_conclusion = "";
     $bio_remark = "";
 }
-else 
-{
-    $bio_conclusion =  "ການກວດເລືອດຊີວະເຄມີ : ".$fetch_bio4["conclusion"];
-    $bio_remark = ": " .$fetch_bio4["remark"];
-}
 
+$test_vision_conclusion = "";
+$test_vision_remark = "";
 $test_vision = mysqli_query($conn,"SELECT * FROM test_vision where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_test_vision = mysqli_fetch_array($test_vision,MYSQLI_ASSOC);
-if(mysqli_num_rows($test_vision)==0)
+if(mysqli_num_rows($test_vision) > 0)
+{
+    $r_short = $fetch_test_vision["r_short"];
+    $r_long = $fetch_test_vision["r_long"];
+    $r_tited = $fetch_test_vision["r_tited"];
+    $r_color = $fetch_test_vision["r_color"];
+    $r_conclusion = $fetch_test_vision["r_conclusion"];
+    $l_short = $fetch_test_vision["l_short"];
+    $l_long = $fetch_test_vision["l_long"];
+    $l_tited = $fetch_test_vision["l_tited"];
+    $l_color = $fetch_test_vision["l_color"];
+    $l_conclusion = $fetch_test_vision["l_conclusion"];
+
+    if ($fetch_test_vision["conclusion"] == "") {
+        echo "";
+    }else{
+        $test_vision_conclusion ="ການກວດສາຍຕາ : " .$fetch_test_vision["conclusion"];
+    }
+
+    if ($fetch_test_vision["remark"] == "") {
+        echo "";
+    }else{
+        $test_vision_remark = $fetch_test_vision["remark"];
+    }
+}
+else 
 {
     $r_short = "";
     $r_long = "";
@@ -562,25 +673,32 @@ if(mysqli_num_rows($test_vision)==0)
     $test_vision_conclusion = "";
     $test_vision_remark = "";
 }
-else 
-{
-    $r_short = $fetch_test_vision["r_short"];
-    $r_long = $fetch_test_vision["r_long"];
-    $r_tited = $fetch_test_vision["r_tited"];
-    $r_color = $fetch_test_vision["r_color"];
-    $r_conclusion = $fetch_test_vision["r_conclusion"];
-    $l_short = $fetch_test_vision["l_short"];
-    $l_long = $fetch_test_vision["l_long"];
-    $l_tited = $fetch_test_vision["l_tited"];
-    $l_color = $fetch_test_vision["l_color"];
-    $l_conclusion = $fetch_test_vision["l_conclusion"];
-    $test_vision_conclusion ="ການກວດສາຍຕາ : " .$fetch_test_vision["conclusion"];
-    $test_vision_remark = $fetch_test_vision["remark"];
-}
 
+$vision_conclusion = "";
+$vision_remark = "";
 $vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_vision = mysqli_fetch_array($vision,MYSQLI_ASSOC);
-if(mysqli_num_rows($vision)==0)
+if(mysqli_num_rows($vision) > 0)
+{
+    $look_far = $fetch_vision["look_far"];
+    $check_eye = $fetch_vision["check_eye"];
+    $look_near = $fetch_vision["look_near"];
+    $check_color = $fetch_vision["check_color"];
+    $look_up = $fetch_vision["look_up"];
+    $radius = $fetch_vision["radius"];
+    if ($fetch_vision["conclusion"] == "") {
+        echo "";
+    }else{
+        $vision_conclusion ="ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ : " .$fetch_vision["conclusion"];
+    }
+
+    if ($fetch_vision["remark"] == "") {
+        echo "";
+    }else{
+        $vision_remark = ": " .$fetch_vision["remark"];
+    }
+}
+else 
 {
     $look_far = "";
     $check_eye = "";
@@ -591,21 +709,45 @@ if(mysqli_num_rows($vision)==0)
     $vision_conclusion = "";
     $vision_remark = "";
 }
-else 
-{
-    $look_far = $fetch_vision["look_far"];
-    $check_eye = $fetch_vision["check_eye"];
-    $look_near = $fetch_vision["look_near"];
-    $check_color = $fetch_vision["check_color"];
-    $look_up = $fetch_vision["look_up"];
-    $radius = $fetch_vision["radius"];
-    $vision_conclusion ="ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ : " .$fetch_vision["conclusion"];
-    $vision_remark = ": " .$fetch_vision["remark"];
-}
 
+$audio_conclusion = "";
+    $audio_remark = "";
 $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
-if(mysqli_num_rows($audio)==0)
+if(mysqli_num_rows($audio) > 0)
+{
+    $r_500 = $fetch_audio["r_500"];
+    $r_1000 = $fetch_audio["r_1000"];
+    $r_2000 = $fetch_audio["r_2000"];
+    $r_3000 = $fetch_audio["r_3000"];
+    $r_l_avg = $fetch_audio["r_l_avg"];
+    $r_4000 = $fetch_audio["r_4000"];
+    $r_6000 = $fetch_audio["r_6000"];
+    $r_8000 = $fetch_audio["r_8000"];
+    $r_h_avg = $fetch_audio["r_h_avg"];
+    $l_500 = $fetch_audio["l_500"];
+    $l_1000 = $fetch_audio["l_1000"];
+    $l_2000 = $fetch_audio["l_2000"];
+    $l_3000 = $fetch_audio["l_3000"];
+    $l_l_avg = $fetch_audio["l_l_avg"];
+    $l_4000 = $fetch_audio["l_4000"];
+    $l_6000 = $fetch_audio["l_6000"];
+    $l_8000 = $fetch_audio["l_8000"];
+    $l_h_avg = $fetch_audio["l_h_avg"];
+
+    if ($fetch_audio["conclusion"] == "") {
+        echo "";
+    }else{
+        $audio_conclusion = "ການກວດສະມັດຕະພາບການໄດ້ຍິນ : ".$fetch_audio["conclusion"];
+    }
+
+    if ($fetch_audio["remark"] == "") {
+        echo "";
+    }else{
+        $audio_remark = ": " .$fetch_audio["remark"];
+    }
+}
+else 
 {
     $r_500 = "";
     $r_1000 = "";
@@ -628,43 +770,32 @@ if(mysqli_num_rows($audio)==0)
     $audio_conclusion = "";
     $audio_remark = "";
 }
-else 
-{
-    $r_500 = $fetch_audio["r_500"];
-    $r_1000 = $fetch_audio["r_1000"];
-    $r_2000 = $fetch_audio["r_2000"];
-    $r_3000 = $fetch_audio["r_3000"];
-    $r_l_avg = $fetch_audio["r_l_avg"];
-    $r_4000 = $fetch_audio["r_4000"];
-    $r_6000 = $fetch_audio["r_6000"];
-    $r_8000 = $fetch_audio["r_8000"];
-    $r_h_avg = $fetch_audio["r_h_avg"];
-    $l_500 = $fetch_audio["l_500"];
-    $l_1000 = $fetch_audio["l_1000"];
-    $l_2000 = $fetch_audio["l_2000"];
-    $l_3000 = $fetch_audio["l_3000"];
-    $l_l_avg = $fetch_audio["l_l_avg"];
-    $l_4000 = $fetch_audio["l_4000"];
-    $l_6000 = $fetch_audio["l_6000"];
-    $l_8000 = $fetch_audio["l_8000"];
-    $l_h_avg = $fetch_audio["l_h_avg"];
-    $audio_conclusion = "ການກວດສະມັດຕະພາບການໄດ້ຍິນ : ".$fetch_audio["conclusion"];
-    $audio_remark = ": " .$fetch_audio["remark"];
-}
 
+$muscle_conclusion = "";
+    $muscle_remark = "";
 $muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
-if(mysqli_num_rows($muscle)==0)
+if(mysqli_num_rows($muscle) > 0)
+{
+    $muscle_name = $fetch_muscle["muscle_name"];
+
+    if ($fetch_muscle["conclusion"] == "") {
+        echo "";
+    }else{
+        $muscle_conclusion = "ການກວດທົດສອບສະມັດຕະພາບກ້າມ : " .$fetch_muscle["conclusion"];
+    }
+
+    if ($fetch_muscle["remark"] == "") {
+        echo "";
+    }else{
+        $muscle_remark = $fetch_muscle["remark"];
+    }
+}
+else 
 {
     $muscle_name = "";
     $muscle_conclusion = "";
     $muscle_remark = "";
-}
-else 
-{
-    $muscle_name = $fetch_muscle["muscle_name"];
-    $muscle_conclusion = "ການກວດທົດສອບສະມັດຕະພາບກ້າມ : " .$fetch_muscle["conclusion"];
-    $muscle_remark = $fetch_muscle["remark"];
 }
 
 
@@ -839,17 +970,29 @@ else {
     $xyleneInBlood3 = $fetch_metal3["xylene"];
     $methylEthylKetoneInUrine3 = $fetch_metal3["m_e_k_i_urine"];
 }
+
+$metal_conclusion = "";
+    $metal_remark = "";
 $metal4= mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_metal4 = mysqli_fetch_array($metal4,MYSQLI_ASSOC);
-if(mysqli_num_rows($metal4)==0)
+if(mysqli_num_rows($metal4) > 0)
 {
-    $metal_conclusion = "";
-    $metal_remark = "";
+    if ($fetch_metal4["conclusion"] == "") {
+        echo "";
+    }else{
+        $metal_conclusion = "ການກວດວິເຄາະຫາທາດໂລຫະໜັກ : " .$fetch_metal4["conclusion"];
+    }
+
+    if ($fetch_metal4["remark"] == "") {
+        echo "";
+    }else{
+        $metal_remark = ": " .$fetch_metal4["remark"];
+    }
 }
 else 
 {
-    $metal_conclusion = "ການກວດວິເຄາະຫາທາດໂລຫະໜັກ : " .$fetch_metal4["conclusion"];
-    $metal_remark = ": " .$fetch_metal4["remark"];
+    $metal_conclusion = "";
+    $metal_remark = "";
 }
 
 $urine = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year';");
@@ -939,17 +1082,29 @@ else {
     $rbc_urine3 = $fetch_urine3["rbc"];
     $epit3 = $fetch_urine3["epit"];
 }
+
+$urine_conclusion = "";
+    $urine_remark = "";
 $urine4 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_urine4 = mysqli_fetch_array($urine4,MYSQLI_ASSOC);
-if(mysqli_num_rows($urine4)==0)
+if(mysqli_num_rows($urine4) > 0)
 {
-    $urine_conclusion = "";
-    $urine_remark = "";
+    if ($fetch_urine4["conclusion"] == "") {
+        echo "";
+    }else{
+        $urine_conclusion = "ການກວດປັດສະວະ : ". $fetch_urine4["conclusion"];
+    }
+
+    if ($fetch_urine4["remark"] == "") {
+        echo "";
+    }else{
+        $urine_remark = ": " .$fetch_urine4["remark"];
+    }
 }
 else 
 {
-    $urine_conclusion = "ການກວດປັດສະວະ : ". $fetch_urine4["conclusion"];
-    $urine_remark = ": " .$fetch_urine4["remark"];
+    $urine_conclusion = "";
+    $urine_remark = "";
 }
 
 $methamphetamine = mysqli_query($conn,"SELECT * FROM methamphetamine where barcode='$barcode' AND year='$year';");
@@ -982,23 +1137,54 @@ if(mysqli_num_rows($methamphetamine3)==0)
 else {
     $meth3 = $fetch_methamphetamine3["methamphetamine"];
 }
+
+$meth_conclusion = "";
+$meth_remark = "";
 $methamphetamine4 = mysqli_query($conn,"SELECT * FROM methamphetamine where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_methamphetamine4 = mysqli_fetch_array($methamphetamine4,MYSQLI_ASSOC);
-if(mysqli_num_rows($methamphetamine4)==0)
+if(mysqli_num_rows($methamphetamine4) > 0)
 {
+    if ($fetch_methamphetamine4["conclusion"] == "") {
+        echo "";
+    }else{
+        $meth_conclusion = "ການກວດຫາສານເສບຕິດ : ".$fetch_methamphetamine4["conclusion"];
+    }
+
+    if ($fetch_methamphetamine4["remark"] == "") {
+        echo "";
+    }else{
+        $meth_remark = ": " .$fetch_methamphetamine4["remark"];
+    }
+}
+else {
     $meth_conclusion = "";
     $meth_remark = "";
 }
-else {
-    $meth_conclusion = "ການກວດຫາສານເສບຕິດ : ".$fetch_methamphetamine4["conclusion"];
-    $meth_remark = ": " .$fetch_methamphetamine4["remark"];
-}
 
-
+$thyroid_conclusion = "";
+$thyroid_remark = "";
 $thyroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' AND year='$year';");
 $fetch_thyroid = mysqli_fetch_array($thyroid,MYSQLI_ASSOC);
-if(mysqli_num_rows($thyroid)==0)
+if(mysqli_num_rows($thyroid) > 0)
 {
+    $free_t3 = $fetch_thyroid["free_t3"];
+    $free_t4 = $fetch_thyroid["free_t4"];
+    $tsh = $fetch_thyroid["tsh"];
+    $t3 = $fetch_thyroid["t3"];
+    $t4 = $fetch_thyroid["t4"];
+    if ($fetch_thyroid["conclusion"] == "") {
+        echo "";
+    }else{
+    $thyroid_conclusion ="ການກວດຮໍໂມນຕ່ອມຄໍ : " .$fetch_thyroid["conclusion"];
+    }
+
+    if ($fetch_thyroid["remark"] == "") {
+        echo "";
+    }else{
+        $thyroid_remark = ": " .$fetch_thyroid["remark"];
+    }
+}
+else {
     $free_t3 = "";
     $free_t4 = "";
     $tsh = "";
@@ -1007,20 +1193,37 @@ if(mysqli_num_rows($thyroid)==0)
     $thyroid_conclusion = "";
     $thyroid_remark = "";
 }
-else {
-    $free_t3 = $fetch_thyroid["free_t3"];
-    $free_t4 = $fetch_thyroid["free_t4"];
-    $tsh = $fetch_thyroid["tsh"];
-    $t3 = $fetch_thyroid["t3"];
-    $t4 = $fetch_thyroid["t4"];
-    $thyroid_conclusion ="ການກວດຮໍໂມນຕ່ອມຄໍ : " .$fetch_thyroid["conclusion"];
-    $thyroid_remark = ": " .$fetch_thyroid["remark"];
-}
 
+$stool_conclusion = "";
+$stool_remark = "";
 $stool = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' AND year='$year';");
 $fetch_stool = mysqli_fetch_array($stool,MYSQLI_ASSOC);
-if(mysqli_num_rows($stool)==0)
+if(mysqli_num_rows($stool) > 0)
 {
+    $color = $fetch_stool["color"];
+    $stool_ap = $fetch_stool["stool_ap"];
+    $stoolwbc = $fetch_stool["wbc"];
+    $stoolrbc = $fetch_stool["rbc"];
+    $parasite = $fetch_stool["parasite"];
+    $samonella = $fetch_stool["samonella"];
+    $shigella = $fetch_stool["shigella"];
+    $vivrio = $fetch_stool["vivrio"];
+    $vibrio = $fetch_stool["vibrio"];
+
+    if ($fetch_stool["conclusion"] == "") {
+        echo "";
+    }else{
+        $stool_conclusion ="ການກວດອາຈົມ : " .$fetch_stool["conclusion"];
+    }
+
+    if ($fetch_stool["remark"] == "") {
+        echo "";
+    }else{
+        $stool_remark = ": " .$fetch_stool["remark"];
+    }
+}
+else {
+    
     $color = "";
     $stool_ap = "";
     $stoolwbc = "";
@@ -1032,19 +1235,6 @@ if(mysqli_num_rows($stool)==0)
     $vibrio = "";
     $stool_conclusion = "";
     $stool_remark = "";
-}
-else {
-    $color = $fetch_stool["color"];
-    $stool_ap = $fetch_stool["stool_ap"];
-    $stoolwbc = $fetch_stool["wbc"];
-    $stoolrbc = $fetch_stool["rbc"];
-    $parasite = $fetch_stool["parasite"];
-    $samonella = $fetch_stool["samonella"];
-    $shigella = $fetch_stool["shigella"];
-    $vivrio = $fetch_stool["vivrio"];
-    $vibrio = $fetch_stool["vibrio"];
-    $stool_conclusion ="ການກວດອາຈົມ : " .$fetch_stool["conclusion"];
-    $stool_remark = ": " .$fetch_stool["remark"];
 }
 
 $tumor = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year';");
@@ -1107,16 +1297,33 @@ else {
     $ca_153 = $fetch_tumor3["ca_15"];
     $ca_1253 = $fetch_tumor3["ca_125"];
 }
+
+$tumor_conclusion = "";
+$tumor_remark = "";
 $tumor4 = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_tumor4 = mysqli_fetch_array($tumor4,MYSQLI_ASSOC);
-if(mysqli_num_rows($tumor4)==0)
+if(mysqli_num_rows($tumor4) > 0)
 {
-    $tumor_conclusion = "";
-    $tumor_remark = "";
+    
+    // $tumor_conclusion ="ການກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
+    // $tumor_remark = ": " .$fetch_tumor4["remark"];
+
+    if($fetch_cbc4["conclusion"] == ""){
+        echo"";
+    }
+    else{
+        $tumor_conclusion ="ການກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
+    }
+    if($fetch_cbc4["remark"] == ""){
+        echo"";
+    }
+    else{
+        $tumor_remark = ": " .$fetch_tumor4["remark"];
+    }
 }
 else {
-    $tumor_conclusion ="ການກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
-    $tumor_remark = ": " .$fetch_tumor4["remark"];
+    $tumor_conclusion = "";
+    $tumor_remark = "";
 }
 
 
@@ -1173,16 +1380,27 @@ else {
     $ambumin3 = $fetch_gttgk3["ambumin"];
     $globulin3 = $fetch_gttgk3["globulin"];
 }
+
+$gttgk_conclusion = "";
+$gttgk_remark = "";
 $gttgk4 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_gttgk4 = mysqli_fetch_array($gttgk4,MYSQLI_ASSOC);
-if(mysqli_num_rows($gttgk4)==0)
+if(mysqli_num_rows($gttgk4) > 0)
 {
-    $gttgk_conclusion = "";
-    $gttgk_remark = "";
+    if($fetch_gttgk4["conclusion"] == ""){
+        echo "";
+    }else{
+        $gttgk_conclusion = "ກວດຕົວບົ່ງຊີ້ມະເຮັງ (GTTGK) : ". $fetch_gttgk4["conclusion"];
+    }
+    if($fetch_gttgk4["remark"] == ""){
+        echo "";
+    }else{
+        $gttgk_remark = ": " .$fetch_gttgk4["remark"];
+    }
 }
 else {
-    $gttgk_conclusion = $fetch_gttgk4["conclusion"];
-    $gttgk_remark = ": " .$fetch_gttgk4["remark"];
+    $gttgk_conclusion = "";
+    $gttgk_remark = "";
 }
 
 ?>
@@ -1320,34 +1538,34 @@ else {
                             <?php echo nl2br($stool_conclusion);?> <?php echo nl2br($stool_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($tumor_conclusion);?>  <?php echo nl2br($tumor_remark);?>
+                            <?php echo nl2br($tumor_conclusion);?> <?php echo nl2br($tumor_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($metal_conclusion);?>  <?php echo nl2br($metal_remark);?>
+                            <?php echo nl2br($metal_conclusion);?> <?php echo nl2br($metal_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($vision_conclusion);?>  <?php echo nl2br($vision_remark);?>
+                            <?php echo nl2br($vision_conclusion);?> <?php echo nl2br($vision_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($audio_conclusion);?>  <?php echo nl2br($audio_remark);?>
+                            <?php echo nl2br($audio_conclusion);?> <?php echo nl2br($audio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($muscle_conclusion);?> 
+                            <?php echo nl2br($muscle_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($spiro_conclusion);?>  <?php echo nl2br($spiro_remark);?>
+                            <?php echo nl2br($spiro_conclusion);?> <?php echo nl2br($spiro_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cxr_conclusion);?> 
+                            <?php echo nl2br($cxr_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($ekg_conclusion);?> 
+                            <?php echo nl2br($ekg_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ultra_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($imm_conclusion);?>  <?php echo nl2br($imm_remark);?>
+                            <?php echo nl2br($imm_conclusion);?> <?php echo nl2br($imm_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($gttgk_conclusion);?> <?php echo nl2br($gttgk_remark);?>
@@ -1454,7 +1672,8 @@ else {
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b style="color: black;"><?php echo $current_address?></b>
+                                ທີຢູ່ປະຈຸບັນ/Current Address: &nbsp;&nbsp; <b
+                                    style="color: black;"><?php echo $current_address?></b>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -1491,7 +1710,8 @@ else {
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <b style="color: black;"><?php echo $email;?></b>
+                                ທີ່ຢູ່ອີເມລ/Email Address: &nbsp;&nbsp; <b
+                                    style="color: black;"><?php echo $email;?></b>
                             </div>
                         </div>
                     </div>
@@ -1763,16 +1983,20 @@ else {
                             <tr>
                                 <td>Calcium</td>
                                 <td></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium2;?></b>
+                                </td>
                                 <!-- <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium3;?></b></td> -->
                                 <td style="text-align:center">( 8.0-10.0 mg/dl )</td>
                             </tr>
                             <tr>
                                 <td>Phosphorus</td>
                                 <td></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus2;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus2;?></b>
+                                </td>
                                 <!-- <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus3;?></b></td> -->
                                 <td style="text-align:center">( 3.5-5.5 mg/dl )</td>
                             </tr>
@@ -2234,7 +2458,7 @@ else {
                         </tr>
                     </table>
                     <div class="col-sm-12">
-                    <br>
+                        <br>
                         ***ແປຜົນກວດສາຍຕາ
                     </div>
                     <div class="col-sm-12">
@@ -2244,8 +2468,8 @@ else {
                         <b><?php echo nl2br($test_vision_remark);?></b>
                     </div>
                     <div class="col-sm-12">
-                    <br>
-                    *** ແປຜົນການເບ່ິງເຫັນ ( Oc vision )
+                        <br>
+                        *** ແປຜົນການເບ່ິງເຫັນ ( Oc vision )
                     </div>
                     <div class="col-sm-12">
                         <b style="color: black;"> <?php echo nl2br($vision_conclusion);?></b>
@@ -2374,16 +2598,22 @@ else {
                             </tr> -->
                             <tr>
                                 <td>Lead in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $leadInBlood3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;60 ug/dL)</td>
                             </tr>
                             <tr>
                                 <td>Chromium in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $chromiumInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $chromiumInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $chromiumInBlood3;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $chromiumInBlood;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $chromiumInBlood2;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $chromiumInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;5 ug/L)</td>
                             </tr>
                             <tr>
@@ -2418,23 +2648,32 @@ else {
                             </tr>
                             <tr>
                                 <td>Copper in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $copperInBlood3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;140 ug/dL)</td>
                             </tr>
                             <tr>
                                 <td>Aluminium in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $aluminiumInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $aluminiumInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $aluminiumInBlood3;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $aluminiumInBlood;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $aluminiumInBlood2;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $aluminiumInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;1 ug/dL)</td>
                             </tr>
                             <tr>
                                 <td>Zine in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $zineInBlood3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;170 ug/dL)</td>
                             </tr>
                             <!-- <tr>
@@ -2469,9 +2708,12 @@ else {
                             </tr>
                             <tr>
                                 <td>Arsenic in Blood</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $arsenicInBlood;?></b>
+                                </td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $arsenicInBlood2;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $arsenicInBlood3;?></b></td>
                                 <td style="text-align:center">(&lt;2 ug/L)</td>
                             </tr>
                             <!-- <tr>
@@ -2528,16 +2770,22 @@ else {
                             </tr>
                             <tr>
                                 <td>Xylene in Urine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood3;?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood2;?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $xyleneInBlood3;?></b>
+                                </td>
                                 <td style="text-align:center">(&lt;1.5 g/gCr)</td>
                             </tr>
                             <tr>
                                 <td>Methyl ethyl ketone in Urine</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methylEthylKetoneInUrine;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methylEthylKetoneInUrine2;?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $methylEthylKetoneInUrine3;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $methylEthylKetoneInUrine;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $methylEthylKetoneInUrine2;?></b></td>
+                                <td style="text-align:center"><b
+                                        style="color: black;"><?php echo $methylEthylKetoneInUrine3;?></b></td>
                                 <td style="text-align:center">(&lt;2 mg/L)</td>
                             </tr>
                             <!-- <tr>
@@ -2988,22 +3236,29 @@ else {
                             <tr>
                                 <td>Total Billirubin </td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $total_bill?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill2?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill2?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $total_bill3?></b>
+                                </td>
                                 <td style="text-align:center">0.5 - 1.5 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Drect Billirubin</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill2?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill2?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $drect_bill3?></b>
+                                </td>
                                 <td style="text-align:center">0.1 - 0.5 mg/dl</td>
                             </tr>
                             <tr>
                                 <td>Total protein</td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein2?></b></td>
-                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein3?></b></td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein2?></b>
+                                </td>
+                                <td style="text-align:center"><b style="color: black;"><?php echo $gttgk_protein3?></b>
+                                </td>
                                 <td style="text-align:center">5.5 - 8.0 mg/dl</td>
                             </tr>
                             <tr>

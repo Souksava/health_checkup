@@ -185,8 +185,8 @@
 
 
     <div class="col-md-6">
-        <form action="Import" method="post" id="frmClear" id="form_import_all"
-            style="padding-bottom:150px;margin-top:50px;" enctype="multipart/form-data">
+        <form action="Import" method="post" id="frmClear" style="padding-bottom:150px;margin-top:50px;"
+            enctype="multipart/form-data">
             <div class="file-upload">
                 <h4>ລົບຂໍ້ມູນ</h4>
                 <input type="text" name="delete_year" id="delete_year" class="form-control datepicker" maxlength="4"
