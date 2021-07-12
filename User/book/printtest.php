@@ -132,7 +132,7 @@ else
     $als = $fetch_pe["als"];
     $other = $fetch_pe["other"];
     $pe_conclusion = "ການກວດຮ່າງກາຍທົ່ວໄປ : " . $fetch_pe["conclusion"];
-    $pe_remark = $fetch_pe["remark"];
+    $pe_remark = ": " . $fetch_pe["remark"];
 }
 
 $imm = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year';");
@@ -232,7 +232,7 @@ if(mysqli_num_rows($imm4)==0)
 else 
 {
     $imm_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_imm4["conclusion"];
-    $imm_remark = $fetch_imm4["remark"];
+    $imm_remark = ": " .$fetch_imm4["remark"];
 }
 
 $spiro = mysqli_query($conn,"SELECT * FROM spirometry where barcode='$barcode' AND year='$yearconclusion';");
@@ -259,7 +259,7 @@ else
     $fvc_predicts = $fetch_spiro["fvc_predicts"];
     $fevi_predicts = $fetch_spiro["fevi_predicts"];
     $spiro_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_spiro["conclusion"];
-    $spiro_remark = $fetch_spiro["remark"];
+    $spiro_remark = ": " .$fetch_spiro["remark"];
 }
 
 $cbc = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year';");
@@ -382,7 +382,7 @@ else
 {
     $redblood = $fetch_cbc4["red_blood"];
     $cbc_conclusion = "ການກວດເລືອດລວມ : ".$fetch_cbc4["conclusion"];
-    $cbc_remark = $fetch_cbc4["remark"];
+    $cbc_remark = ": " .$fetch_cbc4["remark"];
 }
 
 $cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$yearconclusion';");
@@ -542,7 +542,7 @@ if(mysqli_num_rows($bio4)==0)
 else 
 {
     $bio_conclusion =  "ການກວດເລືອດຊີວະເຄມີ : ".$fetch_bio4["conclusion"];
-    $bio_remark = $fetch_bio4["remark"];
+    $bio_remark = ": " .$fetch_bio4["remark"];
 }
 
 $test_vision = mysqli_query($conn,"SELECT * FROM test_vision where barcode='$barcode' AND year='$yearconclusion';");
@@ -600,7 +600,7 @@ else
     $look_up = $fetch_vision["look_up"];
     $radius = $fetch_vision["radius"];
     $vision_conclusion ="ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ : " .$fetch_vision["conclusion"];
-    $vision_remark = $fetch_vision["remark"];
+    $vision_remark = ": " .$fetch_vision["remark"];
 }
 
 $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AND year='$yearconclusion';");
@@ -649,7 +649,7 @@ else
     $l_8000 = $fetch_audio["l_8000"];
     $l_h_avg = $fetch_audio["l_h_avg"];
     $audio_conclusion = "ການກວດສະມັດຕະພາບການໄດ້ຍິນ : ".$fetch_audio["conclusion"];
-    $audio_remark = $fetch_audio["remark"];
+    $audio_remark = ": " .$fetch_audio["remark"];
 }
 
 $muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$yearconclusion';");
@@ -849,7 +849,7 @@ if(mysqli_num_rows($metal4)==0)
 else 
 {
     $metal_conclusion = "ການກວດວິເຄາະຫາທາດໂລຫະໜັກ : " .$fetch_metal4["conclusion"];
-    $metal_remark = $fetch_metal4["remark"];
+    $metal_remark = ": " .$fetch_metal4["remark"];
 }
 
 $urine = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year';");
@@ -949,7 +949,7 @@ if(mysqli_num_rows($urine4)==0)
 else 
 {
     $urine_conclusion = "ການກວດປັດສະວະ : ". $fetch_urine4["conclusion"];
-    $urine_remark = $fetch_urine4["remark"];
+    $urine_remark = ": " .$fetch_urine4["remark"];
 }
 
 $methamphetamine = mysqli_query($conn,"SELECT * FROM methamphetamine where barcode='$barcode' AND year='$year';");
@@ -991,7 +991,7 @@ if(mysqli_num_rows($methamphetamine4)==0)
 }
 else {
     $meth_conclusion = "ການກວດຫາສານເສບຕິດ : ".$fetch_methamphetamine4["conclusion"];
-    $meth_remark = $fetch_methamphetamine4["remark"];
+    $meth_remark = ": " .$fetch_methamphetamine4["remark"];
 }
 
 
@@ -1014,7 +1014,7 @@ else {
     $t3 = $fetch_thyroid["t3"];
     $t4 = $fetch_thyroid["t4"];
     $thyroid_conclusion ="ການກວດຮໍໂມນຕ່ອມຄໍ : " .$fetch_thyroid["conclusion"];
-    $thyroid_remark = $fetch_thyroid["remark"];
+    $thyroid_remark = ": " .$fetch_thyroid["remark"];
 }
 
 $stool = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' AND year='$year';");
@@ -1044,7 +1044,7 @@ else {
     $vivrio = $fetch_stool["vivrio"];
     $vibrio = $fetch_stool["vibrio"];
     $stool_conclusion ="ການກວດອາຈົມ : " .$fetch_stool["conclusion"];
-    $stool_remark = $fetch_stool["remark"];
+    $stool_remark = ": " .$fetch_stool["remark"];
 }
 
 $tumor = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year';");
@@ -1116,7 +1116,7 @@ if(mysqli_num_rows($tumor4)==0)
 }
 else {
     $tumor_conclusion ="ການກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
-    $tumor_remark = $fetch_tumor4["remark"];
+    $tumor_remark = ": " .$fetch_tumor4["remark"];
 }
 
 
@@ -1182,7 +1182,7 @@ if(mysqli_num_rows($gttgk4)==0)
 }
 else {
     $gttgk_conclusion = $fetch_gttgk4["conclusion"];
-    $gttgk_remark = $fetch_gttgk4["remark"];
+    $gttgk_remark = ": " .$fetch_gttgk4["remark"];
 }
 
 ?>
@@ -1299,43 +1299,43 @@ else {
                 <div class="content">
                     <div class="row">
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($pe_conclusion);?> : <?php echo nl2br($pe_remark);?>
+                            <?php echo nl2br($pe_conclusion);?> <?php echo nl2br($pe_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cbc_conclusion);?> : <?php echo nl2br($cbc_remark);?>
+                            <?php echo nl2br($cbc_conclusion);?> <?php echo nl2br($cbc_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($bio_conclusion);?> : <?php echo nl2br($bio_remark);?>
+                            <?php echo nl2br($bio_conclusion);?> <?php echo nl2br($bio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($urine_conclusion);?> : <?php echo nl2br($urine_remark);?>
+                            <?php echo nl2br($urine_conclusion);?> <?php echo nl2br($urine_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($meth_conclusion);?> : <?php echo nl2br($meth_remark);?>
+                            <?php echo nl2br($meth_conclusion);?> <?php echo nl2br($meth_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($thyroid_conclusion);?> : <?php echo nl2br($thyroid_remark);?>
+                            <?php echo nl2br($thyroid_conclusion);?> <?php echo nl2br($thyroid_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($stool_conclusion);?> : <?php echo nl2br($stool_remark);?>
+                            <?php echo nl2br($stool_conclusion);?> <?php echo nl2br($stool_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($tumor_conclusion);?> : <?php echo nl2br($tumor_remark);?>
+                            <?php echo nl2br($tumor_conclusion);?>  <?php echo nl2br($tumor_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($metal_conclusion);?> : <?php echo nl2br($metal_remark);?>
+                            <?php echo nl2br($metal_conclusion);?>  <?php echo nl2br($metal_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($vision_conclusion);?> : <?php echo nl2br($vision_remark);?>
+                            <?php echo nl2br($vision_conclusion);?>  <?php echo nl2br($vision_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($audio_conclusion);?> : <?php echo nl2br($audio_remark);?>
+                            <?php echo nl2br($audio_conclusion);?>  <?php echo nl2br($audio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($muscle_conclusion);?> 
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($spiro_conclusion);?> : <?php echo nl2br($spiro_remark);?>
+                            <?php echo nl2br($spiro_conclusion);?>  <?php echo nl2br($spiro_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($cxr_conclusion);?> 
@@ -1347,13 +1347,10 @@ else {
                             <?php echo nl2br($ultra_conclusion);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($imm_conclusion);?> : <?php echo nl2br($imm_remark);?>
+                            <?php echo nl2br($imm_conclusion);?>  <?php echo nl2br($imm_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($stool_conclusion);?> : <?php echo nl2br($stool_remark);?>
-                        </div>
-                        <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($gttgk_conclusion);?> : <?php echo nl2br($gttgk_remark);?>
+                            <?php echo nl2br($gttgk_conclusion);?> <?php echo nl2br($gttgk_remark);?>
                         </div>
                     </div>
                 </div>
