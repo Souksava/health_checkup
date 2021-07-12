@@ -362,7 +362,8 @@
                         </div>
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ບ້ານຢູ່ປັດຈຸບັນ</label>
-                            <input type="text" name="current_address" id="current_address" placeholder="ບ້ານຢູ່ປັດຈຸບັນ">
+                            <input type="text" name="current_address" id="current_address"
+                                placeholder="ບ້ານຢູ່ປັດຈຸບັນ">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
@@ -634,16 +635,74 @@
                     class="fas fa-file-export"></i>
                 Export
             </button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDelete" type="button"
+                id="button-addon2"><i class="fa fa-trash"></i> ລົບຂໍ້ມູນ</button>
         </div>
     </div>
 </form>
 <!-- <input id="myinput" type="text"> -->
-<div id="result_data_emp" class="result_data_emp">
-    <?php
-        include ($path."header-footer/loading.php");
-    ?>
-</div>
+<form action="Employee" id="formDelete" method="POST" enctype="multipart/form-data">
+
+    <div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ຢືນຢັນການລົບຂໍ້ມູນ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" align="center">
+                    ທ່ານຕ້ອງການລົບຂໍ້ມູນ ຫຼື ບໍ່ ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
+                    <button type="submit" name="btnDelete" id="btnDelete" class="btn btn-outline-danger ">
+                        ລົບ
+                        <span class="" id="load_delete"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="result_data_emp" class="result_data_emp">
+        <?php
+            include ($path."header-footer/loading.php");
+        ?>
+    </div>
+</form>
 <?php
+    //delete employee
+    if(isset($_POST['btnDelete'])){
+        if(isset($_POST["del_select"])){
+            $delete = 0;
+            foreach($_POST['del_select'] as $id){
+                
+                $result_delete = mysqli_query($conn,"call delete_emp('$id')");
+                if(!$result_delete){
+                    $delete = 1;
+                    echo"<script>";
+                    echo"window.location.href='Employee?del=fail&barcoded=$id';";
+                    echo"</script>";
+                    break;
+                }
+            }
+           
+            if($delete == 0){
+                echo"<script>";
+                echo"window.location.href='Employee?del2=success';";
+                echo"</script>";
+            }
+        }
+        else{
+            echo"<script>";
+            echo"window.location.href='Employee?del3=null';";
+            echo"</script>";
+        }
+     }
+
+    //generate barcode
     if(isset($_POST['emp_name'])){
         $barcode = "";
         $get_barcode = mysqli_query($conn,"call max_barcode_emp();");
@@ -714,9 +773,10 @@
         swal("", "ນຳເຂົ້າຂໍ້ມູນສຳເລັດ !", "success");
         </script>';
       }  
-    if(isset($_GET["del"])=="fail"){
+    if(isset($_GET["del"])=="fail" && isset($_GET['barcoded'])){
+        $msg = $_GET['barcoded'];
         echo'<script type="text/javascript">
-        swal("", "ການລົບຂໍ້ມູນຜິດພາດ !", "error");
+        swal("", "ການລົບຂໍ້ມູນຜິດພາດ ເນື່ອງຈາກລະຫັດບາໂຄດໝາຍເລກ '.$msg.' ໄດ້ທຳການລົງທະບຽນ ຫຼື ປ້ອນຜົນກວດແລ້ວ!", "error");
         </script>';
       }  
       if(isset($_GET["del2"])=="success"){
@@ -724,6 +784,11 @@
         swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
         </script>';
       }  
+      if(isset($_GET["del3"])=="null"){
+        echo'<script type="text/javascript">
+        swal("", "ກະລຸນາເລືອກພະນັກງານ !", "info");
+        </script>';
+      }
       if(isset($_GET["update"])=="fail"){
         echo'<script type="text/javascript">
         swal("", "ແກ້ໄຂຂໍ້ມູນຜິດພາດ !", "error");
@@ -1082,7 +1147,7 @@ $(document).ready(function() {
     //     if (evt.which != 110 && evt.which != 190) {
     //         var n = parseFloat($(this).val().replace(/\,/g, ''), 10);
     //         $(this).val(n.toLocaleString());
-           
+
     //     }
     // });
     $(document).on("click", ".page-links_emp", function() {
@@ -1165,14 +1230,13 @@ $(document).ready(function() {
 // myinput.addEventListener('keyup', function() {
 //   var val = this.value;
 //   val = val.replace(/[^0-9\.]/g,'');
-  
+
 //   if(val != "") {
 //     valArr = val.split('.');
 //     valArr[0] = (parseInt(valArr[0],10)).toLocaleString();
 //     val = valArr.join('.');
 //   }
-  
+
 //   this.value = val;
 // });
-
 </script>

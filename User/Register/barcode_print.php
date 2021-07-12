@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,9 @@
     <link rel="icon" href="../../image/health.jpeg">
     <title>Document</title>
 </head>
+
 <body>
-<?php
+    <?php
 if(isset($_POST["print_barcode"])){
     $path = "../../";
     include ('../../oop/obj.php');
@@ -83,6 +85,7 @@ if(isset($_POST["print_barcode"])){
     </div>
                 ';
     }
+    $mpdf->AddPage();
     $content .=' 
     </div>
     ';
@@ -91,7 +94,7 @@ if(isset($_POST["print_barcode"])){
     $mpdf->Output("Barcode.pdf","I");
 }
 ?>
-    
-</body>
-</html>
 
+</body>
+
+</html>
