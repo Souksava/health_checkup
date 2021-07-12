@@ -1544,7 +1544,14 @@ else {
                             <?php echo nl2br($metal_conclusion);?> <?php echo nl2br($metal_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
+<<<<<<< HEAD
                             <?php echo nl2br($vision_conclusion);?> <?php echo nl2br($vision_remark);?>
+=======
+                            <?php echo nl2br($test_vision_conclusion);?>  <?php echo nl2br($test_vision_remark);?>
+                        </div>
+                        <div class="col-sm-12" style="color: black;">
+                            <?php echo nl2br($vision_conclusion);?>  <?php echo nl2br($vision_remark);?>
+>>>>>>> f1692496ff98a3752ce7debea6440ec1c56ba0f0
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($audio_conclusion);?> <?php echo nl2br($audio_remark);?>
