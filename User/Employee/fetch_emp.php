@@ -39,6 +39,9 @@ if(mysqli_num_rows($result_emp) > 0)
   <div class="table-responsive">
   <table class="table-bordered" style="width: 4700px;text-align: center;">
     <tr style="font-size: 18px;">
+         <th style="width: 50px;">
+         <input type="checkbox" name="checkAll" id="checkAll" class="form-control2">
+         </th>
         <th style="width: 90px;">ເຄື່ອງມື</th>
         <th style="width: 50px;">N0.</th>
         <th style="width: 150px;">ບຣາໂຄດ</th>
@@ -80,13 +83,14 @@ if(mysqli_num_rows($result_emp) > 0)
 $no_ += 1;
   $output .= '
     <tr>
+      <td>
+         <input type="checkbox" name="del_select[]" id="del_select" value="'.$row["barcode"].'">
+      </td>
         <td>
             <a href="#" data-toggle="modal" data-target="#exampleModalRegisterEmp"
                 class="fas fa-registered toolcolor btnAddEmp"></a>&nbsp; &nbsp;
             <a href="#" data-toggle="modal" data-target="#exampleModalUpdateEmp"
-                class="fas fa-pen toolcolor btnUpdateEmp"></a>&nbsp; &nbsp;
-            <a href="#" data-toggle="modal" data-target="#exampleModalDeleteEmp"
-                class="fa fa-trash toolcolor btnDel_Emp"></a>
+                class="fas fa-pen toolcolor btnUpdateEmp"></a>
         </td>
         <td>'.$no_.'</td>
         <td class="btnAddEmp" data-toggle="modal" data-target="#exampleModalRegisterEmp">'.$row["barcode"].'</td>
@@ -233,63 +237,68 @@ $('.result_data_emp').highlight([highlight]);
 $('.result_data_emp').highlight([highlight2]);
 $('.btnDel_Emp').on('click', function() {
     $('#exampleModalDeleteEmp').modal('show');
-      $tr = $(this).closest('tr');
-      var data = $tr.children("td").map(function() {
-         return $(this).text();
-      }).get();
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
 
-      console.log(data);
+    console.log(data);
 
-      $('#emp_id_del').val(data[2]);
-   });
-   $('.btnAddEmp').on('click', function() {
-        $('#exampleModalRegisterEmp').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#register_barcode').val(data[2]);
-        $('#barcode_register').val(data[2]);
-         $('#barcode_addmore').val(data[2]);
+    $('#emp_id_del').val(data[3]);
+});
+$('.btnAddEmp').on('click', function() {
+    $('#exampleModalRegisterEmp').modal('show');
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    console.log(data);
+    $('#register_barcode').val(data[3]);
+    $('#barcode_register').val(data[3]);
+    $('#barcode_addmore').val(data[3]);
+});
+$('.btnUpdateEmp').on('click', function() {
+    $('#exampleModalUpdateEmp').modal('show');
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    console.log(data);
+    $('#barcode2').val(data[3]);
+    $('#emp_id2').val(data[4]);
+    $('#emp_name2').val(data[5]);
+    $('#surname2').val(data[6]);
+    $('#dob2').val(data[24]);
+    $('#age2').val(data[8]);
+    $('#gender2').val(data[9]);
+    $('#company2').val(data[23]);
+    $('#branch2').val(data[11]);
+    $('#department2').val(data[12]);
+    $('#tel2').val(data[13]);
+    $('#family_stt2').val(data[14]);
+    $('#nation2').val(data[15]);
+    $('#ethnic2').val(data[16]);
+    $('#religion2').val(data[17]);
+    $('#job2').val(data[18]);
+    $('#home_no2').val(data[19]);
+    $('#village2').val(data[20]);
+    $('#district2').val(data[21]);
+    $('#province2').val(data[22]);
+    $('#emp_name_en').val(data[25]);
+    $('#surname_en').val(data[26]);
+    $('#national_en').val(data[27]);
+    $('#religion_en').val(data[28]);
+    $('#occupation_en').val(data[29]);
+    $('#village_en').val(data[30]);
+    $('#district_en').val(data[31]);
+    $('#province_en').val(data[32]);
+    $('#current_address').val(data[33]);
+    $('#road').val(data[34]);
+    $('#email').val(data[35]);
+});
+$(document).ready(function() {
+    $("#checkAll").click(function() {
+        $('input:checkbox').not(this).prop('checked', this.checked);
     });
-    $('.btnUpdateEmp').on('click', function() {
-        $('#exampleModalUpdateEmp').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#barcode2').val(data[2]);
-        $('#emp_id2').val(data[3]);
-        $('#emp_name2').val(data[4]);
-        $('#surname2').val(data[5]);
-        $('#dob2').val(data[23]);
-        $('#age2').val(data[7]);
-        $('#gender2').val(data[8]);
-        $('#company2').val(data[22]);
-        $('#branch2').val(data[10]);
-        $('#department2').val(data[11]);
-        $('#tel2').val(data[12]);
-        $('#family_stt2').val(data[13]);
-        $('#nation2').val(data[14]);
-        $('#ethnic2').val(data[15]);
-        $('#religion2').val(data[16]);
-        $('#job2').val(data[17]);
-        $('#home_no2').val(data[18]);
-        $('#village2').val(data[19]);
-        $('#district2').val(data[20]);
-        $('#province2').val(data[21]);
-        $('#emp_name_en').val(data[24]);
-        $('#surname_en').val(data[25]);
-        $('#national_en').val(data[26]);
-        $('#religion_en').val(data[27]);
-        $('#occupation_en').val(data[28]);
-        $('#village_en').val(data[29]);
-        $('#district_en').val(data[30]);
-        $('#province_en').val(data[31]);
-        $('#current_address').val(data[32]);
-        $('#road').val(data[33]);
-        $('#email').val(data[34]);
-    });
+});
 </script>
