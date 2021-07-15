@@ -411,10 +411,8 @@ if(mysqli_num_rows($cbc4) > 0)
         echo"";
     }
     else{
-        $cbc_remark = "ການກວດເລືອດລວມ : ".$fetch_cbc4["remark"];
+        $cbc_remark = ": ".$fetch_cbc4["remark"];
     }
-    
-    // $cbc_remark = ": " .$fetch_cbc4["remark"];
 }
 else 
 {
@@ -655,7 +653,7 @@ if(mysqli_num_rows($test_vision) > 0)
     if ($fetch_test_vision["remark"] == "") {
         echo "";
     }else{
-        $test_vision_remark = $fetch_test_vision["remark"];
+        $test_vision_remark = ": ". $fetch_test_vision["remark"];
     }
 }
 else 
@@ -1163,7 +1161,7 @@ else {
 
 $thyroid_conclusion = "";
 $thyroid_remark = "";
-$thyroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' AND year='$year';");
+$thyroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_thyroid = mysqli_fetch_array($thyroid,MYSQLI_ASSOC);
 if(mysqli_num_rows($thyroid) > 0)
 {
@@ -1196,7 +1194,7 @@ else {
 
 $stool_conclusion = "";
 $stool_remark = "";
-$stool = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' AND year='$year';");
+$stool = mysqli_query($conn,"SELECT * FROM se where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_stool = mysqli_fetch_array($stool,MYSQLI_ASSOC);
 if(mysqli_num_rows($stool) > 0)
 {
@@ -1544,14 +1542,10 @@ else {
                             <?php echo nl2br($metal_conclusion);?> <?php echo nl2br($metal_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-<<<<<<< HEAD
-                            <?php echo nl2br($vision_conclusion);?> <?php echo nl2br($vision_remark);?>
-=======
-                            <?php echo nl2br($test_vision_conclusion);?>  <?php echo nl2br($test_vision_remark);?>
+                            <?php echo nl2br($test_vision_conclusion);?> <?php echo nl2br($test_vision_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($vision_conclusion);?>  <?php echo nl2br($vision_remark);?>
->>>>>>> f1692496ff98a3752ce7debea6440ec1c56ba0f0
+                            <?php echo nl2br($vision_conclusion);?> <?php echo nl2br($vision_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($audio_conclusion);?> <?php echo nl2br($audio_remark);?>
@@ -1897,7 +1891,7 @@ else {
                         <b><?php echo nl2br($pe_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($pe_remark);?></b>
+                        <b><?php echo substr(nl2br($pe_remark),1);?></b>
                     </div>
 
                 </div>
@@ -1917,94 +1911,85 @@ else {
                         <table style="width:100%;">
                             <tr style="text-align:center">
                                 <th>ລາຍການ (Items)</th>
-                                <th> </th>
                                 <th> <?php echo $year; ?> <br> Results </th>
                                 <th><?php echo $year2; ?> <br> Results</th>
-                                <!-- <th><?php echo $year3; ?> <br> Results</th> -->
+                                <th><?php echo $year3; ?> <br> Results</th>
                                 <th>ຄ່າປົກກະຕຶ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Anti HAV-IgM</td>
-                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hav;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hav2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hav3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hav3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
-                                <td>HBsAg</td>
-                                <th>ກວດຫາເຊື້ອໄວຣັສບີ</th>
+                                <td>HBsAg &nbsp;&nbsp;&nbsp;&nbsp;ກວດຫາເຊື້ອໄວຣັສບີ</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ag;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ag2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $ag3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ag3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
-                                <td>HBsAb</td>
-                                <th>ກວດຫາພູມໄວຣັສບີ</th>
+                                <td>HBsAb&nbsp;&nbsp;&nbsp;&nbsp;ກວດຫາພູມໄວຣັສບີ</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ab;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ab2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $ab3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $ab3;?></b></td>
                                 <td style="text-align:center">Positive</td>
                             </tr>
                             <tr>
-                                <td>Anti-HCV</td>
-                                <th>ກວດຫາເຊື້ອໄວຣັສຊີ</th>
+                                <td>Anti-HCV&nbsp;&nbsp;&nbsp;&nbsp;ກວດຫາເຊື້ອໄວຣັສຊີ</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hcv;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hcv2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hcv3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hcv3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
-                                <td>VDRL</td>
-                                <th>ກວດຫາເຊື້ອຊີຟີຮິດ</th>
+                                <td>VDRL&nbsp;&nbsp;&nbsp;&nbsp;ກວດຫາເຊື້ອຊີຟີຮິດ</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $vdrl;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $vdrl2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $vdrl3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $vdrl3;?></b></td>
                                 <td style="text-align:center">Non-Reactive</td>
                             </tr>
                             <tr>
                                 <td>HIV</td>
-                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hiv;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hiv2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hiv3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>HPylori</td>
-                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hpylori;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hpylori2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $hpylori3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $hpylori3;?></b></td>
                                 <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>PAP Smear</td>
-                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $papSmear;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $papSmear2;?></b></td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $papSmear3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $papSmear3;?></b></td>
                                 <td style="text-align:center">Normal</td>
                             </tr>
                             <tr>
                                 <td>Calcium</td>
-                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium;?></b>
                                 </td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium2;?></b>
                                 </td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immCalcium3;?></b>
+                                </td>
                                 <td style="text-align:center">( 8.0-10.0 mg/dl )</td>
                             </tr>
                             <tr>
                                 <td>Phosphorus</td>
-                                <td></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus;?></b>
                                 </td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus2;?></b>
                                 </td>
-                                <!-- <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus3;?></b></td> -->
+                                <td style="text-align:center"><b style="color: black;"><?php echo $immPhosphorus3;?></b>
+                                </td>
                                 <td style="text-align:center">( 3.5-5.5 mg/dl )</td>
                             </tr>
                         </table>
@@ -2016,7 +2001,7 @@ else {
                             <b><?php echo nl2br($imm_conclusion);?></b>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <b><?php echo nl2br($imm_remark);?></b>
+                            <b><?php echo substr(nl2br($imm_remark),1);?></b>
                         </div>
                     </div>
                 </div>
@@ -2075,7 +2060,7 @@ else {
                         <b><?php echo nl2br($spiro_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($spiro_remark);?></b>
+                        <b><?php echo substr(nl2br($spiro_remark),1);?></b>
                     </div>
                     <br>
                     <br>
@@ -2272,7 +2257,7 @@ else {
                         <b><?php echo nl2br($cbc_conclusion); ?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($cbc_remark);?></b>
+                        <b><?php echo substr(nl2br($cbc_remark),1);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 619mm;">
@@ -2423,7 +2408,7 @@ else {
                         <b><?php echo nl2br($bio_conclusion); ?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo $bio_remark;?></b>
+                        <b><?php echo substr(nl2br($bio_remark),1);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 140mm;top: 831mm;">
@@ -2472,7 +2457,7 @@ else {
                         <b style="color: black;"> <?php echo nl2br($test_vision_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($test_vision_remark);?></b>
+                        <b><?php echo substr(nl2br($test_vision_remark),1);?></b>
                     </div>
                     <div class="col-sm-12">
                         <br>
@@ -2482,7 +2467,7 @@ else {
                         <b style="color: black;"> <?php echo nl2br($vision_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($vision_remark);?></b>
+                        <b><?php echo substr(nl2br($vision_remark),1);?></b>
                     </div>
 
                     <br>
@@ -2542,7 +2527,7 @@ else {
                         <b style="color: black;"><?php echo nl2br($audio_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($audio_remark);?></b>
+                        <b><?php echo substr(nl2br($audio_remark),1);?></b>
                     </div>
                     <br>
                     <br>
@@ -2559,7 +2544,7 @@ else {
                         <b style="color: black;"><?php echo nl2br($muscle_conclusion);?></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($muscle_remark);?></b>
+                        <b><?php echo substr(nl2br($muscle_remark),1);?></b>
                     </div> -->
                 </div>
                 <div class="pagination" style="left: 290mm;top: 831mm;">
@@ -2814,7 +2799,7 @@ else {
                             <b><?php echo nl2br($metal_conclusion);?></b>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <b><?php echo nl2br($metal_remark);?></b>
+                            <b><?php echo substr(nl2br($metal_remark),1);?></b>
                         </div>
                     </div>
                     <br>
@@ -2941,7 +2926,7 @@ else {
                         <b><?php echo nl2br($urine_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($urine_remark);?></b>
+                        <b><?php echo substr(nl2br($urine_remark),1);?></b>
                     </div>
                     <br>
                     <br>
@@ -2978,7 +2963,7 @@ else {
                         <b><?php echo nl2br($meth_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($meth_remark);?></b>
+                        <b><?php echo substr(nl2br($meth_remark),1);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 1043mm;">
@@ -3052,7 +3037,7 @@ else {
                         <b style="color: black;"><?php echo nl2br($thyroid_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($meth_remark);?></b>
+                        <b><?php echo substr(nl2br($meth_remark),1);?></b>
                     </div>
                     <br>
                     <br>
@@ -3127,7 +3112,7 @@ else {
                         <b><?php echo nl2br($stool_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($stool_remark);?></b>
+                        <b><?php echo substr(nl2br($stool_remark),1);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 140mm;top: 1255mm;">
@@ -3213,7 +3198,7 @@ else {
                         <b><?php echo nl2br($tumor_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($tumor_remark);?></b>
+                        <b><?php echo substr(nl2br($tumor_remark),1);?></b>
                     </div>
                 </div>
                 <br>
@@ -3293,7 +3278,7 @@ else {
                         <b><?php echo nl2br($gttgk_conclusion);?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($gttgk_remark);?></b>
+                        <b><?php echo substr(nl2br($gttgk_remark), 1);?></b>
                     </div>
                 </div>
                 <div class="pagination" style="left: 290mm;top: 1255mm;">
