@@ -156,7 +156,7 @@
 <!-- End Data Export -->
 
 
-<div id="result_register" >
+<div id="result_register">
 
 
 
