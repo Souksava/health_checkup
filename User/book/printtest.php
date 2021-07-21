@@ -438,7 +438,7 @@ if(mysqli_num_rows($cxr) > 0)
     if($fetch_cxr["remark"] == ""){
         echo "";
     }else{
-        $cxr_remark = " : ".$fetch_cxr["remark"];
+        $cxr_remark = ": ".$fetch_cxr["remark"];
     }
 }
 else 
@@ -455,7 +455,8 @@ $ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='
 $fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
 if(mysqli_num_rows($ekg) > 0)
 {
-    $ekg_name = $fetch_ekg["ekg_name"];
+    $ekg_conclusion2 = $fetch_ekg["conclusion"];
+    $ekg_name = "ການກວດແທກຄື້ນໄຟຟ້າຫົວໃຈ : ".$fetch_ekg["ekg_name"];
 
     if($fetch_ekg["conclusion"] == ""){
         echo "";
@@ -465,7 +466,7 @@ if(mysqli_num_rows($ekg) > 0)
     if($fetch_ekg["remark"] == ""){
         echo "";
     }else{
-        $ekg_remark = $fetch_ekg["remark"];
+        $ekg_remark = ": ".$fetch_ekg["remark"];
     }
 }
 else 
@@ -480,9 +481,10 @@ $ultra_conclusion = "";
 $ultra_remark = "";
 $ultrasound = mysqli_query($conn,"SELECT * FROM ultrasound where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_ultrasound = mysqli_fetch_array($ultrasound,MYSQLI_ASSOC);
-if(mysqli_num_rows($ekg) > 0)
+if(mysqli_num_rows($ultrasound) > 0)
 {
-    $ultra_name = $fetch_ultrasound["ultra_name"];
+    $ultra_conclusion2 = $fetch_ultrasound["conclusion"];
+    $ultra_name = "ການກວດເອໂກ້ທ້ອງ  : ".$fetch_ultrasound["ultra_name"];
     if($fetch_ultrasound["conclusion"] == ""){
         echo "";
     }else{
@@ -491,7 +493,7 @@ if(mysqli_num_rows($ekg) > 0)
     if($fetch_ultrasound["remark"] == ""){
         echo "";
     }else{
-        $ultra_remark = $fetch_ultrasound["remark"];
+        $ultra_remark = ": ".$fetch_ultrasound["remark"];
     }
 }
 else 
@@ -776,7 +778,8 @@ $muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND 
 $fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
 if(mysqli_num_rows($muscle) > 0)
 {
-    $muscle_name = $fetch_muscle["muscle_name"];
+    $muscle_conclusion2 = $fetch_muscle["conclusion"];
+    $muscle_name = "ການກວດທົດສອບສະມັດຕະພາບກ້າມ :  " .$fetch_muscle["muscle_name"];
 
     if ($fetch_muscle["conclusion"] == "") {
         echo "";
@@ -787,7 +790,7 @@ if(mysqli_num_rows($muscle) > 0)
     if ($fetch_muscle["remark"] == "") {
         echo "";
     }else{
-        $muscle_remark = $fetch_muscle["remark"];
+        $muscle_remark = ": ".$fetch_muscle["remark"];
     }
 }
 else 
@@ -1552,20 +1555,19 @@ else {
                             <?php echo nl2br($audio_conclusion);?> <?php echo nl2br($audio_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($muscle_conclusion);?>
+                            <?php echo nl2br($muscle_conclusion);?> <?php echo nl2br($muscle_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($spiro_conclusion);?> <?php echo nl2br($spiro_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cxr_conclusion);
-                             echo nl2br($cxr_remark);?>
+                            <?php echo nl2br($cxr_conclusion);?> <?php echo nl2br($cxr_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($ekg_conclusion);?>
+                            <?php echo nl2br($ekg_conclusion);?> <?php echo nl2br($ekg_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($ultra_conclusion);?>
+                            <?php echo nl2br($ultra_conclusion);?> <?php echo nl2br($ultra_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($imm_conclusion);?> <?php echo nl2br($imm_remark);?>
@@ -2087,7 +2089,7 @@ else {
                         <b><?php echo $x_ray;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($cxr_conclusion2)." ".nl2br($cxr_remark);?></b>
+                        <b><?php echo nl2br($cxr_conclusion2)?> <?php echo substr(nl2br($cxr_remark),1);?></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cxr_remark);?></b>
@@ -2103,7 +2105,7 @@ else {
                         <b><?php echo $ekg_name;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($ekg_conclusion);?></b>
+                        <b><?php echo nl2br($ekg_conclusion2);?> <?php echo substr(nl2br($ekg_remark),1);?></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ekg_remark);?></b>
@@ -2119,7 +2121,7 @@ else {
                         <b><?php echo $ultra_name;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($ultra_conclusion);?></b>
+                        <b><?php echo nl2br($ultra_conclusion2);?> <?php echo substr(nl2br($ultra_remark),1);?></b></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($ultra_remark);?></b>
@@ -2475,7 +2477,7 @@ else {
                     <br>
                     <br>
 
-                    <table class="border" style="width:100%;border: 1px solid red!important;">
+                    <table class="border" style="width:550px;border: 1px solid red!important;">
                         <tr>
                             <th colspan="10">ການກວດສະມັດຕະພາບການໄດ້ຍິນ (Audiogram)</th>
                         </tr>
@@ -2498,7 +2500,7 @@ else {
                         </tr>
                         <tr>
                             <td>Right Ear(ຫູຂວາ)</td>
-                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_500;?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_500;?>  <?php $test="21.1234556654"; echo round($test, 1); ?></b></td>
                             <td style="text-align:center;"><b style="color: black;"><?php echo $r_1000;?></b></td>
                             <td style="text-align:center;"><b style="color: black;"><?php echo $r_2000;?></b></td>
                             <td style="text-align:center;"><b style="color: black;"><?php echo $r_3000;?></b></td>
@@ -2543,7 +2545,7 @@ else {
                         <b style="color: black;"><?php echo $muscle_name;?></b>
                     </div>
                     <div class="col-sm-12">
-                        <b style="color: black;"><?php echo nl2br($muscle_conclusion);?></b>
+                        <b style="color: black;"><?php echo nl2br($muscle_conclusion2);?> <?php echo substr(nl2br($muscle_remark),1);?></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo substr(nl2br($muscle_remark),1);?></b>
