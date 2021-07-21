@@ -428,7 +428,8 @@ $cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year
 $fetch_cxr = mysqli_fetch_array($cxr,MYSQLI_ASSOC);
 if(mysqli_num_rows($cxr) > 0)
 {
-    $x_ray = $fetch_cxr["x_ray"];
+        $cxr_conclusion2 = $fetch_cxr["conclusion"];
+        $x_ray = "ການກວດສ່ອງໄຟຟ້າຜົ້ງເອີກ : ".$fetch_cxr["x_ray"];
     if($fetch_cxr["conclusion"] == ""){
         echo "";
     }else{
@@ -437,7 +438,7 @@ if(mysqli_num_rows($cxr) > 0)
     if($fetch_cxr["remark"] == ""){
         echo "";
     }else{
-        $cxr_remark = $fetch_cxr["remark"];
+        $cxr_remark = " : ".$fetch_cxr["remark"];
     }
 }
 else 
@@ -1557,7 +1558,8 @@ else {
                             <?php echo nl2br($spiro_conclusion);?> <?php echo nl2br($spiro_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
-                            <?php echo nl2br($cxr_conclusion);?>
+                            <?php echo nl2br($cxr_conclusion);
+                             echo nl2br($cxr_remark);?>
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <?php echo nl2br($ekg_conclusion);?>
@@ -2085,7 +2087,7 @@ else {
                         <b><?php echo $x_ray;?></b>
                     </div>
                     <div class="col-sm-12" style="color: black;">
-                        <b><?php echo nl2br($cxr_conclusion);?></b>
+                        <b><?php echo nl2br($cxr_conclusion2)." ".nl2br($cxr_remark);?></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo nl2br($cxr_remark);?></b>
