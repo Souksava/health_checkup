@@ -89,11 +89,11 @@ if(mysqli_num_rows($pe) > 0)
     $personal = $fetch_pe["personal"];
     $family = $fetch_pe["family"];
     $asi = $fetch_pe["asi"];
-    $height = $fetch_pe["height"];
-    $weight = $fetch_pe["weight"];
-    $bmi = $fetch_pe["bmi"];
+    $height = round($fetch_pe["height"],1);
+    $weight = round($fetch_pe["weight"],1);
+    $bmi = round($fetch_pe["bmi"],1);
     $bp = $fetch_pe["bp"];
-    $pulse = $fetch_pe["pulse"];
+    $pulse = round($fetch_pe["pulse"],1);
     $abo = $fetch_pe["abo"];
     $eye = $fetch_pe["eye"];
     $teeth = $fetch_pe["teeth"];
@@ -171,8 +171,8 @@ else
     $hiv = $fetch_imm["hiv"];
     $hpylori = $fetch_imm["hpylori"];
     $papSmear = $fetch_imm["pap"];
-    $immCalcium = $fetch_imm["calcium"];
-    $immPhosphorus = $fetch_imm["phosphorus"];
+    $immCalcium = round($fetch_imm["calcium"],1);
+    $immPhosphorus = round($fetch_imm["phosphorus"],1);
 }
 $imm2 = mysqli_query($conn,"SELECT * FROM immunity where barcode='$barcode' AND year='$year2';");
 $fetch_imm2 = mysqli_fetch_array($imm2,MYSQLI_ASSOC);
@@ -199,8 +199,8 @@ else
     $hiv2 = $fetch_imm2["hiv"];
     $hpylori2 = $fetch_imm2["hpylori"];
     $papSmear2 = $fetch_imm2["pap"];
-    $immCalcium2 = $fetch_imm2["calcium"];
-    $immPhosphorus2 = $fetch_imm2["phosphorus"];
+    $immCalcium2 = round($fetch_imm2["calcium"],1);
+    $immPhosphorus2 = round($fetch_imm2["phosphorus"],1);
 }
 
 
@@ -229,8 +229,8 @@ else
     $hiv3 = $fetch_imm3["hiv"];
     $hpylori3 = $fetch_imm3["hpylori"];
     $papSmear3 = $fetch_imm3["pap"];
-    $immCalcium3 = $fetch_imm3["calcium"];
-    $immPhosphorus3 = $fetch_imm3["phosphorus"];
+    $immCalcium3 = round($fetch_imm3["calcium"],1);
+    $immPhosphorus3 = round($fetch_imm3["phosphorus"],1);
 
 }
 
@@ -274,13 +274,13 @@ if(mysqli_num_rows($spiro)==0)
 }
 else 
 {
-    $fvc_means = $fetch_spiro["fvc_means"];
-    $fevi_means = $fetch_spiro["fevi_means"];
-    $fevi_fvc = $fetch_spiro["fevi_fvc"];
-    $fvc_predict = $fetch_spiro["fvc_predict"];
-    $fevi_predict = $fetch_spiro["fevi_predict"];
-    $fvc_predicts = $fetch_spiro["fvc_predicts"];
-    $fevi_predicts = $fetch_spiro["fevi_predicts"];
+    $fvc_means = round($fetch_spiro["fvc_means"],1);
+    $fevi_means = round($fetch_spiro["fevi_means"],1);
+    $fevi_fvc = round($fetch_spiro["fevi_fvc"],1);
+    $fvc_predict = round($fetch_spiro["fvc_predict"],1);
+    $fevi_predict = round($fetch_spiro["fevi_predict"],1);
+    $fvc_predicts = round($fetch_spiro["fvc_predicts"],1);
+    $fevi_predicts = round($fetch_spiro["fevi_predicts"],1);
     $spiro_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_spiro["conclusion"];
     $spiro_remark = ": " .$fetch_spiro["remark"];
 }
@@ -306,19 +306,19 @@ if(mysqli_num_rows($cbc)==0)
 }
 else 
 {
-    $hb = $fetch_cbc["hb"];
-    $hct = $fetch_cbc["hct"];
-    $wbc = $fetch_cbc["wbc"];
-    $ne = $fetch_cbc["ne"];
-    $lym = $fetch_cbc["lym"];
-    $monocyte = $fetch_cbc["monocyte"];
-    $eo = $fetch_cbc["eo"];
-    $baso = $fetch_cbc["baso"];
-    $platelets = $fetch_cbc["platelets"];
-    $rbc = $fetch_cbc["rbc"];
-    $mvc = $fetch_cbc["mvc"];
-    $mch = $fetch_cbc["mch"];
-    $mchc = $fetch_cbc["mchc"];
+    $hb = round($fetch_cbc["hb"],1);
+    $hct = round($fetch_cbc["hct"],1);
+    $wbc = round($fetch_cbc["wbc"],1);
+    $ne = round($fetch_cbc["ne"],1);
+    $lym = round($fetch_cbc["lym"],1);
+    $monocyte = round($fetch_cbc["monocyte"],1);
+    $eo = round($fetch_cbc["eo"],1);
+    $baso = round($fetch_cbc["baso"],1);
+    $platelets = round($fetch_cbc["platelets"],1);
+    $rbc = round($fetch_cbc["rbc"],1);
+    $mvc = round($fetch_cbc["mvc"],1);
+    $mch = round($fetch_cbc["mch"],1);
+    $mchc = round($fetch_cbc["mchc"],1);
     $red_blood = $fetch_cbc["red_blood"];
 }
 $cbc2 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year2';");
@@ -342,19 +342,19 @@ if(mysqli_num_rows($cbc2)==0)
 }
 else 
 {
-    $hb2 = $fetch_cbc2["hb"];
-    $hct2 = $fetch_cbc2["hct"];
-    $wbc2 = $fetch_cbc2["wbc"];
-    $ne2 = $fetch_cbc2["ne"];
-    $lym2 = $fetch_cbc2["lym"];
-    $monocyte2 = $fetch_cbc2["monocyte"];
-    $eo2 = $fetch_cbc2["eo"];
-    $baso2 = $fetch_cbc2["baso"];
-    $platelets2 = $fetch_cbc2["platelets"];
-    $rbc2 = $fetch_cbc2["rbc"];
-    $mvc2 = $fetch_cbc2["mvc"];
-    $mch2 = $fetch_cbc2["mch"];
-    $mchc2 = $fetch_cbc2["mchc"];
+    $hb2 = round($fetch_cbc2["hb"],1);
+    $hct2 = round($fetch_cbc2["hct"],1);
+    $wbc2 = round($fetch_cbc2["wbc"],1);
+    $ne2 = round($fetch_cbc2["ne"],1);
+    $lym2 = round($fetch_cbc2["lym"],1);
+    $monocyte2 = round($fetch_cbc2["monocyte"],1);
+    $eo2 = round($fetch_cbc2["eo"],1);
+    $baso2 = round($fetch_cbc2["baso"],1);
+    $platelets2 = round($fetch_cbc2["platelets"],1);
+    $rbc2 = round($fetch_cbc2["rbc"],1);
+    $mvc2 = round($fetch_cbc2["mvc"],1);
+    $mch2 = round($fetch_cbc2["mch"],1);
+    $mchc2 = round($fetch_cbc2["mchc"],1);
     $red_blood2 = $fetch_cbc2["red_blood"];
 }
 $cbc3 = mysqli_query($conn,"SELECT * FROM cbc where barcode='$barcode' AND year='$year3';");
@@ -378,19 +378,19 @@ if(mysqli_num_rows($cbc3)==0)
 }
 else 
 {
-    $hb3 = $fetch_cbc3["hb"];
-    $hct3 = $fetch_cbc3["hct"];
-    $wbc3 = $fetch_cbc3["wbc"];
-    $ne3 = $fetch_cbc3["ne"];
-    $lym3 = $fetch_cbc3["lym"];
-    $monocyte3 = $fetch_cbc3["monocyte"];
-    $eo3 = $fetch_cbc3["eo"];
-    $baso3 = $fetch_cbc3["baso"];
-    $platelets3 = $fetch_cbc3["platelets"];
-    $rbc3 = $fetch_cbc3["rbc"];
-    $mvc3 = $fetch_cbc3["mvc"];
-    $mch3 = $fetch_cbc3["mch"];
-    $mchc3 = $fetch_cbc3["mchc"];
+    $hb3 = round($fetch_cbc3["hb"],1);
+    $hct3 = round($fetch_cbc3["hct"],1);
+    $wbc3 = round($fetch_cbc3["wbc"],1);
+    $ne3 = round($fetch_cbc3["ne"],1);
+    $lym3 = round($fetch_cbc3["lym"],1);
+    $monocyte3 = round($fetch_cbc3["monocyte"],1);
+    $eo3 = round($fetch_cbc3["eo"],1);
+    $baso3 = round($fetch_cbc3["baso"],1);
+    $platelets3 = round($fetch_cbc3["platelets"],1);
+    $rbc3 = round($fetch_cbc3["rbc"],1);
+    $mvc3 = round($fetch_cbc3["mvc"],1);
+    $mch3 = round($fetch_cbc3["mch"],1);
+    $mchc3 = round($fetch_cbc3["mchc"],1);
     $red_blood3 = $fetch_cbc3["red_blood"];
 }
 $redblood = "";
@@ -423,6 +423,7 @@ else
 
 $x_ray = "";
 $cxr_conclusion = "";
+$cxr_conclusion2 = "";
 $cxr_remark = "";
 $cxr = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_cxr = mysqli_fetch_array($cxr,MYSQLI_ASSOC);
@@ -445,11 +446,13 @@ else
 {
     $x_ray = "";
     $cxr_conclusion = "";
+    $cxr_conclusion2 = "";
     $cxr_remark = "";
 }
 
 $ekg_name = "";
 $ekg_conclusion = "";
+$ekg_conclusion2 = "";
 $ekg_remark = "";
 $ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
@@ -473,11 +476,13 @@ else
 {
     $ekg_name = "";
     $ekg_conclusion = "";
+    $ekg_conclusion2 = "";
     $ekg_remark = "";
 }
 
 $ultra_name = "";
 $ultra_conclusion = "";
+$ultra_conclusion2 = "";
 $ultra_remark = "";
 $ultrasound = mysqli_query($conn,"SELECT * FROM ultrasound where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_ultrasound = mysqli_fetch_array($ultrasound,MYSQLI_ASSOC);
@@ -500,6 +505,7 @@ else
 {
     $ultra_name = "";
     $ultra_conclusion = "";
+    $ultra_conclusion2 = "";
     $ultra_remark = "";
 }
 
@@ -523,19 +529,19 @@ if(mysqli_num_rows($bio)==0)
 }
 else {
 
-    $fbs = $fetch_bio["fbs"];
-    $cho = $fetch_bio["cho"];
-    $hdl = $fetch_bio["hdl"];
-    $ldl = $fetch_bio["ldl"];
-    $trig = $fetch_bio["trig"];
-    $ua = $fetch_bio["ua"];
-    $bun = $fetch_bio["bun"];
-    $creatinine = $fetch_bio["creatinine"];
-    $sgot = $fetch_bio["sgot"];
-    $sgpt = $fetch_bio["sgpt"];
-    $alk = $fetch_bio["alk"];
-    $ggt = $fetch_bio["ggt"];
-    $hbac = $fetch_bio["hbac"];
+    $fbs = round($fetch_bio["fbs"],1);
+    $cho = round($fetch_bio["cho"],1);
+    $hdl = round($fetch_bio["hdl"],1);
+    $ldl = round($fetch_bio["ldl"],1);
+    $trig = round($fetch_bio["trig"],1);
+    $ua = round($fetch_bio["ua"],1);
+    $bun = round($fetch_bio["bun"],1);
+    $creatinine = round($fetch_bio["creatinine"],1);
+    $sgot = round($fetch_bio["sgot"],1);
+    $sgpt = round($fetch_bio["sgpt"],1);
+    $alk = round($fetch_bio["alk"],1);
+    $ggt = round($fetch_bio["ggt"],1);
+    $hbac = round($fetch_bio["hbac"],1);
 }
 $bio2 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year2';");
 $fetch_bio2 = mysqli_fetch_array($bio2,MYSQLI_ASSOC);
@@ -557,19 +563,19 @@ if(mysqli_num_rows($bio2)==0)
 }
 else {
 
-    $fbs2 = $fetch_bio2["fbs"];
-    $cho2 = $fetch_bio2["cho"];
-    $hdl2 = $fetch_bio2["hdl"];
-    $ldl2 = $fetch_bio2["ldl"];
-    $trig2 = $fetch_bio2["trig"];
-    $ua2 = $fetch_bio2["ua"];
-    $bun2 = $fetch_bio2["bun"];
-    $creatinine2 = $fetch_bio2["creatinine"];
-    $sgot2 = $fetch_bio2["sgot"];
-    $sgpt2 = $fetch_bio2["sgpt"];
-    $alk2 = $fetch_bio2["alk"];
-    $ggt2 = $fetch_bio2["ggt"];
-    $hbac2 = $fetch_bio2["hbac"];
+    $fbs2 = round($fetch_bio2["fbs"],1);
+    $cho2 = round($fetch_bio2["cho"],1);
+    $hdl2 = round($fetch_bio2["hdl"],1);
+    $ldl2 = round($fetch_bio2["ldl"],1);
+    $trig2 = round($fetch_bio2["trig"],1);
+    $ua2 = round($fetch_bio2["ua"],1);
+    $bun2 = round($fetch_bio2["bun"],1);
+    $creatinine2 = round($fetch_bio2["creatinine"],1);
+    $sgot2 = round($fetch_bio2["sgot"],1);
+    $sgpt2 = round($fetch_bio2["sgpt"],1);
+    $alk2 = round($fetch_bio2["alk"],1);
+    $ggt2 = round($fetch_bio2["ggt"],1);
+    $hbac2 = round($fetch_bio2["hbac"],1);
 }
 $bio3 = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' AND year='$year3';");
 $fetch_bio3 = mysqli_fetch_array($bio3,MYSQLI_ASSOC);
@@ -591,19 +597,19 @@ if(mysqli_num_rows($bio3)==0)
 }
 else {
 
-    $fbs3 = $fetch_bio3["fbs"];
-    $cho3 = $fetch_bio3["cho"];
-    $hdl3 = $fetch_bio3["hdl"];
-    $ldl3 = $fetch_bio3["ldl"];
-    $trig3 = $fetch_bio3["trig"];
-    $ua3 = $fetch_bio3["ua"];
-    $bun3 = $fetch_bio3["bun"];
-    $creatinine3 = $fetch_bio3["creatinine"];
-    $sgot3 = $fetch_bio3["sgot"];
-    $sgpt3 = $fetch_bio3["sgpt"];
-    $alk3 = $fetch_bio3["alk"];
-    $ggt3 = $fetch_bio3["ggt"];
-    $hbac3 = $fetch_bio3["hbac"];
+    $fbs3 = round($fetch_bio3["fbs"],1);
+    $cho3 = round($fetch_bio3["cho"],1);
+    $hdl3 = round($fetch_bio3["hdl"],1);
+    $ldl3 = round($fetch_bio3["ldl"],1);
+    $trig3 = round($fetch_bio3["trig"],1);
+    $ua3 = round($fetch_bio3["ua"],1);
+    $bun3 = round($fetch_bio3["bun"],1);
+    $creatinine3 = round($fetch_bio3["creatinine"],1);
+    $sgot3 = round($fetch_bio3["sgot"],1);
+    $sgpt3 = round($fetch_bio3["sgpt"],1);
+    $alk3 = round($fetch_bio3["alk"],1);
+    $ggt3 = round($fetch_bio3["ggt"],1);
+    $hbac3 = round($fetch_bio3["hbac"],1);
 }
 
 $bio_conclusion = "";
@@ -636,15 +642,15 @@ $test_vision = mysqli_query($conn,"SELECT * FROM test_vision where barcode='$bar
 $fetch_test_vision = mysqli_fetch_array($test_vision,MYSQLI_ASSOC);
 if(mysqli_num_rows($test_vision) > 0)
 {
-    $r_short = $fetch_test_vision["r_short"];
-    $r_long = $fetch_test_vision["r_long"];
-    $r_tited = $fetch_test_vision["r_tited"];
-    $r_color = $fetch_test_vision["r_color"];
-    $r_conclusion = $fetch_test_vision["r_conclusion"];
-    $l_short = $fetch_test_vision["l_short"];
-    $l_long = $fetch_test_vision["l_long"];
-    $l_tited = $fetch_test_vision["l_tited"];
-    $l_color = $fetch_test_vision["l_color"];
+    $r_short = round($fetch_test_vision["r_short"],1);
+    $r_long = round($fetch_test_vision["r_long"],1);
+    $r_tited = round($fetch_test_vision["r_tited"],1);
+    $r_color = round($fetch_test_vision["r_color"],1);
+    $r_conclusion = round($fetch_test_vision["r_conclusion"],1);
+    $l_short = round($fetch_test_vision["l_short"],1);
+    $l_long = round($fetch_test_vision["l_long"],1);
+    $l_tited = round($fetch_test_vision["l_tited"],1);
+    $l_color = round($fetch_test_vision["l_color"],1);
     $l_conclusion = $fetch_test_vision["l_conclusion"];
 
     if ($fetch_test_vision["conclusion"] == "") {
@@ -717,24 +723,24 @@ $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' AN
 $fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
 if(mysqli_num_rows($audio) > 0)
 {
-    $r_500 = $fetch_audio["r_500"];
-    $r_1000 = $fetch_audio["r_1000"];
-    $r_2000 = $fetch_audio["r_2000"];
-    $r_3000 = $fetch_audio["r_3000"];
-    $r_l_avg = $fetch_audio["r_l_avg"];
-    $r_4000 = $fetch_audio["r_4000"];
-    $r_6000 = $fetch_audio["r_6000"];
-    $r_8000 = $fetch_audio["r_8000"];
-    $r_h_avg = $fetch_audio["r_h_avg"];
-    $l_500 = $fetch_audio["l_500"];
-    $l_1000 = $fetch_audio["l_1000"];
-    $l_2000 = $fetch_audio["l_2000"];
-    $l_3000 = $fetch_audio["l_3000"];
-    $l_l_avg = $fetch_audio["l_l_avg"];
-    $l_4000 = $fetch_audio["l_4000"];
-    $l_6000 = $fetch_audio["l_6000"];
-    $l_8000 = $fetch_audio["l_8000"];
-    $l_h_avg = $fetch_audio["l_h_avg"];
+    $r_500 = round($fetch_audio["r_500"],1);
+    $r_1000 = round($fetch_audio["r_1000"],1);
+    $r_2000 = round($fetch_audio["r_2000"],1);
+    $r_3000 = round($fetch_audio["r_3000"],1);
+    $r_l_avg = round($fetch_audio["r_l_avg"],1);
+    $r_4000 = round($fetch_audio["r_4000"],1);
+    $r_6000 = round($fetch_audio["r_6000"],1);
+    $r_8000 = round($fetch_audio["r_8000"],1);
+    $r_h_avg = round($fetch_audio["r_h_avg"],1);
+    $l_500 = round($fetch_audio["l_500"],1);
+    $l_1000 = round($fetch_audio["l_1000"],1);
+    $l_2000 = round($fetch_audio["l_2000"],1);
+    $l_3000 = round($fetch_audio["l_3000"],1);
+    $l_l_avg = round($fetch_audio["l_l_avg"],1);
+    $l_4000 = round($fetch_audio["l_4000"],1);
+    $l_6000 = round($fetch_audio["l_6000"],1);
+    $l_8000 = round($fetch_audio["l_8000"],1);
+    $l_h_avg = round($fetch_audio["l_h_avg"],1);
 
     if ($fetch_audio["conclusion"] == "") {
         echo "";
@@ -773,6 +779,7 @@ else
 }
 
 $muscle_conclusion = "";
+$muscle_conclusion2 = "";
     $muscle_remark = "";
 $muscle = mysqli_query($conn,"SELECT * FROM muscle where barcode='$barcode' AND year='$yearconclusion';");
 $fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
@@ -797,6 +804,7 @@ else
 {
     $muscle_name = "";
     $muscle_conclusion = "";
+    $muscle_conclusion2 = "";
     $muscle_remark = "";
 }
 
@@ -832,31 +840,31 @@ if(mysqli_num_rows($metal)==0)
     $methylEthylKetoneInUrine = "";
 }
 else {
-    $ether = $fetch_metal["ether"];
-    $ethy = $fetch_metal["ethy"];
-    $nickle = $fetch_metal["nickle"];
-    $manganese = $fetch_metal["manganese"];
-    $tim = $fetch_metal["tim"];
-    $blood = $fetch_metal["blood"];
-    $m_i_urine = $fetch_metal["m_i_urine"];
-    $b_a_u = $fetch_metal["b_a_u"];
-    $c_u = $fetch_metal["c_u"];
-    $alcoho = $fetch_metal["alcoho"];
-    $silica = $fetch_metal["silica"];
-    $methy = $fetch_metal["methy"];
-    $a_i_urine = $fetch_metal["a_i_urine"];
-    $t_i_urine = $fetch_metal["t_i_urine"];
-    $methy_urine = $fetch_metal["methy_urine"];
-    $methanoi_urine = $fetch_metal["methanoi_urine"];
-    $phenolic_resin = $fetch_metal["phenolic_resin"];
-    $leadInBlood = $fetch_metal["lead"];
-    $chromiumInBlood = $fetch_metal["chromlum"];
-    $copperInBlood = $fetch_metal["copper"];
-    $aluminiumInBlood = $fetch_metal["alum"];
-    $zineInBlood = $fetch_metal["zine"];
-    $arsenicInBlood = $fetch_metal["arsenic"];
-    $xyleneInBlood = $fetch_metal["xylene"];
-    $methylEthylKetoneInUrine = $fetch_metal["m_e_k_i_urine"];
+    $ether = round($fetch_metal["ether"],1);
+    $ethy = round($fetch_metal["ethy"],1);
+    $nickle = round($fetch_metal["nickle"],1);
+    $manganese = round($fetch_metal["manganese"],1);
+    $tim = round($fetch_metal["tim"],1);
+    $blood = round($fetch_metal["blood"],1);
+    $m_i_urine = round($fetch_metal["m_i_urine"],1);
+    $b_a_u = round($fetch_metal["b_a_u"],1);
+    $c_u = round($fetch_metal["c_u"],1);
+    $alcoho = round($fetch_metal["alcoho"],1);
+    $silica = round($fetch_metal["silica"],1);
+    $methy = round($fetch_metal["methy"],1);
+    $a_i_urine = round($fetch_metal["a_i_urine"],1);
+    $t_i_urine = round($fetch_metal["t_i_urine"],1);
+    $methy_urine = round($fetch_metal["methy_urine"],1);
+    $methanoi_urine = round($fetch_metal["methanoi_urine"],1);
+    $phenolic_resin = round($fetch_metal["phenolic_resin"],1);
+    $leadInBlood = round($fetch_metal["lead"],1);
+    $chromiumInBlood = round($fetch_metal["chromlum"],1);
+    $copperInBlood = round($fetch_metal["copper"],1);
+    $aluminiumInBlood = round($fetch_metal["alum"],1);
+    $zineInBlood = round($fetch_metal["zine"],1);
+    $arsenicInBlood = round($fetch_metal["arsenic"],1);
+    $xyleneInBlood = round($fetch_metal["xylene"],1);
+    $methylEthylKetoneInUrine = round($fetch_metal["m_e_k_i_urine"],1);
 }
 $metal2 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year2';");
 $fetch_metal2 = mysqli_fetch_array($metal2,MYSQLI_ASSOC);
@@ -889,31 +897,31 @@ if(mysqli_num_rows($metal2)==0)
     $methylEthylKetoneInUrine2 = "";
 }
 else {
-    $ether2 = $fetch_metal2["ether"];
-    $ethy2 = $fetch_metal2["ethy"];
-    $nickle2 = $fetch_metal2["nickle"];
-    $manganese2 = $fetch_metal2["manganese"];
-    $tim2 = $fetch_metal2["tim"];
-    $blood2 = $fetch_metal2["blood"];
-    $m_i_urine2 = $fetch_metal2["m_i_urine"];
-    $b_a_u2 = $fetch_metal2["b_a_u"];
-    $c_u2 = $fetch_metal2["c_u"];
-    $alcoho2 = $fetch_metal2["alcoho"];
-    $silica2 = $fetch_metal2["silica"];
-    $methy2 = $fetch_metal2["methy"];
-    $a_i_urine2 = $fetch_metal2["a_i_urine"];
-    $t_i_urine2 = $fetch_metal2["t_i_urine"];
-    $methy_urine2 = $fetch_metal2["methy_urine"];
-    $methanoi_urine2 = $fetch_metal2["methanoi_urine"];
-    $phenolic_resin2 = $fetch_metal2["phenolic_resin"];
-    $leadInBlood2 = $fetch_metal2["lead"];
-    $chromiumInBlood2 = $fetch_metal2["chromlum"];
-    $copperInBlood2 = $fetch_metal2["copper"];
-    $aluminiumInBlood2 = $fetch_metal2["alum"];
-    $zineInBlood2 = $fetch_metal2["zine"];
-    $arsenicInBlood2 = $fetch_metal2["arsenic"];
-    $xyleneInBlood2 = $fetch_metal2["xylene"];
-    $methylEthylKetoneInUrine2 = $fetch_metal2["m_e_k_i_urine"];
+    $ether2 = round($fetch_metal2["ether"],1);
+    $ethy2 = round($fetch_metal2["ethy"],1);
+    $nickle2 = round($fetch_metal2["nickle"],1);
+    $manganese2 = round($fetch_metal2["manganese"],1);
+    $tim2 = round($fetch_metal2["tim"],1);
+    $blood2 = round($fetch_metal2["blood"],1);
+    $m_i_urine2 = round($fetch_metal2["m_i_urine"],1);
+    $b_a_u2 = round($fetch_metal2["b_a_u"],1);
+    $c_u2 = round($fetch_metal2["c_u"],1);
+    $alcoho2 = round($fetch_metal2["alcoho"],1);
+    $silica2 = round($fetch_metal2["silica"],1);
+    $methy2 = round($fetch_metal2["methy"],1);
+    $a_i_urine2 = round($fetch_metal2["a_i_urine"],1);
+    $t_i_urine2 = round($fetch_metal2["t_i_urine"],1);
+    $methy_urine2 = round($fetch_metal2["methy_urine"],1);
+    $methanoi_urine2 = round($fetch_metal2["methanoi_urine"],1);
+    $phenolic_resin2 = round($fetch_metal2["phenolic_resin"],1);
+    $leadInBlood2 = round($fetch_metal2["lead"],1);
+    $chromiumInBlood2 = round($fetch_metal2["chromlum"],1);
+    $copperInBlood2 = round($fetch_metal2["copper"],1);
+    $aluminiumInBlood2 = round($fetch_metal2["alum"],1);
+    $zineInBlood2 = round($fetch_metal2["zine"],1);
+    $arsenicInBlood2 = round($fetch_metal2["arsenic"],1);
+    $xyleneInBlood2 = round($fetch_metal2["xylene"],1);
+    $methylEthylKetoneInUrine2 = round($fetch_metal2["m_e_k_i_urine"],1);
 }
 $metal3 = mysqli_query($conn,"SELECT * FROM heavy_metal where barcode='$barcode' AND year='$year3';");
 $fetch_metal3 = mysqli_fetch_array($metal3,MYSQLI_ASSOC);
@@ -946,31 +954,31 @@ if(mysqli_num_rows($metal3)==0)
     $methylEthylKetoneInUrine3 = "";
 }
 else {
-    $ether3 = $fetch_metal3["ether"];
-    $ethy3 = $fetch_metal3["ethy"];
-    $nickle3 = $fetch_metal3["nickle"];
-    $manganese3 = $fetch_metal3["manganese"];
-    $tim3 = $fetch_metal3["tim"];
-    $blood3 = $fetch_metal3["blood"];
-    $m_i_urine3 = $fetch_metal3["m_i_urine"];
-    $b_a_u3 = $fetch_metal3["b_a_u"];
-    $c_u3 = $fetch_metal3["c_u"];
-    $alcoho3 = $fetch_metal3["alcoho"];
-    $silica3 = $fetch_metal3["silica"];
-    $methy3 = $fetch_metal3["methy"];
-    $a_i_urine3 = $fetch_metal3["a_i_urine"];
-    $t_i_urine3 = $fetch_metal3["t_i_urine"];
-    $methy_urine3 = $fetch_metal3["methy_urine"];
-    $methanoi_urine3 = $fetch_metal3["methanoi_urine"];
-    $phenolic_resin3 = $fetch_metal3["phenolic_resin"];
-    $leadInBlood3 = $fetch_metal3["lead"];
-    $chromiumInBlood3 = $fetch_metal3["chromlum"];
-    $copperInBlood3 = $fetch_metal3["copper"];
-    $aluminiumInBlood3 = $fetch_metal3["alum"];
-    $zineInBlood3 = $fetch_metal3["zine"];
-    $arsenicInBlood3 = $fetch_metal3["arsenic"];
-    $xyleneInBlood3 = $fetch_metal3["xylene"];
-    $methylEthylKetoneInUrine3 = $fetch_metal3["m_e_k_i_urine"];
+    $ether3 = round($fetch_metal3["ether"],1);
+    $ethy3 = round($fetch_metal3["ethy"],1);
+    $nickle3 = round($fetch_metal3["nickle"],1);
+    $manganese3 = round($fetch_metal3["manganese"],1);
+    $tim3 = round($fetch_metal3["tim"],1);
+    $blood3 = round($fetch_metal3["blood"],1);
+    $m_i_urine3 = round($fetch_metal3["m_i_urine"],1);
+    $b_a_u3 = round($fetch_metal3["b_a_u"],1);
+    $c_u3 = round($fetch_metal3["c_u"],1);
+    $alcoho3 = round($fetch_metal3["alcoho"],1);
+    $silica3 = round($fetch_metal3["silica"],1);
+    $methy3 = round($fetch_metal3["methy"],1);
+    $a_i_urine3 = round($fetch_metal3["a_i_urine"],1);
+    $t_i_urine3 = round($fetch_metal3["t_i_urine"],1);
+    $methy_urine3 = round($fetch_metal3["methy_urine"],1);
+    $methanoi_urine3 = round($fetch_metal3["methanoi_urine"],1);
+    $phenolic_resin3 = round($fetch_metal3["phenolic_resin"],1);
+    $leadInBlood3 = round($fetch_metal3["lead"],1);
+    $chromiumInBlood3 = round($fetch_metal3["chromlum"],1);
+    $copperInBlood3 = round($fetch_metal3["copper"],1);
+    $aluminiumInBlood3 = round($fetch_metal3["alum"],1);
+    $zineInBlood3 = round($fetch_metal3["zine"],1);
+    $arsenicInBlood3 = round($fetch_metal3["arsenic"],1);
+    $xyleneInBlood3 = round($fetch_metal3["xylene"],1);
+    $methylEthylKetoneInUrine3 = round($fetch_metal3["m_e_k_i_urine"],1);
 }
 
 $metal_conclusion = "";
@@ -1016,15 +1024,15 @@ if(mysqli_num_rows($urine)==0)
 else {
     $coloru = $fetch_urine["color"];
     $appearance = $fetch_urine["appearance"];
-    $ph = $fetch_urine["ph"];
-    $specifics = $fetch_urine["specifics"];
+    $ph = round($fetch_urine["ph"],1);
+    $specifics = round($fetch_urine["specifics"],1);
     $protein = $fetch_urine["protein"];
     $sugar = $fetch_urine["sugar"];
     $ketone = $fetch_urine["ketone"];
     $blood_urine = $fetch_urine["blood"];
-    $wbc_urine = $fetch_urine["wbc"];
-    $rbc_urine = $fetch_urine["rbc"];
-    $epit = $fetch_urine["epit"];
+    $wbc_urine = round($fetch_urine["wbc"],1);
+    $rbc_urine = round($fetch_urine["rbc"],1);
+    $epit = round($fetch_urine["epit"],1);
 }
 $urine2 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year2';");
 $fetch_urine2 = mysqli_fetch_array($urine2,MYSQLI_ASSOC);
@@ -1045,15 +1053,15 @@ if(mysqli_num_rows($urine2)==0)
 else {
     $coloru2 = $fetch_urine2["color"];
     $appearance2 = $fetch_urine2["appearance"];
-    $ph2 = $fetch_urine2["ph"];
-    $specifics2 = $fetch_urine2["specifics"];
+    $ph2 = round($fetch_urine2["ph"],1);
+    $specifics2 = round($fetch_urine2["specifics"],1);
     $protein2 = $fetch_urine2["protein"];
     $sugar2 = $fetch_urine2["sugar"];
     $ketone2 = $fetch_urine2["ketone"];
     $blood_urine2 = $fetch_urine2["blood"];
-    $wbc_urine2 = $fetch_urine2["wbc"];
-    $rbc_urine2 = $fetch_urine2["rbc"];
-    $epit2 = $fetch_urine2["epit"];
+    $wbc_urine2 = round($fetch_urine2["wbc"],1);
+    $rbc_urine2 = round($fetch_urine2["rbc"],1);
+    $epit2 = round($fetch_urine2["epit"],1);
 }
 $urine3 = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' AND year='$year3';");
 $fetch_urine3 = mysqli_fetch_array($urine3,MYSQLI_ASSOC);
@@ -1074,15 +1082,15 @@ if(mysqli_num_rows($urine3)==0)
 else {
     $coloru3 = $fetch_urine3["color"];
     $appearance3 = $fetch_urine3["appearance"];
-    $ph3 = $fetch_urine3["ph"];
-    $specifics3 = $fetch_urine3["specifics"];
+    $ph3 = round($fetch_urine3["ph"],1);
+    $specifics3 = round($fetch_urine3["specifics"],1);
     $protein3 = $fetch_urine3["protein"];
     $sugar3 = $fetch_urine3["sugar"];
     $ketone3 = $fetch_urine3["ketone"];
     $blood_urine3 = $fetch_urine3["blood"];
-    $wbc_urine3 = $fetch_urine3["wbc"];
-    $rbc_urine3 = $fetch_urine3["rbc"];
-    $epit3 = $fetch_urine3["epit"];
+    $wbc_urine3 = round($fetch_urine3["wbc"],1);
+    $rbc_urine3 = round($fetch_urine3["rbc"],1);
+    $epit3 = round($fetch_urine3["epit"],1);
 }
 
 $urine_conclusion = "";
@@ -1169,11 +1177,11 @@ $thyroid = mysqli_query($conn,"SELECT * FROM thryroid where barcode='$barcode' A
 $fetch_thyroid = mysqli_fetch_array($thyroid,MYSQLI_ASSOC);
 if(mysqli_num_rows($thyroid) > 0)
 {
-    $free_t3 = $fetch_thyroid["free_t3"];
-    $free_t4 = $fetch_thyroid["free_t4"];
-    $tsh = $fetch_thyroid["tsh"];
-    $t3 = $fetch_thyroid["t3"];
-    $t4 = $fetch_thyroid["t4"];
+    $free_t3 = round($fetch_thyroid["free_t3"],1);
+    $free_t4 = round($fetch_thyroid["free_t4"],1);
+    $tsh = round($fetch_thyroid["tsh"],1);
+    $t3 = round($fetch_thyroid["t3"],1);
+    $t4 = round($fetch_thyroid["t4"],1);
     if ($fetch_thyroid["conclusion"] == "") {
         echo "";
     }else{
@@ -1252,12 +1260,12 @@ if(mysqli_num_rows($tumor)==0)
 
 }
 else {
-    $afp = $fetch_tumor["afp"];
-    $cea = $fetch_tumor["cea"];
-    $psa = $fetch_tumor["psa"];
-    $ca_19 = $fetch_tumor["ca_19"];
-    $ca_15 = $fetch_tumor["ca_15"];
-    $ca_125 = $fetch_tumor["ca_125"];
+    $afp = round($fetch_tumor["afp"],1);
+    $cea = round($fetch_tumor["cea"],1);
+    $psa = round($fetch_tumor["psa"],1);
+    $ca_19 = round($fetch_tumor["ca_19"],1);
+    $ca_15 = round($fetch_tumor["ca_15"],1);
+    $ca_125 = round($fetch_tumor["ca_125"],1);
 }
 $tumor2 = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year2';");
 $fetch_tumor2 = mysqli_fetch_array($tumor2,MYSQLI_ASSOC);
@@ -1272,12 +1280,12 @@ if(mysqli_num_rows($tumor2)==0)
 
 }
 else {
-    $afp2 = $fetch_tumor2["afp"];
-    $cea2 = $fetch_tumor2["cea"];
-    $psa2 = $fetch_tumor2["psa"];
-    $ca_192 = $fetch_tumor2["ca_19"];
-    $ca_152 = $fetch_tumor2["ca_15"];
-    $ca_1252 = $fetch_tumor2["ca_125"];
+    $afp2 = round($fetch_tumor2["afp"],1);
+    $cea2 = round($fetch_tumor2["cea"],1);
+    $psa2 = round($fetch_tumor2["psa"],1);
+    $ca_192 = round($fetch_tumor2["ca_19"],1);
+    $ca_152 = round($fetch_tumor2["ca_15"],1);
+    $ca_1252 = round($fetch_tumor2["ca_125"],1);
 }
 $tumor3 = mysqli_query($conn,"SELECT * FROM tumor_marker where barcode='$barcode' AND year='$year3';");
 $fetch_tumor3 = mysqli_fetch_array($tumor3,MYSQLI_ASSOC);
@@ -1292,12 +1300,12 @@ if(mysqli_num_rows($tumor3)==0)
 
 }
 else {
-    $afp3 = $fetch_tumor3["afp"];
-    $cea3 = $fetch_tumor3["cea"];
-    $psa3 = $fetch_tumor3["psa"];
-    $ca_193 = $fetch_tumor3["ca_19"];
-    $ca_153 = $fetch_tumor3["ca_15"];
-    $ca_1253 = $fetch_tumor3["ca_125"];
+    $afp3 = round($fetch_tumor3["afp"],1);
+    $cea3 = round($fetch_tumor3["cea"],1);
+    $psa3 = round($fetch_tumor3["psa"],1);
+    $ca_193 = round($fetch_tumor3["ca_19"],1);
+    $ca_153 = round($fetch_tumor3["ca_15"],1);
+    $ca_1253 = round($fetch_tumor3["ca_125"],1);
 }
 
 $tumor_conclusion = "";
@@ -1342,11 +1350,11 @@ if(mysqli_num_rows($gttgk)==0)
     $globulin = "";
 }
 else {
-    $total_bill = $fetch_gttgk["total_bill"];
-    $drect_bill = $fetch_gttgk["drect_bill"];
-    $gttgk_protein = $fetch_gttgk["protein"];
-    $ambumin = $fetch_gttgk["ambumin"];
-    $globulin = $fetch_gttgk["globulin"];
+    $total_bill = round($fetch_gttgk["total_bill"],1);
+    $drect_bill = round($fetch_gttgk["drect_bill"],1);
+    $gttgk_protein = round($fetch_gttgk["protein"],1);
+    $ambumin = round($fetch_gttgk["ambumin"],1);
+    $globulin = round($fetch_gttgk["globulin"],1);
 }
 $gttgk2 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year2';");
 $fetch_gttgk2 = mysqli_fetch_array($gttgk2,MYSQLI_ASSOC);
@@ -1359,11 +1367,11 @@ if(mysqli_num_rows($gttgk2)==0)
     $globulin2 = "";
 }
 else {
-    $total_bill2 = $fetch_gttgk2["total_bill"];
-    $drect_bill2 = $fetch_gttgk2["drect_bill"];
-    $gttgk_protein2 = $fetch_gttgk2["protein"];
-    $ambumin2 = $fetch_gttgk2["ambumin"];
-    $globulin2 = $fetch_gttgk2["globulin"];
+    $total_bill2 = round($fetch_gttgk2["total_bill"],1);
+    $drect_bill2 = round($fetch_gttgk2["drect_bill"],1);
+    $gttgk_protein2 = round($fetch_gttgk2["protein"],1);
+    $ambumin2 = round($fetch_gttgk2["ambumin"],1);
+    $globulin2 = round($fetch_gttgk2["globulin"],1);
 }
 $gttgk3 = mysqli_query($conn,"SELECT * FROM tumor_gttgk where barcode='$barcode' AND year='$year3';");
 $fetch_gttgk3 = mysqli_fetch_array($gttgk3,MYSQLI_ASSOC);
@@ -1376,11 +1384,11 @@ if(mysqli_num_rows($gttgk3)==0)
     $globulin3 = "";
 }
 else {
-    $total_bill3 = $fetch_gttgk3["total_bill"];
-    $drect_bill3 = $fetch_gttgk3["drect_bill"];
-    $gttgk_protein3 = $fetch_gttgk3["protein"];
-    $ambumin3 = $fetch_gttgk3["ambumin"];
-    $globulin3 = $fetch_gttgk3["globulin"];
+    $total_bill3 = round($fetch_gttgk3["total_bill"],1);
+    $drect_bill3 = round($fetch_gttgk3["drect_bill"],1);
+    $gttgk_protein3 = round($fetch_gttgk3["protein"],1);
+    $ambumin3 = round($fetch_gttgk3["ambumin"],1);
+    $globulin3 = round($fetch_gttgk3["globulin"],1);
 }
 
 $gttgk_conclusion = "";
@@ -2500,7 +2508,7 @@ else {
                         </tr>
                         <tr>
                             <td>Right Ear(ຫູຂວາ)</td>
-                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_500;?>  <?php $test="21.1234556654"; echo round($test, 1); ?></b></td>
+                            <td style="text-align:center;"><b style="color: black;"><?php echo $r_500;?></b></td>
                             <td style="text-align:center;"><b style="color: black;"><?php echo $r_1000;?></b></td>
                             <td style="text-align:center;"><b style="color: black;"><?php echo $r_2000;?></b></td>
                             <td style="text-align:center;"><b style="color: black;"><?php echo $r_3000;?></b></td>
@@ -2545,7 +2553,8 @@ else {
                         <b style="color: black;"><?php echo $muscle_name;?></b>
                     </div>
                     <div class="col-sm-12">
-                        <b style="color: black;"><?php echo nl2br($muscle_conclusion2);?> <?php echo substr(nl2br($muscle_remark),1);?></b>
+                        <b style="color: black;"><?php echo nl2br($muscle_conclusion2);?>
+                            <?php echo substr(nl2br($muscle_remark),1);?></b>
                     </div>
                     <!-- <div class="col-sm-12" style="color: black;">
                         <b><?php echo substr(nl2br($muscle_remark),1);?></b>
