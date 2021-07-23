@@ -4,7 +4,7 @@
 $barcode = $_POST["barcode2"];
 $year = $_POST["yearr"];
 
-$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,ears,conclusion,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
+$pe = mysqli_query($conn,"SELECT emp_id,emp_name,surname,dob,age,gender,nation,ethnic,religion,job,department,company,village,district,province,hpi,weight,height,breat,pulse,bp,lung,hear,eye,ears,teeth,skin,lymph,extremities,als,conclusion,remark,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
 $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 
 $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' and year='$year';");
@@ -458,8 +458,8 @@ else{
 
         <div class="one" style="'."Phetsarath OT".'">
         I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ການກວດກາຂອງທ່ານໜໍ: <br>
-        ສະພາບທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ, <br>
-        ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ: '.$fetch_pe["ears"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].'
+        ກວດຮ່າງກາຍໂດຍທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ, <br>
+        ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ ດັງ ຄໍ: '.$fetch_pe["ears"].', ແຂ້ວ: '.$fetch_pe["teeth"].', ຜິວຫນັງ: '.$fetch_pe["skin"].', ຕ່ອມນ້ຳເຫຼືອງ: '.$fetch_pe["lymph"].', ປ້າງ: '.$fetch_pe["als"].', ແຂນຂາ: '.$fetch_pe["extremities"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].', '.$fetch_fe["remark"].'
         </div>
 <br>
 
@@ -467,9 +467,8 @@ else{
         II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນໆ: <br>
         </div>
         <div class="two2">
-        '.$audio_conclusion.''.$cbc_conclusion.''.$ekg_c.''.$heavy_metal_conclusion.''.$immunity_conclusion.''.$methamphetamine_conclusion.'
-        '.$muscle_c.''.$vision_conclusion.''.$se_conclusion.''.$spirometry_conclusion.''.$thryroid_conclusion.''.$Tumor_conclusion.''.$urinalvsis_conclusion.'
-        '.$x_ray_c.''.$bio_conclusion.'
+        '.$cbc_conclusion.''.$urinalvsis_conclusion.''.$se_conclusion.''.$ekg_c.''.$x_ray_c.''.$bio_conclusion.''.$vision_conclusion.''.$audio_conclusion.'
+        
         </div>
 <br>
 
@@ -484,9 +483,8 @@ else{
             -
             </div>
             <div style="width: 90%;float:left;">
-            '.$audio_remark.''.$cbc_remark.''.$ekg_conclusion.''.$heavy_metal_remark.''.$immunity_remark.''.$methamphetamine_remark.'
-            '.$muscle_conclusion.''.$vision_remark.''.$se_remark.''.$spirometry_remark.''.$thryroid_remark.''.$Tumor_remark.''.$urinalvsis_remark.'
-            '.$x_ray_conclusion.''.$bio_remark.'
+            '.$ekg_conclusion.''.$x_ray_conclusion.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
+            
             </div>
         </div>
 <br>

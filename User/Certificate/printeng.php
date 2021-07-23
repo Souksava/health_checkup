@@ -5,7 +5,7 @@
     $barcode = $_POST["barcode2"];
     $year = $_POST["yearr"];
 
-    $pe = mysqli_query($conn,"SELECT emp_id,emp_name_en,surname_en,age,national_en,religion_en,occupation_en,village_en,district_en,province_en,hpi_en,pmhi_en,personal_en,family_en,asi_en,weight,height,breat,pulse,bp,lung,hear_en,eye_en,ears_en,conclusion_en,remark_en,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
+    $pe = mysqli_query($conn,"SELECT emp_id,emp_name_en,surname_en,age,national_en,religion_en,occupation_en,village_en,district_en,province_en,hpi_en,pmhi_en,personal_en,family_en,asi_en,weight,height,breat,pulse,bp,lung,hear_en,eye_en,ears_en,teeth_en,skin_en,lymph_en,als_en,extremities_en,conclusion_en,remark_en,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
     $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 
 
@@ -444,7 +444,7 @@ else{
         <br>
 
         <div class="one">
-        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Physician Examination: <br>
+        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Physician Examination: <br>gen
         General Status: '.$fetch_pe["hpi_en"].', Weight: '.$fetch_pe["weight"].' Kg, Heigh: '.$fetch_pe["height"].' Cm, RR: '.$fetch_pe["breat"].' b/min, Pulse: '.$fetch_pe["pulse"].' b/min, <br>
         BP: '.$fetch_pe["bp"].' mmHg, Lungs: '.$fetch_pe["lung_en"].', Eyes: '.$fetch_pe["eyes_en"].', Ears: '.$fetch_pe["ears_en"].', <br>
         Conclusion: '.$fetch_pe["conclusion_en"].'.
@@ -454,9 +454,8 @@ else{
         II.&nbsp;&nbsp;&nbsp;&nbsp;    Results of Laboratory, CXR and Others: <br>
         </div>
         <div class="two2">
-        '.$audio_conclusion.''.$cbc_conclusion.''.$ekg_c.''.$heavy_metal_conclusion.''.$immunity_conclusion.''.$methamphetamine_conclusion.'
-        '.$muscle_c.''.$vision_conclusion.''.$se_conclusion.''.$spirometry_conclusion.''.$thryroid_conclusion.''.$Tumor_conclusion.''.$urinalvsis_conclusion.'
-        '.$x_ray_c.''.$bio_conclusion.'
+        '.$cbc_conclusion.''.$urinalvsis_conclusion.''.$se_conclusion.''.$ekg_c.''.$x_ray_c.''.$bio_conclusion.''.$vision_conclusion.''.$audio_conclusion.'
+
         </div>
         <br>
 
@@ -469,9 +468,8 @@ else{
         </div>
 
             <div style="width: 90%;float:left;">
-            '.$audio_remark.''.$cbc_remark.''.$ekg_conclusion.''.$heavy_metal_remark.''.$immunity_remark.''.$methamphetamine_remark.'
-            '.$muscle_conclusion.''.$vision_remark.''.$se_remark.''.$spirometry_remark.''.$thryroid_remark.''.$Tumor_remark.''.$urinalvsis_remark.'
-            '.$x_ray_conclusion.''.$bio_remark.'
+            '.$ekg_conclusion.''.$x_ray_conclusion.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
+            
             </div>
         </div>
 <br>
