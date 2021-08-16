@@ -483,7 +483,7 @@ else{
             -
             </div>
             <div style="width: 90%;float:left;">
-            '.$ekg_conclusion.''.$x_ray_conclusion.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
+            '.$ekg_remark.''.$x_ray_remark.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
             
             </div>
         </div>
