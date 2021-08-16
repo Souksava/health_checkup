@@ -1,4 +1,4 @@
 <?php
-$conn = mysqli_connect("Localhost", "root", "", "health_checkup");
+$conn = mysqli_connect("Localhost", "root", "", "health_barcode");
 ?>
 
