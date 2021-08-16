@@ -115,7 +115,7 @@
 
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">User</a>
+                    <a href="#" class="d-block"><?php echo $_SESSION["user_name"] ?></a>
                 </div>
             </div>
 
