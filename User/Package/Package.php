@@ -20,7 +20,7 @@
                     <div class="row" align="left">
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ຟາຍນຳເຂົ້າ</label>
-                            <input type="file" name="package_file" id="package_file" class="form-control">
+                            <input type="file" name="package_file" id="package_file" class="form-control" accept=".xlsx,.xls">
                             <input type="hidden" name="upload_pack_id" id="upload_pack_id">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>

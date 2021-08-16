@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ຟາຍນຳເຂົ້າ</label>
-                            <input type="file" name="checkup_file" id="checkup_file">
+                            <input type="file" name="checkup_file" id="checkup_file" accept=".xlsx,.xls">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>

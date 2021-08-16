@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ຟາຍນຳເຂົ້າ</label>
-                            <input type="file" name="emp_file" id="emp_file">
+                            <input type="file" name="emp_file" id="emp_file" accept=".xlsx,.xls" accept=".xlsx,.xls">
                             <input type="hidden" name="upload_emp_id" id="upload_emp_id">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>

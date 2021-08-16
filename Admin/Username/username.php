@@ -94,7 +94,7 @@
                         </div>
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ຮູບພາບ</label>
-                            <input type="file" name="profile_path2" id="profile_path2" onchange="loadFile2(event)">
+                            <input type="file" name="profile_path2" id="profile_path2" onchange="loadFile2(event)" accept=".jpg, .jpeg, .png">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
@@ -179,7 +179,7 @@
                         </div>
                         <div class="col-md-12 col-sm-6 form-control2">
                             <label>ຮູບພາບ</label>
-                            <input type="file" name="profile_path" id="profile_path" onchange="loadFile(event)">
+                            <input type="file" name="profile_path" id="profile_path" onchange="loadFile(event)" accept=".jpg, .jpeg, .png">
                             <i class="fas fa-check-circle "></i>
                             <i class="fas fa-exclamation-circle "></i>
                             <small class="">Error message</small>
