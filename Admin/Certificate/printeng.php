@@ -2,10 +2,10 @@
 // if(isset($_POST["btnPrint"])){
     $path = "../../";
     include ('../../oop/obj.php');
-    $barcode = $_POST["barcode"];
-    $year = $_POST["year"];
+    $barcode = $_POST["barcode2"];
+    $year = $_POST["yearr"];
 
-    $pe = mysqli_query($conn,"SELECT emp_id,emp_name_en,surname_en,age,national_en,religion_en,occupation_en,village_en,district_en,province_en,hpi_en,pmhi_en,personal_en,family_en,asi_en,weight,height,breat,pulse,bp,lung,hear_en,eye_en,ears_en,conclusion_en,remark_en FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode where e.barcode='$barcode' and year='$year';");
+    $pe = mysqli_query($conn,"SELECT emp_id,emp_name_en,surname_en,age,national_en,religion_en,occupation_en,village_en,district_en,province_en,hpi_en,pmhi_en,personal_en,family_en,asi_en,weight,height,breat,pulse,bp,lung,hear_en,eye_en,ears_en,teeth_en,skin_en,lymph_en,als_en,extremities_en,conclusion_en,remark_en,queue FROM employee e LEFT JOIN company c on e.com_id=c.com_id LEFT JOIN pe p ON e.barcode=p.barcode LEFT JOIN register r ON e.barcode=r.barcode where e.barcode='$barcode' and p.year='$year' and r.year='$year';");
     $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 
 
@@ -297,7 +297,7 @@ else{
         'margin_left' => 10,
         'margin_right' => 10,
         'margin_bottom' => 10,
-        'default_font' => 'saysettha_ot',
+        'default_font' => 'Arial',
     ]);
 
     $content = '
@@ -336,6 +336,22 @@ else{
         width:40%;
         float:left;
         text-align:right;
+}
+.left1{
+    width:35%;
+    float:left;
+
+}
+.center{
+    width:25%;
+    float:left;
+    text-align:right;
+
+}
+.right1{
+    width:28%;
+    float:left;
+    text-align:right;
 
     }
     .title{
@@ -343,7 +359,7 @@ else{
         text-align:center;
     }
     .info{
-        margin-left: 2.54cm;
+        margin-left: 1.27cm;
         margin-right: 1.27cm;
     }
     .info2{
@@ -359,7 +375,7 @@ else{
         margin-right: 1.27cm;
     }
     .two2{
-        margin-left: 2.54cm;
+        margin-left: 2.2cm;
         margin-right: 1.27cm;
     }
     .three{
@@ -369,7 +385,7 @@ else{
     .three2{
         width:100%;
         float:left;
-        margin-left: 2.54cm;
+        margin-left: 2.1cm;
         margin-right: 1.27cm;
     }
 </style>
@@ -398,75 +414,73 @@ else{
         No..........................
         </div>
         <div class="left">
-        Occupational Health Check Up Bureau
+        Occupational Health Check Up Center
         </div>
         <div class="right">
         Vientiane Capital, Date..........................
         </div>
         <div class="left">
-        Tel: 021-253 833,
+        Tel: 021-253 833,   020 555 024 14
         </div>
         <div class="right" style="visibility:hidden">
         Vientiane Capital, Date..........................
         </div>
-        <div class="left">
-        020 555 024 14
-        </div>
-
         <br><br>
     </div>
-        <div class="title">
+        <div class="title" >
         Medical Attestation
         </div>
         <br>
 
         <div class="info">
-        Through the consultation of physician, the Director of Mahosot Hospital certifies that: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through the consultation of physician, the Director of Mahosot Hospital certifies that: <br>
         </div>
         <div class="info2">
         Name and Surname: '.$fetch_pe["emp_name_en"].' '.$fetch_pe["surname_en"].' Age: '.$fetch_pe["age"].' Years, Nationality: '.$fetch_pe["national_en"].', <br>
-        Religion: '.$fetch_pe["religion_en"].', Employment ID: '.$fetch_pe["emp_id"].', Occupation: '.$fetch_pe["occupation_en"].', <br>
+        Religion: '.$fetch_pe["religion_en"].', Employment ID: '.$fetch_pe["emp_id"].', No.: '.$fetch_pe["queue"].', Occupation: '.$fetch_pe["occupation_en"].', <br>
         Current address: Village: '.$fetch_pe["village_en"].', District: '.$fetch_pe["district_en"].', Province: '.$fetch_pe["province_en"].'.
         </div>
         <br>
         <br>
 
         <div class="one">
-        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Physician Examination: <br>
-        General Status: '.$fetch_pe["hpi_en"].', Weight: '.$fetch_pe["weight"].' Kg, Heigh: '.$fetch_pe["height"].' Cm, RR: '.$fetch_pe["breat"].' b/min, Pulse: '.$fetch_pe["pulse"].' b/min, <br>
+        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Physician Examination: <br>
+        General Status: '.$fetch_pe["hpi_en"].', Weight: '.$fetch_pe["weight"].' Kg, Height: '.$fetch_pe["height"].' Cm, RR: '.$fetch_pe["breat"].' b/min, Pulse: '.$fetch_pe["pulse"].' b/min, <br>
         BP: '.$fetch_pe["bp"].' mmHg, Lungs: '.$fetch_pe["lung_en"].', Eyes: '.$fetch_pe["eyes_en"].', Ears: '.$fetch_pe["ears_en"].', <br>
         Conclusion: '.$fetch_pe["conclusion_en"].'.
         </div>
         <br>
         <div class="two">
-        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Results of Laboratory, CXR and Others: <br>
+        II.&nbsp;&nbsp;&nbsp;&nbsp;    Results of Laboratory, CXR and Others: <br>
         </div>
         <div class="two2">
-        '.$audio_conclusion.''.$cbc_conclusion.''.$ekg_c.''.$heavy_metal_conclusion.''.$immunity_conclusion.''.$methamphetamine_conclusion.'
-        '.$muscle_c.''.$vision_conclusion.''.$se_conclusion.''.$spirometry_conclusion.''.$thryroid_conclusion.''.$Tumor_conclusion.''.$urinalvsis_conclusion.'
-        '.$x_ray_c.''.$bio_conclusion.'
+        '.$cbc_conclusion.''.$urinalvsis_conclusion.''.$se_conclusion.''.$ekg_c.''.$x_ray_c.''.$bio_conclusion.''.$vision_conclusion.''.$audio_conclusion.'
+
         </div>
         <br>
 
         <div class="three">
-        III.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recommendation of physician:<br>
+        III.&nbsp;&nbsp;&nbsp;  Recommendation of physician:<br>
         </div>
         <div class="three2">
-            <div style="width: 5%;float:left;">
-            -
-            </div>
+        <div>
+        The examined candidate is mentally and physically healthy, able to work normally.
+        </div>
+
             <div style="width: 90%;float:left;">
-            '.$audio_remark.''.$cbc_remark.''.$ekg_conclusion.''.$heavy_metal_remark.''.$immunity_remark.''.$methamphetamine_remark.'
-            '.$muscle_conclusion.''.$vision_remark.''.$se_remark.''.$spirometry_remark.''.$thryroid_remark.''.$Tumor_remark.''.$urinalvsis_remark.'
-            '.$x_ray_conclusion.''.$bio_remark.'
+            '.$ekg_conclusion.''.$x_ray_conclusion.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
+            
             </div>
         </div>
 <br>
 <div class="hundred">
-        <div class="left">
+        <div class="left1">
             Director of Mahosot Hospital
         </div>
-        <div class="right">
+        <div class="center">
+        Approved Physician
+    </div>
+        <div class="right1">
             Physician
         </div>
 </div>
