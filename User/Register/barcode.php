@@ -17,7 +17,7 @@ if(isset($_POST["print_barcode2"])){
     $barcode = $_POST["barcode_id2"];
     $generatorSVG = new Picqer\Barcode\BarcodeGeneratorJPG();
     //TYPE_CODABAR
-    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODABAR,$border,$height));
+    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODE_128,$border,$height));
     require_once '../../vendor/autoload.php';
     //158
     $mpdf = new \Mpdf\Mpdf([

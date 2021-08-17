@@ -13,10 +13,10 @@ if(isset($_GET["register"])){
     $path = "../../";
     include ('../../oop/obj.php');
     $border = 5;//กำหนดความหน้าของเส้น Barcode
-    $height = 80;//กำหนดความสูงของ Barcode
+    $height = 80;//กำหนดความสูงของ Barcode TYPE_CODABAR
     $barcode = $_GET["barcode"];
     $generatorSVG = new Picqer\Barcode\BarcodeGeneratorJPG();
-    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODABAR,$border,$height));
+    file_put_contents('../Employee/barcode/'.$barcode.'.jpg', $generatorSVG->getBarcode($barcode, $generatorSVG::TYPE_CODE_128,$border,$height));
     require_once '../../vendor/autoload.php';
     //158
     $mpdf = new \Mpdf\Mpdf([

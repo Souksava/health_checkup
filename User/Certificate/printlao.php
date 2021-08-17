@@ -449,7 +449,7 @@ else{
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ຜ່ານການກວດກາຕົວຈິງຂອງທ່ານໜໍ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
         </div>
         <div class="info2">
-        ຊື່ ແລະ ນາມສະກຸນ ທ່ານນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ວັນ ເດືອນ ປີເກີດ: '.date("d/m/Y",strtotime($fetch_pe["date"])).', ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].', ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].', ສາດສະໜາ: '.$fetch_pe["religion"].',
+        ຊື່ ແລະ ນາມສະກຸນ ທ່ານນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ວັນ ເດືອນ ປີເກີດ: '.date("d/m/Y",strtotime($fetch_pe["dob"])).', ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].', ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].', ສາດສະໜາ: '.$fetch_pe["religion"].',
         ນ້ຳເບີບັດພ/ງ: '.$fetch_pe["emp_id"].', ລຳດັບ: '.$fetch_pe["queue"].', ອາຊີບ: '.$fetch_pe["job"].', <br> ພະແນກ: '.$fetch_pe["department"].', ບໍລີສັດ/ໂຮງງານ: '.$fetch_pe["company"].',
         ທີ່ຢູ່ປະຈຸບັນ ບ້ານ: '.$fetch_pe["village"].', ເມືອງ: '.$fetch_pe["district"].', ແຂວງ: '.$fetch_pe["province"].'
         </div>
@@ -503,8 +503,8 @@ else{
 
 
 </div>';
-    $mpdf->WriteHTML($content);
-    $mpdf->Output("","I");
+$mpdf->WriteHTML($content);
+$mpdf->Output("","I");
 
 // }
 
