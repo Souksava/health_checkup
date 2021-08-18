@@ -281,7 +281,7 @@ else
     $fevi_predict = round($fetch_spiro["fevi_predict"],1);
     $fvc_predicts = round($fetch_spiro["fvc_predicts"],1);
     $fevi_predicts = round($fetch_spiro["fevi_predicts"],1);
-    $spiro_conclusion = "ກວດທາງພູມຄຸ້ມກັນວິທະຍາ : ".$fetch_spiro["conclusion"];
+    $spiro_conclusion = "ການກວດສະມັດຕະພາບປອດ : ".$fetch_spiro["conclusion"];
     $spiro_remark = ": " .$fetch_spiro["remark"];
 }
 
@@ -786,12 +786,12 @@ $fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
 if(mysqli_num_rows($muscle) > 0)
 {
     $muscle_conclusion2 = $fetch_muscle["conclusion"];
-    $muscle_name = "ການກວດທົດສອບສະມັດຕະພາບກ້າມ :  " .$fetch_muscle["muscle_name"];
+    $muscle_name = "ການກວດສະມັດຕະພາບກ້າມຊີ້ນ :  " .$fetch_muscle["muscle_name"];
 
     if ($fetch_muscle["conclusion"] == "") {
         echo "";
     }else{
-        $muscle_conclusion = "ການກວດທົດສອບສະມັດຕະພາບກ້າມ : " .$fetch_muscle["conclusion"];
+        $muscle_conclusion = "ການກວດສະມັດຕະພາບກ້າມຊີ້ນ : " .$fetch_muscle["conclusion"];
     }
 
     if ($fetch_muscle["remark"] == "") {
@@ -1400,7 +1400,7 @@ if(mysqli_num_rows($gttgk4) > 0)
     if($fetch_gttgk4["conclusion"] == ""){
         echo "";
     }else{
-        $gttgk_conclusion = "ກວດຕົວບົ່ງຊີ້ມະເຮັງ (GTTGK) : ". $fetch_gttgk4["conclusion"];
+        $gttgk_conclusion = "ກວດການເຮັດວຽກຂອງຕັບ : ". $fetch_gttgk4["conclusion"];
     }
     if($fetch_gttgk4["remark"] == ""){
         echo "";
@@ -1636,7 +1636,7 @@ else {
                         </div>
                         <div class="col-sm-7" style="margin-top:20px">
                             <div style="">
-                                ເພດ/Gender: <span style="margin-left:120px;color:black;"> <b><?php echo $gender;?></b>
+                                ເພດ/Gender: <span style="margin-left:20px;color:black;"> <b><?php echo $gender;?></b>
                                 </span>
                             </div>
                         </div>
@@ -1648,7 +1648,7 @@ else {
                         </div>
                         <div class="col-sm-7">
                             <div style="">
-                                ອາຍຸ/Age: <span style="margin-left:140px;color:black;"> <b><?php echo $age;?></b>
+                                ອາຍຸ/Age: <span style="margin-left:40px;color:black;"> <b><?php echo $age;?></b>
                                 </span>
                             </div>
                         </div>
@@ -2007,7 +2007,7 @@ else {
                         </table>
                         <br>
                         <div class="col-sm-12">
-                            ***ສະຫຼຸບຜົນກວດເລືອດເຄມີ (Biochemical Interpretation) :
+                            ***ສະຫຼຸບຜົນກວດທາງຄຸ້ມກັນວິທະຍາ :
                         </div>
                         <div class="col-sm-12" style="color: black;">
                             <b><?php echo nl2br($imm_conclusion);?></b>
@@ -2085,7 +2085,7 @@ else {
                 <hr>
                 <div class="row">
                     <div class="col-sm-7">
-                        *ຜົນການສ່ອງໄຟຟ້າຜົ້ງເອີກ/Chest X-ray (CXR )
+                        *ແປຜົນການກວດສ່ອງໄຟຟ້າຜົ້ງເອີກ/Chest X-ray (CXR )
                     </div>
                     <div class="col-sm-2">
                         ID.No.:
@@ -2107,7 +2107,7 @@ else {
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        *ຜົນການແທກຄື້ນໄຟຟ້າຫົວໃຈ (EKG)
+                        *ແປຜົນການກວດແທກຄື້ນໄຟຟ້າຫົວໃຈ (ECG)
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo $ekg_name;?></b>
@@ -2123,7 +2123,7 @@ else {
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        *** ຜົນການກວດ ເອໂກ້ທ້ອງ ( Ultrasound )
+                        *** ແປຜົນການກວດເອໂກ້ທ້ອງ ( Ultrasound )
                     </div>
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo $ultra_name;?></b>
@@ -2145,7 +2145,7 @@ else {
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        *ການກວດເລືອດລວມ (CBC)
+                        *ການກວດເລືອດລວມ ( Complete blood count : CBC)
                     </div>
                     <div class="col-sm-12" style="">
                         <table style="width:100%;">
@@ -2433,7 +2433,7 @@ else {
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        *ກວດສະມັດຕະພາບການເບີ່ງເຫັນ ( Vision test )
+                        *ກວດສາຍຕາທົ່ວໄປ (Vision test )
                     </div>
                     <table class="border" style="width:100%;border: 1px solid red!important;">
                         <tr style="text-align:center;">
@@ -2472,15 +2472,20 @@ else {
                         <b><?php echo substr(nl2br($test_vision_remark),1);?></b>
                     </div>
                     <div class="col-sm-12">
-                        <br>
+                    <br>
+                    * ກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Oc vision)
+                    </div>
+                    <div class="col-sm-12">
                         *** ແປຜົນການເບ່ິງເຫັນ ( Oc vision )
                     </div>
                     <div class="col-sm-12">
                         <b style="color: black;"> <?php echo nl2br($vision_conclusion);?></b>
                     </div>
+
                     <div class="col-sm-12" style="color: black;">
                         <b><?php echo substr(nl2br($vision_remark),1);?></b>
                     </div>
+
 
                     <br>
                     <br>
@@ -2806,7 +2811,7 @@ else {
                         </table>
                         <br>
                         <div class="co-sm-12">
-                            ***ສະຫຼູບຜົນການກວດຫາສານເສບຕິດ
+                            ***ສະຫຼູບຜົນການກວດຫາທາດໂລຫະໜັກ
                         </div>
                         <div class="co-sm-12" style="color: black;">
                             <b><?php echo nl2br($metal_conclusion);?></b>
@@ -3136,8 +3141,7 @@ else {
                 <div class="title">
                     ການກວດທາງຫ້ອງວິເຄາະ (LABORATORY EXAMINATION)
                 </div>
-                <br>
-                <br>
+
                 <div class="row">
                     <div class="col-sm-7">
                         *ກວດຕົວບົ່ງຊີ້ມະເຮັງ (Tumor Marker)
@@ -3217,11 +3221,11 @@ else {
                 <br>
                 <br>
                 <div class="title">
-                    ການກວດທາງຫ້ອງວິເຄາະອື່ນໆ ( GTTGK )
+                    ການກວດທາງຫ້ອງວິເຄາະອື່ນໆ
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
-                        *ກວດຕົວບົ່ງຊີ້ມະເຮັງ (Tumor Marker)
+                        *ກວດການເຮັດວຽກຂອງຕັບ ( Liver function test )
                     </div>
                     <div class="col-sm-2">
                         ID.No.:
