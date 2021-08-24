@@ -48,7 +48,7 @@ $fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
 $bio_conclusion = $fetch_bio["conclusion"];
 $bio_remark = $fetch_bio["remark"];
 if($bio_conclusion != ""){
-    $bio_conclusion = "Bio: ".$bio_conclusion.". ";
+    $bio_conclusion = "Biochemistry: ".$bio_conclusion.". ";
 }
 else{
     $bio_conclusion = "";
@@ -66,7 +66,7 @@ $fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
 $ekg_c = $fetch_ekg["ekg_name"];
 $ekg_conclusion = $fetch_ekg["conclusion"];
 if($ekg_c != ""){
-    $ekg_c = "EKG: ".$ekg_c.", ";
+    $ekg_c = "ECG: ".$ekg_c.", ";
 }
 else{
     $ekg_c = "";
@@ -319,19 +319,20 @@ else{
             width:100%;
             height:29.7cm;
             float:left;
-            border:1mm ridge #FFA533;
+            border:1mm ridge #005299;
             line-height: 1.5;
 
         }
         .image{
             width:15%;
-            margin-left:8cm;
+            margin-left:8.5cm;
             margin-top:0.2cm;
         }
         .lpdr{
             text-align:center;
             font-weight:bold;
             margin-top: 5px;
+
         }
         .hundred{
             width:100%;
@@ -341,35 +342,26 @@ else{
             margin-right: 1.27cm;
         }
         .left{
-            width:40%;
+            width:50%;
             float:left;
-
-        }
-        .center{
-            width:12%;
-            float:left;
-            text-align:right;
 
         }
         .right{
-            width:38%;
+            width:44%;
             float:left;
             text-align:right;
-         
-            
         }
         .right1{
-            width:51%;
+            width:44%;
             float:left;
             text-align:right;
-
         }
         .title{
             font-weight:bold;
             text-align:center;
         }
         .info{
-            margin-left: 2.54cm;
+            margin-left: 1.8cm;
             margin-right: 1.27cm;
         }
         .info2{
@@ -385,7 +377,7 @@ else{
             margin-right: 1.27cm;
         }
         .two2{
-            margin-left: 2.54cm;
+            margin-left: 1.27cm;
             margin-right: 1.27cm;
         }
         .three{
@@ -395,8 +387,20 @@ else{
         .three2{
             width:100%;
             float:left;
-            margin-left: 2.54cm;
+            margin-left: 1.27cm;
             margin-right: 1.27cm;
+        }
+        .leftsign{
+            width:40%;
+            float:left;
+        }
+        .centersign{
+            width:35%;
+            float:left;
+        }
+        .rightsign{
+            width:22%;
+            float:left;
         }
 </style>
     ';
@@ -407,12 +411,12 @@ else{
 
 <div class="paper">
     <div class="image">
-        <img src="../../image/Emblem.png" alt="">
+        <img src="../../image/Emblem.png" alt="" width="70%">
     </div>
     <div class="lpdr">
     ສາທາລະນາລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ <br>
     ສັນຕີພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນະຖາວອນ <br>
-    ****
+    *************
     </div>
     
     <div class="hundred">
@@ -420,33 +424,29 @@ else{
         ໂຮງໝໍມະໂຫສົດ
         </div>
         <div class="right">
-        ເລກທີ..............
+        ເລກທີ....................
         </div>
         <br>
 
         <div class="left">
-        ສູນກວດສຸຂະພາບແຮງງານ ພາຍໃນ ແລະ ຕ່າງປະເທດ
+        ສູນກວດສຸຂະພາບແຮງງານ ພາຍໃນ ແລະ ຕ່າງປະເທດ <br>
         Occupational Health Check up Center
         </div>
         <div class="right1">
-        &nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ......................
+        &nbsp;&nbsp;&nbsp;ນະຄອນຫຼວງວຽງຈັນ, ວັນທີ....................
         </div>
         <div class="left">
-        Tel: 021-253 833,
+        Tel: 021-253 833, 030-5312850 
         </div>
-        <br>
-        <div class="left">
-        020 555 024 14
-        </div>
-
+       
     </div>
-        <div class="title" style="'."Phetsarath OT".'">
+        <div class="title" style="font-size:18px;">
         ໃບຢັ້ງຢືນສຸຂະພາບ
         </div>
-
+        <br>
 
         <div class="info">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ຜ່ານການກວດກາຕົວຈິງຂອງທ່ານໜໍ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
+        ຜ່ານການກວດກາຕົວຈິງຂອງທ່ານໜໍ, ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ ຢັ້ງຢືນວ່າ: <br>
         </div>
         <div class="info2">
         ຊື່ ແລະ ນາມສະກຸນ ທ່ານນາງ: '.$fetch_pe["emp_name"].' '.$fetch_pe["surname"].' ວັນ ເດືອນ ປີເກີດ: '.date("d/m/Y",strtotime($fetch_pe["dob"])).', ອາຍຸ: '.$fetch_pe["age"].' ປີ, ເພດ: '.$fetch_pe["gender"].'<br> ສັນຊາດ: '.$fetch_pe["nation"].', ຊົນເຜົ່າ: '.$fetch_pe["ethnic"].', ສາດສະໜາ: '.$fetch_pe["religion"].',
@@ -456,15 +456,15 @@ else{
         <br>
  
 
-        <div class="one" style="'."Phetsarath OT".'">
-        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ການກວດກາຂອງທ່ານໜໍ: <br>
-        ກວດຮ່າງກາຍໂດຍທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ, <br>
+        <div class="one">
+        I.&nbsp;&nbsp;&nbsp;<b>ການກວດກາຂອງທ່ານໜໍ: </b> <br>
+        ກວດຮ່າງກາຍໂດຍທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ,
         ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ ດັງ ຄໍ: '.$fetch_pe["ears"].', ແຂ້ວ: '.$fetch_pe["teeth"].', ຜິວຫນັງ: '.$fetch_pe["skin"].', ຕ່ອມນ້ຳເຫຼືອງ: '.$fetch_pe["lymph"].', ປ້າງ: '.$fetch_pe["als"].', ແຂນຂາ: '.$fetch_pe["extremities"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].', '.$fetch_fe["remark"].'
         </div>
 <br>
 
         <div class="two">
-        II.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນໆ: <br>
+        II.&nbsp;&nbsp;<b>ຜົນໄດ້ຂອງການກວດວິເຄາະ/ລັງສີ ແລະ ອື່ນໆ:</b> <br>
         </div>
         <div class="two2">
         '.$cbc_conclusion.''.$urinalvsis_conclusion.''.$se_conclusion.''.$ekg_c.''.$x_ray_c.''.$bio_conclusion.''.$vision_conclusion.''.$audio_conclusion.'
@@ -473,11 +473,11 @@ else{
 <br>
 
         <div class="three">
-        III.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ຄຳເຫັນຂອງແພດຜູ້ກວດສຸຂະພາບ:<br>
+        III.&nbsp;<b>ຄຳເຫັນຂອງທ່ານໝໍ:</b><br> 
         </div>
         <div class="three2">
         <div>
-        &nbsp;&nbsp;ຜູ້ກ່ຽວມີສຸຂະພາບທາງດ້ານຈິດ ແລະ ຮ່່າງກາຍປົກກະຕິ ສາມາດປະກອບສ່ວນເຂົ້າໃນການເຮັດວຽກງານໄດ້ປົກກະຕິ
+        ຜູ້ກ່ຽວມີສຸຂະພາບທາງດ້ານຈິດ ແລະ ຮ່່າງກາຍປົກກະຕິ ສາມາດປະກອບສ່ວນເຂົ້າໃນການເຮັດວຽກງານໄດ້ປົກກະຕິ
         </div>
             <div style="width: 5%;float:left;">
             -
@@ -489,13 +489,13 @@ else{
         </div>
 <br>
 <div class="hundred">
-        <div class="left">
+        <div class="leftsign">
             ຜູ້ອຳນວຍການໂຮງໜໍມະໂຫສົດ
         </div>
-        <div class="center">
+        <div class="centersign">
        ທ່ານໜໍຢັ້ງຢືນ
     </div>
-        <div class="right">
+        <div class="rightsign">
             ທ່ານໜໍກວດກາ
         </div>
 </div>
@@ -503,8 +503,8 @@ else{
 
 
 </div>';
-    $mpdf->WriteHTML($content);
-    $mpdf->Output("","I");
+$mpdf->WriteHTML($content);
+$mpdf->Output("","I");
 
 // }
 

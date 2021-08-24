@@ -292,7 +292,7 @@ else{
     $mpdf = new \Mpdf\Mpdf([
         'format'        => "A4",
         'mode'              => 'utf-8',
-        'default_font_size' => 11,
+        'default_font_size' => 10,
         'margin_top' => 10,
         'margin_left' => 10,
         'margin_right' => 10,
@@ -306,7 +306,7 @@ else{
         width:100%;
         height:29.7cm;
         float:left;
-        border:1mm ridge #FFA533;
+        border:1mm ridge #005299;
         line-height: 1.5;
 
     }
@@ -333,7 +333,7 @@ else{
 
     }
     .right{
-        width:40%;
+        width:45%;
         float:left;
         text-align:right;
 }
@@ -398,7 +398,7 @@ else{
 
 <div class="paper">
     <div class="image">
-        <img src="../../image/Emblem.png" alt="">
+        <img src="../../image/Emblem.png" alt="" width="70%">
     </div>
     <div class="lpdr">
     LAO PEOPLE'."'S".' DEMOCRATIC REPUBLIC <br>
@@ -420,14 +420,14 @@ else{
         Vientiane Capital, Date..........................
         </div>
         <div class="left">
-        Tel: 021-253 833,   020 555 024 14
+        Tel: 021-253 833, 030-5312850
         </div>
         <div class="right" style="visibility:hidden">
         Vientiane Capital, Date..........................
         </div>
-        <br><br>
+        <br>
     </div>
-        <div class="title" >
+        <div class="title" style="font-size:15px;">
         Medical Attestation
         </div>
         <br>
@@ -444,14 +444,14 @@ else{
         <br>
 
         <div class="one">
-        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Physician Examination: <br>
+        I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     <b>Physician Examination: </b><br>
         General Status: '.$fetch_pe["hpi_en"].', Weight: '.$fetch_pe["weight"].' Kg, Height: '.$fetch_pe["height"].' Cm, RR: '.$fetch_pe["breat"].' b/min, Pulse: '.$fetch_pe["pulse"].' b/min, <br>
         BP: '.$fetch_pe["bp"].' mmHg, Lungs: '.$fetch_pe["lung_en"].', Eyes: '.$fetch_pe["eyes_en"].', Ears: '.$fetch_pe["ears_en"].', <br>
         Conclusion: '.$fetch_pe["conclusion_en"].'.
         </div>
         <br>
         <div class="two">
-        II.&nbsp;&nbsp;&nbsp;&nbsp;    Results of Laboratory, CXR and Others: <br>
+        II.&nbsp;&nbsp;&nbsp;&nbsp;    <b>Results of Laboratory, CXR and Others:</b> <br>
         </div>
         <div class="two2">
         '.$cbc_conclusion.''.$urinalvsis_conclusion.''.$se_conclusion.''.$ekg_c.''.$x_ray_c.''.$bio_conclusion.''.$vision_conclusion.''.$audio_conclusion.'
@@ -460,7 +460,7 @@ else{
         <br>
 
         <div class="three">
-        III.&nbsp;&nbsp;&nbsp;  Recommendation of physician:<br>
+        III.&nbsp;&nbsp;&nbsp; <b> Recommendation of physician:</b><br>
         </div>
         <div class="three2">
         <div>
@@ -484,48 +484,6 @@ else{
             Physician
         </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>';
 
     $mpdf->WriteHTML($content);
