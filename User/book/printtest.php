@@ -1344,13 +1344,13 @@ if(mysqli_num_rows($tumor4) > 0)
     $tumor_conclusion2 = $fetch_tumor4["conclusion"];
     // $tumor_remark = ": " .$fetch_tumor4["remark"];
 
-    if($fetch_cbc4["conclusion"] == ""){
+    if($fetch_tumor4["conclusion"] == ""){
         echo"";
     }
     else{
         $tumor_conclusion ="ການກວດຕົວບົ່ງຊີ້ມະເຮັງ : ".$fetch_tumor4["conclusion"];
     }
-    if($fetch_cbc4["remark"] == ""){
+    if($fetch_tumor4["remark"] == ""){
         echo"";
     }
     else{

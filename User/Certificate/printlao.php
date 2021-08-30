@@ -459,7 +459,7 @@ else{
         <div class="one">
         I.&nbsp;&nbsp;&nbsp;<b>ການກວດກາຂອງທ່ານໜໍ: </b> <br>
         ກວດຮ່າງກາຍໂດຍທົ່ວໄປ: '.$fetch_pe["hpi"].' , ນ້ຳໜັກ: '.$fetch_pe["weight"].' ກິໂລ, ລວງສູງ: '.$fetch_pe["height"].' ຊມ, ການຫາຍໃຈ: '.$fetch_pe["breat"].' ເທືອ/ນາທີ, ກຳມະຈອນ: '.$fetch_pe["pulse"].' ເທື່ອ/ນາທີ,
-        ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ ດັງ ຄໍ: '.$fetch_pe["ears"].', ແຂ້ວ: '.$fetch_pe["teeth"].', ຜິວຫນັງ: '.$fetch_pe["skin"].', ຕ່ອມນ້ຳເຫຼືອງ: '.$fetch_pe["lymph"].', ປ້າງ: '.$fetch_pe["als"].', ແຂນຂາ: '.$fetch_pe["extremities"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].', '.$fetch_fe["remark"].'
+        ຄວາມດັນເລືອດ: '.$fetch_pe["bp"].' mmHg, ປອດ: '.$fetch_pe["lung"].', ຫົວໃຈ: '.$fetch_pe["hear"].', ຕາ: '.$fetch_pe["eye"].', ຫູ ດັງ ຄໍ: '.$fetch_pe["ears"].', ແຂ້ວ: '.$fetch_pe["teeth"].', ຜິວຫນັງ: '.$fetch_pe["skin"].', ຕ່ອມນ້ຳເຫຼືອງ: '.$fetch_pe["lymph"].', ປ້າງ: '.$fetch_pe["als"].', ແຂນຂາ: '.$fetch_pe["extremities"].', ສະຫຼຸບຜົນກວດທ່ານໝໍ: '.$fetch_pe["conclusion"].', '.$fetch_pe["remark"].'
         </div>
 <br>
 

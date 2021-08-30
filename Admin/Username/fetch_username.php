@@ -187,35 +187,34 @@ else
 <script type="text/javascript">
 var highlight = "<?php echo $_POST['query']; ?>";
 $('.result_data').highlight([highlight]);
-    $('.btnDel_Emp').on('click', function() {
+$('.btnDel_Emp').on('click', function() {
     $('#exampleModalDeleteEmp').modal('show');
-      $tr = $(this).closest('tr');
-      var data = $tr.children("td").map(function() {
-         return $(this).text();
-      }).get();
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
 
-      console.log(data);
+    console.log(data);
 
-      $('#id').val(data[0]);
-   });
-    $('.btnUpdateEmp').on('click', function() {
-        $('#exampleModalUpdateEmp').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#user_id').val(data[0]);
-        $('#staff_id2').val(data[3]);
-        $('#user_name2').val(data[4]);
-        $('#email2').val(data[5]);
-        $('#pass2').val(data[6]);
-        $('#stt_id2').val(data[7]);
-        if(data[9] === ''){
-            document.getElementById("output2").src = ('<?php echo $path ?>image/camera.jpg');
-        }
-        else{
-            document.getElementById("output2").src = ('<?php echo $path ?>image/'+data[9]);
-        }
-    });
+    $('#id').val(data[0]);
+});
+$('.btnUpdateEmp').on('click', function() {
+    $('#exampleModalUpdateEmp').modal('show');
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    console.log(data);
+    $('#user_id').val(data[0]);
+    $('#staff_id2').val(data[3]);
+    $('#user_name2').val(data[4]);
+    $('#email2').val(data[5]);
+    $('#pass2').val(data[6]);
+    $('#stt_id2').val(data[7]);
+    if (data[9] === '') {
+        document.getElementById("output2").src = ('<?php echo $path ?>image/camera.jpg');
+    } else {
+        document.getElementById("output2").src = ('<?php echo $path ?>image/' + data[9]);
+    }
+});
 </script>
