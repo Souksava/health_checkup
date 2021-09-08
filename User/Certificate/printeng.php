@@ -9,21 +9,74 @@
     $fetch_pe = mysqli_fetch_array($pe,MYSQLI_ASSOC);
 
 
+    if($fetch_pe["weight"] != ""){
+        $fetch_pe["weight"] = "Weight: ".$fetch_pe["weight"]." Kg, ";
+    }
+    if($fetch_pe["height"] != ""){
+        $fetch_pe["height"] = "Height: ".$fetch_pe["height"]." Cm, ";
+    }
+    if($fetch_pe["breat"] != ""){
+        $fetch_pe["breat"] = "RR: ".$fetch_pe["breat"]." b/min, ";
+    }
+    if($fetch_pe["pulse"] != ""){
+        $fetch_pe["pulse"] = "Pulse: ".$fetch_pe["pulse"]." b/min, ";
+    }
+    if($fetch_pe["bp"] != ""){
+        $fetch_pe["bp"] = "BP: ".$fetch_pe["bp"]." mmHg, ";
+    }
+    if($fetch_pe["lung_en"] != ""){
+        $fetch_pe["lung_en"] = "Lungs: ".$fetch_pe["lung_en"].", ";
+    }
+    if($fetch_pe["hear_en"] != ""){
+        $fetch_pe["hear_en"] = "Heart: ".$fetch_pe["hear_en"].", ";
+    }
+    if($fetch_pe["eye_en"] != ""){
+        $fetch_pe["eye_en"] = "Eyes: ".$fetch_pe["eye_en"].", ";
+    }
+    if($fetch_pe["ears_en"] != ""){
+        $fetch_pe["ears_en"] = "Ears: ".$fetch_pe["ears_en"].", ";
+    }
+    if($fetch_pe["teeth_en"] != ""){
+        $fetch_pe["teeth_en"] = "Teeth: ".$fetch_pe["teeth_en"].", ";
+    }
+    if($fetch_pe["skin_en"] != ""){
+        $fetch_pe["skin_en"] = "Skin: ".$fetch_pe["skin_en"].", ";
+    }
+    if($fetch_pe["lymph_en"] != ""){
+        $fetch_pe["lymph_en"] = "Lymph: ".$fetch_pe["lymph_en"].", ";
+    }
+    if($fetch_pe["als_en"] != ""){
+        $fetch_pe["als_en"] = "als: ".$fetch_pe["als_en"].", ";
+    }
+    if($fetch_pe["extremities_en"] != ""){
+        $fetch_pe["extremities_en"] = "Extremities: ".$fetch_pe["extremities_en"].", ";
+    }
+    if($fetch_pe["conclusion_en"] != ""){
+        $fetch_pe["conclusion_en"] = "Conclusion: ".$fetch_pe["conclusion_en"];
+    }
+    if($fetch_pe["remark_en"] != ""){
+        $fetch_pe["remark_en"] = ", ".$fetch_pe["remark_en"].". ";
+    }
+    else{
+        $fetch_pe["remark_en"] = $fetch_pe["remark_en"].". ";
+    }
+
+
     $audio = mysqli_query($conn,"SELECT * FROM audiogram where barcode='$barcode' and year='$year';");
 $fetch_audio = mysqli_fetch_array($audio,MYSQLI_ASSOC);
 $audio_conclusion = $fetch_audio["conclusion_en"];
 $audio_remark = $fetch_audio["remark_en"];
 if($audio_conclusion != ""){
-    $audio_conclusion = "Audio: ".$audio_conclusion.", ";
+    $audio_conclusion = ", Audio: ".$audio_conclusion.". ";
 }
 else{
-    $audio_conclusion = "";
+    $audio_conclusion = ".";
 }
 if($audio_remark == ""){
-    $audio_remark = "";
+    $audio_remark = ".";
 }
 else{
-    $audio_remark = $audio_remark.", ";
+    $audio_remark = ", ".$audio_remark.". ";
 }
 
 
@@ -42,7 +95,7 @@ if($cbc_remark == ""){
     $cbc_remark = "";
 }
 else{
-    $cbc_remark = $cbc_remark.", ";
+    $cbc_remark = ", ".$cbc_remark;
 }
 
 $bio = mysqli_query($conn,"SELECT * FROM biochemistry where barcode='$barcode' and year='$year';");
@@ -50,7 +103,7 @@ $fetch_bio = mysqli_fetch_array($bio,MYSQLI_ASSOC);
 $bio_conclusion = $fetch_bio["conclusion_en"];
 $bio_remark = $fetch_bio["remark_en"];
 if($bio_conclusion != ""){
-    $bio_conclusion = "Bio: ".$bio_conclusion.". ";
+    $bio_conclusion = ", Biochemistry: ".$bio_conclusion;
 }
 else{
     $bio_conclusion = "";
@@ -59,16 +112,18 @@ if($bio_remark == ""){
     $bio_remark = "";
 }
 else{
-    $bio_remark = $bio_remark.". ";
+    $bio_remark = ", ".$bio_remark;
 }
+
 
 
 $ekg = mysqli_query($conn,"SELECT * FROM ekg where barcode='$barcode' and year='$year';");
 $fetch_ekg = mysqli_fetch_array($ekg,MYSQLI_ASSOC);
 $ekg_c = $fetch_ekg["ekg_en"];
 $ekg_conclusion = $fetch_ekg["conclusion_en"];
+$ekg_remark = $fetch_ekg["remark_en"];
 if($ekg_c != ""){
-    $ekg_c = "EKG: ".$ekg_c.", ";
+    $ekg_c = ", ECG: ".$ekg_c;
 }
 else{
     $ekg_c = "";
@@ -77,7 +132,13 @@ if($ekg_conclusion == ""){
     $ekg_conclusion = "";
 }
 else{
-    $ekg_conclusion = $ekg_conclusion.", ";
+    $ekg_conclusion = $ekg_conclusion;
+}
+if($ekg_remark == ""){
+    $ekg_remark = "";
+}
+else{
+    $ekg_remark = $ekg_remark;
 }
 
 
@@ -86,7 +147,7 @@ $fetch_heavy_metal = mysqli_fetch_array($heavy_metal,MYSQLI_ASSOC);
 $heavy_metal_conclusion = $fetch_heavy_metal["conclusion_en"];
 $heavy_metal_remark = $fetch_heavy_metal["remark_en"];
 if($heavy_metal_conclusion != ""){
-    $heavy_metal_conclusion = "Metal: ".$heavy_metal_conclusion.", ";
+    $heavy_metal_conclusion = ", Metal: ".$heavy_metal_conclusion;
 }
 else{
     $heavy_metal_conclusion = "";
@@ -95,7 +156,7 @@ if($heavy_metal_remark == ""){
     $heavy_metal_remark = "";
 }
 else{
-    $heavy_metal_remark = $heavy_metal_remark.", ";
+    $heavy_metal_remark = ", ".$heavy_metal_remark;
 }
 
 
@@ -105,7 +166,7 @@ $fetch_immunity = mysqli_fetch_array($immunity,MYSQLI_ASSOC);
 $immunity_conclusion = $fetch_immunity["conclusion_en"];
 $immunity_remark = $fetch_immunity["remark_en"];
 if($immunity_conclusion != ""){
-    $immunity_conclusion = "IMM: ".$immunity_conclusion.", ";
+    $immunity_conclusion = ", IMM: ".$immunity_conclusion;
 }
 else{
     $immunity_conclusion = "";
@@ -114,7 +175,7 @@ if($immunity_remark == ""){
     $immunity_remark = "";
 }
 else{
-    $immunity_remark = $immunity_remark.", ";
+    $immunity_remark = ", ".$immunity_remark;
 }
 
 
@@ -124,7 +185,7 @@ $fetch_methamphetamine = mysqli_fetch_array($methamphetamine,MYSQLI_ASSOC);
 $methamphetamine_conclusion = $fetch_methamphetamine["conclusion_en"];
 $methamphetamine_remark = $fetch_methamphetamine["remark_en"];
 if($methamphetamine_conclusion != ""){
-    $methamphetamine_conclusion = "Meth: ".$methamphetamine_conclusion.", ";
+    $methamphetamine_conclusion = ", Meth: ".$methamphetamine_conclusion;
 }
 else{
     $methamphetamine_conclusion = "";
@@ -133,7 +194,7 @@ if($methamphetamine_remark == ""){
     $methamphetamine_remark = "";
 }
 else{
-    $methamphetamine_remark = $methamphetamine_remark.", ";
+    $methamphetamine_remark = ", ".$methamphetamine_remark;
 }
 
 
@@ -143,7 +204,7 @@ $fetch_muscle = mysqli_fetch_array($muscle,MYSQLI_ASSOC);
 $muscle_c = $fetch_muscle["muscle_en"];
 $muscle_conclusion = $fetch_muscle["conclusion_en"];
 if($muscle_c != ""){
-    $muscle_c = "Muscle: ".$muscle_c.", ";
+    $muscle_c = ", Muscle: ".$muscle_c;
 }
 else{
     $muscle_c = "";
@@ -152,9 +213,8 @@ if($muscle_conclusion == ""){
     $muscle_conclusion = "";
 }
 else{
-    $muscle_conclusion = $muscle_conclusion.", ";
+    $muscle_conclusion = ", ".$muscle_conclusion;
 }
-
 
 
 $vision = mysqli_query($conn,"SELECT * FROM oc_vision where barcode='$barcode' and year='$year';");
@@ -162,7 +222,7 @@ $fetch_vision = mysqli_fetch_array($vision,MYSQLI_ASSOC);
 $vision_conclusion = $fetch_vision["conclusion_en"];
 $vision_remark = $fetch_vision["remark_en"];
 if($vision_conclusion != ""){
-    $vision_conclusion = "Vision: ".$vision_conclusion.", ";
+    $vision_conclusion = ", Vision: ".$vision_conclusion;
 }
 else{
     $vision_conclusion = "";
@@ -171,7 +231,7 @@ if($vision_remark == ""){
     $vision_remark = "";
 }
 else{
-    $vision_remark = $vision_remark.", ";
+    $vision_remark = ", ".$vision_remark;
 }
 
 
@@ -182,7 +242,7 @@ $fetch_se = mysqli_fetch_array($se,MYSQLI_ASSOC);
 $se_conclusion = $fetch_se["conclusion_en"];
 $se_remark = $fetch_se["remark_en"];
 if($se_conclusion != ""){
-    $se_conclusion = "Stool Ex: ".$se_conclusion.", ";
+    $se_conclusion = ", Stool Ex: ".$se_conclusion;
 }
 else{
     $se_conclusion = "";
@@ -191,7 +251,7 @@ if($se_remark == ""){
     $se_remark = "";
 }
 else{
-    $se_remark = $se_remark.", ";
+    $se_remark = ", ".$se_remark;
 }
 
 
@@ -202,7 +262,7 @@ $fetch_spirometry = mysqli_fetch_array($spirometry,MYSQLI_ASSOC);
 $spirometry_conclusion = $fetch_spirometry["conclusion_en"];
 $spirometry_remark = $fetch_spirometry["remark_en"];
 if($spirometry_conclusion != ""){
-    $spirometry_conclusion = "Spiro: ".$spirometry_conclusion.", ";
+    $spirometry_conclusion = ", Spiro: ".$spirometry_conclusion;
 }
 else{
     $spirometry_conclusion = "";
@@ -211,7 +271,7 @@ if($spirometry_remark == ""){
     $spirometry_remark = "";
 }
 else{
-    $spirometry_remark = $spirometry_remark.", ";
+    $spirometry_remark = ", ".$spirometry_remark;
 }
 
 
@@ -222,7 +282,7 @@ $fetch_thryroid = mysqli_fetch_array($thryroid,MYSQLI_ASSOC);
 $thryroid_conclusion = $fetch_thryroid["conclusion_en"];
 $thryroid_remark = $fetch_thryroid["remark_en"];
 if($thryroid_conclusion != ""){
-    $thryroid_conclusion = "Thryroid: ".$thryroid_conclusion.", ";
+    $thryroid_conclusion = ", Thryroid: ".$thryroid_conclusion;
 }
 else{
     $thryroid_conclusion = "";
@@ -231,7 +291,7 @@ if($thryroid_remark == ""){
     $thryroid_remark = "";
 }
 else{
-    $thryroid_remark = $thryroid_remark.", ";
+    $thryroid_remark = ", ".$thryroid_remark;
 }
 
 
@@ -241,7 +301,7 @@ $fetch_Tumor = mysqli_fetch_array($Tumor,MYSQLI_ASSOC);
 $Tumor_conclusion = $fetch_Tumor["conclusion_en"];
 $Tumor_remark = $fetch_Tumor["remark_en"];
 if($Tumor_conclusion != ""){
-    $Tumor_conclusion = "Tumor: ".$Tumor_conclusion.", ";
+    $Tumor_conclusion = ", Tumor: ".$Tumor_conclusion;
 }
 else{
     $Tumor_conclusion = "";
@@ -250,7 +310,7 @@ if($Tumor_remark == ""){
     $Tumor_remark = "";
 }
 else{
-    $Tumor_remark = $Tumor_remark.", ";
+    $Tumor_remark = ", ".$Tumor_remark;
 }
 
 $urinalvsis = mysqli_query($conn,"SELECT * FROM urinalvsis where barcode='$barcode' and year='$year';");
@@ -258,7 +318,7 @@ $fetch_urinalvsis= mysqli_fetch_array($urinalvsis,MYSQLI_ASSOC);
 $urinalvsis_conclusion = $fetch_urinalvsis["conclusion_en"];
 $urinalvsis_remark = $fetch_urinalvsis["remark_en"];
 if($urinalvsis_conclusion != ""){
-    $urinalvsis_conclusion = "Urine: ".$urinalvsis_conclusion.", ";
+    $urinalvsis_conclusion = "Urinalysis: ".$urinalvsis_conclusion;
 }
 else{
     $urinalvsis_conclusion = "";
@@ -267,7 +327,7 @@ if($urinalvsis_remark == ""){
     $urinalvsis_remark = "";
 }
 else{
-    $urinalvsis_remark = $urinalvsis_remark.", ";
+    $urinalvsis_remark = ", ".$urinalvsis_remark;
 }
 
 
@@ -275,8 +335,9 @@ $x_ray = mysqli_query($conn,"SELECT * FROM x_ray where barcode='$barcode' and ye
 $fetch_x_ray= mysqli_fetch_array($x_ray,MYSQLI_ASSOC);
 $x_ray_c = $fetch_x_ray["x_ray_en"];
 $x_ray_conclusion = $fetch_x_ray["conclusion_en"];
+$x_ray_remark = $fetch_x_ray["remark_en"];
 if($x_ray_c != ""){
-    $x_ray_c = "X-Ray: ".$x_ray_c.", ";
+    $x_ray_c = ", CXR: ".$x_ray_c;
 }
 else{
     $x_ray_c = "";
@@ -285,7 +346,13 @@ if($x_ray_conclusion == ""){
     $x_ray_conclusion = "";
 }
 else{
-    $x_ray_conclusion = $x_ray_conclusion.", ";
+    $x_ray_conclusion = ", ".$x_ray_conclusion;
+}
+if($x_ray_remark == ""){
+    $x_ray_remark = "";
+}
+else{
+    $x_ray_remark = ", ".$x_ray_remark;
 }
     require_once '../../vendor/autoload.php';
 
@@ -445,9 +512,8 @@ else{
 
         <div class="one">
         I.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     <b>Physician Examination: </b><br>
-        General Status: '.$fetch_pe["hpi_en"].', Weight: '.$fetch_pe["weight"].' Kg, Height: '.$fetch_pe["height"].' Cm, RR: '.$fetch_pe["breat"].' b/min, Pulse: '.$fetch_pe["pulse"].' b/min, <br>
-        BP: '.$fetch_pe["bp"].' mmHg, Lungs: '.$fetch_pe["lung_en"].', Eyes: '.$fetch_pe["eyes_en"].', Ears: '.$fetch_pe["ears_en"].', <br>
-        Conclusion: '.$fetch_pe["conclusion_en"].'.
+        General Status: '.$fetch_pe["weight"].''.$fetch_pe["height"].''.$fetch_pe["breat"].''.$fetch_pe["pulse"].'
+        '.$fetch_pe["bp"].''.$fetch_pe["lung_en"].''.$fetch_pe["hear_en"].''.$fetch_pe["eye_en"].''.$fetch_pe["ears_en"].''.$fetch_pe["teeth_en"].''.$fetch_pe["skin_en"].''.$fetch_pe["lymph_en"].''.$fetch_pe["als_en"].''.$fetch_pe["extremities_en"].''.$fetch_pe["conclusion_en"].''.$fetch_pe["remark_en"].'
         </div>
         <br>
         <div class="two">
@@ -468,7 +534,7 @@ else{
         </div>
 
             <div style="width: 90%;float:left;">
-            '.$ekg_conclusion.''.$x_ray_conclusion.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
+            - '.$ekg_conclusion.''.$x_ray_conclusion.''.$bio_remark.''.$vision_remark.''.$audio_remark.'
             
             </div>
         </div>

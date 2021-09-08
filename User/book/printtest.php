@@ -1453,6 +1453,7 @@ else {
         .btnprint {
             display: none;
         }
+        
     }
 
     body {
@@ -1467,14 +1468,16 @@ else {
         line-height: 1.8;
         background-color: white;
         color: #333BFF;
+        margin: 15px 15px;
+
 
     }
 
     .paper-left {
         border: 0.5mm solid #D62611;
-        height: 200mm;
-        width: 46%;
-        margin-top: 18px;
+        height: 195mm;
+        width: 45%;
+        margin-top: 25px;
         margin-right: 35px;
         margin-left: 35px;
 
@@ -1482,9 +1485,10 @@ else {
 
     .paper-right {
         border: 0.5mm solid #D62611;
-        height: 200mm;
-        width: 46%;
-        margin-top: 18px;
+        height: 195mm;
+        width: 45%;
+        margin-top: 25px;
+        margin-left: 10px;
     }
 
     .title {
@@ -1639,7 +1643,7 @@ else {
                 <div class="signature">
                     ລາຍເຊັນທ່ານໝໍ/Physician
                 </div>
-                <div class="pagination" style="left: 140mm;top: 195mm;">
+                <div class="pagination" style="left: 140mm;top: 200mm;">
                     12
                 </div>
             </div>
@@ -1656,7 +1660,7 @@ else {
                     <div class="row">
                         <div class="col-sm-7">
                             <div style="">
-                                ຊື່ແລະນາມສະກຸນ: &nbsp;&nbsp;
+                                ຊື່ ແລະ ນາມສະກຸນ: &nbsp;&nbsp;
                                 <b style="color: black;"><?php  echo $emp_name; echo"&nbsp;"; echo $surname;?></b>
                             </div>
                         </div>
@@ -1781,7 +1785,7 @@ else {
                     </div>
 
                 </div>
-                <div class="pagination" style="left: 290mm;top: 195mm;">
+                <div class="pagination" style="left: 290mm;top: 200mm;">
                     1
                 </div>
             </div>
@@ -1958,7 +1962,7 @@ else {
                     </div>
 
                 </div>
-                <div class="pagination" style="left: 140mm;top: 407mm;">
+                <div class="pagination" style="left: 140mm;top: 412mm;">
                     2
                 </div>
             </div>
@@ -1977,7 +1981,7 @@ else {
                                 <th> <?php echo $year; ?> <br> Results </th>
                                 <th><?php echo $year2; ?> <br> Results</th>
                                 <th><?php echo $year3; ?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Anti HAV-IgM</td>
@@ -2033,7 +2037,7 @@ else {
                                 <td style="text-align:center"><b style="color: black;"><?php echo $papSmear;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $papSmear2;?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $papSmear3;?></b></td>
-                                <td style="text-align:center">Normal</td>
+                                <td style="text-align:center">Negative</td>
                             </tr>
                             <tr>
                                 <td>Calcium</td>
@@ -2068,7 +2072,7 @@ else {
                         </div>
                     </div>
                 </div>
-                <div class="pagination" style="left: 290mm;top: 407mm;">
+                <div class="pagination" style="left: 290mm;top: 412mm;">
                     11
                 </div>
             </div>
@@ -2186,7 +2190,7 @@ else {
                         <b><?php echo nl2br($ultra_remark);?></b>
                     </div> -->
                 </div>
-                <div class="pagination" style="left: 140mm;top: 619mm;">
+                <div class="pagination" style="left: 140mm;top: 627mm;">
                     10
                 </div>
             </div>
@@ -2205,7 +2209,7 @@ else {
                                 <th><?php echo $year;?> <br> Results</th>
                                 <th><?php echo $year2;?> <br> Results</th>
                                 <th><?php echo $year3;?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Hemoglobin(Hb)</td>
@@ -2323,7 +2327,7 @@ else {
                         <b><?php echo substr(nl2br($cbc_remark),1);?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 290mm;top: 619mm;">
+                <div class="pagination" style="left: 290mm;top: 627mm;">
                     3
                 </div>
             </div>
@@ -2340,7 +2344,7 @@ else {
                     ການກວດທາງຫ້ອງວິເຄາະ (LABORATORY EXAMINATION)
                 </div>
                 <div class="row">
-                    <div class="col-sm-7" style="text-align:center;">
+                    <div class="col-sm-7">
                         *ກວດເລືອດຊີວະເຄມີ (Biochemistry)
                     </div>
                     <div class="col-sm-2">
@@ -2356,7 +2360,7 @@ else {
                                 <th><?php echo $year; ?> <br> Results</th>
                                 <th><?php echo $year2; ?> <br> Results</th>
                                 <th><?php echo $year3; ?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Fasting Blood Sugar(FBS)</td>
@@ -2456,7 +2460,7 @@ else {
                                 <td style="text-align:center">15-128 U/L</td>
                             </tr>
                             <tr>
-                                <td>HbA1c</td>
+                                <td>HbA1c (ນ້ຳຕານສະສົມ)</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hbac; ?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hbac2; ?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $hbac3; ?></b></td>
@@ -2474,17 +2478,17 @@ else {
                         <b><?php echo substr(nl2br($bio_remark),1);?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 140mm;top: 831mm;">
+                <div class="pagination" style="left: 140mm;top: 840mm;">
                     4
                 </div>
             </div>
             <div class="col-md-6 paper-right">
                 <div class="title">
-                    ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Vision test )
+                    ການກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Vision test)
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        *ກວດສາຍຕາທົ່ວໄປ (Vision test )
+                        *ກວດສາຍຕາທົ່ວໄປ (Vision test)
                     </div>
                     <table class="border" style="width:100%;border: 1px solid red!important;">
                         <tr style="text-align:center;">
@@ -2527,7 +2531,7 @@ else {
                     * ກວດສະມັດຕະພາບການເບີ່ງເຫັນ (Oc vision)
                     </div>
                     <div class="col-sm-12">
-                        *** ແປຜົນການເບ່ິງເຫັນ ( Oc vision )
+                        *** ແປຜົນການເບ່ິງເຫັນ (Oc vision)
                     </div>
                     <div class="col-sm-12">
                         <b style="color: black;"> <?php echo nl2br($vision_conclusion);?></b>
@@ -2616,7 +2620,7 @@ else {
                         <b><?php echo substr(nl2br($muscle_remark),1);?></b>
                     </div> -->
                 </div>
-                <div class="pagination" style="left: 290mm;top: 831mm;">
+                <div class="pagination" style="left: 290mm;top: 840mm;">
                     9
                 </div>
             </div>
@@ -2807,7 +2811,7 @@ else {
                                 </td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $t_i_urine3;?></b>
                                 </td>
-                                <td style="text-align:center">(&lt;2.5g/gcr</td>
+                                <td style="text-align:center">(&lt;2.5g/gcr)</td>
                             </tr>
                             <tr>
                                 <td> Methyl Isobutyl Ketone in Urine</td>
@@ -2874,7 +2878,7 @@ else {
                     <br>
                     <br>
                 </div>
-                <div class="pagination" style="left: 140mm;top: 1043mm;">
+                <div class="pagination" style="left: 140mm;top: 1054mm;">
                     8
                 </div>
             </div>
@@ -2899,7 +2903,7 @@ else {
                                 <th><?php echo $year?> <br> Results</th>
                                 <th><?php echo $year2?> <br> Results</th>
                                 <th><?php echo $year3?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Color :</td>
@@ -3013,7 +3017,7 @@ else {
                                 <th><?php echo $year ?> <br> Results</th>
                                 <th><?php echo $year2 ?> <br> Results</th>
                                 <th><?php echo $year3 ?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Methamphetamine :</td>
@@ -3035,7 +3039,7 @@ else {
                         <b><?php echo substr(nl2br($meth_remark),1);?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 290mm;top: 1043mm;">
+                <div class="pagination" style="left: 290mm;top: 1054mm;">
                     5
                 </div>
             </div>
@@ -3043,7 +3047,7 @@ else {
     </div>
     <!-- end paper 8-5 -->
     <!-- start paper 6-7 -->
-    <div class="paper" style="page-break-after:always;">
+    <div class="paper" style="margin-bottom: 0;">
         <div class="row">
             <div class="col-md-6 paper-left">
                 <div class="title">
@@ -3184,7 +3188,7 @@ else {
                         <b><?php echo substr(nl2br($stool_remark),1);?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 140mm;top: 1255mm;">
+                <div class="pagination" style="left: 140mm;top: 1267mm;">
                     6
                 </div>
             </div>
@@ -3210,7 +3214,7 @@ else {
                                 <th><?php echo $year?> <br> Results</th>
                                 <th><?php echo $year2?> <br> Results</th>
                                 <th><?php echo $year3?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Alpha-Fetoprotein (AFP)</td>
@@ -3272,7 +3276,7 @@ else {
                 <br>
                 <br>
                 <div class="title">
-                    ການກວດທາງຫ້ອງວິເຄາະອື່ນໆ
+                    ການກວດທາງຫ້ອງວິເຄາະ (LABORATORY EXAMINATION)
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
@@ -3291,7 +3295,7 @@ else {
                                 <th><?php echo $year?> <br> Results</th>
                                 <th><?php echo $year2?> <br> Results</th>
                                 <th><?php echo $year3?> <br> Results</th>
-                                <th>ຄ່າປົກກະຕຶ <br> Reference</th>
+                                <th>ຄ່າປົກກະຕິ <br> Reference</th>
                             </tr>
                             <tr>
                                 <td>Total Billirubin </td>
@@ -3322,7 +3326,7 @@ else {
                                 <td style="text-align:center">5.5 - 8.0 mg/dl</td>
                             </tr>
                             <tr>
-                                <td>Ambumin</td>
+                                <td>Albumin</td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ambumin?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ambumin2?></b></td>
                                 <td style="text-align:center"><b style="color: black;"><?php echo $ambumin3?></b></td>
@@ -3349,7 +3353,7 @@ else {
                         <b><?php echo substr(nl2br($gttgk_remark), 1);?></b>
                     </div>
                 </div>
-                <div class="pagination" style="left: 290mm;top: 1255mm;">
+                <div class="pagination" style="left: 290mm;top: 1267mm;">
                     7
                 </div>
             </div>
